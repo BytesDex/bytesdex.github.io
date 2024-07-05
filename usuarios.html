@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/style-48.css">
+<title>Usuarios</title>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Usuarios</h1>
+  </div>
+  <div class="search-box">
+    <input type="text" id="search" class="search-input" placeholder="Ingrese el nombre de usuario...">
+  </div>
+  <div class="filter-buttons">
+    <button class="filter-button" id="filter-all">Todos</button>
+    <button class="filter-button" id="filter-verified">Verificados</button>
+    <button class="filter-button" id="filter-pending">Pendientes</button>
+    <button class="filter-button" id="filter-unverified">No Verificados</button>
+  </div>
+  <div id="alert-container"></div>
+  <div id="user-list">
+    <div class="user-card">
+      <div class="user-info">
+        <h2>Vinny</h2>
+        <p><span class="badge verified-badge">Verificado</span></p>
+      </div>
+    </div>
+    <div class="user-card">
+      <div class="user-info">
+        <h2>Alpedo</h2>
+        <p><span class="badge verified-badge">Verificado</span></p>
+      </div>
+    </div>
+    <div class="user-card">
+      <div class="user-info">
+        <h2>Santino</h2>
+        <p><span class="badge verified-badge">Verificado</span></p>
+      </div>
+    </div>
+    <div class="user-card">
+      <div class="user-info">
+        <h2>Jean Patricio</h2>
+        <p><span class="badge verified-badge">Verificado</span></p>
+      </div>
+    </div>
+    <div class="user-card">
+      <div class="user-info">
+        <h2>Brayan</h2>
+        <p><span class="badge unverified-badge">No Verificado</span></p><br>
+        <h2 class="unverified-info">Motivo</h2>
+        <p class="unverified-info" style="color: #FFC107;">Contraseña Inválida o Demasiado Larga</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script src="/resources/js/script-69.js"></script>
+</body>
+</html>
