@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/style-7.css">
+<link rel="stylesheet" href="/resources/css/style-30.css">
+<title>Generador de Contraseñas Seguras</title>
+</head>
+<body>
+  <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+  </div>
+<h2>Generador de Contraseñas Seguras</h2>
+<div id="personalizacion">
+  <div class="checkbox-container">
+    <label class="checkbox-label" for="mayusculas">Mayúsculas (A-Z)</label>
+    <div class="checkbox-square" id="mayusculas"></div>
+  </div>
+  <div class="checkbox-container">
+    <label class="checkbox-label" for="minusculas">Minúsculas (a-z)</label>
+    <div class="checkbox-square" id="minusculas"></div>
+  </div>
+  <div class="checkbox-container">
+    <label class="checkbox-label" for="numeros">Números (0-9)</label>
+    <div class="checkbox-square" id="numeros"></div>
+  </div>
+  <div class="checkbox-container">
+    <label class="checkbox-label" for="simbolos">Símbolos (!@#$)</label>
+    <div class="checkbox-square" id="simbolos"></div>
+  </div>
+</div>
+<input type="number" id="longitud" name="longitud" min="4" max="32" placeholder="Longitud" required><br><br>
+<button class="generar-contraseña" onclick="generarContraseña()">Generar</button><br><br>
+<input type="text" id="contraseñaGenerada" readonly>
+<script src="/resources/js/script-7.js"></script>
+<script src="/resources/js/script-31.js"></script>
+<script src="/resources/js/script-35.js"></script>
+</body>
+</html>

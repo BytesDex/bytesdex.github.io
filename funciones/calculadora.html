@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/style-22.css">
+<link rel="stylesheet" href="/resources/css/style-30.css">
+<script src="/resources/js/script-26.js"></script>
+<title>Calculadora Básica</title>
+</head>
+<body>
+  <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+  </div>
+<div class="container">
+  <input type="text" id="display" readonly>
+  <div class="row">
+    <button onclick="agregarNumero(7)">7</button>
+    <button onclick="agregarNumero(8)">8</button>
+    <button onclick="agregarNumero(9)">9</button>
+    <button onclick="operacion('+')">+</button>
+  </div>
+  <div class="row">
+    <button onclick="agregarNumero(4)">4</button>
+    <button onclick="agregarNumero(5)">5</button>
+    <button onclick="agregarNumero(6)">6</button>
+    <button onclick="operacion('-')">-</button>
+  </div>
+  <div class="row">
+    <button onclick="agregarNumero(1)">1</button>
+    <button onclick="agregarNumero(2)">2</button>
+    <button onclick="agregarNumero(3)">3</button>
+    <button onclick="operacion('×')">×</button>
+  </div>
+  <div class="row">
+    <button onclick="agregarNumero(0)">0</button>
+    <button onclick="agregarDecimal()">.</button>
+    <button onclick="limpiar()">C</button>
+    <button onclick="operacion('/')">/</button>
+  </div>
+  <button onclick="calcular()">=</button>
+</div>
+  <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-31.js"></script>
+</body>
+</html>

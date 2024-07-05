@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/style-30.css">
+    <link rel="stylesheet" href="/resources/css/style-20.css">
+    <title>Editor de HTML/JS/CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/css/css.min.js"></script>
+</head>
+<body>
+    <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+    </div>
+    <div class="editor-container">
+        <textarea id="editor" name="code" rows="10" cols="50"></textarea>
+                <div class="editor-buttons">
+            <button id="saveButton">Guardar</button>
+            <button id="loadButton">Cargar</button>
+            <button id="runButton">Ejecutar</button>
+        </div>
+        <div class="editor-buttons">
+            <button id="openAngleBracketButton">&lt;</button>
+            <button id="closeAngleBracketButton">&gt;</button>
+            <button id="openCloseTagButton">&lt;/</button>
+        </div>
+    </div>
+    <iframe id="resultFrame" sandbox="allow-same-origin allow-scripts" style="display: none;"></iframe>
+    <button id="backToEditorButton">Regresar al Editor</button>
+    <br>
+    <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-24.js"></script>
+  <script src="/resources/js/script-31.js"></script>
+</body>
+</html>

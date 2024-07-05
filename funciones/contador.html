@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://webcodem-media.github.io/resources/multimedia/imagen/logo-2.jpg">
+    <link rel="stylesheet" href="/resources/css/style-11.css">
+    <link rel="stylesheet" href="/resources/css/style-30.css">
+    <title>Contador de Deudas</title>
+</head>
+<body>
+<div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+</div>
+<h1>Contador de Deudas</h1>
+<p>Deuda total: Q<span id="debt">0.00</span></p>
+<label for="newDebt">Agregar nueva deuda:</label>
+<div class="inputContainer">
+    <input type="number" id="newDebt" placeholder="Ingrese un monto" oninput="toggleButton('newDebtButton')">
+    <button onclick="agregarDeuda()" id="newDebtButton"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m12.815 12.197l-7.532 1.255a.5.5 0 0 0-.386.318L2.3 20.728c-.248.64.421 1.25 1.035.942l18-9a.75.75 0 0 0 0-1.341l-18-9c-.614-.307-1.283.303-1.035.942l2.598 6.958a.5.5 0 0 0 .386.318l7.532 1.255a.2.2 0 0 1 0 .395Z"/></svg></button>
+</div>
+<label for="payment">Pagar deuda:</label>
+<div class="inputContainer">
+    <input type="number" id="payment" placeholder="Ingrese un monto" oninput="toggleButton('paymentButton')">
+    <button onclick="registrarPago()" id="paymentButton"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m12.815 12.197l-7.532 1.255a.5.5 0 0 0-.386.318L2.3 20.728c-.248.64.421 1.25 1.035.942l18-9a.75.75 0 0 0 0-1.341l-18-9c-.614-.307-1.283.303-1.035.942l2.598 6.958a.5.5 0 0 0 .386.318l7.532 1.255a.2.2 0 0 1 0 .395Z"/></svg></button>
+</div>
+<br>
+<p>Historial de pagos</p>
+<div id="paymentMessages"></div>
+<script src="/resources/js/script-35.js"></script>
+<script src="/resources/js/script-9.js"></script>
+<script src="/resources/js/script-31.js"></script>
+</body>
+</html>
