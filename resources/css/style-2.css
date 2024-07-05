@@ -1,0 +1,30 @@
+body {
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .ego-section {
+      background-color: #111;
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 50px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .ego-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .ego-phrase {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .ego-highlight {
+      color: #ffcc00; 
+      font-weight: bold;
+    }

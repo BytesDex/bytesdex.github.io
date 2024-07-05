@@ -1,0 +1,74 @@
+      body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #222;
+            color: white;
+        }
+
+        #artGallery {
+            max-width: 800px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .artwork {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .artwork img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .artworkInfo {
+            padding: 10px;
+        }
+
+        .buttonsContainer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            width: 100%;
+        }
+
+        .closeIcon,
+        .editIcon {
+            color: white; 
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        .editIcon {
+            color: #00bcd4;
+        }
+
+        .deleteButton {
+            color: #ff6666;
+            font-size: 15px;
+        }
+
+        #uploadButton {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #292929;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #fileInput {
+            display: none;
+        }

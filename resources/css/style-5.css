@@ -1,0 +1,65 @@
+        body {
+          font-family: 'Arial', sans-serif;
+          text-align: center;
+          margin: 20px;
+        }
+
+        #titulo-pagina {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #contenido-pagina {
+            width: 95%;
+            height: 150px;
+            margin-bottom: 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+         .btn {
+         background-color: rgba(108, 117, 125, 0.5);
+         color: white;
+         border: none;
+         border-radius: 0;
+         }
+
+        #guardar-btn,
+        #cambiar-titulo-btn {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #biblioteca {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .nota {
+            width: 98%;
+            margin-bottom: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .nota-actions {
+            margin-top: 5px;
+        }
+
+        .mensaje {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .mensaje-exito,
+        .mensaje-aviso {
+            background-color: #4CAF50;
+            color: white;
+        }

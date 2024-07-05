@@ -1,0 +1,66 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: grey;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        #chat-container {
+            width: 400px;
+            margin-top: -12vh; 
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #333;
+        }
+        
+        #chat-log {
+            height: 649px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #1E1E1E;
+        }
+        
+        input {
+            width: 92%;
+            background-color: #292929;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .codebot-message {
+            text-align: left;
+            color: black;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #bfd5ff;
+            opacity: 0;
+            animation: typing 1s steps(40, end) forwards;
+            white-space: pre-wrap;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            text-align: right;
+            color: black;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            align-self: flex-end;
+        }
+
+        @keyframes typing {
+            0% { opacity: 0; }
+            1% { opacity: 1; }
+            100% { opacity: 1; }
+        }

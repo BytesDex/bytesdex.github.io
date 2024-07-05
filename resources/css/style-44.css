@@ -1,0 +1,109 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+            padding-bottom: 70px; 
+        }
+
+        #container {
+            background-color: #111;
+            border-radius: 8px;
+            position: relative; 
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 50px auto; 
+            margin-bottom: 70px; 
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #444;
+            color: white;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .mensaje {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            border: 1px solid #1E1E1E;
+            padding: 10px;
+            width: 84%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        #icono path {
+            fill: #808080; 
+        }
+
+        .info {  
+            color: #808080;
+        }
+
+        #info-icon {
+            vertical-align: middle;
+            margin-bottom: 2px;
+            width: 1em;
+            height: 1em;
+        }
+        p {
+            text-align: center;
+        }
+        footer {
+    width: 100%;
+    background-color: #111;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #f3f3f3;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+a {
+  color: #00bfff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #87ceeb;
+  text-decoration: underline;
+}

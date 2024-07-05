@@ -1,0 +1,66 @@
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            margin: 20px;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: white;
+        }
+
+        .inputContainer {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            font-size: 14px;
+            background-color: #111;
+            color: white;  
+            border: none;
+            border-radius: 2px;  
+            outline: none; 
+        }
+
+        button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 14px;
+            visibility: hidden;
+        }
+
+        #newDebtButton,
+        #paymentButton {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+        }
+
+        #paymentMessages {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .successMessage {
+            margin-bottom: 5px;
+        }

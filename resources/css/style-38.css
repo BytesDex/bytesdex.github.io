@@ -1,0 +1,106 @@
+        body {
+            background-color: #222;
+            color: #f3f3f3;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #f3f3f3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .playlist-item {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: center;
+        }
+        .playlist-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .playlist-item .name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            margin: 0;
+        }
+        .playlist-item .name span {
+            display: block;
+            font-size: 18px;
+        }
+        .btn-container {
+            position: absolute;
+            bottom: 2px;
+            right: 10px;
+        }
+        .btn {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .song-info {
+            display: none;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #111;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #f3f3f3;
+            margin-top: 20px;
+            text-align: center;
+            animation: slideDown 0.5s ease;
+        }
+        .song-info p {
+            margin-bottom: 10px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        #searchInput {
+            width: 92%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #111;
+            color: #fff;
+        }
+        #playlist {
+            list-style-type: none;
+            padding: 0;
+        }
+        #playlist li {
+            margin-bottom: 10px;
+        }
+        #playlist li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+        }
+        #playlist li a:hover {
+            background-color: #555;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
