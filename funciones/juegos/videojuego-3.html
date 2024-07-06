@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/style-30.css">
+    <link rel="stylesheet" href="/resources/css/style-43.css">
+    <title>Huevo Interactivo</title>
+</head>
+<body>
+    <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+    </div>
+    <div class="points">Puntos: <span id="pointCount">0</span></div>
+    <div class="egg" onclick="incrementPoints()"></div>
+    <button id="openStoreButton" onclick="toggleStore()">Abrir Tienda</button>
+    <div class="store">
+        <h2>Tienda</h2>
+        <div>
+            <h3>Colores:</h3>
+            <button class="colorButton" onclick="changeEggColor('#ffffff', '#ffffff')" disabled>Blanco (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ffcccc', '#ff9999')" disabled>Rosa (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#cceeff', '#99ccff')" disabled>Azul (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ccffcc', '#99ff99')" disabled>Verde (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ffccff', '#ff99ff')" disabled>Morado (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ffffcc', '#ffff99')" disabled>Amarillo (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ffe0b2', '#ffcc80')" disabled>Naranja (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#d9d9d9', '#b3b3b3')" disabled>Gris (10 puntos)</button>
+            <button class="colorButton" onclick="changeEggColor('#ccffdd', '#99ffcc')" disabled>Verde Claro (10 puntos)</button>
+        </div>
+        <div>
+            <h3>Tamaños:</h3>
+            <button class="sizeButton" onclick="changeEggSize(150, 200)" disabled>Tamaño Original (0 puntos)</button>
+            <button class="sizeButton" onclick="changeEggSize(200, 250)" disabled>Tamaño Grande (10 puntos)</button>
+            <button class="sizeButton" onclick="changeEggSize(100, 150)" disabled>Tamaño Pequeño (10 puntos)</button>
+        </div>
+        <div>
+            <h3>Personalización:</h3>
+            <input type="file" id="imageUpload" onchange="customizeEgg()" disabled>
+            <button id="customButton" onclick="buyCustomization()" disabled>Personalizar con imagen (999 puntos)</button>
+        </div>
+        <div>
+            <h3>Decoraciones:</h3>
+            <button class="decorationButton" onclick="addDecoration('🌟')" disabled>Agregar Estrella (5 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🌸')" disabled>Agregar Flor (7 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('❤️')" disabled>Agregar Corazón (10 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🐣')" disabled>Agregar Pollito (15 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🥚')" disabled>Agregar Huevo (20 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🎈')" disabled>Agregar Globo (25 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🍔')" disabled>Agregar Hamburguesa (30 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🍕')" disabled>Agregar Pizza (35 puntos)</button>
+            <button class="decorationButton" onclick="addDecoration('🍦')" disabled>Agregar Helado (40 puntos)</button>
+        </div>
+    </div>
+<script src="/resources/js/script-35.js"></script>
+<script src="/resources/js/script-64.js"></script>
+</body>
+</html>
