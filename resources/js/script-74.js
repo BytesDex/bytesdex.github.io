@@ -1,4 +1,4 @@
-    emailjs.init('YOUR_USER_ID'); 
+    emailjs.init('lnBgT2KDM0TICcToZ'); 
 
     function recaptchaCallback() {
         const submitButton = document.getElementById('submit-btn');
@@ -24,7 +24,7 @@
             message: mensaje
         };
 
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params) 
+        emailjs.send('service_2u0izje', 'template_rfzbqdr', params) 
             .then(function(response) {
                 console.log('Correo enviado con éxito', response.status, response.text);
                 document.getElementById('submit-message').innerText = 'El mensaje ha sido enviado correctamente.';
