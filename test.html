@@ -21,17 +21,22 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
+        h2 {
+            text-align: center;
+        }
+
         form {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             background-color: #1E1E1E;
             padding: 20px;
-            flex-direction: column;
-            align-items: center; /* Center items horizontally */
+            border-radius: 8px;
         }
 
         label {
             font-weight: bold;
-            width: 90%; /* Ensures labels are aligned with inputs */
+            width: 90%;
             margin-bottom: 10px;
         }
 
@@ -54,7 +59,7 @@
         input[type="text"]:focus,
         input[type="email"]:focus,
         textarea:focus {
-            border-color: #55acee;
+            border-color: #55acee; 
         }
 
         textarea {
@@ -64,7 +69,7 @@
         input[type="submit"] {
             width: 90%;
             padding: 10px;
-            background-color: #555;
+            background-color: #555; 
             color: white;
             border: none;
             border-radius: 4px;
@@ -72,30 +77,32 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; 
         }
 
         input[type="submit"].enabled {
-            background-color: #007bff;
+            background-color: #007bff; 
             cursor: pointer;
+        }
+
+        .recaptcha-container {
+            width: 90%;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
         }
 
         #submit-message {
             text-align: center;
-            width: 90%; /* Ensures message is aligned with inputs */
+            width: 90%;
             margin-top: 10px;
-        }
-
-        .g-recaptcha {
-            width: 90%; /* Align reCAPTCHA with inputs */
-            margin-bottom: 10px;
         }
     </style>
     <title>Formulario de Contacto</title>
 </head>
 <body>
     <div class="container">
-        <h2 style="text-align: center;">Formulario de Contacto</h2>
+        <h2>Formulario de Contacto</h2>
         <form id="contact-form">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
@@ -106,11 +113,13 @@
             <label for="mensaje">Mensaje:</label>
             <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br>
 
-            <div class="g-recaptcha" data-sitekey="6LeaOAYqAAAAACJDSikksmvEu5TZPRU1-nX9N_ON" data-callback="recaptchaCallback"></div><br> <!-- Agregar el reCAPTCHA -->
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="6LeaOAYqAAAAACJDSikksmvEu5TZPRU1-nX9N_ON" data-callback="recaptchaCallback"></div>
+            </div>
 
-            <input type="submit" id="submit-btn" value="Enviar" disabled> <!-- Botón inicialmente deshabilitado -->
+            <input type="submit" id="submit-btn" value="Enviar" disabled>
 
-            <p id="submit-message"></p> <!-- Para mostrar mensajes de éxito o error -->
+            <p id="submit-message"></p>
         </form>
     </div>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
