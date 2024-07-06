@@ -44,7 +44,7 @@
         input[type="email"],
         textarea {
             font-family: Arial, sans-serif;
-            width: 90%;
+            width: 10%;
             padding: 15px;
             margin-bottom: 20px;
             font-size: 16px;
@@ -85,13 +85,6 @@
             cursor: pointer;
         }
 
-        .recaptcha-container {
-            width: 90%;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: center;
-        }
-
         #submit-message {
             text-align: center;
             width: 90%;
@@ -113,9 +106,8 @@
             <label for="mensaje">Mensaje:</label>
             <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br>
 
-            <div class="recaptcha-container">
                 <div class="g-recaptcha" data-sitekey="6LeaOAYqAAAAACJDSikksmvEu5TZPRU1-nX9N_ON" data-callback="recaptchaCallback"></div>
-            </div>
+    
 
             <input type="submit" id="submit-btn" value="Enviar" disabled>
 
