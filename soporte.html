@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/style-6.css">
     <title>Soporte</title>
+    <link rel="stylesheet" href="/resources/css/style-49.css"> 
 </head>
 <body>
-    <h1>Bienvenido a nuestro Servicio de Soporte</h1>
-    <p>Estamos aquí para ayudarte con cualquier pregunta o problema que puedas tener. Por favor, no dudes en contactarnos utilizando nuestro chat en vivo o enviándonos un correo electrónico.</p>
-    <p>Nuestro equipo de soporte está disponible las 24 horas del día, los 7 días de la semana para brindarte asistencia oportuna y de calidad.</p>
-<script src="/resources/js/script-6.js"></script>
+<div class="container">
+    <h2>Soporte</h2>
+    <form id="contact-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="mensaje">Descripción del Problema</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br>
+        <div class="g-recaptcha" data-sitekey="6LeaOAYqAAAAACJDSikksmvEu5TZPRU1-nX9N_ON" data-callback="recaptchaCallback"></div><br> 
+        <input type="submit" id="submit-btn" value="Enviar" disabled> 
+        <p id="submit-message"></p> 
+    </form>
+</div>
+<div class="chat-bot">
+        <div class="bubble" onclick="toggleChatBox()"></div>
+        <div class="chat-box" id="chat-box">
+            <header>Chat de Soporte</header>
+            <div class="chat-content" id="chat-content">
+            </div>
+            <footer>
+                <input class="user "type="text" id="user-input" placeholder="Escribe tu pregunta..." onkeypress="handleKeyPress(event)">
+            </footer>
+      </div>
+ </div>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="/resources/js/script-74.js"></script>
 </body>
 </html>
