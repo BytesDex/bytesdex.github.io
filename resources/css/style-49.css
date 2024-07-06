@@ -74,3 +74,217 @@
     #g-recaptcha {
         margin-bottom: 10px;
     }
+
+#chat-container {
+    width: 400px;
+    border-radius: 10px;
+    background-color: #111;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 8px auto;
+    position: relative;
+}
+
+#chat-messages {
+    padding: 20px;
+    height: 550px;
+    max-height: calc(100% - 115px);
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.user .text {
+    background-color: #4a90e2;
+    color: #f3f3f3;
+    text-align: right;
+}
+
+.bot .text {
+    background-color: #0099ff;
+    color: #f3f3f3;
+    text-align: left;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #f3f3f3;
+    margin-right: 10px;
+    margin-top: 5px;
+    object-fit: cover;
+}
+
+.textarea {
+    width: calc(100% - 150px);
+    max-height: 200px;
+    overflow-y: auto;
+    position: fixed;
+    bottom: 10px;
+    left: 65px;
+    padding: 10px;
+    border: none;
+    background-color: #2a2a2a;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #f3f3f3;
+    font-size: 16px;
+    border-radius: 10px;
+    resize: vertical;
+    outline: none;
+    font-family: inherit;
+}
+
+.textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.left-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: #0073e6;
+    color: #f3f3f3;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    z-index: 1;
+}
+
+.right-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: #0073e6;
+    color: #f3f3f3;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 1;
+}
+
+.left-button:hover,
+.right-button:hover {
+    background-color: #005bab;
+}
+
+.left-button svg,
+.right-button svg {
+    width: 60%;
+    height: 60%;
+}
+
+.left-button a,
+.right-button a {
+    color: #f3f3f3;
+    text-decoration: none;
+}
+
+.top-right-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #555;
+    color: #f3f3f3;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    background-color: #777;
+}
+
+.settings-menu {
+    width: 300px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 1;
+}
+
+.settings-menu.open {
+    display: block;
+}
+
+.settings-menu h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f3f3f3;
+}
+
+.settings-menu label {
+    display: block;
+    margin-bottom: 5px;
+    color: #f3f3f3;
+}
+
+.settings-menu input[type="text"],
+.settings-menu input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #333;
+    background-color: #f3f3f3;
+}
+
+.settings-menu .avatar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings-menu .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.settings-menu .btn {
+    background-color: #0073e6;
+    color: #f3f3f3;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.settings-menu .btn:hover {
+    background-color: #005bab;
+}
