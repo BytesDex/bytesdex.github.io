@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
+                body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -85,15 +85,115 @@
             cursor: pointer;
         }
 
+        #g-recaptcha {
+          margin-bottom: -5px;
+        }
+
         #submit-message {
             text-align: center;
             width: 90%;
             margin-top: 10px;
         }
 
-        #g-recaptcha {
-           margin-bottom: 10px;
+        .chat-bot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
+        .chat-bot .bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-image: url('https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg');
+            background-size: cover;
+            border: 1px solid #ccc;
+            background-position: center;
+            cursor: pointer;
+        }
+        
+        .chat-bot .chat-box {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            background-color: #111;
+            border: 1px solid grey;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .chat-bot .chat-box header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .chat-bot .chat-box .chat-content {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+        
+        .chat-bot .chat-box .chat-content .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            color: black;
+        }
+        
+        .chat-bot .chat-box .chat-content .message.bot {
+            background-color: #444;
+            color: white;
+        }
+        
+        .chat-bot .chat-box .chat-content .button-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-bot .chat-box .chat-content .button-container button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .chat-bot .chat-box footer {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        
+        .chat-bot .chat-box footer input {
+            width: calc(100% - 20px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .user {
+          background-color: #333;
+          color: white;
+        }
+        
+        a {
+          color: #00bfff;
+          text-decoration: underline;
+        }
+        
+        a:hover {
+          color: #87ceeb;
+          text-decoration: underline;
+            }
     </style>
     <title>Formulario de Contacto</title>
 </head>
