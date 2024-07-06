@@ -93,7 +93,7 @@ function sendMessage() {
     chatMessages.appendChild(botMessageContainer);
 
     var botImg = document.createElement("img");
-    botImg.src = "https://webcodem-media.github.io/resources/multimedia/imagen/bot.jpg";
+    botImg.src = "https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg";
     botImg.alt = 'Foto de perfil';
     botImg.classList.add("profile-img");
     botMessageContainer.appendChild(botImg);
