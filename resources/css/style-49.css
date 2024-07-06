@@ -80,7 +80,7 @@
         }
 
         #g-recaptcha {
-          margin-bottom: 5px;
+          margin-bottom: -5px;
         }
 
         #submit-message {
