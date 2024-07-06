@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displayUserData(savedUsername, savedProfilePic);
     } else {
         
-        const defaultProfilePic = 'https://webcodem-media.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+        const defaultProfilePic = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
         const defaultUsername = 'Usuario';
 
         displayUserData(defaultUsername, defaultProfilePic);
