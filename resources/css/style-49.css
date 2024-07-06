@@ -1,0 +1,76 @@
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #222;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 80%;
+        margin-top: -110px;
+        padding: 20px;
+        background: #111;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        width: 80%;
+        background-color: #1E1E1E;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        font-family: Arial, sans-serif;
+        width: 80%;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border: 2px solid #222;
+        background-color: #111;
+        color: #fff;
+        border-radius: 8px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #55acee; 
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input[type="submit"] {
+        width: 80%;
+        padding: 10px;
+        background-color: #555;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: not-allowed;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3; 
+    }
+
+    input[type="submit"].enabled {
+        background-color: #007bff; 
+        cursor: pointer;
+    }
+
+    #g-recaptcha {
+        margin-bottom: 10px;
+    }
