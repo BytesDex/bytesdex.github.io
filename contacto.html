@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/style-1.css">
     <title>Contacto</title>
+    <link rel="stylesheet" href="styles-49.css"> 
 </head>
 <body>
- <iframe src="https://e.widgetbot.io/channels/1122034429741781064/1180669368233889812" height="720" width="390"></iframe>
-<script src="/resources/js/script-31.js"></script>
+<div class="container">
+    <h2>Formulario de Contacto</h2>
+    <form id="contact-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br>
+        <div class="g-recaptcha" data-sitekey="6LeaOAYqAAAAACJDSikksmvEu5TZPRU1-nX9N_ON" data-callback="recaptchaCallback"></div><br> 
+        <input type="submit" id="submit-btn" value="Enviar" disabled> 
+        <p id="submit-message"></p> 
+    </form>
+</div>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="script-74.js"></script>
 </body>
 </html>
