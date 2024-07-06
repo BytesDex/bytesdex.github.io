@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/style-9.css">
+  <link rel="stylesheet" href="/resources/css/style-30.css">
+  <title>Curso de css</title>
+</head>
+<body>
+  <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+  </div>
+  <div class="tutoriales">
+    <div class="tutorial">
+    <h1>Cómo Estilizar un Bloque de Código con CSS</h1>
+    <p>En este tutorial, aprenderás a utilizar CSS para dar estilo a bloques de código en tu página web.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+.tutorial {
+   max-width: 600px;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: #f9f9f9;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #3498db;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #ecf0f1;
+  padding: 10px;
+  border-radius: 6px;
+}
+      </code>
+    </pre>
+    <p>Esto aplicará estilos específicos al bloque de código en tu página.</p>
+  </div>
+    <div class="tutorial">
+    <h1>Cómo Utilizar Propiedades en CSS</h1>
+    <p>En este tutorial, aprenderás a utilizar propiedades de CSS para dar estilo a tu documento HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+h1 {
+  color: #3498db;
+}
+
+.container {
+   width: 80%;
+   margin: 0 auto;
+}
+
+.box {
+   padding: 20px;
+   background-color: #fff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+      </code>
+    </pre>
+    <p>Esto aplicará estilos específicos a los elementos HTML seleccionados.</p>
+    </div>
+    <div class="tutorial">
+    <h1>Cómo Mejorar la Legibilidad con CSS</h1>
+    <p>En este tutorial, aprenderás a utilizar CSS para mejorar la legibilidad de tu contenido HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+p {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.important {
+   color: #e74c3c;
+   font-weight: bold;
+}
+      </code>
+    </pre>
+    <p>Utilizando estas técnicas, puedes hacer que tu contenido sea más fácil de leer y comprender.</p>
+    </div>
+    <div class="tutorial">
+    <h1>Consejos Útiles para Estilizar con CSS</h1>
+    <p>En este tutorial, descubrirás algunos consejos útiles para mejorar tus habilidades de estilización con CSS.</p>
+    <p>Aquí hay algunos ejemplos:</p>
+    <ul>
+      <li>Utiliza <code>font-family</code> para cambiar la fuente de tu texto.</li>
+      <li>Experimenta con colores y fondos para resaltar secciones clave.</li>
+      <li>Tip: La propiedad <code>box-shadow</code> puede agregar profundidad a tus elementos.</li>
+    </ul>
+    </div>
+    <div class="tutorial">
+    <h1>Mejorando la Legibilidad con CSS</h1>
+    <p>En este tutorial, descubrirás cómo utilizar CSS para mejorar la legibilidad de tu contenido HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+p {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.note {
+   color: #e74c3c;
+   font-style: italic;
+}
+
+.highlight {
+   background-color: #ffeaa7;
+   padding: 5px;
+   border-radius: 4px;
+   margin: 10px 0;
+}
+      </code>
+    </pre>
+      <p>Nota:</p>
+      <p>Utiliza la clase <code>highlight</code> para resaltar secciones importantes de tu contenido.</p>
+    </div>
+<div class="tutorial">
+    <h1>Mejorando el Estilo de tus Imágenes con CSS</h1>
+    <p>En este tutorial, aprenderás a aplicar estilos a las imágenes en tu sitio web utilizando CSS.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+      </code>
+    </pre>
+    <p">Consejo: Utiliza la regla <code>border-radius</code> para dar esquinas redondeadas a tus imágenes.</p>
+</div>
+      <div class="tutorial">
+  <h1>Lista Animada</h1>
+  <p>En este tutorial, aprenderás a darle estilo a una lista con viñetas animadas utilizando CSS.</p>
+  <ul>
+    <li>Elemento de lista 1</li>
+    <li>Elemento de lista 2</li>
+    <li>Elemento de lista 3</li>
+  </ul>
+  <pre><code>
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: #3498db;
+  font-size: 20px;
+}
+  </code></pre>
+</div>
+      <div class="tutorial">
+  <h1>Efecto de Sombra en Texto</h1>
+  <p>En este tutorial, aprenderás a agregar un sutil efecto de sombra al texto utilizando CSS.</p>
+  <p>¡Dale un toque especial a tus encabezados!</p>
+  <pre><code>
+h1 {
+  color: #3498db;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  line-height: 1.6;
+  color: #555;
+}
+  </code></pre>
+</div>
+      <div class="tutorial">
+  <h1>Estilizando una Lista de Navegación</h1>
+  <p>En este tutorial, aprenderás a dar estilo a una lista de navegación con CSS.</p>
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+  <pre><code>
+nav {
+  background-color: #3498db;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+  </code></pre>
+</div>
+      <div class="tutorial">
+  <h1>Diseño de Cuadrícula con CSS Grid</h1>
+  <p>En este tutorial, aprenderás a crear un diseño de cuadrícula responsivo utilizando CSS Grid.</p>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+  <pre><code>
+.grid-container {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 20px;
+}
+
+.item {
+   background-color: #3498db;
+   color: #fff;
+   padding: 20px;
+   text-align: center;
+   border-radius: 8px;
+}
+  </code></pre>
+</div>
+<div class="tutorial">
+  <h1>Menú de Navegación Desplegable</h1>
+  <p>En este tutorial, aprenderás a crear un menú de navegación desplegable utilizando CSS.</p>
+  <nav class="dropdown-menu">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Productos</a></li>
+      <li class="dropdown">
+        <a href="#">Servicios</a>
+        <ul class="dropdown-content">
+          <li><a href="#">Diseño</a></li>
+          <li><a href="#">Desarrollo</a></li>
+          <li><a href="#">Consultoría</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+  <pre><code>
+.dropdown-menu {
+   background-color: #3498db;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #2980b9;
+   border-radius: 0 0 8px 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+  </code></pre>
+</div>
+<div class="tutorial">
+  <h1>Diseñando una Tarjeta de Producto</h1>
+  <p>En este tutorial, aprenderás a crear una tarjeta de producto estilizada con CSS.</p>
+  <pre><code>
+.product-card {
+   max-width: 300px;
+   background-color: #fff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 20px;
+   text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #3498db;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  </code></pre>
+</div>
+<div class="tutorial">
+  <h1>Efecto de Hover con Transición</h1>
+  <p>En este tutorial, aprenderás a agregar un efecto de hover con transición a elementos utilizando CSS.</p>
+    <p>Pasa el ratón sobre este elemento.</p>
+  <pre><code>
+.hover-effect {
+   padding: 20px;
+   background-color: #3498db;
+   color: #fff;
+   border-radius: 8px;
+   transition: background-color 0.3s ease;
+}
+
+.hover-effect:hover {
+   background-color: #2980b9;
+}
+  </code></pre>
+</div>
+</div>
+  <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-31.js"></script>
+</body>
+</html>

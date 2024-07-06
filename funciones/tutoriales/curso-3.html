@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/style-9.css">
+  <link rel="stylesheet" href="/resources/css/style-30.css">
+  <title>Curso de javascript</title>
+</head>
+<body>
+  <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+  </div>
+  <div class="tutoriales">
+    <div class="tutorial">
+    <h1>Cómo Crear una Función en JavaScript</h1>
+    <p>En este tutorial, aprenderás a crear funciones en JavaScript para organizar y reutilizar tu código.</p>
+    <p>Aquí hay un ejemplo básico:</p>
+    <pre>
+      <code>
+function saludar(nombre) {
+    return "Hola, " + nombre + "!";
+}
+
+console.log(saludar("Usuario"));
+      </code>
+    </pre>
+    <p>Al ejecutar este código, verás en la consola el saludo "Hola, Usuario!".</p>
+</div>
+    <div class="tutorial">
+    <h1>Manejo de Eventos en JavaScript</h1>
+    <p>En este tutorial, aprenderás a manejar eventos con JavaScript para realizar acciones en respuesta a interacciones del usuario.</p>
+    <p>Aquí hay un ejemplo con el evento clic:</p>
+    <pre>
+      <code>
+document.getElementById("miBoton").addEventListener("click", function() {
+    alert("¡Botón clickeado!");
+});
+      </code>
+    </pre>
+    <p>Este código mostrará un mensaje de alerta al hacer clic en el elemento con el ID "miBoton".</p>
+</div>
+    <div class="tutorial">
+    <h1>Trabajando con Arrays en JavaScript</h1>
+    <p>En este tutorial, aprenderás a manipular y trabajar con arrays en JavaScript para almacenar y organizar datos de manera efectiva.</p>
+    <p>Aquí hay un ejemplo de cómo agregar elementos a un array:</p>
+    <pre>
+      <code>
+let frutas = ["Manzana", "Plátano", "Uva"];
+frutas.push("Naranja");
+
+console.log(frutas);
+      </code>
+    </pre>
+    <p>Al ejecutar este código, verás el array actualizado con la nueva fruta "Naranja".</p>
+</div>
+    <div class="tutorial">
+    <h1>Introducción a Promesas en JavaScript</h1>
+    <p>En este tutorial, exploraremos el concepto de promesas en JavaScript para manejar operaciones asíncronas de manera más eficiente.</p>
+    <p>Aquí hay un ejemplo básico de creación y uso de una promesa:</p>
+    <pre>
+      <code>
+const miPromesa = new Promise((resolve, reject) => {
+    // Lógica asíncrona aquí
+    const exito = true;
+
+    if (exito) {
+        resolve("Operación completada con éxito");
+    } else {
+        reject("Hubo un error en la operación");
+    }
+});
+
+miPromesa.then((mensaje) => {
+    console.log(mensaje);
+}).catch((error) => {
+    console.error(error);
+});
+      </code>
+    </pre>
+    <p>Este código muestra cómo trabajar con promesas para manejar resultados exitosos o errores en operaciones asíncronas.</p>
+</div>
+    <div class="tutorial">
+    <h1>Manipulación del DOM con JavaScript</h1>
+    <p>En este tutorial, aprenderás a manipular el DOM (Document Object Model) con JavaScript para modificar la estructura y el contenido de tus páginas web dinámicamente.</p>
+    <p>Aquí hay un ejemplo de cómo cambiar el contenido de un elemento:</p>
+    <pre>
+      <code>
+const miParrafo = document.getElementById("miParrafo");
+miParrafo.textContent = "Nuevo texto para el párrafo";
+      </code>
+    </pre>
+    <p>Este código actualiza el contenido del elemento con el ID "miParrafo" con un nuevo texto.</p>
+</div>
+    <div class="tutorial">
+    <h1>Consumir una API con JavaScript</h1>
+    <p>En este tutorial, aprenderás a realizar solicitudes a una API utilizando JavaScript para obtener y mostrar datos dinámicamente en tu aplicación web.</p>
+    <p>Aquí hay un ejemplo de cómo usar la función `fetch` para obtener datos de una API:</p>
+    <pre>
+      <code>
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error al obtener datos:', error);
+    });
+      </code>
+    </pre>
+    <p>Este código muestra cómo realizar una solicitud a una API y manejar la respuesta para trabajar con los datos obtenidos.</p>
+</div>
+    <div class="tutorial">
+    <h1>Validación de Formularios con JavaScript</h1>
+    <p>En este tutorial, exploraremos cómo utilizar JavaScript para validar formularios en el lado del cliente y mejorar la experiencia del usuario.</p>
+    <p>Aquí hay un ejemplo de cómo verificar si un campo de texto no está vacío:</p>
+    <pre>
+      <code>
+function validarFormulario() {
+    const nombre = document.getElementById("nombre").value;
+
+    if (nombre.trim() === "") {
+        alert("Por favor, ingresa tu nombre");
+        return false;
+    }
+
+    return true;
+}
+      </code>
+    </pre>
+    <p>Este código muestra cómo verificar que el campo de nombre no esté vacío al enviar un formulario.</p>
+</div>
+    <div class="tutorial">
+    <h1>LocalStorage en JavaScript</h1>
+    <p>En este tutorial, aprenderás a utilizar el localStorage en JavaScript para almacenar y recuperar datos localmente en el navegador del usuario.</p>
+    <p>Aquí hay un ejemplo de cómo guardar y obtener datos:</p>
+    <pre>
+      <code>
+// Guardar dato
+localStorage.setItem('usuario', 'JohnDoe');
+
+// Obtener dato
+const usuario = localStorage.getItem('usuario');
+console.log('Usuario:', usuario);
+      </code>
+    </pre>
+    <p>Este código muestra cómo almacenar y recuperar información en el localStorage del navegador.</p>
+</div>
+    <div class="tutorial">
+    <h1>Creación de Animaciones con JavaScript y CSS</h1>
+    <p>En este tutorial, descubrirás cómo crear animaciones en tu sitio web combinando JavaScript y CSS para agregar dinamismo y atractivo visual.</p>
+    <p>Aquí hay un ejemplo básico de animación:</p>
+    <pre>
+      <code>
+const miElemento = document.getElementById("miElemento");
+
+miElemento.style.transition = "transform 2s";
+miElemento.style.transform = "translateX(100px)";
+      </code>
+    </pre>
+    <p>Este código anima un elemento moviéndolo 100 píxeles hacia la derecha durante 2 segundos.</p>
+</div>
+    <div class="tutorial">
+    <h1>Creación de un Carrusel con JavaScript</h1>
+    <p>En este tutorial, aprenderás a implementar un carrusel de imágenes utilizando JavaScript para mejorar la presentación de contenidos en tu sitio web.</p>
+    <p>Aquí hay un ejemplo básico de estructura HTML y JavaScript:</p>
+    <pre>
+      <code>
+let index = 0;
+const imagenes = document.querySelectorAll("#carrusel img");
+
+function mostrarImagen() {
+    imagenes.forEach(img => img.style.display = "none");
+    imagenes[index].style.display = "block";
+}
+
+function siguienteImagen() {
+    index = (index + 1) % imagenes.length;
+    mostrarImagen();
+}
+
+setInterval(siguienteImagen, 3000); // Cambia la imagen cada 3 segundos
+      </code>
+    </pre>
+    <p>Este código crea un carrusel simple que cambia las imágenes cada 3 segundos.</p>
+</div>
+    <div class="tutorial">
+    <h1>Creación de un Menú de Navegación Responsivo</h1>
+    <p>En este tutorial, te guiaré a través de la creación de un menú de navegación responsivo utilizando HTML, CSS y JavaScript para adaptarse a diferentes tamaños de pantalla.</p>
+    <p>Aquí hay un ejemplo básico de código:</p>
+    <pre>
+      <code>
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("show");
+}
+      </code>
+    </pre>
+    <p>Este código crea un menú de navegación que se muestra/oculta al hacer clic en un icono, siendo responsivo para dispositivos móviles.</p>
+</div>
+    <div class="tutorial">
+    <h1>Implementación de Autenticación con Firebase en JavaScript</h1>
+    <p>En este tutorial, aprenderás a utilizar Firebase Authentication para agregar un sistema de autenticación a tu aplicación web utilizando JavaScript.</p>
+    <p>Aquí hay un ejemplo básico de inicio de sesión con correo electrónico y contraseña:</p>
+    <pre>
+      <code>
+// Configuración de Firebase
+const firebaseConfig = {
+    apiKey: "tu-api-key",
+    authDomain: "tu-dominio.firebaseapp.com",
+    projectId: "tu-proyecto",
+    storageBucket: "tu-proyecto.appspot.com",
+    messagingSenderId: "tu-id",
+    appId: "tu-app-id"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// Iniciar sesión con correo electrónico y contraseña
+const email = "usuario@example.com";
+const password = "contraseña";
+
+firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Usuario autenticado
+        const user = userCredential.user;
+        console.log("Usuario autenticado:", user);
+    })
+    .catch((error) => {
+        // Manejo de errores
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error al autenticar:", errorMessage);
+    });
+      </code>
+    </pre>
+    <p>Este código utiliza Firebase Authentication para autenticar a un usuario mediante correo electrónico y contraseña.</p>
+</div>
+    <div class="tutorial">
+    <h1>Desarrollo de una Aplicación de To-Do List en JavaScript</h1>
+    <p>En este tutorial, te guiaré a través del proceso de crear una aplicación simple de lista de tareas (To-Do List) utilizando HTML, CSS y JavaScript.</p>
+    <p>Aquí hay un ejemplo básico de estructura y funcionalidad:</p>
+    <pre>
+      <code>
+function agregarTarea() {
+    const inputTarea = document.getElementById("tarea");
+    const listaTareas = document.getElementById("lista-tareas");
+
+    if (inputTarea.value !== "") {
+        const nuevaTarea = document.createElement("li");
+        nuevaTarea.textContent = inputTarea.value;
+        listaTareas.appendChild(nuevaTarea);
+        inputTarea.value = "";
+    }
+}
+      </code>
+    </pre>
+    <p>Este código permite agregar nuevas tareas a una lista de tareas pendientes de manera dinámica.</p>
+</div>
+    <div class="tutorial">
+    <h1>Integración de Gráficos con Chart.js y JavaScript</h1>
+    <p>En este tutorial, exploraremos cómo utilizar la biblioteca Chart.js junto con JavaScript para visualizar datos mediante gráficos interactivos en tu sitio web.</p>
+    <p>Aquí hay un ejemplo de creación de un gráfico de barras:</p>
+    <pre>
+      <code>
+// Incluir Chart.js en tu HTML
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+
+// Crear un canvas para el gráfico
+&lt;canvas id="miGrafico"&gt;&lt;/canvas&gt;
+
+// Configurar y mostrar el gráfico
+const ctx = document.getElementById('miGrafico').getContext('2d');
+const miGrafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Etiqueta 1', 'Etiqueta 2', 'Etiqueta 3'],
+        datasets: [{
+            label: 'Mi Gráfico de Barras',
+            data: [10, 20, 15],
+            backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+            borderWidth: 1
+        }]
+    }
+});
+      </code>
+    </pre>
+    <p>Este código utiliza Chart.js para crear un gráfico de barras simple.</p>
+</div>
+    <div class="tutorial">
+    <h1>Creación de un Juego Simple con JavaScript</h1>
+    <p>En este tutorial, te guiaré a través de la creación de un juego sencillo utilizando JavaScript para mejorar tus habilidades de programación y aprender sobre interactividad en la web.</p>
+    <p>Aquí hay un ejemplo básico de un juego de adivinanzas:</p>
+    <pre>
+      <code>
+const numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+const intentosMaximos = 3;
+let intentosRealizados = 0;
+
+while (intentosRealizados < intentosMaximos) {
+    const intentoUsuario = prompt('Adivina el número (entre 1 y 10):');
+    
+    if (intentoUsuario === null) {
+        break;
+    }
+
+    const numeroUsuario = parseInt(intentoUsuario);
+    
+    if (numeroUsuario === numeroAleatorio) {
+        alert('¡Adivinaste!');
+        break;
+    } else {
+        alert('Intenta de nuevo.');
+        intentosRealizados++;
+    }
+}
+
+if (intentosRealizados === intentosMaximos) {
+    alert('Agotaste tus intentos. El número era ' + numeroAleatorio);
+}
+      </code>
+    </pre>
+    <p>Este código implementa un juego donde el usuario debe adivinar un número aleatorio.</p>
+</div>
+</div>
+  <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-31.js"></script>
+</body>
+</html>

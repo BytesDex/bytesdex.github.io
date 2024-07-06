@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/style-9.css">
+  <link rel="stylesheet" href="/resources/css/style-30.css">
+  <title>Curso de html</title>
+</head>
+<body>
+  <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+  </div>
+  <div class="tutoriales">
+    <div class="tutorial">
+      <h2>Cómo Crear un Encabezado Básico en HTML</h2>
+      <p>En este tutorial, aprenderás a crear un encabezado simple para tu página web utilizando HTML.</p>
+      <pre>
+        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Mi Página Web&lt;/title&gt;  
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Mi Página Web&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;!-- Resto del contenido de tu página --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+    </div>
+    <div class="tutorial">
+      <h2>Cómo Agregar un Párrafo en HTML</h2>
+      <p>Aprende a estructurar párrafos en tu página web con HTML.</p>
+      <pre>
+        <code>
+&lt;p&gt;Este es un párrafo de ejemplo.&lt;/p&gt;
+        </code>
+      </pre>
+    </div>
+    <div class="tutorial">
+      <h2>Cómo Crear una Lista en HTML</h2>
+      <p>Descubre cómo agregar listas ordenadas y no ordenadas en HTML.</p>
+      <pre>
+        <code>
+&lt;ul&gt;
+  &lt;li&gt;Elemento 1&lt;/li&gt;
+  &lt;li&gt;Elemento 2&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;ol&gt;
+  &lt;li&gt;Elemento 1&lt;/li&gt;
+  &lt;li&gt;Elemento 2&lt;/li&gt;
+&lt;/ol&gt;
+        </code>
+      </pre>
+    </div>
+    <div class="tutorial">
+    <h1>Cómo Agregar una Lista Ordenada en HTML</h1>
+    <p>En este tutorial, aprenderás a crear una lista ordenada en tu documento HTML utilizando la etiqueta <code>&lt;ol&gt;</code></p>
+    <p>Las listas ordenadas son útiles cuando necesitas mostrar elementos en un orden específico. Aquí tienes un ejemplo básico:</p>
+    <pre>
+      <code>
+&lt;ol&gt;
+  &lt;li&gt;Primer elemento&lt;/li&gt;
+  &lt;li&gt;Segundo elemento&lt;/li&gt;
+  &lt;li&gt;Tercer elemento&lt;/li&gt;
+&lt;/ol&gt;
+      </code>
+    </pre>
+    <p>Esto generará una lista numerada y mostrará los elementos en el orden indicado.</p>
+  </div>
+    <div class="tutorial">
+      <h2>Cómo Insertar una Imagen en HTML</h2>
+      <p>Aprende a agregar imágenes a tu página web utilizando la etiqueta &lt;img&gt; en HTML.</p>
+      <pre>
+        <code>
+&lt;img src="imagen.jpg" alt="Descripción de la imagen"&gt;
+        </code>
+      </pre>
+    </div>
+<div class="tutorial">
+      <h2>Cómo Agregar un Enlace en HTML</h2>
+      <p>En este tutorial, aprenderás a insertar un enlace a otra página web en tu documento HTML.</p>
+      <p>Para agregar un enlace, utiliza la etiqueta <code>&lt;a&gt;</code> seguida de la propiedad <code>href</code> que indica la URL del destino. Aquí hay un ejemplo:</p>
+      <pre>
+        <code>
+&lt;a href="https://www.ejemplo.com"&gt;Visitar Ejemplo.com&lt;/a&gt;
+        </code>
+      </pre>
+      <p>En este caso, al hacer clic en el enlace, llevará al usuario a la página web <a href="https://www.ejemplo.com" target="_blank" rel="noopener noreferrer">Ejemplo.com</a>.</p>
+    </div>
+    <div class="tutorial">
+    <h1>Cómo Agregar un Formulario en HTML</h1>
+    <p>En este tutorial, aprenderás a crear un formulario básico en tu documento HTML utilizando las etiquetas <code>&lt;form&gt;</code><code>&lt;input&gt;</code><code>&lt;button&gt;</code></p>
+    <p>Aquí hay un ejemplo sencillo de un formulario de contacto:</p>
+    <pre>
+      <code>
+&lt;form action="/enviar" method="post"&gt;
+  &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" required&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="mensaje"&gt;Mensaje:&lt;/label&gt;
+  &lt;textarea id="mensaje" name="mensaje" required&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+      </code>
+    </pre>
+    <p>Este formulario simple solicita al usuario que ingrese su nombre, correo electrónico y un mensaje. Al hacer clic en el botón "Enviar", se enviará el formulario a la ruta "/enviar" utilizando el método POST.</p>
+  </div>
+<div class="tutorial">
+    <h1>Cómo Agregar un Vídeo en HTML</h1>
+    <p>En este tutorial, aprenderás a incorporar un vídeo en tu documento HTML utilizando la etiqueta <code>&lt;video&gt;</code></p>
+    <p>Utiliza la siguiente estructura básica para agregar un vídeo:</p>
+    <pre>
+      <code>
+&lt;video width="640" height="360" controls&gt;
+  &lt;source src="ruta-del-video.mp4" type="video/mp4"&gt;
+  Tu navegador no soporta el elemento de video.
+&lt;/video&gt;
+      </code>
+    </pre>
+    <p>Sustituye "ruta-del-video.mp4" con la URL o ruta local de tu archivo de vídeo. La etiqueta <code>&lt;source&gt;</code> permite especificar diferentes formatos de vídeo para garantizar la compatibilidad en varios navegadores.</p>
+    <p>El atributo <code>controls</code> agrega controles de reproducción al reproductor de vídeo.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Agregar un Archivo de Audio en HTML</h1>
+    <p>En este tutorial, aprenderás a incorporar un archivo de audio en tu documento HTML utilizando la etiqueta <code>&lt;audio&gt;</code></p>
+    <p>Aquí hay un ejemplo básico de cómo agregar un archivo de audio:</p>
+    <pre>
+      <code>
+&lt;audio controls&gt;
+  &lt;source src="ruta-del-audio.mp3" type="audio/mp3"&gt;
+  Tu navegador no soporta el elemento de audio.
+&lt;/audio&gt;
+      </code>
+    </pre>
+    <p>Sustituye "ruta-del-audio.mp3" con la URL o ruta local de tu archivo de audio. La etiqueta <code>&lt;source&gt;</code> permite especificar diferentes formatos de audio para garantizar la compatibilidad en varios navegadores.</p>
+    <p>El atributo <code>controls</code> agrega controles de reproducción al reproductor de audio.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Incrustar un Mapa de Google en HTML</h1>
+    <p>En este tutorial, aprenderás a añadir un mapa de Google a tu página HTML utilizando la etiqueta <code>&lt;iframe&gt;</code></p>
+    <p>Aquí tienes un ejemplo básico:</p>
+    <pre>
+      <code>
+&lt;iframe
+  width="600"
+  height="450"
+  frameborder="0"
+  style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?q=nombre+del+sitio&key=TU_CLAVE_API"
+  allowfullscreen&gt;
+&lt;/iframe&gt;
+      </code>
+    </pre>
+    <p>Sustituye "nombre+del+sitio" con la ubicación o nombre del lugar que deseas mostrar en el mapa. Además, asegúrate de reemplazar "TU_CLAVE_API" con tu propia clave de API de Google Maps.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Crear una Tabla en HTML</h1>
+    <p>En este tutorial, aprenderás a construir una tabla básica en tu documento HTML utilizando las etiquetas <code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> (fila), <code>&lt;th&gt;</code> (encabezado) y <code>&lt;td&gt;</code> (celda).</p>
+    <p>Aquí tienes un ejemplo sencillo:</p>
+    <pre>
+      <code>
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Encabezado 1&lt;/th&gt;
+    &lt;th&gt;Encabezado 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Celda 1-1&lt;/td&gt;
+    &lt;td&gt;Celda 1-2&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Celda 2-1&lt;/td&gt;
+    &lt;td&gt;Celda 2-2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+      </code>
+    </pre>
+    <p>Esta estructura crea una tabla con dos filas y dos columnas. Puedes personalizar el contenido y el número de filas y columnas según tus necesidades.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Utilizar Texto Sobrescrito en HTML</h1>
+    <p>En este tutorial, aprenderás a utilizar la etiqueta <code>&lt;sup&gt;</code> para colocar texto en posición sobrescrita en tu documento HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+&lt;p&gt;E=mc&lt;sup&gt;2&lt;/sup&gt; es la famosa ecuación de Einstein.&lt;/p&gt;
+      </code>
+    </pre>
+    <p>Esto mostrará "2" en posición sobrescrita.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Utilizar Citas en HTML</h1>
+    <p>En este tutorial, aprenderás a utilizar la etiqueta <code>&lt;blockquote&gt;</code> para citas textuales en tu documento HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+&lt;blockquote&gt;
+  &lt;p&gt;La vida es lo que pasa mientras estás ocupado haciendo otros planes.&lt;/p&gt;
+  &lt;cite&gt;John Lennon&lt;/cite&gt;
+&lt;/blockquote&gt;
+      </code>
+    </pre>
+    <p>Esto representa una cita textual con el nombre del autor incluido.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Utilizar Abreviaturas en HTML</h1>
+    <p>En este tutorial, aprenderás a utilizar la etiqueta <code>&lt;abbr&gt;</code> para definir abreviaturas en tu documento HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+&lt;p&gt;HTML significa &lt;abbr title="Hypertext Markup Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;
+      </code>
+    </pre>
+    <p>Al posicionar el cursor sobre "HTML", se mostrará el texto completo "Hypertext Markup Language".</p>
+  </div>
+ <div class="tutorial">
+    <h1>Cómo Agrupar y Describir Elementos de Formulario en HTML</h1>
+    <p>En este tutorial, aprenderás a utilizar las etiquetas <code>&lt;fieldset&gt;</code> <code>&lt;legend&gt;</code> para agrupar y describir elementos de formulario en tu documento HTML.</p>
+    <p>Aquí hay un ejemplo:</p>
+    <pre>
+      <code>
+&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Información Personal&lt;/legend&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Preferencias&lt;/legend&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" name="suscripcion"&gt; Deseo recibir actualizaciones por correo.
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+      </code>
+    </pre>
+    <p>Esto organiza los elementos del formulario en grupos con etiquetas descriptivas.</p>
+  </div>
+  <div class="tutorial">
+    <h1>Cómo Dibujar en un Canvas HTML</h1>
+    <p>En este tutorial, aprenderás a utilizar la etiqueta <code>&lt;canvas&gt;</code> para dibujar gráficos en tu documento HTML mediante JavaScript.</p>
+    <p>Aquí hay un ejemplo básico:</p>
+    <pre>
+      <code>
+&lt;canvas id="miCanvas" width="300" height="200"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var canvas = document.getElementById('miCanvas');
+  var contexto = canvas.getContext('2d');
+
+  contexto.fillStyle = 'blue';
+  contexto.fillRect(50, 50, 200, 100);
+
+  contexto.strokeStyle = 'red';
+  contexto.lineWidth = 5;
+  contexto.strokeRect(50, 50, 200, 100);
+
+  contexto.beginPath();
+  contexto.arc(200, 150, 30, 0, 2 * Math.PI);
+  contexto.fillStyle = 'green';
+  contexto.fill();
+&lt;/script&gt;
+      </code>
+    </pre>
+    <p>Este código crea un lienzo (canvas) y utiliza el contexto 2D para dibujar un rectángulo azul y un círculo verde.</p>
+  </div>
+  </div>
+  <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-31.js"></script>
+</body>
+</html>
