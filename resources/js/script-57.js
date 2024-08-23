@@ -260,6 +260,54 @@ lowerCaseInput = corregirErrores(lowerCaseInput);
             "¡Hola! ¿Listo para resolver tus dudas?"
         ];
         return getRandomResponse(respuestasHola);
+        else if (lowerCaseInput.includes("dime poema") || 
+         lowerCaseInput.includes("quiero poema") || 
+         lowerCaseInput.includes("recítame un poema") || 
+         lowerCaseInput.includes("quiero escuchar un poema") || 
+         lowerCaseInput.includes("me puedes decir un poema") || 
+         lowerCaseInput.includes("dame poema") || 
+         lowerCaseInput.includes("me gustan los poemas") || 
+         lowerCaseInput.includes("háblame de poesía") ||
+         lowerCaseInput.includes("poema")) {
+    const poemas = [
+        "El amor es como una flor, que florece en el corazón, su fragancia llena el alma, y nos envuelve en su canción.",
+        "Tus ojos son el espejo que refleja mi existir, cuando los miro de cerca, me invitan a sonreír.",
+        "Bajo la luna llena, tus palabras son mi abrigo, en cada verso que pronuncias, siento que estás conmigo.",
+        "Entre las estrellas del cielo, mi amor por ti va creciendo, cada día, cada noche, mis sentimientos voy descubriendo.",
+        "Tu risa es como un río, suave, calma, en su correr, hace que mi mundo gire, y en ti quiero renacer.",
+        "Cada latido es un poema, cada suspiro, una canción, cuando estamos juntos, late fuerte mi corazón.",
+        "Eres mi sol, mi alegría, mi refugio en cada día, mi musa, mi poesía, en cada verso, eres mía.",
+        "En la quietud de la noche, escribo tu nombre en el viento, cada letra, un susurro, cada sílaba, un sentimiento.",
+        "Mi amor es como el viento, fuerte, libre, sin frenos, va buscando tu abrazo, como el mar busca su puerto.",
+        "Si pudiera darte el cielo, lo pondría en tus manos, porque cada estrella que brilla, es como tu amor, tan cercano."
+    ];
+    return getRandomResponse(poemas);
+} else if (lowerCaseInput.includes("me gusta una chica") || 
+           lowerCaseInput.includes("me gusta una patoja") || 
+           lowerCaseInput.includes("me gusta una niña") || 
+           lowerCaseInput.includes("me gusta una chava") || 
+           lowerCaseInput.includes("me gusta una muchacha") || 
+           lowerCaseInput.includes("me da pena hablarle") || 
+           lowerCaseInput.includes("me da vergüenza hablarle") || 
+           lowerCaseInput.includes("me pone nervioso hablarle") || 
+           lowerCaseInput.includes("me da miedo hablarle") || 
+           lowerCaseInput.includes("me cuesta hablarle") || 
+           lowerCaseInput.includes("me siento nervioso al hablarle") || 
+           lowerCaseInput.includes("me gusta una chavala") || 
+           lowerCaseInput.includes("me gusta una joven")) {
+       const respuestasConsejo = [
+        "Es normal sentir nervios al hablarle a una chica que te gusta. Lo importante es dar el primer paso, aunque sea pequeño. ¡Tú puedes!",
+        "Todos pasamos por ese miedo al hablar con una patoja que nos gusta. Intenta romper el hielo con una pregunta sencilla o un comentario amable.",
+        "No te preocupes demasiado por impresionar. Sé tú mismo y deja que la conversación con la muchacha fluya de manera natural.",
+        "Puede ser intimidante, pero recuerda que la chava también es humana. Empieza con algo simple, como un saludo o un cumplido genuino.",
+        "La clave está en ser auténtico y relajarte. No tienes que decir algo perfecto, solo empieza la conversación con la niña y deja que se desarrolle.",
+        "El miedo es normal, pero una sonrisa y un 'hola' pueden marcar una gran diferencia. ¡Inténtalo con esa patoja!",
+        "Respira profundo y recuerda que lo importante es intentarlo. Cada conversación con esa chavala es una oportunidad de aprender.",
+        "Es normal estar nervioso al hablar con una joven, pero piensa en ello como una oportunidad para conocer a alguien nuevo. Empieza con algo pequeño.",
+        "Si te sientes nervioso, está bien empezar poco a poco. No tienes que apresurarte, solo sé amable y abierto con la muchacha.",
+        "Todos nos ponemos nerviosos en estas situaciones. No te sientas presionado por tener la conversación perfecta con esa chava, solo disfruta el momento."
+       ];
+       return getRandomResponse(respuestasConsejo);
     } else if (lowerCaseInput.includes("me gusta la mamá de mi amigo") || 
            lowerCaseInput.includes("me gusta la madre de mi amigo") || 
            lowerCaseInput.includes("estoy enamorado de la mamá de mi amigo") || 
