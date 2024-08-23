@@ -260,7 +260,7 @@ lowerCaseInput = corregirErrores(lowerCaseInput);
             "¡Hola! ¿Listo para resolver tus dudas?"
         ];
         return getRandomResponse(respuestasHola);
-        else if (lowerCaseInput.includes("dime poema") || 
+    } else if (lowerCaseInput.includes("dime poema") || 
          lowerCaseInput.includes("quiero poema") || 
          lowerCaseInput.includes("recítame un poema") || 
          lowerCaseInput.includes("quiero escuchar un poema") || 
