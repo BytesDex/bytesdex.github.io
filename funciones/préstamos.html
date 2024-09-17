@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Préstamos</title>
+    <link rel="stylesheet" href="/resources/css/style-51.css">
+    <link rel="stylesheet" href="/resources/css/style-30.css">
+</head>
+<body>
+    <div class="popup-container" style="display: none;">
+    <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+    </div>
+    </div>
+    <div class="container">
+        <h1>Administrador de Préstamos</h1>
+        <label for="name">Nombre de la persona</label>
+        <input type="text" id="name" placeholder="Ingrese el nombre" required>
+        <label for="amount">Cantidad prestada</label>
+        <input type="number" id="amount" placeholder="Ingrese la cantidad" required>
+        <button onclick="addLoan()">Agregar Préstamo</button>
+        <div class="loan-list" id="loanList">           
+        </div>
+    </div>
+<script src="/resources/js/script-77.js"></script>
+<script src="/resources/js/script-35.js"></script>
+</body>
+</html>
