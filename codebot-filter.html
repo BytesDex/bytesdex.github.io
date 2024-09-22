@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg">
+    <link rel="stylesheet" href="/resources/css/style-52.css">
+    <title>CodeBot sin filtro</title>
+</head>
+<body>
+    <div id="header">
+        <img src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg" alt="Profile Picture">
+        <div>
+            <strong>CodeBot</strong>
+            <span id="botStatus">En línea</span>
+        </div>
+        <select id="roleSelect" class="role-select">
+            <option value="normal">Normal</option>
+            <option value="agresivo">Agresivo</option>
+            <option value="pasivo">Pasivo</option>
+        </select>
+    </div>
+    <div id="chat"></div>
+    <div id="inputContainer">
+        <input type="text" id="userInput" placeholder="Escribe un mensaje..." disabled>
+        <button onclick="sendMessage()" disabled>&#9658;</button>
+    </div>        
+<script src="/resources/js/script-78.js"></script>
+</body>
+</html>
