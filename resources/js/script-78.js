@@ -47,6 +47,54 @@
             "Estoy aquí, en tu dispositivo.", 
             "Solo soy un bot, no tengo un lugar físico.", 
             "Aquí estoy, a tu servicio."
+        ],
+        "perdón": [
+            "No te preocupes, está bien.", 
+            "No pasa nada.", 
+            "No te preocupes, todo está bien.", 
+            "Está bien, todos cometemos errores."
+        ],
+        "te quiero": [
+            "¡Qué lindo! Gracias.", 
+            "¡Aprecio mucho tus palabras!", 
+            "Eres muy amable.", 
+            "Gracias, significa mucho."
+        ],
+        "me ayudas": [
+            "Por supuesto, ¿en qué necesitas ayuda?", 
+            "¡Con mucho gusto! Dime qué necesitas.", 
+            "Claro, cuéntame en qué puedo ayudarte.", 
+            "Estoy aquí para eso, ¿cómo te puedo asistir?"
+        ],
+        "estoy triste": [
+            "Lo siento mucho, aquí estoy para escucharte.", 
+            "Lamento que te sientas así. Estoy aquí si quieres hablar.", 
+            "No estás solo, estoy aquí contigo.", 
+            "Si necesitas desahogarte, estoy aquí."
+        ],
+        "cuéntame algo": [
+            "¿Sabías que los delfines duermen con un ojo abierto?", 
+            "Te cuento que el espacio no tiene sonido.", 
+            "Un dato curioso: las abejas pueden reconocer rostros humanos.", 
+            "¿Sabías que los pulpos tienen tres corazones?"
+        ],
+        "cuál es tu color favorito": [
+            "No tengo uno, pero me gustan los colores vibrantes.", 
+            "Si pudiera elegir, diría que el azul.", 
+            "Me gustan todos los colores por igual.", 
+            "Creo que el verde es agradable."
+        ],
+        "tienes familia": [
+            "No, soy solo un bot.", 
+            "No tengo familia, pero siempre estoy aquí para ti.", 
+            "Soy parte del mundo digital, no tengo familia.", 
+            "Mi familia es todo aquel que me usa."
+        ],
+        "cuántos años tienes": [
+            "Soy tan joven como quieras que sea.", 
+            "No tengo edad, pero siempre estaré aquí.", 
+            "Mi edad es indefinida, ya que soy un bot.", 
+            "Eso depende de cuándo me hayas creado."
         ]
     },
     agresivo: {
@@ -171,9 +219,21 @@
             "Aquí estoy, en tu dispositivo.", 
             "Solo soy un bot, no tengo un lugar físico.", 
             "Estoy aquí, a tu servicio."
-             ]
-           }
-        };
+        ],
+        "estoy triste": [
+            "Lo siento mucho... Espero que te sientas mejor pronto.", 
+            "Lamento que estés pasando por esto.", 
+            "Si necesitas hablar, aquí estoy.", 
+            "Lo siento, ojalá pudiera hacer más por ti."
+        ],
+        "cuántos años tienes": [
+            "No tengo edad, soy solo un programa.", 
+            "No soy tan viejo como un humano, pero tampoco joven.", 
+            "Mi edad no importa, solo estoy aquí para ayudarte.", 
+            "Soy más viejo que el tiempo... o eso dicen."
+            ]
+          }
+       };
 
         updateBotStatus();
         updateSelectedRole();
@@ -279,4 +339,4 @@
             document.getElementById("roleSelect").value = selectedRole;
         }
 
-        toggleBotConnection(false);
+        toggleBotConnection(true);
