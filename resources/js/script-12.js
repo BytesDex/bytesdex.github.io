@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
     const savedUsername = localStorage.getItem('username');
     const savedProfilePic = localStorage.getItem('profilePic');
 
     if (savedUsername && savedProfilePic) {
         displayUserData(savedUsername, savedProfilePic);
     } else {
-        
         const defaultProfilePic = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
         const defaultUsername = 'Usuario';
 
@@ -37,7 +35,6 @@ function chooseProfilePicture() {
 
                 const username = prompt('Ingresa tu nombre:');
                 if (username) {
-                   
                     localStorage.setItem('username', username);
                     localStorage.setItem('profilePic', e.target.result);
 
@@ -53,24 +50,23 @@ function chooseProfilePicture() {
 }
 
 function displayUserData(username, profilePic) {
-    
     const userContainer = document.getElementById('userContainer');
     userContainer.innerHTML = '';
-    
+
     const img = document.createElement('img');
     img.src = profilePic;
     img.alt = 'Foto de perfil';
     img.style.borderRadius = '50%';
-    profilePic.style.width = '50px';  
-    profilePic.style.height = '50px';  
-    profilePic.style.marginRight = '10px';  
-    profilePic.style.border = '1px solid #CCCCCC';  
+    img.style.width = '50px';  
+    img.style.height = '50px';  
+    img.style.marginRight = '10px';  
+    img.style.border = '1px solid #CCCCCC';  
 
     const span = document.createElement('span');
     span.textContent = username;
 
     userContainer.appendChild(img);
     userContainer.appendChild(span);
-  
+
     img.onclick = span.onclick = chooseProfilePicture;
 }
