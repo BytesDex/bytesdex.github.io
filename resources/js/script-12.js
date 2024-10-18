@@ -32,7 +32,8 @@ function chooseProfilePicture() {
                 profilePic.style.borderRadius = '50%';
                 profilePic.style.width = '50px'; 
                 profilePic.style.height = '50px';  
-                profilePic.style.marginRight = '10px'; 
+                profilePic.style.marginRight = '10px';  
+                profilePic.style.border = '1px solid #CCCCCC';  
 
                 const username = prompt('Ingresa tu nombre:');
                 if (username) {
@@ -60,9 +61,10 @@ function displayUserData(username, profilePic) {
     img.src = profilePic;
     img.alt = 'Foto de perfil';
     img.style.borderRadius = '50%';
-    img.style.width = '50px'; 
-    img.style.height = '50px'; 
-    img.style.marginRight = '10px';
+    profilePic.style.width = '50px';  
+    profilePic.style.height = '50px';  
+    profilePic.style.marginRight = '10px';  
+    profilePic.style.border = '1px solid #CCCCCC';  
 
     const span = document.createElement('span');
     span.textContent = username;
