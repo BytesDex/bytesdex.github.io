@@ -1,34 +1,15 @@
-  document.addEventListener("DOMContentLoaded", function() {
+       function toggleMenu() {
+            const menu = document.getElementById('dropdown-menu');
+            menu.classList.toggle('show');
+        }
 
-    if (localStorage.getItem("valoracionRealizada")) {
-      
-      document.getElementById("valoracion-section").style.display = "none";
-    }
-  });
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
 
-  function enviarValoracion(valor) {
-
-    localStorage.setItem("valoracionRealizada", true);
-
-    switch (valor) {
-      case '1':
-        window.location.href = "./estrella-1";
-        break;
-      case '2':
-        window.location.href = "./estrella-2";
-        break;
-      case '3':
-        window.location.href = "./estrella-3";
-        break;
-      case '4':
-        window.location.href = "./estrella-4";
-        break;
-      case '5':
-        window.location.href = "./estrella-5";
-        break;
-      default:
-        
-        window.location.href = "webcodem.github.io";
-        break;
-    }
- } 
+        window.onclick = function (event) {
+            const menu = document.getElementById('dropdown-menu');
+            if (event.target !== menu && event.target !== document.querySelector('.menu-icon')) {
+                menu.classList.remove('show');
+            }
+        }
