@@ -31,7 +31,7 @@ function chooseProfilePicture() {
                 profilePic.style.width = '50px'; 
                 profilePic.style.height = '50px';  
                 profilePic.style.marginRight = '10px';  
-                profilePic.style.border = '2px solid #CCCCCC';  
+                profilePic.style.border = '1.5px solid #CCCCCC';  
 
                 const username = prompt('Ingresa tu nombre:');
                 if (username) {
@@ -60,7 +60,7 @@ function displayUserData(username, profilePic) {
     img.style.width = '50px';  
     img.style.height = '50px';  
     img.style.marginRight = '10px';  
-    img.style.border = '2px solid #CCCCCC';  
+    img.style.border = '1.5px solid #CCCCCC';  
 
     const span = document.createElement('span');
     span.textContent = username;
