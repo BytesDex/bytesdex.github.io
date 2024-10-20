@@ -3,97 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/style-1.css">
-    <link rel="stylesheet" href="/resources/css/style-13.css">
     <link rel="stylesheet" href="/resources/css/style-29.css">
-    <script src="/resources/js/script-11.js"></script>
     <title>Funciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="overlay">
+<div class="overlay">
   <div class="login-popup">
     <br>
     <h2>Inició de sesión</h2>
     <input type="text" id="username" placeholder="Nombre de usuario">
     <input type="password" id="password" placeholder="Contraseña">
     <button onclick="login()">Iniciar sesión</button>
-    <p>¿No tienes cuenta? <a href="./registro">Regístrate</a></p>
+    <p>¿No tienes cuenta? <a class="a" href="./registro">Regístrate</a></p>
   </div>
   <footer class="footer">
         &copy; 2024 BytesDex, Tec.
   </footer>
     </div>
-    <br>
-    <br>
-    <div style="text-align: center;">
-    <span class="letter">¡F</span>
-    <span class="letter">U</span>
-    <span class="letter">N</span>
-    <span class="letter">C</span>
-    <span class="letter">I</span>
-    <span class="letter">O</span>
-    <span class="letter">N</span>
-    <span class="letter">E</span>
-    <span class="letter">S!</span>
+    <header>
+    <img src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/logo.png" alt="Logo de BytesDex" class="logo">
+    <div class="brand-name">
+        BytesDex<br>
+        <span class="sub-title">Funciones</span>
     </div>
+</header>
     <br>
-    <br>
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar funciones">
+    <div class="hero">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Buscar funciones..." onkeyup="filtrarFunciones()">
+        </div>
+        <div class="no-results" id="no-results">No se encontraron funciones con ese término.</div>
+        <br>
+        <h1>Explora Nuestras Herramientas</h1>
+        <p>Encuentra las funcionalidades perfectas para administrar tus préstamos, generar contraseñas, aprender nuevas habilidades y mucho más.</p>
     </div>
-    <div class="result-container" id="resultContainer">
+       <div class="actions-grid">
+        <a href="./funciones/préstamos" class="action">
+            <h3>Préstamos</h3>
+            <p>Gestiona tus préstamos con facilidad para mantener tus finanzas bajo control.</p>
+        </a>
+        <a href="./funciones/convertidor" class="action">
+            <h3>Convertidor</h3>
+            <p>Convierte texto a Base64 y de vuelta de manera rápida y sencilla.</p>
+        </a>
+        <a href="./funciones/frases" class="action">
+            <h3>Frases</h3>
+            <p>Descubre frases motivadoras para inspirarte cada día.</p>
+        </a>
+        <a href="./funciones/animaciones" class="action">
+            <h3>Animaciones</h3>
+            <p>Explora animaciones interactivas creadas especialmente para ti.</p>
+        </a>
+        <a href="./funciones/notas" class="action">
+            <h3>Notas</h3>
+            <p>Escribe y guarda tus notas en línea de forma segura.</p>
+        </a>
+        <a href="./funciones/generador" class="action">
+            <h3>Generador</h3>
+            <p>Crea contraseñas seguras para proteger tus cuentas.</p>
+        </a>
+        <a href="./funciones/tutoriales" class="action">
+            <h3>Tutoriales</h3>
+            <p>Aprende programación con nuestros tutoriales accesibles.</p>
+        </a>
+        <a href="./funciones/galería" class="action">
+            <h3>Galería</h3>
+            <p>Sube y organiza imágenes en tu galería virtual.</p>
+        </a>
+        <a href="./funciones/contador" class="action">
+            <h3>Contador</h3>
+            <p>Administra tus deudas y controla tus gastos de manera eficiente.</p>
+        </a>
+         <a href="./funciones/juegos" class="action">
+            <h3>Juegos</h3>
+            <p>Administra tus deudas y controla tus gastos de manera eficiente.</p>
+        </a>
+        <a href="./funciones/editor" class="action">
+            <h3>Editor</h3>
+            <p>Edita y ejecuta código HTML, CSS y JavaScript directamente en línea.</p>
+        </a>
+        <a href="./funciones/calculadora" class="action">
+            <h3>Calculadora</h3>
+            <p>Realiza cálculos básicos con esta calculadora funcional.</p>
+        </a>
+        <a href="./funciones/san-valentín" class="action">
+            <h3>San Valentín</h3>
+            <p>Dedica un mensaje especial a tu pareja.</p>
+        </a>
+        <a href="./funciones/formulario" class="action">
+            <h3>Formulario</h3>
+            <p>Envía un formulario divertido o irónico a tu novia.</p>
+        </a>
+        <a href="./funciones/música" class="action">
+            <h3>Música</h3>
+            <p>Disfruta de tus canciones favoritas sin salir del sitio.</p>
+        </a>
     </div>
-    <br>
-      <div style="text-align: center;">
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Saludos, soy un aficionado a la programación y quiero mostrarles lo que he hecho hasta ahora. Me divierte crear páginas web con diferentes propósitos, formatos y opciones. Para ello, uso tres lenguajes de programación: html, css y javascript.</p></div>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Aquí les comparto un ejemplo de una página que he creado usando estos tres lenguajes. Espero que les interese y que me envíen sus observaciones y sugerencias para mejorar mi aprendizaje. Gracias por su interés.</p></div>
-      <br>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Administra tus préstamos aquí.</p></div>
-      <a href="./funciones/préstamos" data-name="Préstamos" style="text-decoration: none;" class="link"><p>Préstamos <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.414 10.414C18 9.828 18 8.886 18 7s0-2.828-.586-3.414m0 6.828C16.828 11 15.886 11 14 11h-4c-1.886 0-2.828 0-3.414-.586m10.828 0Zm0-6.828C16.828 3 15.886 3 14 3h-4c-1.886 0-2.828 0-3.414.586m10.828 0Zm-10.828 0C6 4.172 6 5.114 6 7s0 2.828.586 3.414m0-6.828Zm0 6.828ZM13 7a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z" /><path stroke-linecap="round" d="M18 6a3 3 0 0 1-3-3m3 5a3 3 0 0 0-3 3M6 6a3 3 0 0 0 3-3M6 8a3 3 0 0 1 3 3M4 21.388h2.26c1.01 0 2.033.106 3.016.308a14.9 14.9 0 0 0 5.33.118m-.93-3.297q.18-.021.345-.047c.911-.145 1.676-.633 2.376-1.162l1.808-1.365a1.89 1.89 0 0 1 2.22 0c.573.433.749 1.146.386 1.728c-.423.678-1.019 1.545-1.591 2.075m-5.544-1.229l-.11.012m.11-.012a1 1 0 0 0 .427-.24a1.49 1.49 0 0 0 .126-2.134a1.9 1.9 0 0 0-.45-.367c-2.797-1.669-7.15-.398-9.779 1.467m9.676 1.274a.5.5 0 0 1-.11.012m0 0a9.3 9.3 0 0 1-1.814.004" /></g></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Convierte texto en código de Base64 aquí.</p></div>
-      <a href="./funciones/convertidor" data-name="Convertidor" style="text-decoration: none;" class="link"><p>Convertidor <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .037C5.373.037 0 5.394 0 12s5.373 11.963 12 11.963c6.628 0 12-5.357 12-11.963S18.627.037 12 .037m-.541 4.8c1.91-.13 3.876.395 5.432 1.934c1.426 1.437 2.51 3.44 2.488 5.317h2.133l-4.444 4.963l-4.445-4.963h2.313c-.001-1.724-.427-2.742-1.78-4.076c-1.325-1.336-2.667-2.11-4.978-2.303a9.2 9.2 0 0 1 3.281-.871zM6.934 6.95l4.445 4.963H9.066c0 1.724.426 2.742 1.778 4.076c1.326 1.336 2.667 2.112 4.978 2.305c-2.684 1.268-6.22 1.398-8.71-1.064c-1.427-1.437-2.512-3.44-2.489-5.317H2.488z" /></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Descubre frases potentes aquí.</p></div>
-      <a href="./funciones/frases" data-name="Frases" style="text-decoration: none;" class="link"><p>Frases <br><iconify-icon icon="material-symbols:quick-phrases"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Mira mis animaciones aquí.</p></div>
-      <a href="./funciones/animaciones" data-name="Animaciones" style="text-decoration: none;" class="link"><p>Animaciones <br><iconify-icon icon="mdi:animation-play-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Escirbe tus notas aquí.</p></div>
-      <a href="./funciones/notas" data-name="Notas" style="text-decoration: none;" class="link"><p>Notas <br><iconify-icon icon="uil:notes"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Genera tus contraseñas seguras aquí.</p></div>
-      <a href="./funciones/generador" data-name="Generador" style="text-decoration: none;" class="link"><p>Generador <br><iconify-icon icon="mdi:password-check-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p id="contenido">Puedes aprender cosas nuevas sobre la programación aquí.</p></div>
-      <a href="./funciones/tutoriales" data-name="Tutoriales" style="text-decoration: none;" class="link"><p>Tutoriales <br><iconify-icon icon="mdi:learn-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Puedes aguardar imágenes en esta galería virtual aquí.</p></div>
-      <a href="./funciones/galería" data-name="Galería" style="text-decoration: none;" class="link"><p>Galería <br><iconify-icon icon="solar:gallery-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Puedes contar tus deudas y administrarlas aquí.</p></div>
-      <a href="./funciones/contador" data-name="Contador" style="text-decoration: none;" class="link"><p id="contenido">Contador <br><iconify-icon icon="solar:hand-money-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Puedes ver la biblioteca de juegos que tiene webcodem y jugarlos aquí.</p></div>
-      <a href="./funciones/juegos" data-name="Juegos" style="text-decoration: none;" class="link"><p id="contenido">Juegos <br><iconify-icon icon="ion:game-controller-outline"></iconify-icon><script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Puedes editar códigos de HTML/JS/CSS y usar esta función en online aquí.</p></div>
-      <a href="./funciones/editor" data-name="Editor" style="text-decoration: none;" class="link"><p id="contenido">Editor <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M17.75 15a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h5a.75.75 0 0 1 .75.75M7.48 9.424a.75.75 0 1 0-.96 1.152l.234.195c.659.55 1.09.91 1.366 1.216c.262.29.287.427.287.513c0 .086-.025.222-.287.513c-.277.306-.707.667-1.366 1.216l-.234.195a.75.75 0 0 0 .96 1.152l.277-.23c.605-.504 1.12-.933 1.476-1.328c.378-.42.674-.901.674-1.518s-.296-1.099-.674-1.518c-.356-.395-.871-.824-1.476-1.328z" /><path fill="currentColor" fill-rule="evenodd" d="M11.943 1.25h.114c2.309 0 4.118 0 5.53.19c1.444.194 2.584.6 3.479 1.494c.895.895 1.3 2.035 1.494 3.48c.19 1.411.19 3.22.19 5.529v.114c0 2.309 0 4.118-.19 5.53c-.194 1.444-.6 2.584-1.494 3.479c-.895.895-2.035 1.3-3.48 1.494c-1.411.19-3.22.19-5.529.19h-.114c-2.309 0-4.118 0-5.53-.19c-1.444-.194-2.584-.6-3.479-1.494c-.895-.895-1.3-2.035-1.494-3.48c-.19-1.411-.19-3.22-.19-5.529v-.114c0-2.309 0-4.118.19-5.53c.194-1.444.6-2.584 1.494-3.479c.895-.895 2.035-1.3 3.48-1.494c1.411-.19 3.22-.19 5.529-.19m-5.33 1.676c-1.278.172-2.049.5-2.618 1.069c-.57.57-.897 1.34-1.069 2.619c-.174 1.3-.176 3.008-.176 5.386s.002 4.086.176 5.386c.172 1.279.5 2.05 1.069 2.62c.57.569 1.34.896 2.619 1.068c1.3.174 3.008.176 5.386.176s4.086-.002 5.386-.176c1.279-.172 2.05-.5 2.62-1.069c.569-.57.896-1.34 1.068-2.619c.174-1.3.176-3.008.176-5.386s-.002-4.086-.176-5.386c-.172-1.279-.5-2.05-1.069-2.62c-.57-.569-1.34-.896-2.619-1.068c-1.3-.174-3.008-.176-5.386-.176s-4.086.002-5.386.176" clip-rule="evenodd" /></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Calculadora básica funcional aquí.</p></div>
-      <a href="./funciones/calculadora" data-name="Calculadora" style="text-decoration: none;" class="link"><p id="contenido">Calculadora <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="M80 120h96a8 8 0 0 0 8-8V64a8 8 0 0 0-8-8H80a8 8 0 0 0-8 8v48a8 8 0 0 0 8 8m8-48h80v32H88Zm112-48H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m0 192H56V40h144Zm-100-68a12 12 0 1 1-12-12a12 12 0 0 1 12 12m40 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m40 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m-80 40a12 12 0 1 1-12-12a12 12 0 0 1 12 12m40 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m40 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12" /></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Dedica esto a tu pareja aquí.</p></div>
-      <a href="./funciones/san-valentín" data-name="San Valentín" style="text-decoration: none;" class="link"><p id="contenido">San Valentín <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3" /></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Dedica este formulario tóxico a tu novia.</p></div>
-      <a href="./funciones/formulario" data-name="Formulario" style="text-decoration: none;" class="link"><p id="contenido">Formulario <br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h6v2h-6zM9 7H7v2h2zm2 6h6v-2h-6zm0-4h6V7h-6zm-2 2H7v2h2zm12-6v14c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2m-2 0H5v14h14zM9 15H7v2h2z" /></svg></p></a>
-      <div style="border-left: 5px solid #007bff; padding-left: 10px;"><p>Escuha música aquí.</p></div>
-      <a href="./funciones/música" data-name="Música" style="text-decoration: none;" class="link"><p>Música <br><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="currentColor" d="m210.3 56.34l-80-24A8 8 0 0 0 120 40v108.26A48 48 0 1 0 136 184V98.75l69.7 20.91A8 8 0 0 0 216 112V64a8 8 0 0 0-5.7-7.66" /></svg></p></a>
-      </div>
-    <footer style="background-color: #111; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); padding: 10px; text-align: center; border-radius: 10px;">
-    <a href="./preguntas-frecuentes" style="color: grey; text-decoration: none; margin: 0 10px; font-size: 16px; margin-right: -10px; vertical-align: middle;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" style="margin-bottom: -2px;">
-            <path fill="currentColor" d="M18 15H6l-4 4V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1m5-6v14l-4-4H8a1 1 0 0 1-1-1v-1h14V8h1a1 1 0 0 1 1 1M8.19 4c-.87 0-1.57.2-2.11.59c-.52.41-.78.98-.77 1.77l.01.03h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28c.18.19.26.45.26.75c0 .32-.07.59-.23.82c-.14.23-.35.43-.61.59c-.51.34-.86.64-1.05.91C7.11 9.08 7 9.5 7 10h2c0-.31.04-.56.13-.74c.09-.18.26-.36.51-.52c.45-.24.82-.53 1.11-.93c.29-.4.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82C9.85 4.23 9.12 4 8.19 4M7 11v2h2v-2zm6 2h2v-2h-2zm0-9v6h2V4z" />
-        </svg> Preguntas
-    </a>
-    <a href="./comentarios-recientes" style="color: grey; text-decoration: none; margin: 0 15px; font-size: 16px; margin-right: -10px; vertical-align: middle;">
-        Comentarios 
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" style="margin-top: 2px;">
-            <path fill="currentColor" d="M10.5 12a1.5 1.5 0 0 1 1.5 1.5v.5c0 1.971-1.86 4-5 4c-3.14 0-5-2.029-5-4v-.5A1.5 1.5 0 0 1 3.5 12zM7 5.5A2.75 2.75 0 1 1 7 11a2.75 2.75 0 0 1 0-5.5M16 2a2 2 0 0 1 1.994 1.85L18 4v2a2 2 0 0 1-1.85 1.995L16 8h-1.501l-1.198 1.6c-.53.706-1.604.42-1.777-.376l-.017-.111L11.5 9V7.935l-.078-.02a2.003 2.003 0 0 1-1.397-1.6l-.02-.166L10 6V4a2 2 0 0 1 1.85-1.995L12 2z" />
-        </svg>
-    </a>
+    <footer>
+        <p>&copy; 2024 BytesDex, Tec.</p>
     </footer>
-    <script src="/resources/js/script-34.js"></script>
-    <script src="/resources/js/script-1.js"></script>
-    <script src="/resources/js/script-31.js"></script>
+         <script src="/resources/js/script-11.js"></script>
+     <script src="/resources/js/script-34.js"></script>
 </body>
 </html>
