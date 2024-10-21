@@ -46,7 +46,7 @@ function displayUserData(username, profilePic) {
     img.onclick = span.onclick = chooseProfilePicture;
 }
 
-const bannedWords = ["puta", "fuck", "puto", "gey", "gay", "gei", "homosexual", "trans", "transexual", "mierda", "cerote", "shit", "bitch", "perra", "zorra", "malparido", "malparida", "pendejo", "pendeja", "estúpido", "estupido", "estúpida", "estupida", "inbecil", "idiota", "maldita", "maldito"]; 
+const bannedWords = ["puta", "fuck", "puto", "gey", "gay", "gei", "homosexual", "trans", "transexual", "mierda", "cerote", "shit", "bitch", "perra", "zorra", "malparido", "malparida", "pendejo", "pendeja", "estúpido", "estupido", "estupida", "estupida", "inbecil", "idiota", "maldita", "maldito"]; 
 
 function containsBannedWords(input) {
     for (let word of bannedWords) {
