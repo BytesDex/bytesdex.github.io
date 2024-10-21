@@ -24,7 +24,7 @@ const users = [
   { username: "Vmlubnk", password: "dmlhbmV5bG9w" }
 ];
 
-let bannedUsers = ["Test"];
+let bannedUsers = [""];
 
 function login() {
   const username = document.getElementById('username').value;
