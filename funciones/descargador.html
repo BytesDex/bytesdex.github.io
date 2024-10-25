@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/resources/css/style-30.css">
+    <link rel="stylesheet" href="/resources/css/style-42.css">
+    <title>Descargador</title>
+</head>
+<body>
+    <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Para acceder a este contenido, por favor inicia sesión o registre una cuenta nueva.</p>
+  </div>
+    </div>
+    <img class="logo" src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/logo.png" alt="Logo" draggable="false">
+    <h1>Descarga Exclusiva</h1>
+    <br>
+    <p>Accede a contenido exclusivo utilizando tu código personal.</p>
+    <br>
+    <div class="code-input-wrapper" id="inputWrapper">
+        <input 
+            type="text" 
+            class="code-input" 
+            placeholder="Ingresa tu código y presiona Enter"
+            onkeypress="handleKeyPress(event)"
+            id="codeInput"
+            onfocus="moveInputUp()"
+            onblur="moveInputDown()">
+    </div>
+    <div class="footer">
+        &copy; 2024 BytesDex, Tec.
+    </div>
+      <script src="/resources/js/script-35.js"></script>
+  <script src="/resources/js/script-79.js"></script>
+</body>
+</html>
