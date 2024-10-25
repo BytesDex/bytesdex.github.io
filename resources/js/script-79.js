@@ -5,7 +5,7 @@ const codes = {
 };
 
 const downloadLinks = {
-    'SDRLN1I5': 'aHR0cHM6Ly9kb2N1bWVudC5jb20vZG93bmxvYWQvcGF0aC90ZXN0MS5qcGc=',
+    'SDRLN1I5': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xRXprbnZ2M3lBOEk1b3Q5U1c4d1FWQ2Fwbmc0ckFIUXkvdmlldw',
     'Y29kaW8y': 'aHR0cHM6Ly9kb2N1bWVudC5jb20vZG93bmxvYWQvcGF0aC90ZXN0Mi5qcGc=',
     'Y29kaW8z': 'aHR0cHM6Ly9kb2N1bWVudC5jb20vZG93bmxvYWQvcGF0aC90ZXN0My5qcGc='
 };
