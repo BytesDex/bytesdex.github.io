@@ -1,0 +1,108 @@
+       body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            height: 100vh; 
+            overflow: hidden; 
+        }
+
+        .logo {
+            width: 320px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+            filter: drop-shadow(0 0 5px #0071e3) drop-shadow(0 0 10px #0071e3) drop-shadow(0 0 15px #0071e3);
+            user-drag: none; 
+            -webkit-user-drag: none; 
+            pointer-events: none;  
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, p {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin: 0;
+            margin-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 0 0 20px 0;
+            color: #bbb;
+        }
+
+        .code-input-wrapper {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 200px;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .code-input {
+            width: 80%;
+            max-width: 400px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            background-color: #222;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            caret-color: #0071e3;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
+            transition: box-shadow 0.3s;
+        }
+
+        .code-input:focus {
+            outline: none;
+            background-color: #333;
+            box-shadow: 0 0 10px #0071e3, 0 0 20px #0071e3;
+        }
+
+        .code-input.correct {
+            border: 2px solid #28a745; 
+        }
+
+        .code-input.error {
+            border: 2px solid #dc3545;
+        }
+
+        .footer {
+            padding: 20px 0;
+            font-size: 18px;
+            color: #fff;
+            background-color: #1a1a1a;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
