@@ -26,7 +26,7 @@ function validateCode(userCode) {
         window.location.href = atob(downloadLinks['SDRLN1I5']);
     } else if (userCode === atob(codes.code2)) {
         inputField.classList.add('correct');
-        window.location.href = atob(downloadLinks['Y29kaW8y']);
+        window.location.href = atob(downloadLinks['QTdCM0M5']);
     } else if (userCode === atob(codes.code3)) {
         inputField.classList.add('correct');
         window.location.href = atob(downloadLinks['Y29kaW8z']);
