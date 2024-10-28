@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const users = [
   { username: "Qnl0ZXM", password: "MTIxMTk4MjA4" },
+  { username: "SWFudXd1", password: "MTIvMDMvMjAxMg" },
+  { username: "QWxlamFuZHJvIE1lbmRvemE", password: "YWxlamFuZHJvMjAwMg" },
   { username: "U2h1bGxr", password: "SmhkdGEwMUA" },
   { username: "Q2hpemFYWFZJSQ", password: "MTIzNDU2Nzg5QWE" },
   { username: "VGVzdA", password: "VGVzdA" },
