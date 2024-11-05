@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/style-54.css">
+    <title>Brat Generator</title>
+</head>
+<body>
+    <div id="brat-generator">
+        <h1>Brat Generator</h1>
+        <input type="text" id="text-input" placeholder="Escribe tu texto aquí" maxlength="250" oninput="updateCanvas(); checkCharLimit();">
+        <div id="char-count">Caracteres: 0/250</div>
+        <label for="font-size-select">Tamaño de la letra:</label>
+        <select id="font-size-select" onchange="updateCanvas()">
+            <script>
+                for (let i = 1; i <= 55; i++) {
+                    document.write(`<option value="${i}" ${i === 55 ? 'selected' : ''}>${i}px</option>`);
+                }
+            </script>
+        </select>
+        <label for="color-select">Color de fondo:</label>
+        <select id="color-select" onchange="updateCanvas()">
+            <option value="#ffffff" selected>Blanco</option>
+            <option value="#8CD000">Verde</option>
+        </select>
+        <canvas id="canvas" width="360" height="300"></canvas>
+        <button onclick="downloadImage()">Descargar Imagen</button>
+    </div>
+<script src="/resources/js/script-80.js"></script>
+</body>
+</html>
