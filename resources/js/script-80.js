@@ -28,16 +28,17 @@ function updateCanvas() {
     const ctx = canvas.getContext('2d');
     const selectedColor = document.getElementById('color-select').value;
     const fontSize = document.getElementById('font-size-select').value;
+    const textAlign = document.getElementById('alignment-select').value;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     canvas.style.backgroundColor = selectedColor;
     ctx.fillStyle = "#000";
     ctx.font = `${fontSize}px Arial`;
-    ctx.textAlign = "left";
+    ctx.textAlign = textAlign;
     ctx.textBaseline = "top";
 
-    const x = 10;
+    const x = textAlign === "center" ? canvas.width / 2 : (textAlign === "right" ? canvas.width - 10 : 10);
     const y = 10;
     const maxWidth = canvas.width - 20;
     const lineHeight = parseInt(fontSize) + 20;
