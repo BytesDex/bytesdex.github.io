@@ -24,9 +24,15 @@
             <option value="#ffffff" selected>Blanco</option>
             <option value="#8CD000">Verde</option>
         </select>
+        <label for="alignment-select">Alineación del texto:</label>
+        <select id="alignment-select" onchange="updateCanvas()">
+            <option value="left" selected>Izquierda</option>
+            <option value="center">Centro</option>
+            <option value="right">Derecha</option>
+        </select>
         <canvas id="canvas" width="360" height="300"></canvas>
         <button onclick="downloadImage()">Descargar Imagen</button>
     </div>
-<script src="/resources/js/script-80.js"></script>
+    <script src="/resources/js/script-80.js"></script>
 </body>
 </html>
