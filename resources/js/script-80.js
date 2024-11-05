@@ -58,22 +58,14 @@ function checkCharLimit() {
 }
 
 function downloadImage() {
-    const canvas = document.getElementById('canvas');
     const text = document.getElementById('text-input').value;
 
-    if (!text) {
-        alert("No hay texto en el tablero. Por favor, escribe algo antes de descargar.");
+    if (text.trim() === '') {
+        alert("No hay texto en el tablero. Escribe algo antes de descargar.");
         return;
     }
 
-    let downloadCount = localStorage.getItem('downloadCount') ? parseInt(localStorage.getItem('downloadCount')) : 0;
-
-    if (downloadCount >= 1000) {
-        alert("Has alcanzado el límite máximo de descargas (1,000 imágenes). Reiniciando contador.");
-        localStorage.removeItem('downloadCount'); 
-        downloadCount = 0;
-    }
-
+    const canvas = document.getElementById('canvas');
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
@@ -85,10 +77,18 @@ function downloadImage() {
     tempCtx.drawImage(canvas, 0, 0);
 
     const link = document.createElement('a');
-    link.download = `brat_image_${downloadCount + 1}.jpg`;
+    link.download = `brat_image_${new Date().getTime()}.jpg`;
     link.href = tempCanvas.toDataURL('image/jpeg');
     link.click();
 
+    let downloadCount = localStorage.getItem('downloadCount') ? parseInt(localStorage.getItem('downloadCount')) : 0;
     downloadCount++;
+
+    if (downloadCount >= 1000) {
+        alert("Has alcanzado el límite de 1000 descargas. El contador se reiniciará.");
+        localStorage.removeItem('downloadCount');
+        downloadCount = 0;
+    }
+
     localStorage.setItem('downloadCount', downloadCount);
 }
