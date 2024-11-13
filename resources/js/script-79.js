@@ -3,7 +3,8 @@ const codes = {
     code2: 'QTdCM0M5',
     code3: 'WDJZOFo1',
     code4: 'QTdCM0Mx',
-    code5: 'TDNEOFAy'
+    code5: 'TDNEOFAy',
+    code6: 'UTVOMlI3'
 };
 
 const downloadLinks = {
@@ -11,7 +12,8 @@ const downloadLinks = {
     'QTdCM0M5': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xSDg5MVNuMHNrcm5XZVotcHFCOG52UUt3N1ZwUm4xT2Ivdmlldz91c3A9ZHJpdmVzZGs',
     'WDJZOFo1': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xSEo2elFBNGFrV1hWV2l0ZTRmMGJzblJHZ1ViVU5LeVQvdmlldz91c3A9ZHJpdmVzZGs',
     'QTdCM0Mx': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTjczOHo2dzR4UnQ1dXAwVWQxVU43a1RoMkR6RnVIWmwvdmlldz91c3A9ZHJpdmVzZGs',
-    'TDNEOFAy': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTkZ4d2l4SWIwTzJSY2I5NWF4WHhrNVA4TFYwa00xY2Yvdmlldz91c3A9ZHJpdmVzZGs'
+    'TDNEOFAy': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTkZ4d2l4SWIwTzJSY2I5NWF4WHhrNVA4TFYwa00xY2Yvdmlldz91c3A9ZHJpdmVzZGs',
+    'UTVOMlI3': 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTktjbVI4LXBlQWpaWWRQSUNaRWh5ZXVqT3Q3WHoyemcvdmlldz91c3A9ZHJpdmVzZGs'
 };
 
 function handleKeyPress(event) {
@@ -40,6 +42,9 @@ function validateCode(userCode) {
     } else if (userCode === atob(codes.code5)) {
         inputField.classList.add('correct');
         window.location.href = atob(downloadLinks['TDNEOFAy']);
+    } else if (userCode === atob(codes.code6)) {
+        inputField.classList.add('correct');
+        window.location.href = atob(downloadLinks['UTVOMlI3']);
     } else {
         inputField.classList.add('error');
         alert("Código incorrecto. Por favor, intenta de nuevo.");
