@@ -4,7 +4,7 @@ function checkVerification() {
   const currentUser = localStorage.getItem("currentUser");
 
   if (verifiedUsers.includes(currentUser)) {
-    window.location.href = "#"; 
+    window.location.href = "./funciones-beta"; 
   } else {
     showAccessDeniedAlert();
   }
