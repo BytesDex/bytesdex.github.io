@@ -32,7 +32,7 @@ const users = [
 
 let bannedUsers = [""];
 
-const verifiedUsers = ["Bytes", "Test"];
+const verifiedUsers = ["bytes", "test"];
 
 function login() {
   const username = document.getElementById('username').value;
