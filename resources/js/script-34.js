@@ -88,9 +88,10 @@ function displayUserData(username, profilePic) {
   const span = document.createElement('span');
   span.textContent = username;
   span.style.display = 'flex';
-  span.style.alignItems = 'center';
-
-  if (username === "Bytes") {
+  span.style.alignItems = 'center'; 
+  
+  const verifiedUsers = ["Bytes", "Test"];
+  if (verifiedUsers.includes(username)) { 
     const verifiedIcon = document.createElement('span');
     verifiedIcon.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
@@ -100,8 +101,8 @@ function displayUserData(username, profilePic) {
         </g>
       </svg>`;
     verifiedIcon.style.marginLeft = '5px';
-    verifiedIcon.style.marginTop = '6px';
-    verifiedIcon.style.marginBottom = '0';
+    verifiedIcon.style.marginTop = '6px'; 
+    verifiedIcon.style.marginBottom = '0'; 
     span.appendChild(verifiedIcon);
   }
 
