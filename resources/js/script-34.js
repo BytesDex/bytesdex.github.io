@@ -32,8 +32,6 @@ const users = [
 
 let bannedUsers = [""];
 
-const verifiedUsers = ["bytes", "test"];
-
 function login() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
@@ -92,7 +90,7 @@ function displayUserData(username, profilePic) {
   span.style.display = 'flex';
   span.style.alignItems = 'center';
 
-  if (verifiedUsers.includes(username)) {
+  if (username === "Bytes") {
     const verifiedIcon = document.createElement('span');
     verifiedIcon.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
