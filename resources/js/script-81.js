@@ -1,4 +1,4 @@
-const verifiedUsers = ["Bytes"];  
+const verifiedUsers = ["Bytes", "Test"];  
 
 function checkVerification() {
   const currentUser = localStorage.getItem("currentUser");
