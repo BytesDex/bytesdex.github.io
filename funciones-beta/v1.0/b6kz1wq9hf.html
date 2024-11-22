@@ -2,21 +2,18 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Skating bunny</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conejito Patinando</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
-
+   <link rel="stylesheet" href="/resources/css/style-55.css">
+<link rel="stylesheet" href="style-4.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <canvas class="webgl"></canvas>
-
-<div id="instructions"> - Press to jump - </div>
-
+<div id="instructions"> - Presiona para saltar - </div>
 <div id="credits">
   <p><a href="https://codepen.io/Yakudoo/" target="blank">my other codepens</a> | <a href="http://epic.net" target="blank">epic.net</a></p>
 </div>
-
 <script type="x-shader/x-vertex" id="reflectorVertexShader">
   uniform mat4 textureMatrix;
   varying vec4 vUvReflection;
@@ -169,8 +166,6 @@ void main() {
     gl_Position = projectionMatrix * modelViewPosition; 
   }
 </script>
-<!-- partial -->
-  <script type="module" src="./script.js"></script>
-
+  <script type="module" src="script-2.js"></script>
 </body>
 </html>
