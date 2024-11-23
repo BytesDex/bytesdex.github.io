@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Infinite Portals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portales infinitos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
-
+  <link rel="stylesheet" href="/resources/css/style-55.css">
+<link rel="stylesheet" href="style-8.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
+  <div id="alert-overlay" class="alert-overlay">
+        <div class="alert-box">
+            <p>Acceso denegado. Debes estar verificado para acceder a esta zona.</p>
+        </div>
+  </div>
 <canvas class="webgl"></canvas>
-<div id="instructions">Drag to turn around<br />Scroll to zoom in / out<br />Click on portals to explore</div>
-<div id="credits">
-  <p><a href="https://codepen.io/Yakudoo/" target="blank">my other codepens</a> | <a href="http://epic.net" target="blank">epic.net</a></p>
-</div>
-
+<div id="instructions">Arrastre para girar<br /><Desplácese para acercar o alejar la imagenbr />Haga clic en los portales para explorar</div>
 <script type="x-shader/x-vertex" id="vertexShader">
   precision highp float;
   varying vec2 vUv;
@@ -85,8 +86,7 @@
     
   }
 </script>
-<!-- partial -->
-  <script type="module" src="./script.js"></script>
-
+  <script type="module" src="script-7.js"></script>
+<script src="/resources/js/script-82.js"></script>
 </body>
 </html>
