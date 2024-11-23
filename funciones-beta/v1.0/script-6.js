@@ -99,35 +99,35 @@ function initGUI(){
   gui.width = 250;
   gui.add(parameters, 'speed').min(0).max(20).step(1).name('Cycle speed');
   
-  var fr = gui.addFolder('Front Right');
+  var fr = gui.addFolder('Delantero derecho');
   fr.add(parameters, 'pawFRCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   fr.add(parameters, 'pawFRAmplitudeY').min(0).max(12).step(.1).name('Leg Amp Y');
   fr.add(parameters, 'pawFRAmplitudeZ').min(0).max(12).step(.1).name('Leg Amp Z');
   fr.add(parameters, 'pawFRAnkleRotationAmplitude').min(0).max(PI).step(0.01).name('Ankle Amp');
   //fr.open();
   
-  var fl = gui.addFolder('Front Left');
+  var fl = gui.addFolder('Delantero izquierdo');
   fl.add(parameters, 'pawFLCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   fl.add(parameters, 'pawFLAmplitudeY').min(0).max(12).step(.1).name('Leg Amp Y');
   fl.add(parameters, 'pawFLAmplitudeZ').min(0).max(12).step(.1).name('Leg Amp Z');
   fl.add(parameters, 'pawFLAnkleRotationAmplitude').min(0).max(PI).step(0.01).name('Ankle Amp');
   //fl.open();
   
-  var br = gui.addFolder('Back Right');
+  var br = gui.addFolder('Atrás a la derecha');
   br.add(parameters, 'pawBRCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   br.add(parameters, 'pawBRAmplitudeY').min(0).max(12).step(.1).name('Leg Amp Y');
   br.add(parameters, 'pawBRAmplitudeZ').min(0).max(12).step(.1).name('Leg Amp Z');
   br.add(parameters, 'pawBRAnkleRotationAmplitude').min(0).max(PI).step(0.01).name('Ankle Amp');
   //br.open();
   
-  var bl = gui.addFolder('Back Left');
+  var bl = gui.addFolder('Atrás a la izquierda');
   bl.add(parameters, 'pawBLCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   bl.add(parameters, 'pawBLAmplitudeY').min(0).max(12).step(.1).name('Leg Amp Y');
   bl.add(parameters, 'pawBLAmplitudeZ').min(0).max(12).step(.1).name('Leg Amp Z');
   bl.add(parameters, 'pawBLAnkleRotationAmplitude').min(0).max(PI).step(0.01).name('Ankle Amp');
   //bl.open();
   
-  var bdy = gui.addFolder('Body');
+  var bdy = gui.addFolder('Cuerpo');
   bdy.add(parameters, 'bodyCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   bdy.add(parameters, 'bodyYAmplitude').min(0).max(5).step(.1).name('Y Amp');
   bdy.add(parameters, 'bodyRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
@@ -139,18 +139,18 @@ function initGUI(){
   trso.add(parameters, 'torsoRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
   //trso.open();
   
-  var tail = gui.addFolder('Tail');
+  var tail = gui.addFolder('Cola');
   tail.add(parameters, 'tailCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   tail.add(parameters, 'tailRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
   //tail.open();
   
-  var mouth = gui.addFolder('Mouth');
+  var mouth = gui.addFolder('Boca');
   mouth.add(parameters, 'mouthCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   mouth.add(parameters, 'mouthRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
   //mouth.open();
   
   
-  var head = gui.addFolder('Head');
+  var head = gui.addFolder('Cabeza');
   head.add(parameters, 'headCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   head.add(parameters, 'headYAmplitude').min(0).max(5).step(.1).name('Y Amp');
   head.add(parameters, 'headZAmplitude').min(0).max(5).step(.1).name('Z Amp');
@@ -158,17 +158,17 @@ function initGUI(){
   //head.open();
   
   
-  var earRight = gui.addFolder('Ear Right');
+  var earRight = gui.addFolder('Oído derecho');
   earRight.add(parameters, 'earRightCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   earRight.add(parameters, 'earRightRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
   //earRight.open();
   
-  var earLeft = gui.addFolder('Ear Left');
+  var earLeft = gui.addFolder('Oreja izquierda');
   earLeft.add(parameters, 'earLeftCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   earLeft.add(parameters, 'earLeftRotationAmplitude').min(0).max(PI).step(0.01).name('Rotation Amp');
   //earLeft.open();
   
-  var eyes = gui.addFolder('Eyes');
+  var eyes = gui.addFolder('Ojos');
   eyes.add(parameters, 'eyeCycleOffset').min(-PI).max(PI).step(.1).name('Cycle Offset');
   eyes.add(parameters, 'eyeMinScale').min(0).max(1).step(0.01).name('Scale Min');
   eyes.add(parameters, 'eyeMaxScale').min(0).max(1).step(0.01).name('Scale Max');
