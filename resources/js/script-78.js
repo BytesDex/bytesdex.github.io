@@ -339,4 +339,4 @@
             document.getElementById("roleSelect").value = selectedRole;
         }
 
-        toggleBotConnection(true);
+        toggleBotConnection(false);
