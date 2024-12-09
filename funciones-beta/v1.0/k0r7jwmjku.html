@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asistente IA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+body {
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    overflow: hidden; 
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    background-color: transparent;
+    max-height: 71vh;
+    overflow-y: auto;
+    padding: 16px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-animate {
+    animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensaje-burbuja {
+    max-width: 85%;
+    background-color: #333;
+    word-wrap: break-word;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mensaje-burbuja.user {
+    background-color: #3b82f6;
+    color: #fff;
+    margin-left: auto;
+}
+
+.mensaje-burbuja.bot {
+    background-color: #222;
+    color: #fff;
+}
+
+.chat-footer {
+    padding: 16px;
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.chat-footer input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.chat-footer input:focus {
+    outline: none;
+    background-color: #333;
+    border: 2px solid #3b82f6;
+}
+
+.send-btn {
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background-color: #2563eb;
+}
+
+.send-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.typing-indicator img {
+    margin-right: 10px;
+}
+
+.typing-bubble {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+    width: 90px;  
+    height: 40px;  
+    padding: 10px;
+    background-color: #333;
+    border-radius: 20px;
+    margin: 0;
+    gap: 0px;  
+}
+
+.dot {
+    width: 12px;  
+    height: 12px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: dot-blink 1.1s infinite, dot-move 1.1s infinite;
+}
+
+@keyframes dot-blink {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-move {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+    </style>
+</head>
+<body>
+    <div class="flex flex-col h-screen max-w-md mx-auto w-full">
+        <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 shadow-md">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl font-bold flex items-center">
+                        Sync
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" class="ml-1 mt-1">
+                            <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                <path fill="#2f88ff" stroke="#ffffff" stroke-width="2" d="M24 44C29.5228 44 34.5228 41.7614 38.1421 38.1421C41.7614 34.5228 44 29.5228 44 24C44 18.4772 41.7614 13.4772 38.1421 9.85786C34.5228 6.23858 29.5228 4 24 4C18.4772 4 13.4772 6.23858 9.85786 9.85786C6.23858 13.4772 4 18.4772 4 24C4 29.5228 6.23858 34.5228 9.85786 38.1421C13.4772 41.7614 18.4772 44 24 44Z"/>
+                                <path stroke="#ffffff" stroke-linecap="round" d="M16 24L22 30L34 18"/>
+                            </g>
+                        </svg>
+                    </h2>
+                    <p class="text-xs opacity-75">Con Llama 4.o</p>
+                </div>
+                <div class="flex items-center space-x-2 mt-1">
+                    <span class="h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
+                </div>
+            </div>
+        </header>
+        <main id="chatContainer" class="chat-container">
+        </main>
+        <div id="typingIndicator" class="typing-indicator"></div>
+        <footer class="chat-footer">
+            <div class="flex items-center space-x-2">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Escribe un mensaje..." 
+                    class="flex-grow p-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
+                >
+                <button 
+                    id="sendButton" 
+                    class="send-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+    <script src="test.js"></script>
+</body>
+</html>
