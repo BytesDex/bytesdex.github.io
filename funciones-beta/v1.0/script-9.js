@@ -93,8 +93,15 @@ if (mensajeLower.startsWith('>')) {
                 return `No conozco la palabra "${palabraClave}".`;
             }
         } else {
-            localStorage.clear();
-            return "Toda mi memoria ha sido borrada.";
+            const palabrasGuardadas = Object.keys(localStorage);
+            if (palabrasGuardadas.length > 0) {
+                palabrasGuardadas.forEach((palabra) => {
+                    localStorage.removeItem(palabra);
+                });
+                return "Toda mi memoria ha sido borrada.";
+            } else {
+                return "No tengo ninguna palabra guardada para borrar.";
+            }
         }
     } 
 
