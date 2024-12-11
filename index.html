@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="resources/css/style-34.css">
     <title>BytesDex</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+     <style>
+        .snowflake {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #fff;
+            animation: fall linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+     </style>
 </head>
 <body>
     <header>
@@ -78,6 +101,21 @@
     <footer>
         <p>&copy; 2024 BytesDex, Tec.</p>
     </footer>
+    <script>
+        const snowflakeCount = 100; 
+        const animationDuration = 10; 
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄️';
+            snowflake.style.left = Math.random() * 100 + 'vw'; 
+            snowflake.style.animationDuration = Math.random() * animationDuration + 5 + 's'; 
+            snowflake.style.animationDelay = Math.random() * 5 + 's'; 
+            snowflake.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
+            document.body.appendChild(snowflake);
+        }
+    </script>
 <script src="/resources/js/script-15.js"></script>
 <script src="/resources/js/script-12.js"></script>
 <script src="/resources/js/script-81.js"></script>
