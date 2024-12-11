@@ -96,9 +96,14 @@ if (mensajeLower.startsWith('>')) {
             const palabrasGuardadas = Object.keys(localStorage);
             if (palabrasGuardadas.length > 0) {
                 palabrasGuardadas.forEach((palabra) => {
-                    localStorage.removeItem(palabra);
+                    if (!palabra.startsWith('loggedIn') && 
+                        !palabra.startsWith('currentUser') && 
+                        !palabra.startsWith('iconify') && 
+                        palabra !== 'profilePic') {
+                        localStorage.removeItem(palabra);
+                    }
                 });
-                return "Toda mi memoria ha sido borrada.";
+                return "Toda mi memoria de palabras ha sido borrada.";
             } else {
                 return "No tengo ninguna palabra guardada para borrar.";
             }
@@ -109,7 +114,7 @@ if (mensajeLower.startsWith('>')) {
         return `Estos son los comandos que puedes usar<br><br>
 1. > aprender palabra | respuesta - Enseña al bot una nueva palabra y su respuesta.<br><br>
 2. > borrar palabra - Borra una palabra específica de mi memoria.<br><br>
-3. > borrar - Borra toda la memoria del bot.<br><br>
+3. > borrar - Borra toda la memoria de palabras aprendidas.<br><br>
 4. > memoria - Muestra todas las palabras aprendidas y sus respuestas.<br><br>
 5. > comandos - Muestra esta lista de comandos.<br><br>
 Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemplazada. Esto podría afectar mi comportamiento si la palabra ya está en mi código. Usa palabras únicas para evitar sobrescribir respuestas importantes.`;
@@ -119,10 +124,12 @@ Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemp
         const palabrasGuardadas = Object.keys(localStorage);
         if (palabrasGuardadas.length > 0) {
             let lista = "Estas son las palabras que he aprendido:<br><br>";
+            
             const palabrasBot = palabrasGuardadas.filter((clave) => {
                 return !clave.startsWith('loggedIn') && 
                        !clave.startsWith('currentUser') && 
-                       !clave.startsWith('iconify'); 
+                       !clave.startsWith('iconify') && 
+                       clave !== 'profilePic'; 
             });
 
             if (palabrasBot.length > 0) {
