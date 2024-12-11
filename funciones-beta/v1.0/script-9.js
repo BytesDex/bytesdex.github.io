@@ -93,19 +93,14 @@ if (mensajeLower.startsWith('>')) {
                 return `No conozco la palabra "${palabraClave}".`;
             }
         } else {
-            const palabrasGuardadas = Object.keys(localStorage);
+            const palabrasGuardadas = Object.keys(localStorage).filter(key => !["loggedIn", "currentUser", "profilePic", "iconify1", "iconify0", "iconify-count", "iconify-version"].includes(key));
             if (palabrasGuardadas.length > 0) {
                 palabrasGuardadas.forEach((palabra) => {
-                    if (!palabra.startsWith('loggedIn') && 
-                        !palabra.startsWith('currentUser') && 
-                        !palabra.startsWith('iconify') && 
-                        palabra !== 'profilePic') {
-                        localStorage.removeItem(palabra);
-                    }
+                    localStorage.removeItem(palabra);
                 });
                 return "Toda mi memoria de palabras ha sido borrada.";
             } else {
-                return "No tengo ninguna palabra guardada para borrar.";
+                return "No hay ninguna palabra que borrar en mi memoria.";
             }
         }
     } 
@@ -114,39 +109,27 @@ if (mensajeLower.startsWith('>')) {
         return `Estos son los comandos que puedes usar<br><br>
 1. > aprender palabra | respuesta - Enseña al bot una nueva palabra y su respuesta.<br><br>
 2. > borrar palabra - Borra una palabra específica de mi memoria.<br><br>
-3. > borrar - Borra toda la memoria de palabras aprendidas.<br><br>
+3. > borrar - Borra toda la memoria del bot.<br><br>
 4. > memoria - Muestra todas las palabras aprendidas y sus respuestas.<br><br>
 5. > comandos - Muestra esta lista de comandos.<br><br>
 Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemplazada. Esto podría afectar mi comportamiento si la palabra ya está en mi código. Usa palabras únicas para evitar sobrescribir respuestas importantes.`;
     } 
     
     else if (comando === '>memoria' || comando === '> memoria') {
-        const palabrasGuardadas = Object.keys(localStorage);
+        const palabrasGuardadas = Object.keys(localStorage).filter(key => !["loggedIn", "currentUser", "profilePic", "iconify1", "iconify0", "iconify-count", "iconify-version"].includes(key));
         if (palabrasGuardadas.length > 0) {
             let lista = "Estas son las palabras que he aprendido:<br><br>";
-            
-            const palabrasBot = palabrasGuardadas.filter((clave) => {
-                return !clave.startsWith('loggedIn') && 
-                       !clave.startsWith('currentUser') && 
-                       !clave.startsWith('iconify') && 
-                       clave !== 'profilePic'; 
+            palabrasGuardadas.forEach((palabra) => {
+                lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
             });
-
-            if (palabrasBot.length > 0) {
-                palabrasBot.forEach((palabra) => {
-                    lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
-                });
-                return lista;
-            } else {
-                return "No he aprendido ninguna palabra todavía.";
-            }
+            return lista;
         } else {
             return "No he aprendido ninguna palabra todavía.";
         }
     }
 
     else {
-        return "No reconozco ese comando. Usa:<br><br> > comandos - para ver la lista de comandos disponibles.";
+        return "No reconozco ese comando. Usa:<br><br> > comandos - para ver la lista de comandos disponibles";
     }
 } 
 
