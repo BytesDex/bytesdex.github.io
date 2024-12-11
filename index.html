@@ -32,6 +32,21 @@
      </style>
 </head>
 <body>
+    <script>
+        const snowflakeCount = 100; 
+        const animationDuration = 10; 
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄️';
+            snowflake.style.left = Math.random() * 100 + 'vw'; 
+            snowflake.style.animationDuration = Math.random() * animationDuration + 5 + 's'; 
+            snowflake.style.animationDelay = Math.random() * 5 + 's'; 
+            snowflake.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
+            document.body.appendChild(snowflake);
+        }
+    </script>
     <header>
         <div class="logo">BytesDex</div>
         <div class="menu-icon" onclick="toggleMenu()">≡</div> 
@@ -101,21 +116,6 @@
     <footer>
         <p>&copy; 2024 BytesDex, Tec.</p>
     </footer>
-    <script>
-        const snowflakeCount = 100; 
-        const animationDuration = 10; 
-
-        for (let i = 0; i < snowflakeCount; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.textContent = '❄️';
-            snowflake.style.left = Math.random() * 100 + 'vw'; 
-            snowflake.style.animationDuration = Math.random() * animationDuration + 5 + 's'; 
-            snowflake.style.animationDelay = Math.random() * 5 + 's'; 
-            snowflake.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
-            document.body.appendChild(snowflake);
-        }
-    </script>
 <script src="/resources/js/script-15.js"></script>
 <script src="/resources/js/script-12.js"></script>
 <script src="/resources/js/script-81.js"></script>
