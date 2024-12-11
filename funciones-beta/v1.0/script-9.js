@@ -63,6 +63,73 @@ class AsistenteInteligente {
             return this.obtenerFechaActual();
         }
         
+if (mensajeLower.startsWith('>')) {
+    const comando = mensajeLower.trim();
+
+    if (comando.startsWith('>aprender') || comando.startsWith('> aprender')) {
+        const partes = comando.slice(10).split('|');
+        if (partes.length === 2) {
+            const palabraClave = partes[0].trim();
+            const respuesta = partes[1].trim();
+
+            if (palabraClave && respuesta) {
+                localStorage.setItem(palabraClave, respuesta);
+                return `¡He aprendido una nueva palabra! Puedes probar escribiendo: "${palabraClave}"`;
+            } else {
+                return "Asegúrate de incluir tanto la palabra clave como la respuesta, separadas por un '|'.<br><br> Ejemplo:<br><br> > aprender hola | ¡Hola, cómo estás!";
+            }
+        } else {
+            return "Formato incorrecto. Usa el formato:<br><br> > aprender palabra | respuesta.<br><br> Ejemplo:<br><br> > aprender hola | ¡Hola, cómo estás!";
+        }
+    } 
+    
+    else if (comando.startsWith('>borrar') || comando.startsWith('> borrar')) {
+        const palabraClave = comando.slice(8).trim();
+        if (palabraClave) {
+            if (localStorage.getItem(palabraClave)) {
+                localStorage.removeItem(palabraClave);
+                return `La palabra "${palabraClave}" ha sido eliminada de mi memoria.`;
+            } else {
+                return `No conozco la palabra "${palabraClave}".`;
+            }
+        } else {
+            localStorage.clear();
+            return "Toda mi memoria ha sido borrada.";
+        }
+    } 
+
+    else if (comando === '>comandos' || comando === '> comandos') {
+        return `Estos son los comandos que puedes usar<br><br>
+1. > aprender palabra | respuesta - Enseña al bot una nueva palabra y su respuesta.<br><br>
+2. > borrar palabra - Borra una palabra específica de mi memoria.<br><br>
+3. > borrar - Borra toda la memoria del bot.<br><br>
+4. > memoria - Muestra todas las palabras aprendidas y sus respuestas.<br><br>
+5. > comandos - Muestra esta lista de comandos.<br><br>
+Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemplazada. Esto podría afectar mi comportamiento si la palabra ya está en mi código. Usa palabras únicas para evitar sobrescribir respuestas importantes.`;
+    } 
+    
+    else if (comando === '>memoria' || comando === '> memoria') {
+        const palabrasGuardadas = Object.keys(localStorage);
+        if (palabrasGuardadas.length > 0) {
+            let lista = "Estas son las palabras que he aprendido:<br><br>";
+            palabrasGuardadas.forEach((palabra) => {
+                lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
+            });
+            return lista;
+        } else {
+            return "No he aprendido ninguna palabra todavía.";
+        }
+    }
+
+    else {
+        return "No reconozco ese comando. Usa:<br><br> > comandos - para ver la lista de comandos disponibles.";
+    }
+} 
+
+else if (localStorage.getItem(mensajeLower)) {
+    return localStorage.getItem(mensajeLower);
+}
+        
         else if (
     mensajeLower.includes('puedes generar imagenes') || 
     mensajeLower.includes('puedes generar imágenes') || 
