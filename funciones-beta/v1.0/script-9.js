@@ -119,10 +119,20 @@ Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemp
         const palabrasGuardadas = Object.keys(localStorage);
         if (palabrasGuardadas.length > 0) {
             let lista = "Estas son las palabras que he aprendido:<br><br>";
-            palabrasGuardadas.forEach((palabra) => {
-                lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
+            const palabrasBot = palabrasGuardadas.filter((clave) => {
+                return !clave.startsWith('loggedIn') && 
+                       !clave.startsWith('currentUser') && 
+                       !clave.startsWith('iconify'); 
             });
-            return lista;
+
+            if (palabrasBot.length > 0) {
+                palabrasBot.forEach((palabra) => {
+                    lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
+                });
+                return lista;
+            } else {
+                return "No he aprendido ninguna palabra todavía.";
+            }
         } else {
             return "No he aprendido ninguna palabra todavía.";
         }
