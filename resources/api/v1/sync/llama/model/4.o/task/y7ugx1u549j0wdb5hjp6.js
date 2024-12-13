@@ -1,6 +1,5 @@
 const style = document.createElement('style');
         style.textContent = `
-            /* Estilo general */
             body {
                 margin: 0;
                 padding: 0;
