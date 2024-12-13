@@ -1,3 +1,132 @@
+const style = document.createElement('style');
+        style.textContent = `
+            /* Estilo general */
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Arial', sans-serif;
+                background-color: #111;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
+
+            .chat-header {
+                background-color: #222;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+                border-bottom: 1px solid #333;
+            }
+
+            .chat-container {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                overflow-y: auto;
+                scroll-behavior: smooth;
+                max-height: calc(100vh - 160px);
+            }
+
+            .mensaje-burbuja {
+                padding: 12px 18px;
+                border-radius: 15px;
+                margin-bottom: 12px;
+                max-width: 85%;
+                word-wrap: break-word;
+                word-break: break-word;
+                white-space: normal; 
+            }
+
+            .mensaje-burbuja.user {
+                background-color: #0078d4;
+                color: white;
+                align-self: flex-end;
+            }
+
+            .mensaje-burbuja.bot {
+                background-color: #444;
+                color: white;
+                align-self: flex-start;
+            }
+
+            .chat-footer {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                background-color: #222;
+                border-top: 1px solid #333;
+            }
+
+            .chat-footer input {
+                flex-grow: 1;
+                padding: 12px 15px;
+                border-radius: 25px;
+                border: 1px solid #333;
+                background-color: #333;
+                color: white;
+                outline: none; 
+            }
+
+            .chat-footer input::placeholder {
+              color: #aaa; 
+          }
+
+            .send-btn {
+              margin-left: 10px; 
+              padding: 12px 20px; 
+              border-radius: 25px; 
+              background-color: #0078d4; 
+              color: white; 
+              border: none; 
+              cursor: pointer; 
+              font-weight: bold; 
+              transition: background-color 0.3s ease; 
+          }
+
+          .send-btn:hover {
+              background-color: #005bb5; 
+          }
+
+          .watermark {
+              text-align: center; 
+              font-size: 12px; 
+              color: rgba(255, 255, 255, 0.5); 
+              font-family: Arial, sans-serif; 
+              margin-top: 0px; 
+          }
+        `;
+        document.head.appendChild(style);
+        const chatHeader = document.createElement('div');
+        chatHeader.className = 'chat-header';
+        chatHeader.textContent = 'Sync - API';
+        const chatContainer = document.createElement('div');
+        chatContainer.className = 'chat-container';
+        chatContainer.id = 'chatContainer';
+        const watermark = document.createElement('div');
+        watermark.className = 'watermark';
+        watermark.textContent = '© 2024 BytesDex, Tec.';
+        const chatFooter = document.createElement('div');
+        chatFooter.className = 'chat-footer';
+        const userInput = document.createElement('input');
+        userInput.type = 'text';
+        userInput.id = 'userInput';
+        userInput.placeholder = 'Escribe un mensaje...';
+        userInput.autocomplete = 'off';
+        const sendButton = document.createElement('button');
+        sendButton.id = 'sendButton';
+        sendButton.className = 'send-btn';
+        sendButton.textContent = 'Enviar';
+        chatFooter.appendChild(userInput);
+        chatFooter.appendChild(sendButton);
+        document.body.appendChild(chatHeader);
+        document.body.appendChild(chatContainer);
+        document.body.appendChild(watermark);
+        document.body.appendChild(chatFooter);
+
 class AsistenteInteligente {
     constructor() {
         this.chatContainer = document.getElementById('chatContainer');
