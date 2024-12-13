@@ -4407,6 +4407,7 @@ else if (mensajeLower.includes('no')) {
     divMensaje.innerHTML = `
         ${esUsuario ? '' : `
             <div class="flex items-center">
+                <img src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg" alt="Avatar IA" class="w-10 h-10 rounded-full mr-3 border-2 border-gray-500">
             </div>
         `}
         <div class="${esUsuario ? 'ml-auto bg-blue-500 text-white' : 'bg-white'} mensaje-burbuja">
@@ -4451,6 +4452,7 @@ mostrarIndicadorEscritura() {
 
     divMensaje.innerHTML = `
         <div class="flex items-center">
+            <img src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/bot.jpg" alt="Avatar IA" class="w-10 h-10 rounded-full mr-3 border-2 border-gray-500">
             <div class="typing-bubble">
                 <div class="dot"></div>
                 <div class="dot"></div>
