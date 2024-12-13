@@ -2,7 +2,7 @@
   "name": "BytesDex",
   "version": "1.0.0",
   "description": "Un servidor para manejar autenticación JWT y servir archivos estáticos",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "start": "node server.js", 
     "build": "echo 'No se requiere construcción para GitHub Pages.'"
