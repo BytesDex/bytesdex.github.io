@@ -35,14 +35,30 @@
 <body>
 
 <div id="profileContainer">
+    <img id="profilePicture" src="" alt="Foto de perfil">
     <h2 id="username">Usuario</h2>
-    <p>Información adicional sobre el usuario.</p>
+    <p id="userInfo">Información adicional sobre el usuario.</p>
 </div>
 
+<script src="/resources/js/script-34.js"></script> <!-- Enlazamos el archivo JS externo -->
+
 <script>
-    
+    document.addEventListener("DOMContentLoaded", function() {
+        if (localStorage.getItem("loggedIn") === "true") {
+            const username = localStorage.getItem("currentUser") || "Usuario";
+            const profilePic = localStorage.getItem("profilePic") || 
+              'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+            
+            document.getElementById("username").innerText = username;
+            document.getElementById("profilePicture").src = profilePic;
+
+            // Aquí puedes cargar más información si es necesario
+        } else {
+          alert('Por favor inicia sesión primero.');
+          window.location.href = "index.html"; // Redirigir si no está autenticado
+        }
+    });
 </script>
-<script src="/resources/js/script-34.js"></script>
-</body>
+
 </body>
 </html>
