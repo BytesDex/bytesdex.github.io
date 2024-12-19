@@ -30,6 +30,7 @@
 <body>
 
 <div id="userContainer" onclick="goToProfile()">
+    <img id="profilePicture" src="" alt="Foto de perfil">
     <h2 id="username">Usuario</h2>
 </div>
 
@@ -37,9 +38,19 @@
     document.addEventListener("DOMContentLoaded", function () {
         if (localStorage.getItem("loggedIn") === "true") {
             const currentUser = localStorage.getItem("currentUser");
+            const profilePic = localStorage.getItem("profilePic");
+            
             document.getElementById("username").innerText = currentUser || "Usuario";
+            
+            // Verifica si hay una foto de perfil almacenada
+            if (profilePic) {
+                document.getElementById("profilePicture").src = profilePic; // Asigna la foto de perfil desde localStorage
+            } else {
+                document.getElementById("profilePicture").src = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; // Foto predeterminada
+            }
         } else {
             document.getElementById("username").innerText = "Usuario";
+            document.getElementById("profilePicture").src = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; // Foto predeterminada
         }
     });
 
