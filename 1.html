@@ -6,40 +6,183 @@
     <title>Panel de Usuario</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; flex-direction: column; }
-        .container { width: 100%; max-width: 800px; background-color: #161b22; border-radius: 16px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; padding: 30px; gap: 20px; height: 95%; overflow-y: auto; }
-        .header { display: flex; flex-direction: column; align-items: center; gap: 10px; border-bottom: 1px solid #30363d; padding-bottom: 15px; }
-        .header img { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #58a6ff; object-fit: cover; cursor: pointer; }
-        .header .user-info { text-align: center; margin-top: 15px; }
-        .header .username { font-size: 20px; font-weight: 600; }
-        .change-pic-btn { margin-top: 15px; padding: 8px 16px; background-color: #238636; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; }
-        .change-pic-btn:hover { background-color: #1c6b2d; }
-        .content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .content p { font-size: 16px; line-height: 1.5; text-align: center; padding: 0 20px; }
-        .logout-btn { background-color: #da3633; color: white; border: none; padding: 12px 20px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; }
-        .logout-btn:hover { background-color: #a81916; }
-        .statistics { display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #30363d; padding-bottom: 20px; }
-        .statistics div { display: flex; justify-content: space-between; padding: 10px 20px; background-color: #2d333b; border-radius: 8px; font-size: 14px; }
-        .zoomed-img-container { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 999; }
-        .zoomed-img-container img { width: 80%; height: auto; max-width: 600px; border-radius: 15px; }
-        .zoomed-img-container .close-btn { position: absolute; top: 20px; right: 20px; font-size: 24px; color: white; background: rgba(0, 0, 0, 0.5); border: none; padding: 10px; cursor: pointer; border-radius: 50%; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #161b22;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            gap: 20px;
+            height: 95%;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #58a6ff;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .header .user-info {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .header .username {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .change-pic-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-pic-btn:hover {
+            background-color: #1c6b2d;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .logout-btn {
+            background-color: #da3633;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #a81916;
+        }
+
+        /* Sección de estadísticas adicionales */
+        .statistics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+        }
+
+        .statistics div {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #2d333b;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Estilo para el zoom de la foto de perfil */
+        .zoomed-img-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .zoomed-img-container img {
+            width: 80%;
+            height: auto;
+            max-width: 600px;
+            border-radius: 15px;
+        }
+
+        .zoomed-img-container .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="header" class="header">
+        <!-- Encabezado con información del usuario -->
+        <div class="header">
             <img id="profilePic" src="" alt="Foto de Perfil" onclick="zoomProfilePic();">
             <input type="file" id="profilePicInput" style="display:none;" onchange="changeProfilePic()" accept="image/*">
             <div class="user-info">
                 <div class="username" id="usernameDisplay">Usuario</div>
             </div>
+            <!-- Botón de cambiar foto de perfil -->
             <button class="change-pic-btn" onclick="document.getElementById('profilePicInput').click();">Cambiar Foto</button>
             <div class="content">
                 <p>Bienvenido al panel de usuario. Aquí podrás gestionar tu cuenta y acceder a información personalizada.</p>
             </div>
         </div>
 
+        <!-- Contenido principal --> 
         <div class="statistics">
             <div>
                 <span>Correo Electrónico:</span>
@@ -55,10 +198,12 @@
             </div>
         </div>
         
+        <!-- Sección de estadísticas adicionales -->
         <div class="content">
             <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
         </div>
 
+        <!-- Contenedor para hacer zoom en la foto de perfil -->
         <div id="zoomedImgContainer" class="zoomed-img-container">
             <img id="zoomedImg" src="" alt="Zoomed Foto de Perfil">
             <button class="close-btn" onclick="closeZoom()">X</button>
@@ -66,16 +211,15 @@
     </div>
 
     <script>
-        // Recuperar la información del usuario desde localStorage
-        const username = localStorage.getItem("username");
+        // Verifica si hay un nombre de usuario guardado en localStorage
+        const username = localStorage.getItem("username") || "Usuario";  // Si no hay, muestra "Usuario"
         const profilePic = localStorage.getItem("profilePic") || "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
 
-        if (username) {
-            document.getElementById("header").style.display = "flex";
-            document.getElementById("usernameDisplay").textContent = username;
-            document.getElementById("profilePic").src = profilePic;
-        }
+        // Actualiza el DOM con los datos del usuario
+        document.getElementById("usernameDisplay").textContent = username;
+        document.getElementById("profilePic").src = profilePic;
 
+        // Función para cambiar la foto de perfil
         function changeProfilePic() {
             const file = document.getElementById('profilePicInput').files[0];
             if (file) {
@@ -88,25 +232,34 @@
             }
         }
 
+        // Función para hacer zoom en la foto de perfil
         function zoomProfilePic() {
             const imgSrc = document.getElementById("profilePic").src;
             document.getElementById("zoomedImg").src = imgSrc;
             document.getElementById("zoomedImgContainer").style.display = "flex";
         }
 
+        // Función para cerrar el zoom
         function closeZoom() {
             document.getElementById("zoomedImgContainer").style.display = "none";
         }
 
+        // Simula iniciar sesión y guardar el nombre de usuario
+        function login(usernameInput) {
+            localStorage.setItem("username", usernameInput);
+            document.getElementById("usernameDisplay").textContent = usernameInput;
+        }
+
+        // Función para cerrar sesión
         function logout() {
             localStorage.removeItem("username");
             localStorage.removeItem("profilePic");
-            document.getElementById("header").style.display = "none";
+            document.getElementById("usernameDisplay").textContent = "Usuario";
+            document.getElementById("profilePic").src = "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
         }
+
+        // Llamada de prueba para simular inicio de sesión
+        // login("NuevoUsuario");  // Descomenta esta línea para probar con un nombre de usuario diferente
     </script>
-    <script src="/resources/js/script-15.js"></script>
-<script src="/resources/js/script-12.js"></script>
-<script src="/resources/js/script-81.js"></script>
-<script src="/resources/js/script-34.js"></script>
 </body>
 </html>
