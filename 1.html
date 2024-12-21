@@ -26,7 +26,7 @@
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
             background-color: #161b22;
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -34,6 +34,8 @@
             flex-direction: column;
             padding: 30px;
             gap: 20px;
+            height: 95%;
+            overflow-y: auto;
         }
 
         .header {
@@ -52,7 +54,6 @@
             border: 2px solid #58a6ff;
             object-fit: cover;
             cursor: pointer;
-            margin-top: 20px;
         }
 
         .header .user-info {
@@ -112,6 +113,24 @@
             background-color: #a81916;
         }
 
+        /* Sección de estadísticas adicionales */
+.statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid #30363d; /* Cambié border-top a border-bottom */
+    padding-bottom: 20px; /* Añadí padding-bottom para asegurar el espacio abajo */
+}
+
+        .statistics div {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #2d333b;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
         /* Estilo para el zoom de la foto de perfil */
         .zoomed-img-container {
             display: none;
@@ -158,15 +177,28 @@
             </div>
             <!-- Botón de cambiar foto de perfil -->
             <button class="change-pic-btn" onclick="document.getElementById('profilePicInput').click();">Cambiar Foto</button>
+                            <div class="content">
+            <p>Bienvenido al panel de usuario. Aquí podrás gestionar tu cuenta y acceder a información personalizada.</p></div>
         </div>
 
-        <!-- Contenido -->
-        <div class="content">
-            <p>Bienvenido al panel de usuario. Aquí podrás gestionar tu cuenta y acceder a información personalizada.</p>
+        <!-- Contenido principal --> <div class="statistics">
+            <div>
+                <span>Correo Electrónico:</span>
+                <span id="userEmail">usuario@example.com</span>
+            </div>
+            <div>
+                <span>Publicaciones:</span>
+                <span>120</span>
+            </div>
+            <div>
+                <span>Última actividad:</span>
+                <span>Hace 2 horas</span>
+            </div>
+        </div>
+        <!-- Sección de estadísticas adicionales -->
+                <div class="content">
             <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
         </div>
-    </div>
-
     <!-- Contenedor para hacer zoom en la foto de perfil -->
     <div id="zoomedImgContainer" class="zoomed-img-container">
         <img id="zoomedImg" src="" alt="Zoomed Foto de Perfil">
@@ -216,4 +248,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
