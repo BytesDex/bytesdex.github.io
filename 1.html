@@ -118,8 +118,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            border-bottom: 1px solid #30363d; /* Cambié border-top a border-bottom */
-            padding-bottom: 20px; /* Añadí padding-bottom para asegurar el espacio abajo */
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
         }
 
         .statistics div {
@@ -211,8 +211,8 @@
     </div>
 
     <script>
-        // Verifica si hay un nombre de usuario en localStorage
-        const username = localStorage.getItem("username") || "Usuario";
+        // Verifica si hay un nombre de usuario guardado en localStorage
+        const username = localStorage.getItem("username") || "Usuario";  // Si no hay, muestra "Usuario"
         const profilePic = localStorage.getItem("profilePic") || "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
 
         // Actualiza el DOM con los datos del usuario
@@ -244,16 +244,21 @@
             document.getElementById("zoomedImgContainer").style.display = "none";
         }
 
+        // Simula iniciar sesión y guardar el nombre de usuario
+        function login(usernameInput) {
+            localStorage.setItem("username", usernameInput);
+            document.getElementById("usernameDisplay").textContent = usernameInput;
+        }
+
         // Función para cerrar sesión
         function logout() {
-            localStorage.removeItem("loggedIn");
-            localStorage.removeItem("currentUser");
-            document.querySelector(".overlay").style.display = "flex";
+            localStorage.removeItem("username");
+            localStorage.removeItem("profilePic");
+            document.getElementById("usernameDisplay").textContent = "Usuario";
+            document.getElementById("profilePic").src = "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
         }
+
+        // Si quieres probar la función de login manualmente, puedes llamar login('NombreDeUsuario') para probarlo
     </script>
-<script src="https://bytesdex.github.io/resources/js/script-34.js"></script>
-    <script src="https://bytesdex.github.io/resources/js/script-15.js"></script>
-<script src="https://bytesdex.github.io/resources/js/script-12.js"></script>
-<script src="https://bytesdex.github.io/resources/js/script-81.js"></script>
 </body>
 </html>
