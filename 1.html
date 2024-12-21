@@ -20,65 +20,83 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
+            height: 100%;
             max-width: 500px;
             background-color: #161b22;
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             animation: fadeIn 0.8s ease-in-out;
         }
 
         .header {
+            flex: 2;
             background-color: #21262d;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             border-bottom: 1px solid #30363d;
         }
 
         .header img {
-            width: 70px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid #58a6ff;
             object-fit: cover;
+            cursor: pointer;
         }
 
         .header .user-info {
-            display: flex;
-            flex-direction: column;
+            text-align: center;
         }
 
         .header .username {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
         }
 
-        .header .role {
+        .change-pic-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
             font-size: 14px;
-            color: #8b949e;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-pic-btn:hover {
+            background-color: #1c6b2d;
         }
 
         .content {
+            flex: 3;
             padding: 20px;
             text-align: center;
-            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
         }
 
         .content p {
             font-size: 16px;
-            margin-bottom: 20px;
             line-height: 1.5;
         }
 
-        .content .logout-btn {
+        .logout-btn {
             background-color: #da3633;
             color: white;
             border: none;
@@ -88,9 +106,11 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            align-self: center;
+            margin-top: auto;
         }
 
-        .content .logout-btn:hover {
+        .logout-btn:hover {
             background-color: #a81916;
         }
 
@@ -110,10 +130,10 @@
     <div class="container">
         <!-- Encabezado con información del usuario -->
         <div class="header">
-            <img id="profilePic" src="" alt="Foto de Perfil">
+            <img id="profilePic" src="" alt="Foto de Perfil" onclick="document.getElementById('profilePicInput').click();">
+            <input type="file" id="profilePicInput" style="display:none;" onchange="changeProfilePic()" accept="image/*">
             <div class="user-info">
                 <div class="username" id="usernameDisplay">Usuario</div>
-                <div class="role" id="roleDisplay">Rol: Miembro</div>
             </div>
         </div>
 
@@ -124,24 +144,32 @@
         </div>
     </div>
 
-    <script src="https://bytesdex.github.io/resources/js/script-34.js"></script>
-    <script src="https://bytesdex.github.io/resources/js/script-81.js"></script>
-    <script src="https://bytesdex.github.io/resources/js/script-12.js"></script>
     <script>
         // Carga de datos desde los scripts externos
         const username = localStorage.getItem("username") || "Usuario";
-        const role = localStorage.getItem("role") || "Miembro";
         const profilePic = localStorage.getItem("profilePic") || "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
 
         // Actualización del DOM con los datos del usuario
         document.getElementById("usernameDisplay").textContent = username;
-        document.getElementById("roleDisplay").textContent = `Rol: ${role}`;
         document.getElementById("profilePic").src = profilePic;
+
+        // Función para cambiar la foto de perfil
+        function changeProfilePic() {
+            const file = document.getElementById('profilePicInput').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    localStorage.setItem("profilePic", e.target.result);
+                    document.getElementById("profilePic").src = e.target.result;
+                    alert("Foto de perfil actualizada.");
+                }
+                reader.readAsDataURL(file);
+            }
+        }
 
         // Función para cerrar sesión
         function logout() {
             localStorage.removeItem("username");
-            localStorage.removeItem("role");
             localStorage.removeItem("profilePic");
             localStorage.removeItem("login"); // Elimina el estado de inicio de sesión
             alert("Has cerrado sesión.");
