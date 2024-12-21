@@ -3,61 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Panel de Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
         }
-        #userContainer {
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #161b22;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .header {
+            background-color: #21262d;
             padding: 20px;
-            border-radius: 5px;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #30363d;
         }
-        img {
+
+        .header img {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            width: 50px;
+            border: 2px solid #58a6ff;
+            object-fit: cover;
+        }
+
+        .header .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header .username {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .header .role {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .content .logout-btn {
+            background-color: #da3633;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .content .logout-btn:hover {
+            background-color: #a81916;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Encabezado con información del usuario -->
+        <div class="header">
+            <img id="profilePic" src="" alt="Foto de Perfil">
+            <div class="user-info">
+                <div class="username" id="usernameDisplay">Usuario</div>
+                <div class="role" id="roleDisplay">Rol: Miembro</div>
+            </div>
+        </div>
 
-<div id="userContainer" onclick="goToProfile()">
-    <img id="profilePicture" src="" alt="Foto de perfil">
-    <h2 id="username">Usuario</h2>
-</div>
+        <!-- Contenido -->
+        <div class="content">
+            <p>Bienvenido al panel de usuario. Aquí podrás gestionar tu cuenta y acceder a información personalizada.</p>
+            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        if (localStorage.getItem("loggedIn") === "true") {
-            const currentUser = localStorage.getItem("currentUser");
-            const profilePic = localStorage.getItem("profilePic");
-            
-            document.getElementById("username").innerText = currentUser || "Usuario";
-            
-            // Verifica si hay una foto de perfil almacenada
-            if (profilePic) {
-                document.getElementById("profilePicture").src = profilePic; // Asigna la foto de perfil desde localStorage
-            } else {
-                document.getElementById("profilePicture").src = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; // Foto predeterminada
-            }
-        } else {
-            document.getElementById("username").innerText = "Usuario";
-            document.getElementById("profilePicture").src = 'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; // Foto predeterminada
+    <script src="https://bytesdex.github.io/resources/js/script-34.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-81.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-12.js"></script>
+    <script>
+        // Carga de datos desde los scripts externos
+        const username = localStorage.getItem("username") || "Usuario";
+        const role = localStorage.getItem("role") || "Miembro";
+        const profilePic = localStorage.getItem("profilePic") || "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
+
+        // Actualización del DOM con los datos del usuario
+        document.getElementById("usernameDisplay").textContent = username;
+        document.getElementById("roleDisplay").textContent = `Rol: ${role}`;
+        document.getElementById("profilePic").src = profilePic;
+
+        // Función para cerrar sesión
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("role");
+            localStorage.removeItem("profilePic");
+            localStorage.removeItem("login"); // Elimina el estado de inicio de sesión
+            alert("Has cerrado sesión.");
+            window.location.href = "login.html"; // Redirige a la página de inicio de sesión
         }
-    });
-
-    function goToProfile() {
-        window.location.href = "2.html"; // Redirige a la página de perfil
-    }
-</script>
-<script src="/resources/js/script-34.js"></script>
+    </script>
 </body>
 </html>
