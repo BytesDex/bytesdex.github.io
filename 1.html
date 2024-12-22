@@ -211,64 +211,45 @@
     </div>
 
     <script>
-        // Verifica si hay un nombre de usuario guardado en localStorage
-        const username = localStorage.getItem("username") || "Usuario";  // Si no hay, muestra "Usuario"
-        const profilePic = localStorage.getItem("profilePic") || "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
-
-        // Actualiza el DOM con los datos del usuario
-        document.getElementById("usernameDisplay").textContent = username;
-        document.getElementById("profilePic").src = profilePic;
-
-        // Función para cambiar la foto de perfil
-        function changeProfilePic() {
-            const file = document.getElementById('profilePicInput').files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    localStorage.setItem("profilePic", e.target.result);
-                    document.getElementById("profilePic").src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Función para hacer zoom en la foto de perfil
-        function zoomProfilePic() {
-            const imgSrc = document.getElementById("profilePic").src;
-            document.getElementById("zoomedImg").src = imgSrc;
-            document.getElementById("zoomedImgContainer").style.display = "flex";
-        }
-
-        // Función para cerrar el zoom
-        function closeZoom() {
-            document.getElementById("zoomedImgContainer").style.display = "none";
-        }
-
-        // Simula iniciar sesión y guardar el nombre de usuario
-        function login(usernameInput) {
-            localStorage.setItem("username", usernameInput);
-            document.getElementById("usernameDisplay").textContent = usernameInput;
-        }
-
-        // Función para cerrar sesión
-        function logout() {
-            localStorage.removeItem("username");
-            localStorage.removeItem("profilePic");
-            document.getElementById("usernameDisplay").textContent = "Usuario";
-            document.getElementById("profilePic").src = "https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg";
-        }
-
-        // Llamada de prueba para simular inicio de sesión
-        // login("NuevoUsuario");  // Descomenta esta línea para probar con un nombre de usuario diferente
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-  const savedProfilePic = localStorage.getItem('profilePic') || 
+        // Cargar los datos del usuario
+const savedProfilePic = localStorage.getItem('profilePic') || 
     'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+displayUserData(localStorage.getItem('currentUser') || "Usuario", savedProfilePic);
 
-  displayUserData(localStorage.getItem('currentUser') || "Usuario", savedProfilePic);
-});
+// Mostrar los datos del usuario
+function displayUserData(username, profilePic) {
+  const userContainer = document.getElementById('userContainer');
+  userContainer.innerHTML = '';
 
+  // Crear imagen de perfil
+  const img = document.createElement('img');
+  img.src = profilePic;
+  img.alt = 'Foto de perfil';
+  img.style.borderRadius = '50%';
+  img.style.width = '100px';
+  img.style.height = '100px';
+  img.style.marginBottom = '10px';
+  img.style.border = '2px solid #CCCCCC';
+  img.style.cursor = 'pointer';
+
+  // Crear nombre de usuario
+  const span = document.createElement('span');
+  span.textContent = username;
+  span.style.fontSize = '18px';
+  span.style.fontWeight = 'bold';
+  span.style.display = 'block';
+  span.style.textAlign = 'center';
+
+  // Agregar al contenedor
+  userContainer.appendChild(img);
+  userContainer.appendChild(span);
+
+  // Asignar eventos
+  img.onclick = zoomProfilePic;
+  span.onclick = chooseProfilePicture;
+}
+
+// Cambiar la foto de perfil
 function chooseProfilePicture() {
   const input = document.createElement('input');
   input.type = 'file';
@@ -276,7 +257,6 @@ function chooseProfilePicture() {
 
   input.addEventListener('change', function () {
     const file = this.files[0];
-
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
@@ -291,28 +271,35 @@ function chooseProfilePicture() {
   input.click();
 }
 
-function displayUserData(username, profilePic) {
-  const userContainer = document.getElementById('userContainer');
-  userContainer.innerHTML = '';
+// Función para hacer zoom en la foto de perfil
+function zoomProfilePic() {
+  const imgSrc = localStorage.getItem('profilePic') || 
+    'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+  const zoomedContainer = document.getElementById("zoomedImgContainer");
+  document.getElementById("zoomedImg").src = imgSrc;
+  zoomedContainer.style.display = "flex";
+}
 
-  const img = document.createElement('img');
-  img.src = profilePic;
-  img.alt = 'Foto de perfil';
-  img.style.borderRadius = '50%';
-  img.style.width = '50px';
-  img.style.height = '50px';
-  img.style.marginRight = '10px';
-  img.style.border = '1.5px solid #CCCCCC';
+// Cerrar el zoom
+function closeZoom() {
+  document.getElementById("zoomedImgContainer").style.display = "none";
+}
 
-  const span = document.createElement('span');
-  span.textContent = username;
+// Iniciar sesión
+function login(usernameInput) {
+  localStorage.setItem("currentUser", usernameInput);
+  displayUserData(usernameInput, localStorage.getItem('profilePic') || 
+    'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+}
 
-  userContainer.appendChild(img);
-  userContainer.appendChild(span);
-
-  img.onclick = span.onclick = chooseProfilePicture;
-        }
-    </script>
+// Cerrar sesión
+function logout() {
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("profilePic");
+  displayUserData("Usuario", 
+    'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+      }
+    </script>       
     <script src="/resources/js/script-15.js"></script>
 <script src="/resources/js/script-81.js"></script>
 <script src="/resources/js/script-34.js"></script>
