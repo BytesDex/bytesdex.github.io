@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #161b22;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            gap: 20px;
+            height: 95%;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #58a6ff;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .header .user-info {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .header .username {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .change-pic-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-pic-btn:hover {
+            background-color: #1c6b2d;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .logout-btn {
+            background-color: #da3633;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #a81916;
+        }
+
+        .statistics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+        }
+
+        .statistics div {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #2d333b;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .zoomed-img-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .zoomed-img-container img {
+            width: 80%;
+            height: auto;
+            max-width: 600px;
+            border-radius: 15px;
+        }
+
+        .zoomed-img-container .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="userContainer">
+                <p id="userText">Usuario</p>
+            </div>
+<button class="change-pic-btn" onclick="chooseProfilePicture()">Cambiar Foto</button>
+            <div class="content">
+                <p>Bienvenido al panel de usuario. Aquí podrás gestionar tu cuenta y acceder a información personalizada.</p>
+            </div>
+        </div>
+
+        <div class="statistics">
+            <div>
+                <span>Correo Electrónico:</span>
+                <span id="userEmail">usuario@example.com</span>
+            </div>
+            <div>
+                <span>Publicaciones:</span>
+                <span>120</span>
+            </div>
+            <div>
+                <span>Última actividad:</span>
+                <span>Hace 2 horas</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+
+        <div id="zoomedImgContainer" class="zoomed-img-container">
+            <img id="zoomedImg" src="" alt="Zoomed Foto de Perfil">
+            <button class="close-btn" onclick="closeZoom()">X</button>
+        </div>
+    </div>
+
+<script>
+    const savedProfilePic = localStorage.getItem('profilePic') || 
+        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+    displayUserData(localStorage.getItem('currentUser') || "Usuario", savedProfilePic);
+
+    // Lista de usuarios baneados
+    const bannedUsers = [""]; // Define tus usuarios baneados aquí
+
+    function displayUserData(username, profilePic) {
+        const userContainer = document.getElementById('userContainer');
+        userContainer.innerHTML = '';
+
+        // Crear imagen de perfil
+        const img = document.createElement('img');
+        img.src = profilePic;
+        img.alt = 'Foto de perfil';
+        img.style.borderRadius = '50%';
+        img.style.width = '100px';
+        img.style.height = '100px';
+        img.style.marginBottom = '10px';
+        img.style.border = '2px solid #CCCCCC';
+        img.style.cursor = 'pointer';
+
+        // Crear nombre de usuario
+        const span = document.createElement('span');
+        span.textContent = username;
+        span.style.fontSize = '18px';
+        span.style.fontWeight = 'bold';
+        span.style.display = 'block';
+        span.style.textAlign = 'center';
+
+        // Añadir icono de verificación si es un usuario verificado
+        const verifiedUsers = ["Bytes", "Test"];
+        if (verifiedUsers.includes(username)) {
+            const verifiedIcon = document.createElement('span');
+            verifiedIcon.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                <g fill="none" stroke-linejoin="round" stroke-width="4">
+                  <path fill="#2f88ff" stroke="#rgba(0, 0, 0, 0.5)" d="M24 44C29.5228 44 34.5228 41.7614 38.1421 38.1421C41.7614 34.5228 44 29.5228 44 24C44 18.4772 41.7614 13.4772 38.1421 9.85786C34.5228 6.23858 29.5228 4 24 4C18.4772 4 13.4772 6.23858 9.85786 9.85786C6.23858 13.4772 4 18.4772 4 24C4 29.5228 6.23858 34.5228 9.85786 38.1421C13.4772 41.7614 18.4772 44 24 44Z" />
+                  <path stroke="#fff" stroke-linecap="round" d="M16 24L22 30L34 18" />
+                </g>
+              </svg>`;
+            verifiedIcon.style.marginLeft = '5px';
+            verifiedIcon.style.verticalAlign = 'middle';  // Ajustar alineación vertical
+            verifiedIcon.style.display = 'inline-block';  // Asegura que el icono se muestre en línea con el nombre
+            verifiedIcon.style.marginTop = '2px';  // Ajustar un poco la posición vertical
+            span.appendChild(verifiedIcon);
+        }
+
+        // Agregar la imagen y el nombre al contenedor
+        userContainer.appendChild(img);
+        userContainer.appendChild(span);
+
+        // Asignar eventos a la imagen
+        img.onclick = zoomProfilePic;
+    }
+
+    // Cambiar la foto de perfil
+    function chooseProfilePicture() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const profilePic = e.target.result;
+                    localStorage.setItem('profilePic', profilePic);
+                    displayUserData(localStorage.getItem('currentUser') || "Usuario", profilePic);
+                };
+                reader.readAsDataURL(file); // Leer la imagen como un Data URL
+            }
+        });
+
+        input.click();  // Abrir el selector de archivos
+    }
+
+    // Función para hacer zoom en la foto de perfil
+    function zoomProfilePic() {
+        const imgSrc = localStorage.getItem('profilePic') || 
+            'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+        const zoomedContainer = document.getElementById("zoomedImgContainer");
+        document.getElementById("zoomedImg").src = imgSrc;
+        zoomedContainer.style.display = "flex";
+    }
+
+    // Cerrar el zoom
+    function closeZoom() {
+        document.getElementById("zoomedImgContainer").style.display = "none";
+    }
+
+    // Evento que gestiona el inicio de sesión, este será llamado desde un formulario o similar.
+    document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("loggedIn") === "true") {
+            const currentUser = localStorage.getItem("currentUser");
+            if (bannedUsers.includes(currentUser)) {
+                alert('Tu cuenta ha sido baneada.');
+                logout();
+            } else {
+                displayUserData(currentUser, localStorage.getItem("profilePic"));
+            }
+        } else {
+            displayUserData("Usuario", localStorage.getItem("profilePic") || 
+                'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+        }
+    });
+
+    // Cerrar sesión
+    function logout() {
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("profilePic");
+        displayUserData("Usuario", 
+            'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+    }
+</script>
+</body>
+</html>
