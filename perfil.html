@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Usuario</title>
+    <title>Perfil</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -202,27 +202,6 @@
     </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const currentUser = localStorage.getItem("currentUser") || "Usuario"; // Usar un valor predeterminado si no hay usuario
-    const savedProfilePic = localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; // Imagen predeterminada
-
-    // Verificar si el usuario está baneado
-    if (localStorage.getItem("loggedIn") === "true") {
-        if (bannedUsers.includes(currentUser)) {
-            alert('Tu cuenta ha sido baneada.');
-            logout();
-        } else {
-            displayUserData(currentUser, savedProfilePic);
-        }
-    } else {
-        displayUserData("Usuario", savedProfilePic);
-    }
-});
-
-// Lista de usuarios baneados
-const bannedUsers = ["User1", "User2"]; // Define tus usuarios baneados aquí
-
 function displayUserData(username, profilePic) {
     const userContainer = document.getElementById('userContainer');
     userContainer.innerHTML = '';  // Limpiar el contenedor
@@ -243,8 +222,9 @@ function displayUserData(username, profilePic) {
     span.textContent = username;
     span.style.fontSize = '18px';
     span.style.fontWeight = 'bold';
-    span.style.display = 'block';
-    span.style.textAlign = 'center';
+    span.style.display = 'inline-flex';  // Usamos inline-flex para permitir el alineamiento
+    span.style.alignItems = 'center';   // Alineamos el texto y el icono verticalmente
+    span.style.justifyContent = 'center';  // Asegura que el contenido esté centrado
 
     // Añadir icono de verificación si es un usuario verificado
     const verifiedUsers = ["Bytes", "Test"];
@@ -257,9 +237,7 @@ function displayUserData(username, profilePic) {
                     <path stroke="#fff" stroke-linecap="round" d="M16 24L22 30L34 18" />
                 </g>
             </svg>`;
-        verifiedIcon.style.marginLeft = '5px';
-        verifiedIcon.style.verticalAlign = 'middle';  // Ajustar alineación vertical
-        verifiedIcon.style.display = 'inline-block';  // Asegura que el icono se muestre en línea con el nombre
+        verifiedIcon.style.marginLeft = '5px';  // Separación entre el nombre y el icono
         verifiedIcon.style.marginTop = '2px';  // Ajustar un poco la posición vertical
         span.appendChild(verifiedIcon);
     }
@@ -270,61 +248,7 @@ function displayUserData(username, profilePic) {
 
     // Asignar eventos a la imagen
     img.onclick = zoomProfilePic;
-}
-
-// Cambiar la foto de perfil
-function chooseProfilePicture() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-
-    input.addEventListener('change', function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const profilePic = e.target.result;
-                localStorage.setItem('profilePic', profilePic);
-                displayUserData(localStorage.getItem('currentUser') || "Usuario", profilePic);
-            };
-            reader.readAsDataURL(file); // Leer la imagen como un Data URL
-        }
-    });
-
-    input.click();  // Abrir el selector de archivos
-}
-
-// Función para hacer zoom en la foto de perfil
-function zoomProfilePic() {
-    const imgSrc = localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
-    const zoomedContainer = document.getElementById("zoomedImgContainer");
-    document.getElementById("zoomedImg").src = imgSrc;
-    zoomedContainer.style.display = "flex";
-}
-
-// Cerrar el zoom
-function closeZoom() {
-    document.getElementById("zoomedImgContainer").style.display = "none";
-}
-
-// Evento para gestionar el inicio de sesión
-function login(username) {
-    localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("currentUser", username);
-    displayUserData(username, localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
-}
-
-// Cerrar sesión
-function logout() {
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("profilePic");
-    displayUserData("Usuario", 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
-    }
-                    
+        }       
 </script>
     <script src="/resources/js/script-34.js"></script>
 </body>
