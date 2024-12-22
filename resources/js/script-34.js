@@ -33,7 +33,7 @@ const users = [
   { username: "Vmlubnk", password: "dmlhbmV5bG9w" }
 ];
 
-let bannedUsers = ["Bytes"];
+let bannedUsers = [""];
 
 function login() {
   const username = document.getElementById('username').value;
