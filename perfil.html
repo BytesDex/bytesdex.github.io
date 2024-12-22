@@ -204,11 +204,18 @@ document.addEventListener("DOMContentLoaded", function () {
         'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; 
 
     if (localStorage.getItem("loggedIn") === "true") {
-        displayUserData(currentUser, savedProfilePic);
+        if (bannedUsers.includes(currentUser)) {
+            alert('Tu cuenta ha sido baneada.');
+            logout();
+        } else {
+            displayUserData(currentUser, savedProfilePic);
+        }
     } else {
         displayUserData("Usuario", savedProfilePic);
     }
 });
+
+const bannedUsers = [""];
 
 function displayUserData(username, profilePic) {
     const userContainer = document.getElementById('userContainer');
@@ -300,7 +307,7 @@ function logout() {
     localStorage.removeItem("profilePic");
     displayUserData("Usuario", 
         'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
-}  
+    }  
 </script>
 <script src="/resources/js/script-34.js"></script>
 </body>
