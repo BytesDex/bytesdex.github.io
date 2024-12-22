@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <link rel="stylesheet" href="/resources/css/style-30.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -162,9 +163,25 @@
             cursor: pointer;
             border-radius: 50%;
         }
+
+        .a {
+        color: #00bfff;
+        text-decoration: none;
+        }
+
+        .a:hover {
+        color: #87ceeb;
+        text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <div class="popup-container" style="display: none;">
+  <div class="popup">
+    <h2>No tienes una cuenta iniciada</h2>
+    <p>Por favor <a href="./funciones" class="a">inicia sesión</a> o <a href="./registro" class="a">registra una cuenta nueva</a>.</p>
+  </div>
+</div>
     <div class="container">
         <div class="header">
             <div id="userContainer">
@@ -309,6 +326,7 @@ function logout() {
         'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
     }  
 </script>
+<script src="/resources/js/script-35.js"></script>
 <script src="/resources/js/script-34.js"></script>
 </body>
 </html>
