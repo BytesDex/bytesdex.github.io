@@ -48,9 +48,10 @@
         <div class="menu-icon" onclick="toggleMenu()">≡</div> 
         <div class="dropdown-menu" id="dropdown-menu">
           <div id="userContainer" class="a">
-    <a href="./perfil" id="userTextLink">
-        <p id="userText">Usuario</p>
-    </a>
+  <div id="userInfoContainer">
+    <img id="profilePic" src="https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg" alt="Foto de perfil" />
+    <p id="userText">Usuario</p>
+  </div>
           </div>
         <br>
         <div class="menu__item">
@@ -133,6 +134,40 @@
 <script src="/resources/js/script-15.js"></script>
 <script src="/resources/js/script-12.js"></script>
 <script src="/resources/js/script-81.js"></script>
-<script src="/resources/js/script-34.js"></script>
+<script>
+    function displayUserData(username, profilePic) {
+  const userContainer = document.getElementById('userContainer');
+  userContainer.innerHTML = ''; // Limpiar el contenedor
+
+  const userInfoContainer = document.createElement('div');
+  userInfoContainer.id = 'userInfoContainer';
+  userInfoContainer.style.display = 'flex';
+  userInfoContainer.style.alignItems = 'center';
+
+  const img = document.createElement('img');
+  img.src = profilePic;
+  img.alt = 'Foto de perfil';
+  img.style.borderRadius = '50%';
+  img.style.width = '50px';
+  img.style.height = '50px';
+  img.style.marginRight = '10px';
+  img.style.cursor = 'pointer'; // Para indicar que se puede hacer clic en la imagen
+  img.onclick = function() {
+    window.location.href = './perfil'; // Redirigir a la página de perfil
+  };
+
+  const span = document.createElement('span');
+  span.textContent = username;
+  span.style.cursor = 'pointer'; // Para indicar que se puede hacer clic en el nombre
+  span.onclick = function() {
+    window.location.href = './perfil'; // Redirigir a la página de perfil
+  };
+
+  userInfoContainer.appendChild(img);
+  userInfoContainer.appendChild(span);
+
+  userContainer.appendChild(userInfoContainer);
+                                                }
+</script>
 </body>
 </html>
