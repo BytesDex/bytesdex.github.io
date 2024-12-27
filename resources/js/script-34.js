@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     document.querySelector(".overlay").style.display = "flex";
     displayUserData("Usuario", localStorage.getItem("profilePic") || 
-      'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+      'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
   }
 });
 
@@ -55,7 +55,7 @@ function login() {
       localStorage.setItem("currentUser", decodedUsername);
       closePopup();
       const profilePic = localStorage.getItem("profilePic") || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+        'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
       displayUserData(decodedUsername, profilePic);
     }
   } else {
@@ -68,7 +68,7 @@ function logout() {
   localStorage.removeItem("currentUser");
   document.querySelector(".overlay").style.display = "flex";
   displayUserData("Usuario", localStorage.getItem("profilePic") || 
-    'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+    'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
 }
 
 function closePopup() {
