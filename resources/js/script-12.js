@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const savedProfilePic = localStorage.getItem('profilePic') || 
-    'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+    'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
 
   displayUserData(localStorage.getItem('currentUser') || "Usuario", savedProfilePic);
 });
