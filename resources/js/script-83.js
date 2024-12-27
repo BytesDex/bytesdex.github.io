@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const currentUser = localStorage.getItem("currentUser") || "Usuario"; 
     const savedProfilePic = localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; 
+        'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg'; 
 
     if (localStorage.getItem("loggedIn") === "true") {
         if (bannedUsers.includes(currentUser)) {
@@ -84,7 +84,7 @@ function chooseProfilePicture() {
 
 function zoomProfilePic() {
     const imgSrc = localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
+        'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg';
     const zoomedContainer = document.getElementById("zoomedImgContainer");
     document.getElementById("zoomedImg").src = imgSrc;
     zoomedContainer.style.display = "flex";
@@ -98,7 +98,7 @@ function login(username) {
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("currentUser", username);
     displayUserData(username, localStorage.getItem('profilePic') || 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+        'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
 }
     
 function logout() {
@@ -106,5 +106,5 @@ function logout() {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("profilePic");
     displayUserData("Usuario", 
-        'https://cdm-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
+        'https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg');
 }  
