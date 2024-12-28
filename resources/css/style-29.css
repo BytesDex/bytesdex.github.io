@@ -153,7 +153,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(34, 34, 34, 1); 
+  background-color: #000; 
   display: none; 
   justify-content: center;
   align-items: center;
@@ -161,7 +161,7 @@
 }
 
 .login-popup {
-  background-color: #111;
+  background-color: #1c1c1c;
   color: white;
   width: 300px;
   padding: 20px;
@@ -180,15 +180,19 @@
   color: white;
   padding: 10px;
   background-color: #444;
-  border: none;
+  border: 2px solid #222;
   border-radius: 3px;
+}
+
+.login-popup input:focus {
+  border-color: #55acee; 
 }
 
 .login-popup button {
   width: 100%;
   padding: 10px;
   border: none;
-  background-color: #007bff;
+  background-color: #0071e3;
   color: #fff;
   border-radius: 3px;
   cursor: pointer;
@@ -210,7 +214,7 @@ p {
 
 .footer {
   width: 100%;
-  background-color: #111;
+  background-color: #333;
   padding: 20px 0;
   text-align: center;
   font-size: 16px;
