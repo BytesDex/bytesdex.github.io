@@ -23,7 +23,7 @@
         }
 
         form {
-            background-color: #222;
+            background-color: #111;
             padding: 20px;
             border-radius: 8px;
         }
@@ -48,14 +48,14 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            background-color: #007bff;
+            background-color: #0071e3;
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         button[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #005bb5;
         }
 
         .mensaje {
