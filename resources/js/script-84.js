@@ -8,17 +8,17 @@ function displayUserData(username, profilePic) {
   userInfoContainer.style.alignItems = 'center';
 
   const img = document.createElement('img');
-img.src = profilePic;
-img.alt = 'Foto de perfil';
-img.style.borderRadius = '50%';
-img.style.width = '50px';
-img.style.height = '50px';
-img.style.marginRight = '10px';
-img.style.cursor = 'pointer';
-img.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'; 
-img.onclick = function() {
+  img.src = profilePic;
+  img.alt = 'Foto de perfil';
+  img.style.borderRadius = '50%';
+  img.style.width = '50px';
+  img.style.height = '50px';
+  img.style.marginRight = '10px';
+  img.style.cursor = 'pointer';
+  img.style.boxShadow = '0 0 8px 2px rgba(0, 0, 0, 0.4)';
+  img.onclick = function() {
   window.location.href = './perfil';
-};
+  };
 
   const span = document.createElement('span');
   span.textContent = username;
