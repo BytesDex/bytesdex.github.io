@@ -6,6 +6,40 @@
 <script src="/resources/js/script-72.js"></script>
 <link rel="stylesheet" href="/resources/css/style-47.css">
 <title>Baby Player</title>
+  <style>
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; 
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0.5;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+  </style>
 </head>
 <body>
   <div class="banner">
@@ -65,7 +99,23 @@
     </div>
     <footer>
         <p>&copy; 2024 BytesDex, Tec.</p>
-    </footer>                                                                                                                                                               </footer>
+    </footer>  
+  <div id="snow-container"></div>
+    <script>
+        const snowContainer = document.getElementById('snow-container');
+        const snowflakeCount = 100; 
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄️';
+            snowflake.style.left = Math.random() * 100 + 'vw'; 
+            snowflake.style.animationDuration = Math.random() * 10 + 5 + 's'; 
+            snowflake.style.animationDelay = Math.random() * 5 + 's'; 
+            snowflake.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
+            snowContainer.appendChild(snowflake);
+        }
+                                      </script>
 <script src="/resources/js/script-61.js"></script>
 </body>
 </html>
