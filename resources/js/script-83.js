@@ -28,7 +28,6 @@ function displayUserData(username, profilePic) {
     img.style.width = '100px';
     img.style.height = '100px';
     img.style.marginBottom = '10px';
-    img.style.border = '2px solid #CCCCCC';
     img.style.cursor = 'pointer';
 
     const span = document.createElement('span');
