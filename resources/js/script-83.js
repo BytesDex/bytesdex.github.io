@@ -29,7 +29,7 @@ function displayUserData(username, profilePic) {
     img.style.height = '100px';
     img.style.marginBottom = '10px';
     img.style.cursor = 'pointer';
-    img.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.8)'; 
+    img.style.boxShadow = '0 0 25px 10px rgba(0, 0, 0, 0.8)'; 
     
     const span = document.createElement('span');
     span.textContent = username;
