@@ -85,13 +85,13 @@ function displayUserData(username, profilePic) {
   userInfoContainer.style.alignItems = 'center';
 
   const img = document.createElement('img');
-  img.src = profilePic;
-  img.alt = 'Foto de perfil';
-  img.style.borderRadius = '50%';
-  img.style.width = '50px';
-  img.style.height = '50px';
-  img.style.marginRight = '10px';
-  img.style.border = '1.5px solid #CCCCCC';
+img.src = profilePic;
+img.alt = 'Foto de perfil';
+img.style.borderRadius = '50%';
+img.style.width = '50px';
+img.style.height = '50px';
+img.style.marginRight = '10px';
+img.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'; 
 
   const span = document.createElement('span');
   span.textContent = username;
