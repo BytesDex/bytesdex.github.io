@@ -1,7 +1,7 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #000;
+            background-color: #121212;
             color: #fff;
             scroll-behavior: smooth;
             overflow-x: hidden;
@@ -11,7 +11,7 @@
             display: flex;
             align-items: center;
             padding: 10px 20px;
-            background-color: #1c1c1c;
+            background-color: #252525;
             position: fixed;
             width: 100%;
             top: 0;
@@ -84,7 +84,7 @@
         }
 
         .action {
-            background-color: #1c1c1c;
+            background-color: #252525;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
