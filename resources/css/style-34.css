@@ -219,6 +219,18 @@
     padding: 10px 15px 10px 0; 
 }
 
+.sections {
+    background: #252525;
+    color: white;
+    text-align: center; 
+    padding: 10px 15px 10px 0; 
+}
+
+.sections a:active {
+    color: #87ceeb;
+    text-decoration: underline;
+}
+
 .a {
        color: white;
        text-decoration: none;
