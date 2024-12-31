@@ -212,6 +212,11 @@
             color: #87ceeb;
         }
 
+        footer p:first-of-type {
+            
+            margin-right: 20px; 
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
