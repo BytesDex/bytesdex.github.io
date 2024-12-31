@@ -18,6 +18,13 @@
             background-color: #000;
             color: #ffffff;
             scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
         }
 
         header {
@@ -176,11 +183,33 @@
             background: #333;
             color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            font-size: 15px;
         }
 
         footer p {
-            margin: 0;
+            margin: 5px 0;
+        }
+
+        footer img {
+            width: 65px;
+            height: 65px;
+            vertical-align: middle;
+            margin-right: -15px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #87ceeb;
         }
 
         @keyframes fadeIn {
