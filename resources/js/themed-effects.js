@@ -1,25 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const snowActive = localStorage.getItem('snowActive') === 'true';
     const snowToggle = document.getElementById('snowToggle');
     const style = document.createElement('style');
     const snowflakeCountDisplay = document.getElementById('snowflakeCount');
-    const monthBadge = document.getElementById('monthBadge');
     let snowflakesCount = 0;
     let snowInterval = null;
-
-    if (snowToggle) {
-        snowToggle.checked = snowActive;
-        snowToggle.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                localStorage.setItem('snowActive', 'true');
-                createSnowEffect();
-            } else {
-                localStorage.setItem('snowActive', 'false');
-                removeSnowEffect();
-            }
-        });
-    }
+    let maxSnowflakes = 50;
 
     style.innerHTML = `
         .snowflake {
@@ -46,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
+    function adjustMaxSnowflakes() {
+        const screenArea = window.innerWidth * window.innerHeight;
+        maxSnowflakes = Math.max(50, Math.floor(screenArea / 50000));
+    }
+
     function updateSnowflakeCount() {
         if (snowflakeCountDisplay) {
             snowflakeCountDisplay.textContent = `Copos activos: ${snowflakesCount}`;
@@ -56,9 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (snowInterval) return;
 
         snowInterval = setInterval(() => {
-            if (snowflakesCount >= 50) {
-                return;
-            }
+            if (snowflakesCount >= maxSnowflakes) return;
 
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -76,9 +65,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 snowflakesCount--;
                 updateSnowflakeCount();
             });
+
+            setTimeout(() => {
+                if (document.body.contains(snowflake)) {
+                    snowflake.remove();
+                    snowflakesCount--;
+                    updateSnowflakeCount();
+                }
+            }, parseFloat(snowflake.style.animationDuration) * 1000);
         }, 500);
     }
-
+    
     function removeSnowEffect() {
         if (snowInterval) {
             clearInterval(snowInterval);
@@ -87,31 +84,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const snowflakes = document.querySelectorAll('.snowflake');
         snowflakes.forEach(snowflake => snowflake.remove());
+
         snowflakesCount = 0;
         updateSnowflakeCount();
     }
 
-    function checkDecember() {
-        const today = new Date();
-        const isDecember = today.getMonth() === 11;
-
-        if (monthBadge) {
-            monthBadge.textContent = isDecember ? 'Diciembre Activo' : 'Diciembre Inactivo';
-            monthBadge.classList.toggle('active', isDecember);
-        }
-
-        if (isDecember && !snowToggle?.checked) {
+    function restoreSnowState() {
+        if (snowActive) {
             createSnowEffect();
-        } else if (!isDecember && !snowToggle?.checked) {
-            removeSnowEffect();
+        }
+        if (snowToggle) {
+            snowToggle.checked = snowActive; 
         }
     }
 
-    checkDecember();
-
-    setInterval(checkDecember, 60000);
-
-    if (snowActive) {
-        createSnowEffect();
+    if (snowToggle) {
+        snowToggle.checked = snowActive;
+        snowToggle.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            localStorage.setItem('snowActive', isChecked ? 'true' : 'false');
+            if (isChecked) {
+                createSnowEffect();
+            } else {
+                removeSnowEffect();
+            }
+        });
     }
-});
+
+    adjustMaxSnowflakes();
+    
+    restoreSnowState();
+
+    window.addEventListener('resize', adjustMaxSnowflakes);
+
+    window.addEventListener('beforeunload', removeSnowEffect);
+}); 
