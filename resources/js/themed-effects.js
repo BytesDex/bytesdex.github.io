@@ -1,20 +1,95 @@
+const style = document.createElement('style');
+style.innerHTML = `
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        color: white;
+        font-size: 1em;
+        animation: snowfall linear infinite;
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: 9999;
+    }
+
+    @keyframes snowfall {
+        from {
+            transform: translateY(-10px) rotate(0deg);
+            opacity: 0.8;
+        }
+        to {
+            transform: translateY(105vh) rotate(360deg);
+            opacity: 0.2;
+        }
+    }
+
+    .badge.active {
+        animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+`;
+document.head.appendChild(style);
+
+function initSnowEffect() {
+    const today = new Date();
+    const currentMonth = today.getMonth(); 
+    const currentDay = today.getDate(); 
+
+    if (currentMonth === 11 && currentDay >= 1 && currentDay <= 31) {
+        createSnowEffect();
+    }
+}
+
+function createSnowEffect() {
+    const body = document.body;
+    let snowflakesCount = 0; 
+
+    const interval = setInterval(() => {
+        if (snowflakesCount >= 50) { 
+            clearInterval(interval);
+        } else {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄'; 
+            snowflake.style.left = Math.random() * 100 + 'vw'; 
+            snowflake.style.fontSize = Math.random() * 1.5 + 0.5 + 'em'; 
+            snowflake.style.animationDuration = Math.random() * 4 + 4 + 's'; 
+            body.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+                snowflakesCount--;  
+            });
+
+            snowflakesCount++; 
+        }
+    }, 500); 
+}
+
+initSnowEffect();
+
 class SnowEffect {
     constructor() {
         this.snowActive = localStorage.getItem('snowActive') === 'true';
         this.snowToggle = document.getElementById('snowToggle');
         this.snowflakeCountDisplay = document.getElementById('snowflakeCount');
-        this.monthBadge = document.getElementById('monthBadge');
         this.snowflakesCount = 0;
         this.maxSnowflakes = 50;
         this.snowInterval = null;
         this.isPageVisible = true;
         this.activeSnowflakes = new Set();
+        this.monthBadge = document.getElementById('monthBadge');
 
         this.initializeStyles();
         this.initializeEventListeners();
         this.adjustMaxSnowflakes();
-        this.checkDecember();
         
+        this.checkDecember();
+
         if (this.snowActive) {
             this.startSnowfall();
         }
@@ -31,7 +106,7 @@ class SnowEffect {
                 pointer-events: none;
                 opacity: 0.8;
                 z-index: 9999;
-                will-change: transform;
+                animation: snowfall linear infinite;
             }
 
             @keyframes snowfall {
@@ -43,6 +118,16 @@ class SnowEffect {
                     transform: translateY(105vh) rotate(360deg);
                     opacity: 0.2;
                 }
+            }
+
+            .badge.active {
+                animation: bounce 1s infinite;
+            }
+
+            @keyframes bounce {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0); }
             }
         `;
         document.head.appendChild(style);
@@ -72,8 +157,6 @@ class SnowEffect {
                 }
             });
         }
-
-        setInterval(() => this.checkDecember(), 60000);
     }
 
     createSnowflake() {
@@ -85,7 +168,7 @@ class SnowEffect {
         snowflake.style.left = `${Math.random() * 100}vw`;
         snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`;
 
-        const duration = Math.random() * 4 + 4; // 4-8 seconds
+        const duration = Math.random() * 4 + 4;
         snowflake.animate(
             [
                 { transform: 'translateY(-10px) rotate(0deg)', opacity: 0.8 },
@@ -165,13 +248,12 @@ class SnowEffect {
 
         if (this.monthBadge) {
             this.monthBadge.textContent = isDecember ? 'Diciembre Activo' : 'Diciembre Inactivo';
-            this.monthBadge.classList.toggle('active', isDecember);
-        }
-
-        if (!isDecember) {
-            this.stopSnowfall();
-        } else if (isDecember && this.snowActive) {
-            this.startSnowfall();
+            if (isDecember) {
+                this.monthBadge.style.backgroundColor = '#0071e3';
+            } else {
+                this.monthBadge.style.backgroundColor = '';
+            }
+            this.monthBadge.classList.remove('active');
         }
     }
 }
