@@ -1,121 +1,181 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const snowActive = localStorage.getItem('snowActive') === 'true';
-    const snowToggle = document.getElementById('snowToggle');
-    const style = document.createElement('style');
-    const snowflakeCountDisplay = document.getElementById('snowflakeCount');
-    let snowflakesCount = 0;
-    let snowInterval = null;
-    let maxSnowflakes = 50;
+class SnowEffect {
+    constructor() {
+        this.snowActive = localStorage.getItem('snowActive') === 'true';
+        this.snowToggle = document.getElementById('snowToggle');
+        this.snowflakeCountDisplay = document.getElementById('snowflakeCount');
+        this.monthBadge = document.getElementById('monthBadge');
+        this.snowflakesCount = 0;
+        this.maxSnowflakes = 50;
+        this.snowInterval = null;
+        this.isPageVisible = true;
+        this.activeSnowflakes = new Set();
 
-    style.innerHTML = `
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            color: white;
-            font-size: 1em;
-            animation: fall linear infinite;
-            pointer-events: none;
-            opacity: 0.8;
-            z-index: 9999;
+        this.initializeStyles();
+        this.initializeEventListeners();
+        this.adjustMaxSnowflakes();
+        this.checkDecember();
+        
+        if (this.snowActive) {
+            this.startSnowfall();
         }
+    }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
+    initializeStyles() {
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .snowflake {
+                position: fixed;
+                top: -10px;
+                color: white;
+                font-size: 1em;
+                pointer-events: none;
                 opacity: 0.8;
+                z-index: 9999;
+                will-change: transform;
             }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.2;
-            }
-        }
-    `;
-    document.head.appendChild(style);
 
-    function adjustMaxSnowflakes() {
-        const screenArea = window.innerWidth * window.innerHeight;
-        maxSnowflakes = Math.max(50, Math.floor(screenArea / 50000));
-    }
-
-    function updateSnowflakeCount() {
-        if (snowflakeCountDisplay) {
-            snowflakeCountDisplay.textContent = `Copos activos: ${snowflakesCount}`;
-        }
-    }
-
-    function createSnowEffect() {
-        if (snowInterval) return;
-
-        snowInterval = setInterval(() => {
-            if (snowflakesCount >= maxSnowflakes) return;
-
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.fontSize = Math.random() * 1.5 + 0.5 + 'em';
-            snowflake.style.animationDuration = Math.random() * 4 + 4 + 's';
-            document.body.appendChild(snowflake);
-
-            snowflakesCount++;
-            updateSnowflakeCount();
-
-            snowflake.addEventListener('animationend', () => {
-                snowflake.remove();
-                snowflakesCount--;
-                updateSnowflakeCount();
-            });
-
-            setTimeout(() => {
-                if (document.body.contains(snowflake)) {
-                    snowflake.remove();
-                    snowflakesCount--;
-                    updateSnowflakeCount();
+            @keyframes snowfall {
+                from {
+                    transform: translateY(-10px) rotate(0deg);
+                    opacity: 0.8;
                 }
-            }, parseFloat(snowflake.style.animationDuration) * 1000);
-        }, 500);
-    }
-    
-    function removeSnowEffect() {
-        if (snowInterval) {
-            clearInterval(snowInterval);
-            snowInterval = null;
-        }
-
-        const snowflakes = document.querySelectorAll('.snowflake');
-        snowflakes.forEach(snowflake => snowflake.remove());
-
-        snowflakesCount = 0;
-        updateSnowflakeCount();
+                to {
+                    transform: translateY(105vh) rotate(360deg);
+                    opacity: 0.2;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 
-    function restoreSnowState() {
-        if (snowActive) {
-            createSnowEffect();
-        }
-        if (snowToggle) {
-            snowToggle.checked = snowActive; 
-        }
-    }
-
-    if (snowToggle) {
-        snowToggle.checked = snowActive;
-        snowToggle.addEventListener('change', (e) => {
-            const isChecked = e.target.checked;
-            localStorage.setItem('snowActive', isChecked ? 'true' : 'false');
-            if (isChecked) {
-                createSnowEffect();
+    initializeEventListeners() {
+        document.addEventListener('visibilitychange', () => {
+            this.isPageVisible = document.visibilityState === 'visible';
+            if (this.isPageVisible && this.snowActive) {
+                this.startSnowfall();
             } else {
-                removeSnowEffect();
+                this.pauseSnowfall();
             }
         });
+
+        window.addEventListener('resize', () => this.adjustMaxSnowflakes());
+        
+        if (this.snowToggle) {
+            this.snowToggle.checked = this.snowActive;
+            this.snowToggle.addEventListener('change', (e) => {
+                this.snowActive = e.target.checked;
+                localStorage.setItem('snowActive', this.snowActive);
+                if (this.snowActive) {
+                    this.startSnowfall();
+                } else {
+                    this.stopSnowfall();
+                }
+            });
+        }
+
+        setInterval(() => this.checkDecember(), 60000);
     }
 
-    adjustMaxSnowflakes();
-    
-    restoreSnowState();
+    createSnowflake() {
+        if (this.activeSnowflakes.size >= this.maxSnowflakes || !this.isPageVisible) return;
 
-    window.addEventListener('resize', adjustMaxSnowflakes);
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.textContent = '❄';
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`;
 
-    window.addEventListener('beforeunload', removeSnowEffect);
-}); 
+        const duration = Math.random() * 4 + 4; // 4-8 seconds
+        snowflake.animate(
+            [
+                { transform: 'translateY(-10px) rotate(0deg)', opacity: 0.8 },
+                { transform: 'translateY(105vh) rotate(360deg)', opacity: 0.2 }
+            ],
+            {
+                duration: duration * 1000,
+                easing: 'linear',
+                iterations: 1
+            }
+        ).onfinish = () => this.removeSnowflake(snowflake);
+
+        document.body.appendChild(snowflake);
+        this.activeSnowflakes.add(snowflake);
+        this.snowflakesCount = this.activeSnowflakes.size;
+        this.updateSnowflakeCount();
+
+        setTimeout(() => {
+            if (document.body.contains(snowflake)) {
+                this.removeSnowflake(snowflake);
+            }
+        }, duration * 1000 + 1000);
+    }
+
+    removeSnowflake(snowflake) {
+        if (document.body.contains(snowflake)) {
+            snowflake.remove();
+            this.activeSnowflakes.delete(snowflake);
+            this.snowflakesCount = this.activeSnowflakes.size;
+            this.updateSnowflakeCount();
+        }
+    }
+
+    startSnowfall() {
+        if (this.snowInterval) return;
+        
+        for (let i = 0; i < Math.min(10, this.maxSnowflakes); i++) {
+            this.createSnowflake();
+        }
+
+        this.snowInterval = setInterval(() => {
+            if (this.isPageVisible && this.snowActive) {
+                this.createSnowflake();
+            }
+        }, 200);
+    }
+
+    pauseSnowfall() {
+        if (this.snowInterval) {
+            clearInterval(this.snowInterval);
+            this.snowInterval = null;
+        }
+    }
+
+    stopSnowfall() {
+        this.pauseSnowfall();
+        this.activeSnowflakes.forEach(snowflake => this.removeSnowflake(snowflake));
+        this.activeSnowflakes.clear();
+        this.snowflakesCount = 0;
+        this.updateSnowflakeCount();
+    }
+
+    adjustMaxSnowflakes() {
+        const screenArea = window.innerWidth * window.innerHeight;
+        this.maxSnowflakes = Math.max(50, Math.floor(screenArea / 50000));
+    }
+
+    updateSnowflakeCount() {
+        if (this.snowflakeCountDisplay) {
+            this.snowflakeCountDisplay.textContent = `Copos activos: ${this.snowflakesCount}`;
+        }
+    }
+
+    checkDecember() {
+        const today = new Date();
+        const isDecember = today.getMonth() === 11;
+
+        if (this.monthBadge) {
+            this.monthBadge.textContent = isDecember ? 'Diciembre Activo' : 'Diciembre Inactivo';
+            this.monthBadge.classList.toggle('active', isDecember);
+        }
+
+        if (!isDecember) {
+            this.stopSnowfall();
+        } else if (isDecember && this.snowActive) {
+            this.startSnowfall();
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.snowEffect = new SnowEffect();
+});
