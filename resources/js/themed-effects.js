@@ -1,13 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
-        
-    const snowActive = localStorage.getItem('snowActive') === 'true';
 
+    const snowActive = localStorage.getItem('snowActive') === 'true';
     const snowToggle = document.getElementById('snowToggle');
+    const style = document.createElement('style');
+    const snowflakeCountDisplay = document.getElementById('snowflakeCount');
+    const monthBadge = document.getElementById('monthBadge');
+    let snowflakesCount = 0;
+    let snowInterval = null;
+
     if (snowToggle) {
         snowToggle.checked = snowActive;
+        snowToggle.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                localStorage.setItem('snowActive', 'true');
+                createSnowEffect();
+            } else {
+                localStorage.setItem('snowActive', 'false');
+                removeSnowEffect();
+            }
+        });
     }
 
-    const style = document.createElement('style');
     style.innerHTML = `
         .snowflake {
             position: fixed;
@@ -32,11 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     `;
     document.head.appendChild(style);
-
-    let snowflakesCount = 0;
-    let snowInterval = null;
-    const snowflakeCountDisplay = document.getElementById('snowflakeCount');
-    const monthBadge = document.getElementById('monthBadge'); 
 
     function updateSnowflakeCount() {
         if (snowflakeCountDisplay) {
@@ -102,18 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
     checkDecember();
 
     setInterval(checkDecember, 60000);
-
-    if (snowToggle) {
-        snowToggle.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                localStorage.setItem('snowActive', 'true');
-                createSnowEffect();
-            } else {
-                localStorage.setItem('snowActive', 'false');
-                removeSnowEffect();
-            }
-        });
-    }
 
     if (snowActive) {
         createSnowEffect();
