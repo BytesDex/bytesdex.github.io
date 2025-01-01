@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const snowActive = localStorage.getItem('snowActive') === 'true';
     const snowToggle = document.getElementById('snowToggle');
+    const monthBadge = document.getElementById('monthBadge');
     const style = document.createElement('style');
     const snowflakeCountDisplay = document.getElementById('snowflakeCount');
     let snowflakesCount = 0;
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, parseFloat(snowflake.style.animationDuration) * 1000);
         }, 500);
     }
-    
+
     function removeSnowEffect() {
         if (snowInterval) {
             clearInterval(snowInterval);
@@ -94,12 +95,29 @@ document.addEventListener('DOMContentLoaded', function () {
             createSnowEffect();
         }
         if (snowToggle) {
-            snowToggle.checked = snowActive; 
+            snowToggle.checked = snowActive;
+        }
+    }
+
+    function checkDecember() {
+        const today = new Date();
+        const isDecember = today.getMonth() === 11;
+
+        if (monthBadge) {
+            monthBadge.textContent = isDecember ? 'Diciembre Activo' : 'Diciembre Inactivo';
+            monthBadge.classList.toggle('active', isDecember);
+        }
+
+        if (isDecember && !snowActive) {
+            localStorage.setItem('snowActive', 'true');
+            restoreSnowState();
+        } else if (!isDecember && snowActive) {
+            localStorage.setItem('snowActive', 'false');
+            removeSnowEffect();
         }
     }
 
     if (snowToggle) {
-        snowToggle.checked = snowActive;
         snowToggle.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
             localStorage.setItem('snowActive', isChecked ? 'true' : 'false');
@@ -112,10 +130,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     adjustMaxSnowflakes();
-    
     restoreSnowState();
-
+    checkDecember();
     window.addEventListener('resize', adjustMaxSnowflakes);
-
     window.addEventListener('beforeunload', removeSnowEffect);
-}); 
+    setInterval(checkDecember, 60000);
+});
