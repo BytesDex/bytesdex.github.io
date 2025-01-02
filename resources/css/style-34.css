@@ -34,11 +34,18 @@
             transition: background-color 0.3s;
         }
 
-        .logo {
-            font-size: 24px;
-            color: #0071e3; 
-            font-weight: 700;
-        }
+.logo {
+  font-size: 24px;
+  color: #0071e3;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#greeting {
+  color: white;
+  display: block;
+  margin-top: 10px;
+}
 
         .menu-icon {
             font-size: 24px;
