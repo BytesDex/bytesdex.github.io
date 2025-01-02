@@ -1,24 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const currentUser = localStorage.getItem("currentUser");
-  updateGreeting(currentUser);
-});
-
-function updateGreeting(username) {
+document.addEventListener("DOMContentLoaded", () => {
   const greeting = document.getElementById('greeting');
   const currentHour = new Date().getHours();
-  let greetingText = '';
+  
+  greeting.textContent = getGreeting(currentHour);
+});
 
-  if (currentHour >= 6 && currentHour < 12) {
-    greetingText = 'Buenos días';
-  } else if (currentHour >= 12 && currentHour < 18) {
-    greetingText = 'Buenas tardes';
-  } else {
-    greetingText = 'Buenas noches';
-  }
-
-  if (username) {
-    greetingText += `, ${username}`;
-  }
-
-  greeting.textContent = greetingText;
-}
+const getGreeting = (hour) => {
+  if (hour >= 6 && hour < 12) return 'Buenos días';
+  if (hour >= 12 && hour < 18) return 'Buenas tardes';
+  return 'Buenas noches';
+};
