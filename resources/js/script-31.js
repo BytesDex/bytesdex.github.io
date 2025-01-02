@@ -1,48 +1,18 @@
-const themeSelect = document.getElementById('themeSelect');
+const checkbox = document.getElementById('terms-checkbox');
+        const acceptButton = document.getElementById('accept-button');
+        const thankYouMessage = document.getElementById('thank-you-message');
 
-if (themeSelect) {
+        if (localStorage.getItem('acceptedTerms')) {
+            document.querySelector('.terms-section').style.display = 'none';  
+            thankYouMessage.style.display = 'block';  
+        } else {
+            checkbox.addEventListener('change', function() {
+                acceptButton.disabled = !this.checked;
+            });
 
-  const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    applyTheme(storedTheme);
-    themeSelect.value = storedTheme;
-  }
-
-  themeSelect.addEventListener('change', function() {
-    const theme = this.value;
-    localStorage.setItem('theme', theme);
-    applyTheme(theme);
-  });
-}
-
-function applyTheme(theme) {
-  const body = document.body;
-  const links = document.querySelectorAll('.link');
-
-  if (theme === 'dark') {
-    body.style.backgroundColor = '#333';
-    body.style.color = '#ffffff';
-    links.forEach(link => {
-      link.style.color = '#ffffff'; 
-      link.style.textDecoration = 'none'; 
-    });
-    document.querySelectorAll('.letter').forEach(letter => {
-      letter.style.color = '#ffffff'; 
-    });
-  } else {
-    body.style.backgroundColor = '#ffffff';
-    body.style.color = '#000000';
-    links.forEach(link => {
-      link.style.color = '#000000'; 
-      link.style.textDecoration = 'none'; 
-    });
-    document.querySelectorAll('.letter').forEach(letter => {
-      letter.style.color = '#000000';
-    });
-  }
-}
-
-const storedTheme = localStorage.getItem('theme');
-if (storedTheme) {
-  applyTheme(storedTheme);
+            acceptButton.addEventListener('click', function() {
+                localStorage.setItem('acceptedTerms', 'true');  
+                document.querySelector('.terms-section').style.display = 'none';  
+                thankYouMessage.style.display = 'block';
+            });
         }
