@@ -39,7 +39,7 @@ header {
     font-size: 24px;
     color: #0071e3;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 #greeting {
@@ -60,7 +60,7 @@ header {
 
         .dropdown-menu {
     position: absolute;
-    top: 84px;
+    top: 74.1px;
     right: 40px;
     background-color: #252525;
     border-radius: 0 0 0px 5px;
