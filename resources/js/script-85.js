@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const currentUser = localStorage.getItem("currentUser");
-  if (currentUser) {
-    updateGreeting(currentUser);
-  }
+  updateGreeting(currentUser);
 });
 
 function updateGreeting(username) {
@@ -11,11 +9,15 @@ function updateGreeting(username) {
   let greetingText = '';
 
   if (currentHour >= 6 && currentHour < 12) {
-    greetingText = `Buenos días, ${username}`;
+    greetingText = 'Buenos días';
   } else if (currentHour >= 12 && currentHour < 18) {
-    greetingText = `Buenas tardes, ${username}`;
+    greetingText = 'Buenas tardes';
   } else {
-    greetingText = `Buenas noches, ${username}`;
+    greetingText = 'Buenas noches';
+  }
+
+  if (username) {
+    greetingText += `, ${username}`;
   }
 
   greeting.textContent = greetingText;
