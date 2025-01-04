@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/style-42.css">
-    <title>Página - Error 404</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página no encontrada en BytesDex">
+  <meta property="og:title" content="Página no encontrada">
+  <meta property="og:description" content="La página que estás buscando no existe.">
+  <meta property="og:image" content="path-to-image.jpg">
+  <title>Página no encontrada</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/css/style-42.css">
+  <link href="https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption" rel="stylesheet" type="text/css">
+  <link rel="icon" href="path-to-favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <div class="center">       
-      <img id="imagen4" alt="Imagen de error 404" width="250">
-      <p>¡Vaya! Parece que ha habido un error en nuestro sistema y la página que estás buscando no se puede cargar en este momento.</p>
-      <button id="retry-button">Intentar de nuevo</button>
-      <div class="alert" id="error-alert">Lo sentimos, parece que aún hay un problema. La página que buscas sigue sin estar disponible en este momento. Por favor, inténtalo nuevamente más tarde o contáctanos si el problema persiste.</div>
-      <img id="loading-gif" src="https://cdn-bytesdex.github.io/resources/multimedia/imagen/cargando.gif" alt="GIF de carga" width="50">
+  <div class="error">
+    <div class="container-fluid">
+      <div class="col-xs-12 ground-color text-center">
+        <div class="container-error-404">
+          <div class="clip">
+            <div class="shadow">
+              <span class="digit thirdDigit"></span>
+            </div>
+          </div>
+          <div class="clip">
+            <div class="shadow">
+              <span class="digit secondDigit"></span>
+            </div>
+          </div>
+          <div class="clip">
+            <div class="shadow">
+              <span class="digit firstDigit"></span>
+            </div>
+          </div>
+          <div class="msg">OH!<span class="triangle"></span></div>
+        </div>
+        <h2 class="h1">Página no encontrada</h2>
+        <p>Lo siento, la página que estás buscando no se encuentra disponible.</p>
+        <a href="javascript:history.back()" class="btn btn-primary">Volver a la página anterior</a>
+      </div>
     </div>
-<script src="/resources/js/script-62.js"></script>
+  </div>
+
 <script src="/resources/js/script-63.js"></script>
 </body>
 </html>
