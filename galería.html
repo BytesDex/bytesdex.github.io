@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Privada</title>
+    <link rel="stylesheet" href="/resources/css/style-58.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container" id="loginSection">
+            <h1>Galería Privada</h1>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Introduce la contraseña" autocomplete="off" />
+            </div>
+            <button onclick="uT6wB3()">Entrar</button>
+            <p class="error-message" id="errorMsg">Contraseña incorrecta. Vuelve a intentarlo.</p>
+        </div>
+
+        <div class="gallery-container" id="gallerySection">
+            <h1>Colección</h1>
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="switchTab('todo')">Todo</div>
+                <div class="nav-tab" onclick="switchTab('fotos')">Fotos</div>
+                <div class="nav-tab" onclick="switchTab('videos')">Videos</div>
+            </div>
+
+            <div class="media-sections">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title" id="sectionTitle">Todo el contenido</h2>
+                    </div>
+                    <div class="media-grid" id="mediaGrid">
+                    </div>
+                </div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">Salir</button>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+<script src="/resources/js/script-86.js"></script>
+</body>
+</html>
