@@ -166,45 +166,53 @@ body {
 </head>
 <body>
     <div class="flex flex-col h-screen max-w-md mx-auto w-full">
-        <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 shadow-md">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h2 class="text-xl font-bold flex items-center">
-                        Sync
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" class="ml-1 mt-1">
-                            <g fill="none" stroke-linejoin="round" stroke-width="4">
-                                <path fill="#2f88ff" stroke="#ffffff" stroke-width="2" d="M24 44C29.5228 44 34.5228 41.7614 38.1421 38.1421C41.7614 34.5228 44 29.5228 44 24C44 18.4772 41.7614 13.4772 38.1421 9.85786C34.5228 6.23858 29.5228 4 24 4C18.4772 4 13.4772 6.23858 9.85786 9.85786C6.23858 13.4772 4 18.4772 4 24C4 29.5228 6.23858 34.5228 9.85786 38.1421C13.4772 41.7614 18.4772 44 24 44Z"/>
-                                <path stroke="#ffffff" stroke-linecap="round" d="M16 24L22 30L34 18"/>
-                            </g>
-                        </svg>
-                    </h2>
-                    <p class="text-xs opacity-75">con Llama 4.o</p>
-                </div>
-                <div class="flex items-center space-x-2 mt-1">
-                    <span class="h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
-                </div>
-            </div>
-        </header>
-        <main id="chatContainer" class="chat-container">
-        </main>
-        <div id="typingIndicator" class="typing-indicator"></div>
-        <footer class="chat-footer">
-            <div class="flex items-center space-x-2">
-                <input 
-                    type="text" 
-                    id="userInput" 
-                    placeholder="Escribe un mensaje..." 
-                    class="flex-grow p-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
-                >
-                <button 
-                    id="sendButton" 
-                    class="send-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 shadow-md">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-xl font-bold flex items-center">
+                    Sync
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" class="ml-1 mt-1">
+                        <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#2f88ff" stroke="#ffffff" stroke-width="2" d="M24 44C29.5228 44 34.5228 41.7614 38.1421 38.1421C41.7614 34.5228 44 29.5228 44 24C44 18.4772 41.7614 13.4772 38.1421 9.85786C34.5228 6.23858 29.5228 4 24 4C18.4772 4 13.4772 6.23858 9.85786 9.85786C6.23858 13.4772 4 18.4772 4 24C4 29.5228 6.23858 34.5228 9.85786 38.1421C13.4772 41.7614 18.4772 44 24 44Z"/>
+                            <path stroke="#ffffff" stroke-linecap="round" d="M16 24L22 30L34 18"/>
+                        </g>
                     </svg>
-                </button>
+                </h2>
+                <p class="text-xs opacity-75">con Llama 4.o</p>
             </div>
-        </footer>
+            <div class="flex items-center space-x-2 mt-1">
+                <span class="h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
+            </div>
+        </div>
+    </header>
+
+    <main id="chatContainer" class="chat-container"></main>
+
+    <div id="typingIndicator" class="typing-indicator"></div>
+
+    <footer class="chat-footer">
+        <div class="flex items-center space-x-2">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Escribe un mensaje..." 
+                class="flex-grow p-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+            <button class="send-btn" onclick="location.reload();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                        <path d="M9.533 11.15A1.82 1.82 0 0 0 9 12.438V15h2.578c.483 0 .947-.192 1.289-.534l7.6-7.604a1.82 1.82 0 0 0 0-2.577l-.751-.751a1.82 1.82 0 0 0-2.578 0z" />
+                        <path d="M21 12c0 4.243 0 6.364-1.318 7.682S16.242 21 12 21s-6.364 0-7.682-1.318S3 16.242 3 12s0-6.364 1.318-7.682S7.758 3 12 3" />
+                    </g>
+                </svg>
+            </button>
+            <button id="sendButton" class="send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 20V4m0 0l6 6m-6-6l-6 6" />
+                </svg>
+            </button>
+        </div>
+    </footer>
     </div>
     <script src="y7ugx1u549j0wdb5hjp6.js"></script>
 </body>
