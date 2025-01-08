@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asistente IA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+* {
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    overflow: hidden; 
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    background-color: transparent;
+    max-height: 71vh;
+    overflow-y: auto;
+    padding: 16px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-animate {
+    animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensaje-burbuja {
+    max-width: 85%;
+    background-color: #333;
+    word-wrap: break-word;
+    hyphens: auto;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mensaje-burbuja.user {
+    background-color: #3b82f6;
+    color: #fff;
+    margin-left: auto;
+}
+
+.mensaje-burbuja.bot {
+    background-color: #222;
+    color: #fff;
+}
+
+.chat-footer {
+    padding: 16px;
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.chat-footer input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.chat-footer input:focus {
+    outline: none;
+    background-color: #333;
+    border: 2px solid #3b82f6;
+}
+
+.send-btn {
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background-color: #2563eb;
+}
+
+.send-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.typing-bubble {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+    width: 90px;  
+    height: 40px;  
+    padding: 10px;
+    background-color: #333;
+    border-radius: 20px;
+    margin: 0;
+    gap: 0px;  
+}
+
+.dot {
+    width: 12px;  
+    height: 12px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: dot-blink 1.1s infinite, dot-move 1.1s infinite;
+}
+
+@keyframes dot-blink {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-move {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.6s;
+    }
+
+/* Estilo del botón */
+#settings-btn {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#settings-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del menú */
+#settings-menu {
+    position: absolute;
+    left: 0;
+    bottom: 85px;  /* Ajusta según la altura del botón */
+    background-color: #252525;
+    border: 1px solid #444;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 250px;
+    opacity: 0;
+    transform: translateX(-250px);  /* Ocultar el menú hacia la izquierda */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1000;
+}
+
+/* Listado de opciones del menú */
+#settings-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#settings-menu li {
+    padding: 15px 20px;
+    text-align: left;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: 1px solid #333;
+}
+
+#settings-menu li:last-child {
+    border-bottom: none;  /* Elimina la línea inferior en el último ítem */
+}
+
+/* Efecto de hover en los elementos del menú */
+#settings-menu li:hover {
+    background-color: #333;
+    transform: translateX(5px);  /* Ligera animación al pasar el mouse */
+}
+
+#settings-menu a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+#settings-menu a:hover {
+    color: #00b8ff;
+}
+
+/* Estilo cuando el menú es visible */
+#settings-menu.visible {
+    opacity: 1;
+    transform: translateX(0);  /* El menú se desliza a su posición original */
+}
+
+/* Transición cuando el menú está oculto */
+.hidden {
+    display: none;
+}
+
+/* Agregar un fondo difuso al hacer clic fuera del menú */
+body {
+    position: relative;
+}
+
+body.menu-open::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    pointer-events: none;  /* Permite hacer clic en el menú */
+}
+
+/* Mejorar el estilo de la animación */
+#settings-menu.visible {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-250px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="flex flex-col h-screen max-w-md mx-auto w-full">
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 shadow-md">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-xl font-bold flex items-center">
+                    Sync
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" class="ml-1 mt-1">
+                        <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#2f88ff" stroke="#ffffff" stroke-width="2" d="M24 44C29.5228 44 34.5228 41.7614 38.1421 38.1421C41.7614 34.5228 44 29.5228 44 24C44 18.4772 41.7614 13.4772 38.1421 9.85786C34.5228 6.23858 29.5228 4 24 4C18.4772 4 13.4772 6.23858 9.85786 9.85786C6.23858 13.4772 4 18.4772 4 24C4 29.5228 6.23858 34.5228 9.85786 38.1421C13.4772 41.7614 18.4772 44 24 44Z" />
+                            <path stroke="#ffffff" stroke-linecap="round" d="M16 24L22 30L34 18" />
+                        </g>
+                    </svg>
+                </h2>
+                <p class="text-xs opacity-75">con Llama 4.o</p>
+            </div>
+            <div class="flex items-center space-x-2 mt-1">
+                <span class="h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
+            </div>
+        </div>
+    </header>
+
+    <main id="chatContainer" class="chat-container"></main>
+
+    <div id="typingIndicator" class="typing-indicator"></div>
+
+    <footer class="chat-footer">
+        <div class="flex items-center space-x-2">
+  <button class="send-btn" id="settings-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 12h-6m0 0H6m6 0V6m0 6v6" />
+    </svg>
+</button>
+
+<div id="settings-menu" class="settings-menu hidden">
+    <ul>
+      <li>            <div id="userContainer" class="a">
+                <div id="userInfoContainer">
+                    <img id="profilePic" src="https://cdn-bytesdex.github.io/resources/multimedia/imagen/perfil-predeterminado.jpg" alt="Foto de perfil" />
+                    <p id="userText">Usuario</p>
+                </div></li>
+        <li><a href="#opcion1">💡 Configuración</a></li>
+        <li><a href="#opcion2">🔔 Notificaciones</a></li>
+        <li><a href="#opcion3">❓ Ayuda</a></li>
+        <li><a href="#opcion4">⚙️ Más ajustes</a></li>
+    </ul>
+</div>
+
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Escribe un mensaje..." 
+                class="flex-grow p-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+            <button class="send-btn" onclick="location.reload();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                        <path d="M9.533 11.15A1.82 1.82 0 0 0 9 12.438V15h2.578c.483 0 .947-.192 1.289-.534l7.6-7.604a1.82 1.82 0 0 0 0-2.577l-.751-.751a1.82 1.82 0 0 0-2.578 0z" />
+                        <path d="M21 12c0 4.243 0 6.364-1.318 7.682S16.242 21 12 21s-6.364 0-7.682-1.318S3 16.242 3 12s0-6.364 1.318-7.682S7.758 3 12 3" />
+                    </g>
+                </svg>
+            </button>
+            <button id="sendButton" class="send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19.5v-15m0 0l-6 5.625M12 4.5l6 5.625" />
+                </svg>
+            </button>
+        </div>
+    </footer>
+</div>
+
+    <script src="y7ugx1u549j0wdb5hjp6.js"></script>
+    <script>// Función para abrir y cerrar el menú
+document.getElementById('settings-btn').addEventListener('click', function (event) {
+    event.stopPropagation(); // Evita que el clic en el botón cierre el menú inmediatamente
+    const menu = document.getElementById('settings-menu');
+    if (menu.classList.contains('visible')) {
+        menu.classList.remove('visible');
+        setTimeout(() => menu.classList.add('hidden'), 300); // Oculta después de la animación
+    } else {
+        menu.classList.remove('hidden');
+        setTimeout(() => menu.classList.add('visible'), 10); // Activa después de que se muestra
+    }
+});
+
+// Cierra el menú si el usuario hace clic fuera de él
+document.addEventListener('click', function (event) {
+    const menu = document.getElementById('settings-menu');
+    const button = document.getElementById('settings-btn');
+    if (!menu.contains(event.target) && event.target !== button) {
+        // Si el clic no es en el botón ni en el menú, lo cierra
+        if (menu.classList.contains('visible')) {
+            menu.classList.remove('visible');
+            setTimeout(() => menu.classList.add('hidden'), 300);
+        }
+    }
+});
+      
+    </script>
+<script src="https://bytesdex.github.io/resources/js/script-15.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-12.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-34.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-81.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/script-84.js"></script>
+    <script src="https://bytesdex.github.io/resources/js/themed-effects.js"></script>
+</body>
+  </html>
