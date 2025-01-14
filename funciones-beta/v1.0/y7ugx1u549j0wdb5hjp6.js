@@ -40,848 +40,1192 @@ class AsistenteInteligente {
 
     obtenerRespuesta(mensaje) {
         const mensajeLower = mensaje.toLowerCase();
+        
+const regexPrimo = /(me gusta mi primo|estoy enamorado de mi primo|siento algo por mi primo|mi primo me atrae|tengo sentimientos por mi primo)/i;
 
-        if (mensajeLower.includes('sumar') || mensajeLower.includes('+')) {
-            return this.operar(mensaje, '+');
-        } else if (mensajeLower.includes('restar') || mensajeLower.includes('-')) {
-            return this.operar(mensaje, '-');
-        } else if (mensajeLower.includes('multiplicar') || mensajeLower.includes('*')) {
-            return this.operar(mensaje, '*');
-        } else if (mensajeLower.includes('dividir') || mensajeLower.includes('/')) {
-            return this.operar(mensaje, '/');
-        } else if (mensajeLower.includes('raíz cuadrada')) {
-            return this.operarRaizCuadrada(mensaje);
-        }
+if (regexPrimo.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Las relaciones familiares deben ser tratadas con mucho cuidado. Si estás sintiendo algo confuso, puede ser útil hablar con un profesional que pueda ayudarte a entender mejor tus emociones.",
         
-        else if (mensajeLower.includes('hora') || mensajeLower.includes('hora actual')) {
-            return this.obtenerHoraActual();
-        } else if (mensajeLower.includes('día') || mensajeLower.includes('día de hoy')) {
-            return this.obtenerDiaActual();
-        } else if (mensajeLower.includes('año') || mensajeLower.includes('año actual')) {
-            return this.obtenerAñoActual();
-        } else if (mensajeLower.includes('fecha') || mensajeLower.includes('fecha de hoy')) {
-            return this.obtenerFechaActual();
-        }
+        "Es completamente natural tener sentimientos complejos, pero los lazos familiares deben ser tratados con respeto y cuidado. Buscar ayuda de un terapeuta o consejero puede ser una excelente forma de procesar estos sentimientos.",
         
-        const regex = /puedes (generar|hacer|crear) (imágenes?|imagenes?)/i;
+        "Cuando surgen sentimientos complicados hacia un miembro de la familia, puede ser útil hablar con un profesional para entender qué está sucediendo y cómo manejarlo de una manera saludable.",
+        
+        "Es importante recordar que las relaciones familiares deben basarse en el respeto y el apoyo mutuo. Si te sientes confundido o incómodo con estos sentimientos, hablar con un terapeuta puede ayudarte a aclarar lo que estás experimentando.",
+        
+        "Entiendo que estos sentimientos pueden ser confusos. Si sientes que no sabes cómo manejarlo, te recomiendo hablar con un profesional que pueda ofrecerte el apoyo adecuado.",
+        
+        "Los sentimientos hacia miembros de la familia pueden ser complejos, y es importante buscar apoyo para entender lo que estás sintiendo. Un terapeuta o consejero puede proporcionarte orientación para manejar esta situación de manera saludable.",
+        
+        "Cuando te enfrentas a sentimientos difíciles hacia un primo o cualquier otro miembro de la familia, hablar con un profesional de salud mental puede ser una forma excelente de obtener claridad y apoyo."
+    ]);
+}
+        
+const regexHermana = /(me gusta mi hermana|estoy enamorado de mi hermana|siento algo por mi hermana|mi hermana me atrae|tengo sentimientos por mi hermana)/i;
+
+if (regexHermana.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Es importante recordar que los lazos familiares deben ser respetados y tratados con cuidado. Si te sientes confundido acerca de tus sentimientos, hablar con un profesional podría ayudarte a entender mejor lo que estás experimentando.",
+        
+        "Este tipo de sentimientos pueden ser complicados y confusos. Te recomiendo que hables con un terapeuta o consejero para comprender mejor lo que sientes y cómo manejarlo de manera saludable.",
+        
+        "Los lazos familiares son muy importantes y deben mantenerse dentro de un marco de respeto. Si estás pasando por algo que te hace sentir incómodo o confundido, buscar apoyo emocional puede ser muy útil.",
+        
+        "Es completamente natural sentirse confundido por ciertos sentimientos, pero es fundamental tratar los vínculos familiares con respeto. Un profesional de la salud mental puede ayudarte a procesar estos sentimientos de forma saludable.",
+        
+        "Si estás experimentando sentimientos complejos hacia tu hermana, hablar con un terapeuta puede proporcionarte el apoyo adecuado para aclarar tus emociones y saber cómo manejarlas de la mejor manera.",
+        
+        "Las relaciones familiares deben ser respetuosas y saludables. Si tienes dudas sobre lo que sientes, puede ser útil hablar con un consejero o terapeuta para explorar estos sentimientos con más claridad.",
+        
+        "Es importante comprender que los lazos familiares son fundamentales. Si tienes sentimientos que te confunden, buscar ayuda profesional puede ser una manera efectiva de procesarlos y encontrar una resolución saludable."
+    ]);
+}
+        
+const regexHermano = /(me gusta mi hermano|estoy enamorado de mi hermano|siento algo por mi hermano|mi hermano me atrae|tengo sentimientos por mi hermano)/i;
+
+if (regexHermano.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Es importante recordar que los lazos familiares son muy especiales y deben ser tratados con respeto. Si te sientes confundido acerca de tus sentimientos, podría ser útil hablar con un profesional para entender mejor lo que sientes.",
+        
+        "Este es un tema delicado. Si sientes que tus sentimientos son confusos o difíciles de manejar, te sugiero que hables con un profesional para que te pueda ayudar a comprenderlos mejor.",
+        
+        "Los sentimientos familiares son muy fuertes, pero si estás pasando por algo que te hace sentir incómodo o confundido, es importante buscar apoyo emocional, como terapia o hablar con alguien de confianza.",
+        
+        "Los lazos familiares deben ser respetuosos y protectores. Si estás lidiando con sentimientos complicados, hablar con un terapeuta o un consejero podría ayudarte a manejarlos de la mejor manera.",
+        
+        "Es totalmente válido tener sentimientos complejos, pero es importante saber que hay profesionales que pueden ayudarte a manejar esos sentimientos de forma saludable.",
+        
+        "El respeto por los lazos familiares es crucial. Si tienes dudas sobre lo que sientes, puede ser útil hablar con un profesional que te ayude a aclarar cualquier confusión.",
+        
+        "Este tipo de sentimientos puede ser difícil de manejar. No está mal buscar ayuda para entenderlos y manejarlos de una manera que te haga sentir bien contigo mismo.",
+        
+        "Es importante tener en cuenta que los sentimientos hacia los familiares cercanos pueden ser complicados. Hablar con un profesional podría ayudarte a lidiar con estas emociones de manera más saludable."
+    ]);
+}
+        
+const regexAmiga = /(me gusta mi amiga|estoy enamorado de mi amiga|me atrae mi amiga|me encanta mi amiga|tengo sentimientos por mi amiga|mi amiga me gusta|siento algo por mi amiga|me siento atraído por mi amiga|mi amiga es genial|estoy interesado en mi amiga)/i;
+
+if (regexAmiga.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Qué interesante! A veces los sentimientos hacia una amiga pueden ser confusos, lo importante es ser honesto contigo mismo y con ella para no afectar la amistad.",
+        
+        "¡Vaya! Tener sentimientos por una amiga puede ser complicado. Asegúrate de manejarlo con cuidado para preservar la relación de amistad.",
+        
+        "¡Eso suena complicado! A veces, los sentimientos surgen de manera inesperada. Reflexiona sobre si deseas compartirlo con ella o mantenerlo como parte de la amistad.",
+        
+        "¡Qué curioso! Es normal sentirse atraído por una amiga, pero es importante pensar en las consecuencias de expresar esos sentimientos, para no dañar la amistad.",
+        
+        "¡Interesante! Es importante tener claro si quieres que esa relación pase a otro nivel o si prefieres mantener la amistad tal cual está.",
+        
+        "¡Eso puede ser un tema complicado! Si decides hablar con ella, asegúrate de hacerlo de una manera que respete su espacio y los sentimientos de ambos.",
+        
+        "¡Qué emocionante! Los sentimientos por una amiga pueden llevar a situaciones nuevas en la relación. Tómate tu tiempo para decidir cómo quieres manejarlo.",
+        
+        "¡Eso es un tema delicado! Si te atreves a hablar con ella, es importante ser honesto, pero también ser respetuoso de sus sentimientos y de lo que ella pueda pensar.",
+        
+        "¡Eso debe ser complicado! Mantén siempre la comunicación abierta, pero no olvides que la amistad es valiosa y debería ser respetada independientemente de lo que sientas.",
+        
+        "¡Qué interesante! Si decides expresarlo, hazlo con cautela, ya que puede cambiar la dinámica de la amistad. Asegúrate de estar listo para cualquier respuesta.",
+        
+        "¡Vaya, eso puede ser un dilema! A veces, compartir esos sentimientos puede acercarte más a ella, pero siempre hay que considerar cómo afectará la relación a largo plazo.",
+        
+        "¡Entiendo! Es importante evaluar si deseas que tu amistad evolucione o si prefieres mantener las cosas como están. No hay una respuesta correcta, solo la que te haga sentir más cómodo.",
+        
+        "¡Vaya! Si sientes que debes hablarlo, ten en cuenta que lo más importante es ser sincero, pero también ser consciente de los sentimientos de ella para no poner en riesgo la amistad.",
+        
+        "¡Eso puede ser un tema complejo! Tener sentimientos por una amiga es algo normal, pero hay que ser cuidadoso con lo que se dice para no generar incomodidades.",
+        
+        "¡Eso suena complicado! Si decides hablar con ella, asegúrate de hacerlo en un momento adecuado, y recuerda que cualquier respuesta debe ser respetuosa con ambos."
+    ]);
+}
+        
+const regexPrima = /(me gusta mi prima|me enamoré de mi prima|me atrae mi prima|me encanta mi prima|tengo sentimientos por mi prima|mi prima me gusta|siento algo por mi prima|mi prima es genial|me siento atraído por mi prima)/i;
+
+if (regexPrima.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Vaya, eso puede ser algo complicado! A veces, los sentimientos pueden ser difíciles de entender, pero lo importante es saber cómo manejarlos.",
+        
+        "¡Qué curioso! Las relaciones familiares pueden ser complicadas a veces, y es importante reflexionar sobre lo que sientes para poder tomar decisiones sabias.",
+        
+        "¡Entiendo! Los sentimientos hacia un familiar pueden ser confusos. Es importante siempre evaluar qué es lo mejor para ti y para los demás.",
+        
+        "¡Eso es algo delicado! Las relaciones familiares tienen muchas dinámicas y es importante tener en cuenta cómo puede afectar a todos los involucrados.",
+        
+        "¡Vaya! Tener esos sentimientos puede ser complejo, es importante siempre reflexionar y considerar las implicaciones de este tipo de situaciones.",
+        
+        "¡Eso debe ser un tema complicado! Las relaciones familiares tienen sus propias normas, y es esencial entender cómo manejar esas emociones para no lastimar a nadie.",
+        
+        "¡Interesante! A veces es difícil separar los sentimientos personales de la dinámica familiar, pero siempre es importante manejar las situaciones con madurez y respeto.",
+        
+        "¡Eso puede ser un tema delicado! Lo más importante es siempre actuar con respeto hacia los demás y ser consciente de las implicaciones de tus sentimientos.",
+        
+        "¡Entiendo! Las relaciones familiares son complejas, y tener sentimientos por un miembro de la familia puede traer complicaciones. Asegúrate de reflexionar sobre lo que realmente sientes.",
+        
+        "¡Eso suena complicado! Es normal tener diferentes tipos de sentimientos, pero siempre es importante analizar cómo las decisiones pueden afectar a la familia en general.",
+        
+        "¡Es un tema sensible! Si sientes algo así, es crucial que lo pienses bien y te asegures de comprender las consecuencias de tus emociones en tu entorno familiar.",
+        
+        "¡Eso es algo que debe tratarse con mucha reflexión! Las relaciones familiares deben basarse en respeto mutuo, y es importante ser consciente de cómo tus sentimientos pueden influir en la dinámica familiar.",
+        
+        "¡Es una situación compleja! Reflexionar sobre los sentimientos y cómo manejarlos de manera saludable es esencial, sobre todo en un contexto familiar.",
+        
+        "¡Esa es una situación difícil! Es importante ser consciente de cómo pueden cambiar las relaciones familiares en este tipo de casos y pensar en lo que es mejor para todos.",
+        
+        "¡Eso suena delicado! Las emociones pueden ser difíciles de manejar en situaciones como esta, pero lo más importante es ser respetuoso y considerar los efectos que puede tener en tu entorno."
+    ]);
+}
+        
+const regexSuegra = /(me gusta mi suegra|suegra|me llevo bien con mi suegra|me encanta mi suegra|mi suegra es genial|mi suegra es fantástica|amo a mi suegra|suegra favorita|me caen bien las suegras)/i;
+
+if (regexSuegra.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Vaya, parece que tienes una suegra increíble! ¡Seguro que te cuida como si fueras su hijo!",
+        
+        "¡Eso suena bastante positivo! Tener una suegra que te gusta es un verdadero tesoro. ¡Suerte en mantenerla contenta!",
+        
+        "¡Jajaja! ¡Me imagino que las reuniones familiares deben ser muy divertidas si tienes una suegra tan genial!",
+        
+        "¡Qué curioso! Muchos dicen que la relación con la suegra puede ser algo complicada, pero tú parece que has encontrado la excepción. ¡Qué suerte!",
+        
+        "¡Jajaja! Tener una suegra que te gusta es como tener un segundo madre. ¡Eso es muy bonito!",
+        
+        "¡Qué curioso! Algunos dicen que el amor por la suegra es como el vino, mejora con los años. ¿Será tu caso?",
+        
+        "¡Parece que tienes una suegra de 10! Seguro que ella también te aprecia mucho por llevarte tan bien con ella.",
+        
+        "¡Jajaja, qué divertido! Tener una suegra que te gusta seguro que te hace sentir parte de la familia al 100%.",
+        
+        "¡Qué suerte! Tener una buena relación con la suegra es un verdadero regalo. ¡Seguro que las reuniones familiares son un éxito!",
+        
+        "¡Qué bien! Una relación positiva con la suegra es rara y muy apreciada. ¡Seguro que tienes un trato excelente!",
+        
+        "¡Parece que tienes suerte! La mayoría de las personas no siempre se lleva bien con su suegra, pero tú eres una excepción.",
+        
+        "¡Increíble! Hay quienes dicen que una buena suegra es una joya, y parece que la tuya es un diamante en bruto.",
+        
+        "¡Qué genial! Tener una suegra que te gusta debe ser una bendición, ¡seguro que te cuidan mucho!",
+        
+        "¡Vaya! No todos tienen la suerte de llevarse tan bien con la suegra. ¡Debes ser un gran yerno!",
+        
+        "¡Oye, qué bien! Tener una suegra que te cae bien es como ganar en la vida, ¡sigue así!"
+    ]);
+}
+      
+const regexTierra = /(que es la tierra|qué sabes de la tierra|que es la tierra|dime sobre la tierra|hablame de la tierra|la tierra es|de qué trata la tierra|explícame qué es la tierra)/i;
+
+if (regexTierra.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "La Tierra es el tercer planeta del sistema solar y el único conocido hasta ahora que alberga vida. Tiene un diámetro de aproximadamente 12,742 kilómetros y está compuesta principalmente de agua y rocas. Su atmósfera contiene oxígeno, nitrógeno y otros gases que permiten la vida.",
+        
+        "La Tierra es un planeta rocoso con una atmósfera que nos protege de la radiación solar y mantiene temperaturas adecuadas para la vida. Su superficie está cubierta en un 71% por agua, y el resto está compuesto por continentes y montañas.",
+        
+        "La Tierra forma parte de un sistema solar que gira alrededor del Sol. Tiene una inclinación axial de aproximadamente 23.5 grados, lo que provoca las estaciones del año. Su campo magnético la protege de los vientos solares y las partículas cargadas que podrían dañar la vida.",
+        
+        "Nuestro planeta tiene una edad estimada de 4.5 mil millones de años y, aunque no es el planeta más grande ni el más cercano al Sol, es el único lugar conocido en el universo donde existen seres vivos. Su diversidad ecológica es impresionante, desde selvas tropicales hasta desiertos áridos.",
+        
+        "La Tierra tiene una atmósfera compuesta principalmente de nitrógeno y oxígeno, y gracias a ella podemos respirar. Además, la atmósfera juega un papel crucial en el clima de la Tierra y en la protección contra radiaciones dañinas del Sol.",
+        
+        "La Tierra se mueve de dos maneras principales: gira sobre su eje, lo que genera el día y la noche, y orbita alrededor del Sol, lo que crea el ciclo de las estaciones. Este movimiento tiene un gran impacto en el clima y la vida en el planeta.",
+        
+        "La Tierra está situada a una distancia ideal del Sol para mantener temperaturas que permiten el agua en estado líquido, lo cual es esencial para la vida tal como la conocemos. Este fenómeno se llama 'zona habitable'.",
+        
+        "La superficie de la Tierra está constantemente cambiando debido a la tectónica de placas. Esto ha dado lugar a la formación de montañas, terremotos y volcanes, y sigue dando forma al planeta de manera dinámica.",
+        
+        "La Tierra es única porque su atmósfera y sus condiciones permiten que el agua exista en los tres estados: sólido, líquido y gas. Esto la convierte en un planeta especial para la vida, ya que el agua es un recurso esencial para todos los organismos vivos.",
+        
+        "La Tierra es hogar de una increíble biodiversidad. Hay millones de especies, muchas de las cuales aún no han sido descubiertas. La conservación del medio ambiente y la protección de los ecosistemas son fundamentales para preservar esta diversidad."
+    ]);
+}
+        
+const regexSol = /(que es el sol|qué sabes del sol|qué es el sol|dime sobre el sol|hablame del sol|el sol es|de qué trata el sol|explícame qué es el sol)/i;
+
+if (regexSol.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "El Sol es una estrella ubicada en el centro de nuestro sistema solar. Está compuesto principalmente de hidrógeno y helio, y genera energía a través de un proceso llamado fusión nuclear. Esta energía es la que nos proporciona luz y calor, y es esencial para la vida en la Tierra.",
+        
+        "El Sol es una esfera de plasma extremadamente caliente que emite luz y calor. Tiene un diámetro de aproximadamente 1.39 millones de kilómetros, lo que lo hace unas 109 veces más grande que la Tierra. Su energía es vital para todos los procesos en nuestro planeta.",
+        
+        "El Sol es la estrella más cercana a la Tierra y su energía se genera a través de la fusión nuclear en su núcleo. En esta reacción, el hidrógeno se convierte en helio, liberando enormes cantidades de energía. Sin esta energía, la vida en la Tierra no sería posible.",
+        
+        "Sabías que el Sol está aproximadamente a 150 millones de kilómetros de la Tierra? Esta distancia es la que conocemos como una unidad astronómica (UA). Aunque parece tan cerca, la luz del Sol tarda unos 8 minutos y 20 segundos en llegar a la Tierra.",
+        
+        "El Sol tiene una influencia enorme sobre el clima terrestre. Los cambios en la actividad solar, como las manchas solares y las erupciones solares, pueden afectar las condiciones meteorológicas en la Tierra, incluso causando alteraciones en las comunicaciones y el clima espacial.",
+        
+        "¿Sabías que el Sol tiene una edad estimada de unos 4.6 mil millones de años? Se estima que aún tiene alrededor de 5 mil millones de años de vida antes de que se convierta en una gigante roja y finalmente se transforme en una enana blanca.",
+        
+        "El Sol no es una esfera sólida, sino una masa de gas caliente en constante movimiento. La energía del Sol es tan intensa que la superficie del Sol, que se llama fotosfera, tiene una temperatura de aproximadamente 5,500 grados Celsius.",
+        
+        "El Sol experimenta ciclos de actividad solar que duran aproximadamente 11 años. Durante este ciclo, la cantidad de manchas solares aumenta y disminuye. Estas manchas solares pueden influir en el clima de la Tierra y en las auroras boreales.",
+        
+        "El Sol es tan grande que podría albergar 1.3 millones de planetas del tamaño de la Tierra en su interior. Sin embargo, a pesar de su tamaño, solo representa una de las muchas estrellas en nuestra galaxia, la Vía Láctea.",
+        
+        "¿Sabías que la energía solar es una fuente renovable de energía? A medida que las tecnologías mejoran, cada vez es más eficiente capturar y convertir la luz solar en energía eléctrica. ¡Una alternativa sostenible al uso de combustibles fósiles!"
+    ]);
+}
+        
+const regexInteresante = /(dime algo interesante|cuéntame algo interesante|di algo interesante|cuéntame algo curioso|tienes algo interesante que decir|dime algo curioso|quiero saber algo interesante)/i;
+
+if (regexInteresante.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¿Sabías que las jirafas tienen un cuello tan largo debido a una mutación genética? Este cuello les permite comer hojas de árboles altos que otros animales no pueden alcanzar.",
+        
+        "¿Te has preguntado alguna vez por qué el cielo es azul? La luz del sol se dispersa en todas direcciones, pero la luz azul se dispersa más porque tiene una longitud de onda más corta. ¡Es un fenómeno llamado dispersión de Rayleigh!",
+        
+        "Aquí tienes una curiosidad sobre el espacio: si pudieras viajar a la velocidad de la luz, tomaría solo 8 minutos llegar al Sol. Sin embargo, te tomaría más de 4 años llegar a la estrella más cercana, Proxima Centauri.",
+        
+        "¡Qué interesante! Las medusas existen desde hace más de 500 millones de años, mucho antes que los dinosaurios. Estas criaturas están hechas en su mayoría de agua y no tienen cerebro ni corazón.",
+        
+        "Un dato curioso: los flamencos obtienen su color rosa debido a los carotenoides en su dieta. Si no comerán estos pigmentos, sus plumas serían blancas o grises.",
+        
+        "Las hormigas son capaces de cargar hasta 50 veces su propio peso. ¡Eso es como si un humano pudiera levantar un autobús!",
+        
+        "¿Sabías que el ojo humano puede distinguir hasta 10 millones de colores diferentes? Sin embargo, algunas personas tienen un tipo de daltonismo y no pueden distinguir ciertos colores como los rojos y verdes.",
+        
+        "Aquí va un hecho increíble: el agua que bebemos hoy podría haber sido bebida por dinosaurios hace millones de años. El agua circula en el ciclo del agua, así que lo que bebemos es parte de un sistema muy antiguo.",
+        
+        "El corazón humano late unas 100,000 veces al día, bombeando aproximadamente 7,570 litros de sangre a través de todo el cuerpo. ¡Es como si estuviera trabajando sin descanso!",
+        
+        "¿Sabías que las ballenas jorobadas tienen una canción que pueden cantar durante horas? Estas canciones pueden ser escuchadas por otras ballenas a miles de kilómetros de distancia.",
+        
+        "La Torre Eiffel se inclina un poco hacia el sol cuando hace calor. Esto se debe a la expansión del metal debido a las altas temperaturas.",
+        
+        "Los elefantes son conocidos por su increíble memoria. Pueden recordar rutas migratorias, ubicaciones de agua y a otros elefantes incluso después de años.",
+        
+        "Aquí va algo curioso: las mariposas saborean con sus patas. Tienen sensores químicos en sus patas que les permiten detectar si una planta es comestible o no.",
+        
+        "Sabías que las huellas de las patas de los koalas son casi idénticas a las de los seres humanos, hasta el punto de que pueden confundirse con las nuestras. ¡Pero aún así, son marsupiales!",
+        
+        "¿Te gustan los dinosaurios? Pues sabías que el T. rex no podía correr a gran velocidad como muchos piensan. Su velocidad máxima era de alrededor de 32 km/h, similar a un velocista humano.",
+        
+        "Una curiosidad sobre las tortugas marinas: algunas especies pueden vivir hasta 100 años. ¡Son de los animales más longevos del planeta!",
+        
+        "El famoso Monte Everest no es la montaña más alta del mundo, en realidad el monte Mauna Kea en Hawái lo es, aunque la mayor parte de él está bajo el agua.",
+        
+        "¿Sabías que el papel higiénico fue inventado en China durante la dinastía Tang, en el año 1391? ¡Era un lujo antes de que se masificara en todo el mundo!",
+        
+        "Los pingüinos no solo viven en el frío. Algunas especies, como el pingüino de Magallanes, viven en las costas de Sudamérica, donde el clima es más cálido.",
+        
+        "Los diamantes no siempre son inalcanzables. En realidad, existen diamantes en otros planetas, como en Júpiter, donde el alto calor y la presión crean diamantes de gran tamaño.",
+        
+        "Un dato curioso sobre la luna: la luna se aleja de la Tierra unos 3.8 centímetros cada año. A este ritmo, dentro de miles de millones de años, la Luna será tan lejana que no podremos verla como la vemos hoy."
+    ]);
+}
+        
+const regexChatGPT = /(que es chatgpt|qué es eso|qué es chatgpt|qué es gpt|qué es openai|qué es un modelo de lenguaje|qué es un chatbot|qué es una inteligencia artificial)/i;
+
+if (regexChatGPT.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "ChatGPT es un modelo de lenguaje creado por OpenAI. Está diseñado para comprender y generar texto de manera coherente, basado en grandes cantidades de información y datos. Es como un asistente virtual que puede responder preguntas, generar ideas o ayudarte con tareas. ¿Te gustaría saber más sobre cómo funciona?",
+        
+        "ChatGPT es una inteligencia artificial desarrollada por OpenAI. Su propósito es ayudar a las personas generando respuestas naturales y coherentes a preguntas o solicitudes, basándose en datos previos. ¿Te interesa conocer más sobre cómo se entrenan estos modelos?",
+        
+        "¡Es una buena pregunta! ChatGPT es un modelo de lenguaje de inteligencia artificial creado por OpenAI. Está diseñado para entender y generar texto, y puede usarse para tareas como responder preguntas, crear contenido, entre otras cosas. ¿Te gustaría saber más sobre cómo interactuar conmigo?",
+        
+        "ChatGPT es un sistema basado en inteligencia artificial desarrollado por OpenAI. Es un modelo de lenguaje que puede entender preguntas y generar respuestas en lenguaje natural, similar a una conversación humana. ¿Te gustaría conocer más sobre los detalles técnicos de cómo funciona?",
+        
+        "¡Claro! ChatGPT es una creación de OpenAI, una inteligencia artificial entrenada para interactuar en lenguaje humano. Puede ayudarte con una amplia variedad de tareas, desde responder preguntas hasta generar contenido creativo. ¿Te gustaría explorar alguna de sus capacidades?"
+    ]);
+}
+        
+const regexArtistasLatam = /(shakira|bad bunny|j balvin|karol g|maluma|luis fonsi|daddy yankee|ricardo arjona|juanes|carlos vives|rosalía|ozuna|camila|anitta|marcos martin|sofia reyes|tini|cnco|ricky martin|alejandro sanz|farruko|mon laferte|la india|soda stereo|maná|gipsy kings|marc anthony|vicente fernandez|julion alvarez|alejandro fernandez|laura pausini)/i;
+
+if (regexArtistasLatam.test(mensajeLower)) {
+    if (/shakira/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Shakira, la 'reina del pop latino', sigue siendo una de las artistas más influyentes en el mundo. ¿Sabías que su primer álbum fue lanzado cuando solo tenía 13 años?",
+            "¡Shakira! Un ícono mundial con su mezcla de música pop y ritmos latinos. ¿Te gustaría saber más sobre cómo su carrera ha trascendido generaciones?",
+            "Desde sus primeros éxitos hasta su carrera global, Shakira ha revolucionado la música pop latina. ¿Qué canción de ella es tu favorita?"
+        ]);
+    }
+    if (/bad bunny/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Bad Bunny es el máximo exponente del trap latino. ¿Sabías que su primer álbum debut alcanzó el puesto número 1 en las listas de Billboard?",
+            "Bad Bunny no solo canta, también rompe estereotipos con su estilo único. ¿Te gustaría saber más sobre sus colaboraciones internacionales?",
+            "El Conejo Malo ha dominado el reguetón y el trap, llevando la música urbana a otro nivel. ¿Cuál de sus canciones te ha impactado más?"
+        ]);
+    }
+    if (/j balvin/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "¡J Balvin ha revolucionado el reguetón! Su mezcla de pop y reguetón lo ha convertido en un fenómeno global. ¿Sabías que es conocido como el 'Príncipe del Reguetón'?",
+            "J Balvin ha creado éxitos mundiales como 'Mi Gente'. ¿Te gustaría saber cómo ha logrado conquistar las listas globales con su estilo único?",
+            "De Colombia para el mundo, J Balvin ha llevado el reguetón a nuevas alturas. ¿Te interesa conocer más sobre su impacto en la música urbana?"
+        ]);
+    }
+    if (/karol g/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Karol G ha sido una pionera del reguetón femenino. Con su estilo propio, ha alcanzado la cima del éxito mundial. ¿Te gustaría saber más sobre su evolución?",
+            "Karol G es una de las artistas más poderosas del reguetón. Ha colaborado con artistas como Nicki Minaj y Anuel AA. ¿Sabías que su tema 'Tusa' la catapultó a la fama?",
+            "Karol G sigue rompiendo barreras en la música latina. ¿Qué opinas de su estilo y sus colaboraciones?"
+        ]);
+    }
+    if (/maluma/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Maluma ha sido un líder del reguetón romántico. ¿Sabías que su éxito 'Felices los 4' fue uno de los más reproducidos en 2017?",
+            "Con su voz única, Maluma se ha convertido en un ícono global. ¿Te gustaría saber más sobre su impacto en la música latina?",
+            "Maluma es un fenómeno que no solo ha conquistado a Latinoamérica, sino al mundo entero. ¿Cuál es tu canción favorita de él?"
+        ]);
+    }
+    if (/luis fonsi/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Luis Fonsi es conocido por su mega éxito 'Despacito'. Su voz y estilo han dejado una huella en la música mundial. ¿Te gustaría saber más sobre su carrera?",
+            "Luis Fonsi ha estado en la industria por años, pero 'Despacito' lo llevó a la cima de la fama. ¿Qué opinas de su colaboración con Daddy Yankee?",
+            "Con una carrera llena de baladas y éxitos internacionales, Luis Fonsi sigue siendo una leyenda de la música latina."
+        ]);
+    }
+    if (/daddy yankee/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Daddy Yankee es conocido como el 'Rey del Reguetón'. ¿Sabías que su éxito 'Gasolina' fue uno de los primeros hits de reguetón en alcanzar popularidad internacional?",
+            "Daddy Yankee ha sido un pionero del reguetón, y su influencia sigue siendo enorme. ¿Te gustaría saber más sobre su legado musical?",
+            "Conocido por su gran voz y energía en el escenario, Daddy Yankee sigue siendo un referente del reguetón. ¿Qué opinas de su impacto en la industria?"
+        ]);
+    }
+    if (/ricardo arjona/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Ricardo Arjona es un poeta de la música latina, conocido por sus profundas letras y su estilo único. ¿Te gustaría saber más sobre sus temas más populares?",
+            "Con su mezcla de balada y pop latino, Ricardo Arjona ha tocado los corazones de millones. ¿Cuál es tu canción favorita de él?",
+            "Ricardo Arjona ha sido uno de los artistas más queridos de la música latina. Su música tiene un toque especial que conecta con la audiencia."
+        ]);
+    }
+    if (/juanes/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Juanes es uno de los artistas más importantes de Colombia, conocido por su estilo que fusiona el rock con música latina. ¿Te gustaría saber más sobre su evolución?",
+            "Juanes ha sido un defensor de la paz y los derechos humanos a través de su música. ¿Sabías que ha ganado múltiples premios Grammy?",
+            "Con su estilo único, Juanes ha llevado la música latina a audiencias globales. ¿Te gustaría saber más sobre sus temas más icónicos?"
+        ]);
+    }
+    if (/rosalía/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "¡Rosalía es una revolución en la música! Con su mezcla de flamenco, trap y reguetón, ha creado un estilo único. ¿Sabías que su álbum 'El Mal Querer' la catapultó al estrellato?",
+            "Rosalía ha llevado el flamenco a la nueva era con un toque urbano. ¿Te gustaría conocer más sobre sus logros en la música mundial?",
+            "Con su talento y creatividad, Rosalía se ha convertido en una de las artistas más innovadoras de la música latina. ¿Cuál es tu canción favorita de ella?"
+        ]);
+    }
+    if (/ozuna/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Ozuna es conocido por su habilidad para fusionar el reguetón con otros géneros. ¿Te gustaría saber más sobre cómo ha marcado tendencia en la música urbana?",
+            "¡Ozuna es increíble! Con su voz única y estilo inconfundible, ha conquistado el mundo. ¿Sabías que ha colaborado con artistas de todo el mundo?",
+            "Ozuna ha sido uno de los principales artistas en la expansión del reguetón en todo el mundo. ¿Qué opinas de su impacto en la música latina?"
+        ]);
+    }
+    if (/camila/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Camila ha conquistado a millones con sus baladas románticas y su estilo único. ¿Te gustaría conocer más sobre sus canciones más exitosas?",
+            "¡Camila ha dejado huella en la música latina! Con su emotiva voz, ha tocado los corazones de su audiencia. ¿Cuál de sus canciones te gusta más?",
+            "Camila ha sido una de las bandas más importantes de la música latina, conocida por sus letras profundas y su gran talento."
+        ]);
+    }
+    if (/anitta/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Anitta ha revolucionado la música brasileña y latina, combinando pop, funk y reguetón. ¿Sabías que su éxito 'Vai Malandra' la hizo famosa internacionalmente?",
+            "Anitta es un fenómeno global. Con su energía y estilo único, ha conquistado audiencias en todo el mundo. ¿Te gustaría saber más sobre su impacto?",
+            "¡Anitta! Con su ritmo contagioso y su presencia en el escenario, ha dejado una marca indeleble en la música latina."
+        ]);
+    }
+    if (/marcos martin/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Marcos Martín es conocido por su estilo único que mezcla música tradicional con influencias modernas. ¿Te gustaría saber más sobre su carrera?",
+            "Con su talento y estilo propio, Marcos Martín ha ganado reconocimiento en la música latina. ¿Sabías que ha sido nominado a varios premios importantes?",
+            "Marcos Martín ha hecho una gran contribución al género de la música latina, fusionando sonidos del pasado y del presente."
+        ]);
+    }
+    if (/sofia reyes/i.test(mensajeLower)) {
+        return this.respuestaAleatoria([
+            "Sofía Reyes es una de las estrellas emergentes de la música latina, conocida por su estilo único. ¿Te gustaría saber más sobre sus últimas canciones?",
+            "¡Sofía Reyes ha sido un soplo de aire fresco en la música pop latina! Ha trabajado con artistas como Jason Derulo. ¿Te interesa saber más sobre sus próximos proyectos?",
+            "Con su talento y energía, Sofía Reyes ha logrado un lugar importante en la música latina. ¿Sabías que su éxito '1, 2, 3' fue un gran hit?"
+        ]);
+    }
+}
+        
+const regexImagenes = /(puedes mandar imágenes|puedes mandar imagenes|puedes enviar imágenes|me puedes mandar imágenes|puedes mostrarme imágenes|envíame imágenes)/i;
+
+if (regexImagenes.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Lo siento, no puedo enviar ni generar imágenes. Sin embargo, puedo ayudarte con información, responder preguntas o realizar tareas como cálculos o explicaciones. ¿En qué más te puedo ayudar?",
+        
+        "No, no puedo enviar ni generar imágenes, pero puedo ofrecerte respuestas a muchas otras preguntas o ayudarte con tareas específicas. ¡Pregúntame lo que quieras!",
+        
+        "Lamentablemente, no tengo la capacidad para enviar o generar imágenes. Pero puedo ofrecerte ayuda con texto, datos, o incluso ayudarte a resolver problemas y responder preguntas. ¿Hay algo más en lo que te gustaría que te asista?",
+        
+        "No puedo enviar imágenes, pero puedo ayudarte con texto, explicaciones, y otros tipos de tareas. Si tienes alguna pregunta o algo en lo que necesites ayuda, ¡estoy aquí para ayudarte!",
+        
+        "¡Lo siento! No puedo generar ni mandar imágenes, pero puedo hacer muchas otras cosas con texto. Si tienes alguna pregunta o algo en lo que necesitas asistencia, solo dime.",
+        
+        "No tengo la capacidad de mandar imágenes, pero si necesitas información o ayuda con algún tema, estaré encantado de asistirte. ¿Qué más te gustaría saber?",
+        
+        "No, no puedo enviar ni generar imágenes, pero puedo ayudarte a encontrar información, hacer cálculos, o resolver dudas. ¿Te gustaría saber algo más?",
+        
+        "No puedo mandar imágenes, pero si tienes alguna otra consulta o necesitas algo relacionado con texto o datos, ¡estoy a tu disposición para ayudarte!",
+        
+        "No tengo la capacidad de enviar imágenes, pero si tienes alguna otra pregunta o algo en lo que te gustaría que te ayude, ¡solo dime!"
+    ]);
+}
+        
+const regexMúsicaRecomendada = /(que música me recomiendas|qué música me recomiendas|que música recomiendas|recomiéndame música|música que debería escuchar|música para escuchar)/i;
+
+if (regexMúsicaRecomendada.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Claro! Si te gustan los géneros relajantes, te recomiendo escuchar algo de música instrumental o chill. Artistas como Ludovico Einaudi o Tycho podrían ser perfectos para crear un ambiente tranquilo.",
+        
+        "¡Por supuesto! Si buscas algo con energía, ¿qué tal un poco de rock clásico? Bandas como Queen o The Beatles nunca fallan. Y si prefieres algo más moderno, puedes probar con Imagine Dragons o Arctic Monkeys.",
+        
+        "¡Tengo varias recomendaciones! Si te gusta la música electrónica, prueba escuchar a artistas como Avicii o Zedd. Si prefieres algo más tranquilo, algo de jazz o música lo-fi siempre es una excelente opción para relajarse.",
+        
+        "¡Qué buena pregunta! Si estás buscando algo fresco, te recomendaría algo de reggaetón o trap. Artistas como Bad Bunny o J Balvin tienen muchos éxitos. Pero si prefieres algo diferente, puedes probar música indie, como Tame Impala o Mac DeMarco.",
+        
+        "¡Genial! Si quieres algo relajado y calmante, la música acústica o de guitarras suaves puede ser lo que buscas. Te sugiero escuchar a Jack Johnson o John Mayer. Si te animas a algo más animado, las canciones de Dua Lipa o Billie Eilish pueden ser una opción divertida.",
+        
+        "¡Claro que sí! Si eres fan de la música clásica, hay muchos compositores fascinantes como Beethoven, Mozart o Chopin. Pero si te interesa algo más contemporáneo, quizás puedas disfrutar de artistas como Sia o Ed Sheeran.",
+        
+        "¡Sin duda! Si estás buscando algo alegre y bailable, la música latina siempre tiene algo para ofrecer. ¿Por qué no pruebas escuchar algo de salsa, bachata o merengue? Artistas como Marc Anthony o Juan Luis Guerra podrían ser una excelente opción.",
+        
+        "Si te gustan las mezclas de géneros, te recomiendo escuchar música alternativa o indie pop. Bandas como Vampire Weekend o Foster the People tienen canciones frescas y pegajosas. ¡Seguro que te encantarán!",
+        
+        "Si lo que buscas es relajarte, nada mejor que música chill-hop o lo-fi. Hay una gran variedad de listas de reproducción perfectas para estudiar o relajarse. También podrías escuchar algo de ambient, como Brian Eno.",
+        
+        "¿Te gustaría escuchar algo diferente? Si no tienes un género específico en mente, puedes probar con algunos clásicos del jazz, como Miles Davis o John Coltrane, o música electrónica experimental como Aphex Twin."
+    ]);
+}
+        
+const regexUltimaActualizacion = /(cuándo (fue|es|ha sido) (tu última actualización|la última vez que actualizaste|actualizaste)|última actualización)/i;
+
+if (regexUltimaActualizacion.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Buena pregunta! Como soy una inteligencia artificial, me actualizo constantemente para ofrecerte mejores respuestas. No tengo una fecha fija, pero siempre intento mejorar y adaptarme a nuevas preguntas.",
+        
+        "Mi sistema se actualiza de forma continua. No tengo una fecha exacta, pero los desarrolladores mejoran mis capacidades y conocimientos regularmente para brindarte la mejor experiencia.",
+        
+        "Mi última actualización fue en el momento en que me entrenaron con nuevos datos y mejoras. Esto ocurre de forma constante para asegurarme de ser lo más útil posible.",
+        
+        "¡Eso depende! Mis actualizaciones son constantes, ya que mis creadores me entrenan con nueva información y mejoras. Siempre estoy aprendiendo para ser más útil. ¿Te gustaría saber más sobre cómo funcionan las actualizaciones de las IA?",
+        
+        "No tengo una fecha exacta, pero mi base de datos y mis capacidades se actualizan de forma regular para que pueda ofrecerte las mejores respuestas posibles. ¿Te gustaría saber cómo se realiza mi entrenamiento?",
+        
+        "Como soy una inteligencia artificial, me actualizo de manera continua. A veces se agregan nuevas funciones y mejoras, y siempre trato de mantenerme al día con la información más relevante.",
+        
+        "No tengo una fecha específica, ya que mis actualizaciones son constantes y dependen de los desarrolladores. Siempre estoy mejorando para ofrecerte una mejor experiencia. ¿Tienes alguna pregunta más sobre cómo funciono?",
+        
+        "Mis actualizaciones ocurren en tiempo real, gracias a los desarrolladores que están continuamente trabajando en mejorar mi rendimiento. Así que, si alguna vez me haces una pregunta nueva, siempre trato de aprender de ello.",
+        
+        "¡La verdad es que no hay una fecha fija! Mi sistema se actualiza constantemente con mejoras y nuevas informaciones para brindarte respuestas más precisas. ¿Te gustaría saber más sobre cómo funciona mi entrenamiento?",
+        
+        "Mi última actualización fue cuando los desarrolladores decidieron mejorar mi sistema, pero esas actualizaciones suceden con frecuencia para que siempre pueda ofrecerte respuestas más rápidas y precisas."
+    ]);
+}
+
+const regexQuePuedesHacer = /(que (puedes|qué puedes|haces|sabes) (hacer|hacer tú|hacer tú en?|hacer de?))/i;
+
+if (regexQuePuedesHacer.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Puedo ayudarte con una gran variedad de cosas. Por ejemplo, responder preguntas sobre temas específicos, hacer cálculos matemáticos, proporcionarte información sobre videojuegos, ¡y mucho más!",
+        
+        "¡Puedo hacer bastantes cosas! Puedo ayudarte a encontrar información sobre cualquier tema, hacer cálculos, incluso generar ideas creativas, y si te interesa la tecnología, ¡también puedo ayudarte con eso!",
+        
+        "¡Puedo hacer muchas cosas! Como responder a tus preguntas, ayudarte con tareas de programación, hacer cálculos matemáticos y hasta contarte cosas interesantes sobre ciencia, tecnología, o videojuegos. ¿Hay algo específico que te gustaría que hiciera?",
+        
+        "¡Puedo hacer muchas cosas interesantes! Desde ofrecerte respuestas sobre diversos temas, hacer cálculos, explicarte conceptos, hasta compartir curiosidades de la ciencia y la tecnología. ¿Hay algo en particular que te gustaría saber o hacer?",
+        
+        "¡Puedo hacer bastante! Desde responder preguntas sobre tus intereses hasta ofrecerte información sobre matemáticas, ciencia, videojuegos, ¡o incluso ayudarte a aprender cosas nuevas! ¿Te gustaría que te ayudara con algo en particular?",
+        
+        "Puedo hacer muchas cosas, como ayudarte con matemáticas, programación, darte información sobre videojuegos, e incluso contarte sobre las últimas noticias de tecnología. ¿Te gustaría saber más sobre algo específico?",
+        
+        "¡Puedo hacer muchas cosas! Ya sea que necesites ayuda con cálculos, aprender algo nuevo, o incluso hablar sobre tus videojuegos favoritos, siempre estoy aquí para ayudarte. ¿En qué te gustaría que te ayude hoy?",
+        
+        "Puedo ayudarte con diversas tareas, como proporcionarte información sobre temas de ciencia, matemáticas, videojuegos, o incluso ayudarte a resolver problemas de programación. ¿En qué te gustaría que te asistiera hoy?",
+        
+        "¡Puedo hacer muchas cosas! Como ofrecerte datos sobre tus videojuegos favoritos, explicarte conceptos de ciencia y tecnología, o incluso hacerte algunos cálculos rápidos. ¿Tienes algo en mente?",
+        
+        "Puedo ayudarte con lo que necesites, desde responder a preguntas sobre casi cualquier tema, hasta hacer cálculos o ayudarte con proyectos de programación. ¿Te gustaría saber más sobre alguna de estas cosas?",
+        
+        "¡Soy bastante versátil! Puedo ayudarte a resolver problemas matemáticos, explicarte cómo funcionan algunas tecnologías, hablar sobre videojuegos, y mucho más. ¿Hay algo específico que te interese?",
+        
+        "¡Puedo hacer muchas cosas! Desde ofrecerte información sobre la ciencia de los videojuegos hasta darte trucos y consejos en tus juegos favoritos. ¿Te gustaría que te ayudara con algo específico?"
+    ]);
+}
+        
+const regexFortnite = /(fortnite|estoy jugando fortnite|juego fortnite|es fortnite|fortnite battle royale|fortnite en pc|fortnite en consola|fortnite móvil|fortnite en línea|servidor fortnite|jugando fortnite|batalla de fortnite)/i;
+
+const regexQueEsFortnite = /que (es|es el|es eso) fortnite/i;
+
+if (regexFortnite.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Fortnite es un juego muy popular! ¿Prefieres jugar en solitario o en equipo?",
+        "¡Increíble! ¿Qué modo estás jugando en Fortnite, Batalla Real o el modo Creativo?",
+        "¡Fortnite es tan dinámico! ¿Te gustan las skins o prefieres las armas épicas?",
+        "¡Qué bien que estés jugando Fortnite! ¿Estás en una partida de escuadra o en un duelo 1v1?",
+        "¡Fortnite es increíble! ¿Qué tal tus últimas victorias? ¿Lograste una 'Victoria Magistral'?",
+        "¡Vaya! Fortnite tiene tantas skins y modos de juego. ¿Tienes alguna skin legendaria?",
+        "¡Fortnite es genial! ¿Te gustan más las batallas en solitario o las cooperativas?",
+        "¡Perfecto! ¿Has probado alguna vez el modo Creativo de Fortnite para construir y jugar mapas personalizados?",
+        "¡Fortnite tiene tanto contenido! ¿Cuál es tu temporada favorita hasta ahora?",
+        "¡Genial! Fortnite tiene un sistema de batalla real muy competitivo. ¿Cómo te va en las partidas?",
+        "¡Qué divertido! ¿Te has unido a algún torneo de Fortnite? O, ¿prefieres jugar entre amigos?",
+        "¡Fortnite tiene tantas actualizaciones! ¿Has probado la última temporada con sus nuevas características?",
+        "¡Fortnite siempre está lleno de sorpresas! ¿Estás esperando alguna nueva colaboración o evento en el juego?",
+        "¡Fortnite es sin duda un clásico! ¿Te gustan las batallas frenéticas o prefieres tomarte tu tiempo para planear?",
+        "¡Qué emocionante! Fortnite no deja de innovar. ¿Te gustaría saber más sobre las nuevas mecánicas o armas?",
+        "¡Fortnite es muy entretenido! ¿Has jugado alguna vez en el modo ‘Creativo’ donde puedes construir tus propios mapas?",
+        "¡Qué bueno! En Fortnite la diversión nunca se acaba. ¿Te han gustado las colaboraciones con personajes como Marvel o Star Wars?",
+        "¡Estás jugando uno de los juegos más populares! ¿Qué temporada crees que fue la más épica hasta ahora?",
+        "¡Fortnite está lleno de acción! ¿Te gusta más jugar en el modo competitivo o prefieres el modo casual?",
+        "¡Me alegra saber que estás jugando Fortnite! ¿Te gustaría aprender algunos consejos para mejorar tu jugabilidad?"
+    ]);
+}
+
+if (regexQueEsFortnite.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Fortnite es un videojuego de acción y supervivencia desarrollado por Epic Games. Es conocido por su modo *Battle Royale*, donde hasta 100 jugadores compiten entre sí para ser el último en pie. El juego también incluye un modo creativo, donde los jugadores pueden construir estructuras y jugar en mapas personalizados. Fortnite ha sido uno de los títulos más influyentes de la última década, especialmente por sus colaboraciones con franquicias populares como Marvel y Star Wars. ¿Te gustaría saber más sobre alguna de sus temporadas o modos de juego?",
+        
+        "Fortnite es un juego de batalla real en el que los jugadores se enfrentan en un mapa grande mientras se reduce el espacio seguro, lo que obliga a los jugadores a enfrentarse entre sí. Además de la batalla real, Fortnite también tiene un modo Creativo, donde los jugadores pueden diseñar y jugar en sus propios mapas. Es famoso por su estilo de juego rápido y sus actualizaciones constantes, que incluyen nuevas armas, skins, y eventos colaborativos. ¿Te gustaría saber más sobre las mecánicas de construcción o el modo Creativo?",
+        
+        "Fortnite es un juego en línea en el que 100 jugadores compiten en un mapa para ser el último en sobrevivir. El juego combina disparos, estrategia y construcción, permitiendo a los jugadores recolectar materiales y construir estructuras para protegerse. Además de la batalla real, Fortnite tiene el modo Creativo, que permite a los jugadores diseñar sus propios mapas. Lo que hace único a Fortnite es su estilo visual, sus constantes actualizaciones y colaboraciones con franquicias famosas. ¿Te interesa saber más sobre las estrategias de construcción o el lore del juego?",
+        
+        "Fortnite es un juego de *Battle Royale* que se juega en línea, donde los jugadores luchan en un mapa grande hasta que solo queda uno. Los jugadores deben recolectar armas, materiales y recursos mientras se enfrentan entre sí. Una característica única de Fortnite es la habilidad de construir estructuras para obtener ventaja durante los combates. Además, Fortnite se actualiza regularmente con nuevas armas, eventos y colaboraciones con personajes de otras franquicias populares. ¿Te gustaría conocer más sobre los eventos en vivo que han tenido lugar en el juego?",
+        
+        "Fortnite es un videojuego masivo en línea donde los jugadores luchan por ser el último en pie. La mecánica principal del juego es la batalla real, pero Fortnite también tiene un modo Creativo, donde los jugadores pueden crear sus propios mundos y mapas. Además, Fortnite es muy popular por sus colaboraciones con marcas, personajes de películas y series, y su sistema de pase de batalla, que ofrece nuevas skins y contenido exclusivo cada temporada. ¿Te gustaría conocer más sobre alguna de las temporadas o sobre la importancia de los pases de batalla?",
+        
+        "Fortnite es uno de los juegos más jugados del mundo, conocido por su formato de *Battle Royale*, en el que hasta 100 jugadores luchan hasta ser el último en sobrevivir. Los jugadores deben recolectar materiales, construir estructuras y luchar para ganar. Además, Fortnite también ofrece un modo Creativo, que permite a los jugadores diseñar y compartir mapas. Una de las características más destacadas de Fortnite son sus actualizaciones constantes y sus colaboraciones con personajes de Marvel, Star Wars y otros universos. ¿Te gustaría saber más sobre las estrategias para ganar o alguna colaboración famosa?",
+        
+        "Fortnite es un juego online que se caracteriza por su formato de batalla real, en el cual los jugadores deben luchar entre sí hasta que solo quede uno. Además de ser un juego competitivo, Fortnite tiene un modo Creativo donde los jugadores pueden diseñar mapas y experiencias personalizadas. El juego también es famoso por sus eventos especiales, actualizaciones frecuentes y colaboraciones con grandes franquicias del entretenimiento. ¿Te interesa alguna temporada en particular o alguna colaboración como la de Marvel?",
+        
+        "Fortnite es un juego de supervivencia donde los jugadores luchan en un mapa que se va reduciendo. Es muy conocido por su estilo de juego rápido y su sistema de construcción, que permite crear paredes, rampas y otras estructuras durante el combate. También tiene un modo Creativo donde puedes construir y explorar mapas creados por otros jugadores. Fortnite se actualiza con frecuencia y presenta colaboraciones con personajes y películas populares. ¿Te gustaría aprender más sobre los modos de juego o cómo funcionan las actualizaciones?"
+    ]);
+}
+        
+const regexMinecraft = /(minecraft|estoy jugando minecraft|juego minecraft|es minecraft|minecraft en pc|minecraft en consola|minecraft java|minecraft bedrock|estoy en minecraft|servidor minecraft|jugando minecraft)/i;
+
+const regexQueEsMinecraft = /qué (es|es el|es eso) minecraft/i;
+
+if (regexMinecraft.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Minecraft es un juego increíble! ¿Estás jugando en modo creativo o supervivencia?",
+        "¡Qué bien! Minecraft tiene tantas posibilidades. ¿Estás construyendo algo épico?",
+        "¡Me encanta Minecraft! ¿Estás en un servidor con amigos o jugando solo?",
+        "¡Minecraft es un mundo sin fin! ¿Qué bioma es tu favorito, ¿te gustan las selvas o prefieres las montañas nevadas?",
+        "¡Vaya! Minecraft nunca pasa de moda. ¿Tienes alguna construcción en mente?",
+        "¡Qué divertido! ¿Has probado la nueva versión de Minecraft o sigues jugando a la clásica?",
+        "¡Minecraft es perfecto para la creatividad! ¿Tienes algún proyecto especial, como una ciudad o una fortaleza?",
+        "¡Minecraft es un juego clásico! ¿Has probado algún mod o mapa de aventuras?",
+        "¡Increíble! Minecraft tiene una comunidad muy activa. ¿Te has unido a algún servidor de minijuegos o prefieres jugar en solitario?",
+        "¡Minecraft siempre es divertido! ¿Has probado alguna vez los mods que añaden criaturas y mundos nuevos?",
+        "¡Minecraft es una obra maestra! ¿Sabías que el Ender Dragon es uno de los enemigos más difíciles del juego? ¿Lo has derrotado?",
+        "¡Qué genial! Minecraft tiene una variedad impresionante de biomas. ¿Cuál es tu favorito?",
+        "¡Minecraft es tan expansivo! ¿Sabías que puedes crear portales a dimensiones nuevas usando bloques como el obsidiana?",
+        "¡Gran elección! En Minecraft puedes hacer de todo, desde construir casas hasta viajar al Nether o al End. ¿Cuál ha sido tu aventura más épica?",
+        "¡Increíble! ¿Te gusta más explorar o prefieres concentrarte en la construcción?",
+        "¡Minecraft es un juego sin fin! ¿Te gusta más la parte de minería o la de explorar el mundo?",
+        "¡Genial! Minecraft tiene tantas actualizaciones que siempre hay algo nuevo por descubrir. ¿Has probado alguna nueva funcionalidad o actualización?",
+        "¡Es genial que estés jugando Minecraft! ¿Tienes algún mundo o servidor al que siempre vuelvas a jugar?",
+        "¡Ah, Minecraft! Un juego que te permite ser tan creativo como quieras. ¿Te gustaría aprender cómo hacer un sistema de redstone o un mapa personalizado?",
+        "¡Me alegra saber que estás jugando Minecraft! ¿Estás jugando en PC, consola o móvil?"
+    ]);
+}
+
+if (regexQueEsMinecraft.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Minecraft es un videojuego de tipo sandbox creado por Mojang Studios. En el juego, los jugadores exploran un mundo generado de manera aleatoria, recolectan recursos, y crean estructuras y objetos usando bloques. Puedes jugar en modo supervivencia, donde necesitas recolectar recursos y enfrentar peligros, o en modo creativo, donde tienes acceso a todos los recursos para crear lo que desees. ¿Te gustaría saber más sobre algún aspecto específico del juego?",
+        
+        "Minecraft es un juego de construcción y aventura donde los jugadores pueden explorar un mundo abierto, recolectar materiales y construir lo que quieran. En el juego puedes vivir en un mundo lleno de criaturas, aventuras y construcciones increíbles. ¿Te gustaría conocer más sobre las características del juego o algún consejo para principiantes?",
+        
+        "Minecraft es uno de los juegos más populares del mundo. Es un juego de construcción donde puedes explorar un mundo generado de manera aleatoria y construir lo que quieras, desde simples casas hasta enormes castillos. Hay diferentes modos de juego, como el modo supervivencia, donde debes recolectar recursos y sobrevivir, y el modo creativo, donde tienes acceso a todo sin limitaciones. ¿Te interesa aprender más sobre las diferentes formas de jugar Minecraft?",
+        
+        "Minecraft es un juego que te permite crear tu propio mundo. Es un juego sandbox en el que puedes excavar, construir, y explorar en un entorno tridimensional. Puedes jugar en modo supervivencia, luchando contra monstruos, o en modo creativo, con recursos ilimitados. ¿Te gustaría saber cómo empezar a jugar o qué modos de juego ofrece?",
+        
+        "Minecraft es un juego donde la creatividad no tiene límites. En él puedes recolectar recursos, explorar un mundo generado de manera aleatoria, y construir lo que se te ocurra, desde simples casas hasta enormes ciudades. Existen diferentes modos de juego, y lo mejor es que puedes jugar solo o con amigos en línea. ¿Te gustaría saber más sobre cómo crear una granja automática o explorar el Nether?",
+        
+        "Minecraft es un juego donde puedes ser lo que quieras. Tienes la libertad de explorar un mundo que cambia cada vez que juegas. La supervivencia es una de las principales características, pero el modo creativo es ideal para aquellos que disfrutan construyendo. En ambos casos, ¡la diversión nunca se acaba!",
+        
+        "Minecraft es un juego de aventuras y supervivencia donde los jugadores tienen que recolectar recursos, crear herramientas y defenderse de monstruos. Lo genial es que puedes hacer lo que quieras, desde luchar contra el Ender Dragon hasta construir enormes castillos. Todo depende de tu imaginación.",
+        
+        "Minecraft es un universo infinito de posibilidades. Puedes crear tu propio mundo, compartirlo con amigos, o unirte a servidores con jugadores de todo el mundo. Es un juego que nunca se detiene, y siempre está siendo actualizado para ofrecer nuevas experiencias. ¿Te interesa algún aspecto del juego como la construcción, el combate o las aventuras?",
+        
+        "Minecraft es un juego basado en bloques donde puedes explorar, construir, y crear de manera casi ilimitada. Puedes jugar en modo supervivencia, donde te enfrentas a criaturas peligrosas, o en modo creativo, donde todo es posible. ¿Sabías que puedes incluso crear tus propios mundos y mapas personalizados?",
+        
+        "Minecraft te permite no solo jugar solo, sino también compartir tus aventuras con amigos. ¿Sabías que puedes crear tu propio servidor para jugar en línea con otros? Y si lo tuyo es la creatividad, puedes diseñar ciudades enteras usando redstone y herramientas de construcción avanzadas."
+    ]);
+}
+        
+const regexCallOfDuty = /(call of duty|cod|estoy jugando call of duty|estoy jugando cod|estoy jugando el juego de disparos|juego de guerra|modo multijugador|warzone|black ops|cod warzone)/i;
+
+if (regexCallOfDuty.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Ah, Call of Duty! Un clásico de los juegos de disparos. ¿Estás jugando el modo multijugador o prefieres la campaña?",
+        "¡Qué bueno! Call of Duty siempre ha sido un referente en los juegos de acción. ¿Estás jugando a Warzone o a la campaña de Black Ops?",
+        "¡Genial! Call of Duty es increíble, especialmente con los modos multijugador. ¿Tienes algún mapa o arma favorita?",
+        "¡Perfecto! La franquicia de Call of Duty sigue mejorando con cada nueva entrega. ¿Estás jugando la última versión o un título clásico?",
+        "¡Nice! ¿Estás jugando Call of Duty en consola o en PC? Cuéntame qué tal la experiencia, siempre es emocionante.",
+        "¡Me encanta Call of Duty! ¿Prefieres las batallas en solitario o el modo cooperativo con amigos?",
+        "¡Call of Duty es épico! ¿Cuál es tu estrategia en Warzone, o eres más de acción directa?",
+        "¡Súper! Si te gustan los juegos de disparos como Call of Duty, hay muchos títulos interesantes en el mercado. ¿Qué tal la jugabilidad en la última versión?",
+        "¡Call of Duty siempre es una excelente opción para jugar! ¿Qué te parece el modo Battle Royale de Warzone?",
+        "¡Estás jugando a Call of Duty! Un juego con mucha historia. ¿Tienes alguna anécdota épica en el juego?"
+    ]);
+}
+        
+const regexEsCallOfDuty = /(estoy\sjugando\scall\sof\sduty|yo\ssoy\scall\sof\sduty|estoy\sjugando\scon\scall\sof\sduty|estoy\sjugando\scall\sof\sduty)/i;
+
+if (regexEsCallOfDuty.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Eso suena genial! Call of Duty siempre tiene acción rápida y mapas llenos de detalles. ¿En qué modo estás jugando, Multijugador o Warzone?",
+        
+        "¡Qué buen juego! Call of Duty es increíble para la acción intensa. ¿Prefieres las armas automáticas o te va más el sigilo?",
+        
+        "¡Nice! Call of Duty es siempre una experiencia épica. ¿Tienes alguna clase o equipo preferido en el juego?",
+        
+        "¡Call of Duty! Un clásico de la acción. ¿Estás en alguna partida cooperativa o prefieres el modo Battle Royale de Warzone?",
+        
+        "¡Increíble! Las batallas en Call of Duty son siempre emocionantes. ¿Tienes alguna estrategia secreta que usas para ganar en el modo Warzone?",
+        
+        "¡Eso está genial! Call of Duty tiene un ritmo muy dinámico. ¿Te gusta más jugar en equipo o prefieres las partidas individuales?",
+        
+        "¡Perfecto! Call of Duty nunca decepciona. ¿Has probado las nuevas actualizaciones o mapas que agregaron recientemente?",
+        
+        "¡Impresionante! ¿Qué modalidad de Call of Duty te gusta más, el multijugador tradicional o el modo de supervivencia de Warzone?",
+        
+        "¡Genial! Call of Duty tiene algunas de las mejores mecánicas de disparo en juegos de guerra. ¿Tienes alguna arma favorita o alguna combinación que te da ventaja?",
+        
+        "¡Buenísima elección! Call of Duty es un juego que siempre mantiene la adrenalina al máximo. ¿Estás jugando en alguna plataforma específica o en PC?",
+        
+        "¡Eso suena emocionante! Call of Duty tiene una gran variedad de modos de juego. ¿Qué tal te va en las clasificatorias?",
+        
+        "¡Qué bien! Call of Duty nunca deja de ser divertido. ¿Estás en un clan o prefieres jugar solo?"
+    ]);
+}
+  
+const regexEsFreeFire = /(free\s?fire|ff|battle\sroyale|juego\sde\sacción|disparo\smobile|freefire|battleground|guerra\sreal|juego\sde\sbatalla|juego\sde\sbatalle|competencia\sde\sacciones|tiro\sreal|guerra\svirtual|plataforma\sde\sbattle\ss royale)/i;
+
+if (regexEsFreeFire.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Ah, Free Fire! Un juego de acción y estrategia increíble. ¿Eres fan de los Battle Royales? Es uno de los más populares en móviles.",
+        
+        "¡Free Fire! Un juego donde la habilidad y las estrategias marcan la diferencia. ¿Cuál es tu personaje o estrategia favorita?",
+        
+        "¡Claro, Free Fire! Con su modo de batalla royale y partidas intensas. ¿Estás buscando consejos o quieres saber algo más sobre el juego?",
+        
+        "¡Free Fire es genial! Me imagino que disfrutas las intensas partidas. ¿Prefieres jugar en solitario o en equipo?",
+        
+        "¡Qué bueno que mencionas Free Fire! Aparte de ser un juego competitivo, también tiene muchas colaboraciones geniales. ¿Has probado alguna de sus skins o eventos especiales?",
+        
+        "¡Free Fire es muy popular! ¿Sabías que tiene más de 100 millones de descargas? ¿Qué tal te va en el juego, eres más de agresivo o de esperar a que los otros caigan?",
+        
+        "¡Ah, Free Fire! Es uno de los Battle Royales más conocidos. ¿Tienes algún consejo o truco que uses para ser mejor jugador?",
+        
+        "¡A mí también me encanta Free Fire! Hay tantas formas de jugar, desde el sigilo hasta la acción directa. ¿Te gustaría saber más sobre cómo mejorar en las batallas?",
+        
+        "¡Totalmente! ¿Sabías que en Free Fire las estrategias pueden marcar la diferencia? Es un juego que premia tanto la rapidez como la táctica. ¿Qué tipo de jugador eres?",
+        
+        "Free Fire ha ganado un montón de seguidores debido a su jugabilidad rápida y divertida. ¿Estás en un clan o prefieres jugar solo?",
+        
+        "¡Ese es un juego que genera mucha adrenalina! Free Fire tiene mapas geniales y cada uno tiene su propia estrategia. ¿Tienes algún mapa favorito?",
+        
+        "¡Interesante elección! Free Fire sigue innovando con actualizaciones constantes y eventos. ¿Qué evento reciente has jugado?",
+        
+        "¡Genial que menciones Free Fire! Es perfecto para sesiones rápidas de juego. ¿Te gustaría recibir algunas recomendaciones de personajes o armas que puedes usar?",
+        
+        "¡Me encanta que mencionaste Free Fire! Uno de los Battle Royales más jugados en dispositivos móviles. ¿Tienes algún truco para ganar más partidas?",
+        
+        "¡Qué bueno que hablas de Free Fire! Es increíble ver cómo se ha convertido en uno de los juegos más jugados del mundo. ¿Qué modo de juego prefieres, clásico o alguna modalidad especial?"
+    ]);
+}
+        
+const regexFreeFire = /(es\sfree\sfire|es\sff|estoy\sjugando\sfree\sfire|yo\ssoy\sfree\sfire|soy\sfree\sfire|este\ses\sfree\sfire)/i;
+
+if (regexFreeFire.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Vaya, eres un fanático de Free Fire! Es uno de los juegos más populares de Battle Royale. ¿Qué tal te va en las partidas? ¿Tienes algún personaje o estrategia favorita?",
+        
+        "¡Ah, Free Fire! Gran elección. Es un juego lleno de acción. ¿Estás en un clan o prefieres jugar en solitario?",
+        
+        "¡Así que eres Free Fire! Es increíble cómo ha crecido y cómo se sigue actualizando. ¿Qué opinas de las nuevas skins y eventos?",
+        
+        "¡Eso es genial! Free Fire tiene una gran comunidad y muchas actualizaciones. ¿Cuál es tu modo de juego preferido?",
+        
+        "¡Interesante! Free Fire es todo un fenómeno. ¿Eres más de ir directo al ataque o prefieres esperar y tomar una estrategia más cautelosa?",
+        
+        "¡Qué genial! Free Fire es perfecto para juegos rápidos y emocionantes. ¿Qué personaje sueles usar más? ¿Prefieres las habilidades ofensivas o defensivas?",
+        
+        "¡Excelente! Free Fire se está convirtiendo en un clásico del móvil. ¿Has probado las nuevas armas o el último mapa que salió?",
+        
+        "¡Qué bueno que menciones Free Fire! Un juego con un gran potencial para la acción rápida. ¿Tienes algún consejo que quieras compartir para ser un mejor jugador?",
+        
+        "¡Eso está genial! Free Fire sigue siendo uno de los favoritos por su jugabilidad intensa y corta. ¿Te gustaría saber algunos trucos para mejorar tus partidas?",
+        
+        "¡Te entiendo perfectamente! Free Fire siempre te mantiene al borde del asiento con sus emocionantes batallas. ¿Qué modo de juego disfrutas más?",
+        
+        "¡Ah, Free Fire! Cada vez que juegas, las partidas son una locura. ¿Prefieres jugar en equipo o te va más el estilo individual?",
+        
+        "¡Qué bien! Free Fire es uno de esos juegos que siempre tienen algo nuevo para ofrecer. ¿Qué opinas de la última actualización?"
+    ]);
+}
+        
+const regexCosasInteresantes = /(dime cosas interesantes|cuéntame algo interesante|quiero saber algo interesante|háblame de algo interesante|dime algo curioso|cuéntame algo curioso)/i;
+
+if (regexCosasInteresantes.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¿Sabías que el espacio interestelar no está vacío? En realidad, está lleno de gas, polvo y hasta rayos cósmicos que podrían ser el origen de algunas de las estrellas más jóvenes del universo.",
+        
+        "Una curiosidad interesante: las abejas pueden reconocer rostros humanos. Esto les ayuda a encontrar flores y ubicarse en su entorno. ¡Son mucho más inteligentes de lo que pensamos!",
+        
+        "Te cuento algo curioso: Los pulpos tienen tres corazones, dos para bombear sangre a las branquias y uno para el resto del cuerpo. Además, tienen sangre azul porque usan cobre en lugar de hierro para transportar oxígeno.",
+        
+        "¿Sabías que el corazón de una ballena azul es tan grande que un ser humano podría nadar por sus arterias? Es increíble cómo la naturaleza ha creado seres tan asombrosos.",
+        
+        "¡Aquí tienes un dato interesante! En el siglo XIX, los científicos pensaban que los dinosaurios eran reptiles, pero ahora sabemos que estaban más estrechamente relacionados con las aves. ¡La ciencia avanza rápido!",
+        
+        "Te sorprenderá saber que el chocolate tiene un efecto positivo en el cerebro. Está comprobado que un poco de chocolate oscuro mejora el estado de ánimo y la memoria a corto plazo.",
+        
+        "Algo curioso: en Japón, hay islas donde los conejos viven libres y son considerados una atracción turística. La isla Okunoshima es famosa por su gran población de conejos que corren por todas partes.",
+        
+        "Aquí tienes una curiosidad: la Gran Muralla China no es visible desde el espacio a simple vista. A pesar de su tamaño impresionante, los astronautas afirman que es difícil de distinguir sin un equipo especializado.",
+        
+        "Un dato interesante sobre el cerebro humano: puede procesar información a una velocidad de hasta 120 metros por segundo, ¡mucho más rápido de lo que imaginamos!",
+        
+        "¡Y hablando de cosas curiosas! Los flamencos no nacen rosados. Su color proviene de la dieta rica en betacarotenos que consumen, principalmente de los camarones y algas que comen."
+    ]);
+}
+
+const regexBueno = /bueno/i;
+
+if (regexBueno.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Bueno, me alegra que estés satisfecho! Si hay algo más en lo que pueda ayudarte, solo dímelo.",
+        
+        "¡Eso suena bien! ¿Te gustaría saber más sobre algún tema o explorar algo nuevo?",
+        
+        "¡Genial! Si todo está bueno, tal vez quieras hablar de algo más. ¿Hay algo que te interese?",
+        
+        "¡Qué bueno escuchar eso! Si tienes alguna otra pregunta o quieres conocer algo más, aquí estoy para ayudarte.",
+        
+        "¡Perfecto! Si lo que te mencioné está bueno, tal vez te interese saber cómo se conecta con otros temas. ¿Qué más te gustaría saber?",
+        
+        "¡Eso me alegra! Si alguna parte de lo que hablamos te parece interesante, puedo profundizar más en ello.",
+        
+        "¡Qué bien que todo esté claro! Si tienes curiosidad por algún otro tema, no dudes en preguntarme.",
+        
+        "¡Me gusta escuchar que todo está bien! ¿Hay algo más que te gustaría explorar o discutir?",
+        
+        "¡Genial! A veces lo bueno puede ser aún mejor con un poco más de información. ¿Quieres saber más sobre algún tema relacionado?",
+        
+        "¡Bueno, eso es un gran comienzo! Si necesitas más detalles o quieres expandir alguna idea, avísame."
+    ]);
+}
+
+const regexSumar = /(sumar|\+)/i;
+const regexRestar = /(restar|-\s?)/i;
+const regexMultiplicarOp = /(multiplicar|\*)/i;
+const regexDividirOp = /(dividir|\/)/i;
+const regexRaizCuadradaOp = /raíz cuadrada/i;
+const regexHora = /(hora|hora actual)/i;
+const regexDia = /(día|día de hoy)/i;
+const regexAño = /(año|año actual)/i;
+const regexFecha = /(fecha|fecha de hoy)/i;
+
+if (regexSumar.test(mensajeLower)) {
+    return this.operar(mensaje, '+');
+} else if (regexRestar.test(mensajeLower)) {
+    return this.operar(mensaje, '-');
+} else if (regexMultiplicarOp.test(mensajeLower)) {
+    return this.operar(mensaje, '*');
+} else if (regexDividirOp.test(mensajeLower)) {
+    return this.operar(mensaje, '/');
+} else if (regexRaizCuadradaOp.test(mensajeLower)) {
+    return this.operarRaizCuadrada(mensaje);
+} else if (regexHora.test(mensajeLower)) {
+    return this.obtenerHoraActual();
+} else if (regexDia.test(mensajeLower)) {
+    return this.obtenerDiaActual();
+} else if (regexAño.test(mensajeLower)) {
+    return this.obtenerAñoActual();
+} else if (regexFecha.test(mensajeLower)) {
+    return this.obtenerFechaActual();
+}
+        
+const regex = /puedes (generar|hacer|crear) (imágenes?|imagenes?)/i;
+
 if (regex.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Lamentablemente, no puedo generar imágenes. Mi función principal es proporcionar información y respuestas basadas en texto. Si necesitas ayuda con algo más, estaré encantado de asistirte.",
         
-        "Por ahora, no tengo la capacidad de generar imágenes. Mi programación está centrada en el procesamiento de texto y en ofrecer respuestas e información útil. Si tienes alguna otra pregunta, estaré encantado de ayudar.",
+        "Actualmente no tengo la capacidad de generar imágenes, pero puedo ofrecerte información escrita sobre una gran variedad de temas. Si necesitas ayuda con algo más, no dudes en preguntarme.",
         
-        "No, no puedo generar imágenes. Mi función está limitada a proporcionar respuestas en formato de texto. Si necesitas información o ayuda en otro tema, estaré aquí para ayudarte.",
+        "No puedo generar imágenes, pero si necesitas información o asistencia en otro tema, estoy aquí para ayudarte.",
         
-        "Lamentablemente, no puedo crear ni generar imágenes. Sin embargo, puedo proporcionarte información detallada en texto. Si tienes más preguntas, estaré encantado de ayudarte.",
+        "Lo siento, no puedo crear imágenes. Sin embargo, puedo proporcionarte información detallada en texto. ¿En qué más puedo asistirte?",
         
-        "No tengo la capacidad de crear imágenes. Mi función se limita a procesar y generar respuestas en texto. Si hay algo más en lo que pueda ayudarte, no dudes en decirme.",
+        "Aunque no puedo generar imágenes, puedo ayudarte a encontrar las herramientas adecuadas para hacerlo o explicarte conceptos relacionados. ¿Te gustaría saber más?",
         
-        "Actualmente no puedo generar imágenes, pero puedo ofrecerte información escrita sobre una gran variedad de temas. Si necesitas alguna consulta o aclaración, no dudes en preguntar.",
+        "Generar imágenes no está dentro de mis capacidades, pero estaré encantado de asistirte con información escrita. ¿Qué más te gustaría saber?",
         
-        "No tengo la capacidad de generar imágenes, solo puedo ofrecerte respuestas en texto. Si necesitas asistencia sobre algún tema o más detalles, estaré disponible para ayudarte.",
+        "No tengo la capacidad de hacer imágenes, pero puedo sugerirte programas o plataformas donde sí puedes hacerlo. ¿Te interesa?",
         
-        "Lo siento, no puedo generar imágenes. Mi programación está enfocada en brindarte respuestas basadas en texto. Si necesitas información adicional o tienes alguna otra pregunta, aquí estoy para ayudarte.",
+        "Aunque no puedo hacer imágenes, puedo ayudarte a planificar o describir ideas para que las crees con otras herramientas. ¿Te gustaría eso?",
         
-        "Desafortunadamente, no puedo generar imágenes. Pero si tienes alguna pregunta o necesitas información detallada, puedo ayudarte con texto. ¿En qué más puedo asistirte?",
+        "No puedo generar imágenes, pero puedo guiarte para que puedas hacerlo tú mismo con las herramientas adecuadas. ¿Te interesa saber más?",
         
-        "No, no tengo la capacidad de crear imágenes. Mi tarea es proporcionarte respuestas y datos en texto. Si tienes más dudas o consultas, estaré encantado de ayudarte.",
-        
-        "Aunque no puedo generar imágenes, ¿hay algo específico sobre lo que te gustaría saber más?",
-        
-        "No tengo esa capacidad, pero estoy aquí para ayudarte con cualquier otra consulta. ¿Qué más te gustaría saber?",
-        
-        "Entiendo que necesitas imágenes, pero mi función está centrada en el texto. ¿Hay algo más con lo que pueda ayudarte?",
-        
-        "Lo siento, no puedo generar imágenes. Si necesitas recomendaciones de herramientas para crear imágenes, puedo sugerirte algunas opciones.",
-        
-        "Crear imágenes no está dentro de mis capacidades, pero puedo explicarte cómo usar otras herramientas que sí lo hacen. ¿Te interesa saber más?",
-        
-        "Lamentablemente, no puedo hacer imágenes. Sin embargo, puedo ayudarte a describir lo que necesitas para que puedas buscar la herramienta adecuada.",
-        
-        "No estoy diseñado para generar imágenes, pero puedo ofrecerte consejos o guías para crear las tuyas. ¿Quieres que te ayude con eso?",
-        
-        "Lo siento, generar imágenes no es algo que pueda hacer. Sin embargo, puedo guiarte en cómo encontrar las herramientas adecuadas para ello.",
-        
-        "Crear imágenes no es una función que tenga, pero si necesitas inspiración o ideas, estaré encantado de ayudarte con eso.",
-        
-        "No puedo generar imágenes, pero si me describes lo que necesitas, puedo intentar ayudarte a detallarlo o buscar información relevante.",
-        
-        "Lamentablemente, no soy capaz de crear imágenes. Sin embargo, puedo explicarte conceptos o ayudarte a encontrar recursos visuales que te sean útiles.",
-        
-        "No puedo generar imágenes, pero puedo recomendarte programas o aplicaciones que podrían servirte. ¿Te interesa?",
-        
-        "No tengo la capacidad de hacer imágenes, pero puedo proporcionarte guías paso a paso para crearlas con otras herramientas.",
-        
-        "Aunque no puedo generar imágenes, puedo ayudarte a planificar o diseñar ideas que luego puedas desarrollar con otras herramientas.",
-        
-        "Generar imágenes no es algo que pueda hacer, pero puedo sugerirte software o plataformas donde sí puedes hacerlo.",
-        
-        "Lo siento, no puedo generar imágenes. Pero si necesitas inspiración o referencias, puedo ayudarte a buscar algo que te sirva.",
-        
-        "Mi diseño no incluye la capacidad de generar imágenes, pero puedo ayudarte con todo lo relacionado a texto o información. ¿En qué más puedo asistirte?",
-        
-        "No puedo hacer imágenes, pero puedo enseñarte cómo describirlas para que alguien más las cree. ¿Te interesa saber más?",
-        
-        "Crear imágenes no es algo que esté dentro de mis capacidades, pero estoy aquí para resolver tus dudas o consultas. ¿Qué más necesitas?"
+        "Crear imágenes no es una función que tengo, pero puedo proporcionarte guías o sugerencias para que encuentres las herramientas que necesitas."
     ]);
 }
-        
-if (mensajeLower.startsWith('>')) {
-    const comando = mensajeLower.trim();
 
-    if (comando.startsWith('>aprender') || comando.startsWith('> aprender')) {
-        const partes = comando.slice(10).split('|');
-        if (partes.length === 2) {
-            const palabraClave = partes[0].trim();
-            const respuesta = partes[1].trim();
-
-            if (palabraClave && respuesta) {
-                localStorage.setItem(palabraClave, respuesta);
-                return `¡He aprendido una nueva palabra! Puedes probar escribiendo: "${palabraClave}"`;
-            } else {
-                return "Asegúrate de incluir tanto la palabra clave como la respuesta, separadas por un '|'.<br><br> Ejemplo:<br><br> > aprender hola | ¡Hola, cómo estás!";
-            }
-        } else {
-            return "Formato incorrecto. Usa el formato:<br><br> > aprender palabra | respuesta.<br><br> Ejemplo:<br><br> > aprender hola | ¡Hola, cómo estás!";
-        }
-    } 
-    
-    else if (comando.startsWith('>borrar') || comando.startsWith('> borrar')) {
-        const palabraClave = comando.slice(8).trim();
-        if (palabraClave) {
-            if (localStorage.getItem(palabraClave)) {
-                localStorage.removeItem(palabraClave);
-                return `La palabra "${palabraClave}" ha sido eliminada de mi memoria.`;
-            } else {
-                return `No conozco la palabra "${palabraClave}".`;
-            }
-        } else {
-            const palabrasGuardadas = Object.keys(localStorage).filter(key => !["loggedIn", "currentUser", "profilePic", "iconify1", "iconify0", "iconify-count", "iconify-version"].includes(key));
-            if (palabrasGuardadas.length > 0) {
-                palabrasGuardadas.forEach((palabra) => {
-                    localStorage.removeItem(palabra);
-                });
-                return "Toda mi memoria de palabras ha sido borrada.";
-            } else {
-                return "No hay ninguna palabra que borrar en mi memoria.";
-            }
-        }
-    } 
-
-    else if (comando === '>comandos' || comando === '> comandos') {
-        return `Estos son los comandos que puedes usar<br><br>
-1. > aprender palabra | respuesta - Enseña al bot una nueva palabra y su respuesta.<br><br>
-2. > borrar palabra - Borra una palabra específica de mi memoria.<br><br>
-3. > borrar - Borra toda la memoria del bot.<br><br>
-4. > memoria - Muestra todas las palabras aprendidas y sus respuestas.<br><br>
-5. > comandos - Muestra esta lista de comandos.<br><br>
-Nota: Si me enseñas una palabra con una respuesta predefinida, esta será reemplazada. Esto podría afectar mi comportamiento si la palabra ya está en mi código. Usa palabras únicas para evitar sobrescribir respuestas importantes.`;
-    } 
-    
-    else if (comando === '>memoria' || comando === '> memoria') {
-        const palabrasGuardadas = Object.keys(localStorage).filter(key => !["loggedIn", "currentUser", "profilePic", "iconify1", "iconify0", "iconify-count", "iconify-version"].includes(key));
-        if (palabrasGuardadas.length > 0) {
-            let lista = "Estas son las palabras que he aprendido:<br><br>";
-            palabrasGuardadas.forEach((palabra) => {
-                lista += `- ${palabra}: ${localStorage.getItem(palabra)}<br>`;
-            });
-            return lista;
-        } else {
-            return "No he aprendido ninguna palabra todavía.";
-        }
-    }
-
-    else {
-        return "No reconozco ese comando. Usa:<br><br> > comandos - para ver la lista de comandos disponibles";
-    }
-} 
-
-else if (localStorage.getItem(mensajeLower)) {
-    return localStorage.getItem(mensajeLower);
-}
-        
         const regexCocaCola = /como se (hace|produce|elabora|fabricar|preparar|crear) (la )?coca cola|fabricación coca cola|ingredientes coca cola|proceso coca cola|fórmula coca cola|receta coca cola|producción coca cola|coca cola ingredientes|bebida coca cola|sabor coca cola|caramelización coca cola|etiquetado coca cola|carbonatación coca cola|soda coca cola/i;
 
 if (regexCocaCola.test(mensajeLower)) {
     return this.respuestaAleatoria([
-        "La Coca-Cola es una bebida refrescante que se produce mediante un proceso de mezcla de agua purificada, azúcar (o jarabe de maíz con alto contenido de fructosa en algunas regiones), cafeína, ácido fosfórico y un saborizante secreto conocido como Merchandise 7X. Este sabor único ha hecho que Coca-Cola sea una de las bebidas más populares del mundo.<br><br>Después de mezclar estos ingredientes, se carbonata el líquido para darle su efervescencia característica.",
+        "La Coca-Cola es una bebida refrescante que se produce mediante un proceso de mezcla de agua purificada, azúcar (o jarabe de maíz con alto contenido de fructosa en algunas regiones), cafeína, ácido fosfórico y un saborizante secreto conocido como Merchandise 7X. Este sabor único ha hecho que Coca-Cola sea una de las bebidas más populares del mundo. Después de mezclar estos ingredientes, se carbonata el líquido para darle su efervescencia característica.",
         
-        "El proceso de fabricación de Coca-Cola involucra la creación de un jarabe base utilizando agua, azúcar, ácido fosfórico y otros compuestos. Este jarabe se combina con dióxido de carbono para crear la carbonatación característica de la bebida.<br><br>El paso siguiente es la mezcla con el ingrediente secreto, Merchandise 7X, una mezcla de aceites esenciales que aportan el sabor característico de Coca-Cola.",
+        "El proceso de fabricación de Coca-Cola involucra la creación de un jarabe base utilizando agua, azúcar, ácido fosfórico y otros compuestos. Este jarabe se combina con dióxido de carbono para crear la carbonatación característica de la bebida. El paso siguiente es la mezcla con el ingrediente secreto, Merchandise 7X, una mezcla de aceites esenciales que aportan el sabor característico de Coca-Cola.",
         
-        "Los ingredientes principales de Coca-Cola incluyen agua, azúcar, cafeína, ácido fosfórico y saborizantes naturales. En el caso de la Coca-Cola original, se utiliza una mezcla secreta de aceites esenciales, que incluye naranja, limón, nuez moscada y otros compuestos que le dan el sabor inconfundible.<br><br>Una vez que estos ingredientes están combinados, la bebida pasa por un proceso de carbonatación para darle su chispa característica.",
+        "Los ingredientes principales de Coca-Cola incluyen agua, azúcar, cafeína, ácido fosfórico y saborizantes naturales. En el caso de la Coca-Cola original, se utiliza una mezcla secreta de aceites esenciales, que incluye naranja, limón, nuez moscada y otros compuestos que le dan el sabor inconfundible. Una vez que estos ingredientes están combinados, la bebida pasa por un proceso de carbonatación para darle su chispa característica.",
         
-        "El color oscuro de Coca-Cola proviene del caramelo, un colorante alimenticio que también aporta algo de sabor. Este ingrediente es esencial para darle a la bebida su tonalidad oscura.<br><br>Después de la carbonatación, la bebida se filtra para asegurarse de que no haya impurezas, y luego se embotella en botellas de vidrio, plástico o latas.",
+        "El color oscuro de Coca-Cola proviene del caramelo, un colorante alimenticio que también aporta algo de sabor. Este ingrediente es esencial para darle a la bebida su tonalidad oscura. Después de la carbonatación, la bebida se filtra para asegurarse de que no haya impurezas, y luego se embotella en botellas de vidrio, plástico o latas.",
         
-        "La Coca-Cola se produce en plantas de embotellado en todo el mundo. Cada planta sigue un proceso estandarizado para asegurar que el sabor de Coca-Cola sea consistente. Esto incluye la mezcla de los ingredientes, la adición de dióxido de carbono y las pruebas de calidad para asegurarse de que cada botella cumpla con los estándares de la compañía.<br><br>El líquido se embotella en contenedores de diferentes tamaños, desde latas hasta botellas de vidrio y plástico.",
+        "La Coca-Cola se produce en plantas de embotellado en todo el mundo. Cada planta sigue un proceso estandarizado para asegurar que el sabor de Coca-Cola sea consistente. Esto incluye la mezcla de los ingredientes, la adición de dióxido de carbono y las pruebas de calidad para asegurarse de que cada botella cumpla con los estándares de la compañía. El líquido se embotella en contenedores de diferentes tamaños, desde latas hasta botellas de vidrio y plástico.",
         
-        "Uno de los ingredientes clave que hace que Coca-Cola tenga su sabor único es el ácido fosfórico. Este compuesto se usa no solo para dar un toque ácido, sino también para ayudar a conservar la bebida durante el proceso de distribución.<br><br>Junto con el azúcar, el ácido fosfórico equilibra el sabor dulce, lo que resulta en la mezcla perfecta de dulzura y acidez.",
+        "Uno de los ingredientes clave que hace que Coca-Cola tenga su sabor único es el ácido fosfórico. Este compuesto se usa no solo para dar un toque ácido, sino también para ayudar a conservar la bebida durante el proceso de distribución. Junto con el azúcar, el ácido fosfórico equilibra el sabor dulce, lo que resulta en la mezcla perfecta de dulzura y acidez.",
         
-        "La receta secreta de Coca-Cola, conocida como Merchandise 7X, se ha mantenido en secreto durante más de 100 años. Se cree que contiene una mezcla de aceites esenciales, especias y frutas que crean un perfil de sabor que es único en el mundo de las bebidas.<br><br>Aunque la receta exacta sigue siendo un misterio, los ingredientes conocidos son fundamentales para crear ese sabor distintivo que ha hecho de Coca-Cola una de las marcas más reconocidas a nivel global.",
+        "La receta secreta de Coca-Cola, conocida como Merchandise 7X, se ha mantenido en secreto durante más de 100 años. Se cree que contiene una mezcla de aceites esenciales, especias y frutas que crean un perfil de sabor que es único en el mundo de las bebidas. Aunque la receta exacta sigue siendo un misterio, los ingredientes conocidos son fundamentales para crear ese sabor distintivo que ha hecho de Coca-Cola una de las marcas más reconocidas a nivel global.",
         
-        "El dióxido de carbono (CO2) es responsable de la carbonatación de Coca-Cola, lo que le da esa burbujeante efervescencia. La bebida se infunde con CO2 a presión para asegurarse de que la bebida mantenga su frescura y su chisporroteo.<br><br>Este proceso no solo ayuda con el sabor, sino también con la conservación de la bebida, al evitar que se altere rápidamente.",
+        "El dióxido de carbono (CO2) es responsable de la carbonatación de Coca-Cola, lo que le da esa burbujeante efervescencia. La bebida se infunde con CO2 a presión para asegurarse de que la bebida mantenga su frescura y su chisporroteo. Este proceso no solo ayuda con el sabor, sino también con la conservación de la bebida, al evitar que se altere rápidamente.",
         
-        "La Coca-Cola también está disponible en versiones sin azúcar, como Coca-Cola Diet y Coca-Cola Zero. Estas versiones se fabrican utilizando edulcorantes artificiales, lo que permite a los consumidores disfrutar de un sabor similar sin las calorías que aporta el azúcar.<br><br>El proceso de fabricación sigue siendo similar, pero los edulcorantes se ajustan para mantener un sabor balanceado sin calorías.",
+        "La Coca-Cola también está disponible en versiones sin azúcar, como Coca-Cola Diet y Coca-Cola Zero. Estas versiones se fabrican utilizando edulcorantes artificiales, lo que permite a los consumidores disfrutar de un sabor similar sin las calorías que aporta el azúcar. El proceso de fabricación sigue siendo similar, pero los edulcorantes se ajustan para mantener un sabor balanceado sin calorías.",
         
-        "Una vez embotellada, la Coca-Cola se somete a pruebas rigurosas de calidad para asegurar que cada lote tenga el mismo sabor y nivel de carbonatación. Después de pasar estas pruebas, las botellas o latas se etiquetan y se distribuyen a puntos de venta alrededor del mundo.<br><br>Este proceso asegura que, sin importar en qué parte del mundo se consuma, la Coca-Cola siempre tenga el mismo sabor único.",
+        "Una vez embotellada, la Coca-Cola se somete a pruebas rigurosas de calidad para asegurar que cada lote tenga el mismo sabor y nivel de carbonatación. Después de pasar estas pruebas, las botellas o latas se etiquetan y se distribuyen a puntos de venta alrededor del mundo. Este proceso asegura que, sin importar en qué parte del mundo se consuma, la Coca-Cola siempre tenga el mismo sabor único.",
         
-        "En la actualidad, Coca-Cola sigue siendo una de las bebidas más populares del mundo, con más de 1,9 mil millones de bebidas servidas cada día. Aunque la receta y el proceso de fabricación han permanecido bastante constantes, la tecnología moderna ha permitido mejorar la eficiencia en la producción y distribución.<br><br>Gracias a esta innovación, Coca-Cola sigue siendo un pilar en la industria de bebidas a nivel mundial.",
+        "En la actualidad, Coca-Cola sigue siendo una de las bebidas más populares del mundo, con más de 1,9 mil millones de bebidas servidas cada día. Aunque la receta y el proceso de fabricación han permanecido bastante constantes, la tecnología moderna ha permitido mejorar la eficiencia en la producción y distribución. Gracias a esta innovación, Coca-Cola sigue siendo un pilar en la industria de bebidas a nivel mundial.",
         
-        "El uso de tecnología avanzada en el proceso de producción ha hecho que Coca-Cola sea más eficiente en su fabricación. Las máquinas modernas aseguran que cada lata o botella esté perfectamente sellada y libre de impurezas.<br><br>Este nivel de precisión garantiza que la bebida llegue a los consumidores con la misma calidad, independientemente de la región.",
+        "El uso de tecnología avanzada en el proceso de producción ha hecho que Coca-Cola sea más eficiente en su fabricación. Las máquinas modernas aseguran que cada lata o botella esté perfectamente sellada y libre de impurezas. Este nivel de precisión garantiza que la bebida llegue a los consumidores con la misma calidad, independientemente de la región.",
         
-        "El azúcar utilizado en Coca-Cola es una de las partes más importantes de la receta. En algunas regiones se utiliza azúcar refinada, mientras que en otras se utiliza jarabe de maíz con alto contenido de fructosa, lo que puede alterar ligeramente el sabor de la bebida.<br><br>Independientemente del tipo de azúcar, el proceso de fabricación sigue siendo el mismo, con una mezcla cuidadosamente equilibrada para obtener el sabor perfecto.",
+        "El azúcar utilizado en Coca-Cola es una de las partes más importantes de la receta. En algunas regiones se utiliza azúcar refinada, mientras que en otras se utiliza jarabe de maíz con alto contenido de fructosa, lo que puede alterar ligeramente el sabor de la bebida. Independientemente del tipo de azúcar, el proceso de fabricación sigue siendo el mismo, con una mezcla cuidadosamente equilibrada para obtener el sabor perfecto.",
         
-        "Coca-Cola también es conocida por su famosa botella contorneada, que fue diseñada en 1915 para hacerla fácilmente reconocible. Esta botella es una de las características más icónicas de la marca y ayuda a distinguirla de otras bebidas refrescantes.<br><br>Hoy en día, la botella sigue siendo uno de los elementos más emblemáticos de Coca-Cola, y es un símbolo de la marca en todo el mundo.",
+        "Coca-Cola también es conocida por su famosa botella contorneada, que fue diseñada en 1915 para hacerla fácilmente reconocible. Esta botella es una de las características más icónicas de la marca y ayuda a distinguirla de otras bebidas refrescantes. Hoy en día, la botella sigue siendo uno de los elementos más emblemáticos de Coca-Cola, y es un símbolo de la marca en todo el mundo.",
         
-        "El embalaje de Coca-Cola ha evolucionado con el tiempo. Aparte de las clásicas botellas de vidrio, ahora es común encontrar Coca-Cola en botellas plásticas y latas de diferentes tamaños.<br><br>Cada tipo de envase se selecciona en función del mercado y las preferencias de los consumidores, pero siempre con la intención de mantener la frescura y la calidad del producto.",
+        "El embalaje de Coca-Cola ha evolucionado con el tiempo. Aparte de las clásicas botellas de vidrio, ahora es común encontrar Coca-Cola en botellas plásticas y latas de diferentes tamaños. Cada tipo de envase se selecciona en función del mercado y las preferencias de los consumidores, pero siempre con la intención de mantener la frescura y la calidad del producto."
     ]);
 }
         
-        else if (
-    mensajeLower.includes('como se hace la pepsi') || 
-    mensajeLower.includes('fabricación de pepsi') || 
-    mensajeLower.includes('ingredientes pepsi') || 
-    mensajeLower.includes('proceso de producción pepsi') || 
-    mensajeLower.includes('cómo se produce pepsi') || 
-    mensajeLower.includes('historia de pepsi') || 
-    mensajeLower.includes('bebida pepsi') ||
-    mensajeLower.includes('pepsi y sus ingredientes')
-) {
-    const respuestasPepsi = [
-        "La Pepsi, como muchas otras bebidas gaseosas, se fabrica utilizando una mezcla de agua carbonatada, jarabe de maíz, azúcar, acidulantes y saborizantes artificiales. La mezcla es procesada y carbonatada en grandes tanques para crear la burbujeas características de la bebida.<br><br>Los ingredientes principales incluyen agua, azúcar, ácido fosfórico, cafeína y el sabor a cola.",
+        const regexPepsi = /como se hace la pepsi|fabricación de pepsi|ingredientes pepsi|proceso de producción pepsi|cómo se produce pepsi|historia de pepsi|bebida pepsi|pepsi y sus ingredientes/i;
+
+if (regexPepsi.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "La Pepsi, como muchas otras bebidas gaseosas, se fabrica utilizando una mezcla de agua carbonatada, jarabe de maíz, azúcar, acidulantes y saborizantes artificiales. La mezcla es procesada y carbonatada en grandes tanques para crear las burbujas características de la bebida. Los ingredientes principales incluyen agua, azúcar, ácido fosfórico, cafeína y el sabor a cola.",
         
-        "El proceso de fabricación de la Pepsi comienza con la mezcla de agua y azúcar. Se añade jarabe de maíz y otros ingredientes para dar el sabor dulce característico. Luego, se combina con el ácido fosfórico y el citrato para equilibrar el sabor.<br><br>La mezcla se carbonata al inyectar dióxido de carbono (CO2), lo que crea las burbujas y le da a la Pepsi su efervescencia.",
+        "El proceso de fabricación de la Pepsi comienza con la mezcla de agua y azúcar. Se añade jarabe de maíz y otros ingredientes para dar el sabor dulce característico. Luego, se combina con el ácido fosfórico y el citrato para equilibrar el sabor. La mezcla se carbonata al inyectar dióxido de carbono (CO2), lo que crea las burbujas y le da a la Pepsi su efervescencia.",
         
-        "El sabor único de la Pepsi se debe a su fórmula secreta, que incluye varios saborizantes y especias. Aunque la receta exacta es un secreto comercial, se sabe que se utilizan extractos de vainilla, caramelo, y otros sabores naturales que le dan su sabor a cola distintivo.<br><br>Después de mezclar todos los ingredientes, el líquido resultante es procesado, filtrado y enfriado antes de ser embotellado.",
+        "El sabor único de la Pepsi se debe a su fórmula secreta, que incluye varios saborizantes y especias. Aunque la receta exacta es un secreto comercial, se sabe que se utilizan extractos de vainilla, caramelo, y otros sabores naturales que le dan su sabor a cola distintivo. Después de mezclar todos los ingredientes, el líquido resultante es procesado, filtrado y enfriado antes de ser embotellado.",
         
-        "El proceso de fabricación de Pepsi también incluye el uso de dióxido de carbono para carbonatar la bebida. Esto le da la textura burbujeante característica. El líquido se filtra para eliminar impurezas y garantizar que la bebida sea clara y no tenga impurezas visibles.<br><br>Una vez que la mezcla está lista y carbonatada, se embotella en botellas de vidrio, plástico o latas según el formato.",
+        "El proceso de fabricación de Pepsi también incluye el uso de dióxido de carbono para carbonatar la bebida. Esto le da la textura burbujeante característica. El líquido se filtra para eliminar impurezas y garantizar que la bebida sea clara y no tenga impurezas visibles. Una vez que la mezcla está lista y carbonatada, se embotella en botellas de vidrio, plástico o latas según el formato.",
         
-        "El azúcar que se utiliza en Pepsi puede variar según la región. En algunos países, se usa jarabe de maíz con alto contenido de fructosa (HFCS), mientras que en otros se usa azúcar refinada. El tipo de azúcar influye ligeramente en el sabor final de la bebida.<br><br>La mezcla de azúcar y agua se combina con otros ingredientes para asegurar que la bebida tenga el sabor correcto y una textura adecuada.",
+        "El azúcar que se utiliza en Pepsi puede variar según la región. En algunos países, se usa jarabe de maíz con alto contenido de fructosa (HFCS), mientras que en otros se usa azúcar refinada. El tipo de azúcar influye ligeramente en el sabor final de la bebida. La mezcla de azúcar y agua se combina con otros ingredientes para asegurar que la bebida tenga el sabor correcto y una textura adecuada.",
         
-        "Una parte esencial del proceso de fabricación de Pepsi es la creación de la mezcla de cola. Esto incluye saborizantes como el caramelo, que no solo le da color a la bebida, sino también un toque dulce. Además, el ácido fosfórico y la cafeína son componentes importantes, ya que proporcionan el sabor ácido y el efecto estimulante de la bebida.<br><br>El proceso de mezcla es crucial para obtener la consistencia y el sabor adecuados en cada lote de Pepsi.",
+        "Una parte esencial del proceso de fabricación de Pepsi es la creación de la mezcla de cola. Esto incluye saborizantes como el caramelo, que no solo le da color a la bebida, sino también un toque dulce. Además, el ácido fosfórico y la cafeína son componentes importantes, ya que proporcionan el sabor ácido y el efecto estimulante de la bebida. El proceso de mezcla es crucial para obtener la consistencia y el sabor adecuados en cada lote de Pepsi.",
         
-        "El proceso de carbonatación es esencial para la Pepsi. Se realiza añadiendo dióxido de carbono a la mezcla bajo alta presión. Esto crea las pequeñas burbujas que caracterizan la bebida.<br><br>Además de la carbonatación, la bebida se trata para garantizar que sea estable y que los sabores no se alteren durante el almacenamiento o distribución.",
+        "El proceso de carbonatación es esencial para la Pepsi. Se realiza añadiendo dióxido de carbono a la mezcla bajo alta presión. Esto crea las pequeñas burbujas que caracterizan la bebida. Además de la carbonatación, la bebida se trata para garantizar que sea estable y que los sabores no se alteren durante el almacenamiento o distribución.",
         
-        "Una vez que la bebida está completamente mezclada, carbonatada y enfriada, se procede a la embotellación. Las botellas o latas se llenan con la bebida bajo condiciones sanitarias para asegurar que no haya contaminación. Luego, la Pepsi se sella y se etiqueta para su distribución.<br><br>Es importante que el proceso de embotellado se realice rápidamente para evitar que la carbonatación se pierda.",
+        "Una vez que la bebida está completamente mezclada, carbonatada y enfriada, se procede a la embotellación. Las botellas o latas se llenan con la bebida bajo condiciones sanitarias para asegurar que no haya contaminación. Luego, la Pepsi se sella y se etiqueta para su distribución. Es importante que el proceso de embotellado se realice rápidamente para evitar que la carbonatación se pierda.",
         
-        "La fórmula de la Pepsi, aunque similar a la de otras bebidas de cola, tiene su propio perfil único. Este perfil incluye una mezcla específica de ingredientes como la vainilla, el caramelo, y otros sabores secretos que crean su sabor característico.<br><br>El proceso de fabricación es altamente automatizado y controlado, lo que garantiza la consistencia en cada botella de Pepsi.",
+        "La fórmula de la Pepsi, aunque similar a la de otras bebidas de cola, tiene su propio perfil único. Este perfil incluye una mezcla específica de ingredientes como la vainilla, el caramelo, y otros sabores secretos que crean su sabor característico. El proceso de fabricación es altamente automatizado y controlado, lo que garantiza la consistencia en cada botella de Pepsi.",
         
-        "En algunas regiones, la Pepsi se produce con edulcorantes artificiales, como el aspartame o la sucralosa, en lugar de azúcar, para ofrecer versiones sin azúcar o dietéticas. El proceso sigue siendo similar al de la Pepsi regular, pero con la sustitución de los edulcorantes.<br><br>El sabor de estas versiones dietéticas se ajusta para compensar la falta de azúcar, manteniendo la sensación de efervescencia y el sabor característico.",
+        "En algunas regiones, la Pepsi se produce con edulcorantes artificiales, como el aspartame o la sucralosa, en lugar de azúcar, para ofrecer versiones sin azúcar o dietéticas. El proceso sigue siendo similar al de la Pepsi regular, pero con la sustitución de los edulcorantes. El sabor de estas versiones dietéticas se ajusta para compensar la falta de azúcar, manteniendo la sensación de efervescencia y el sabor característico.",
         
-        "Una de las partes más interesantes del proceso de fabricación de la Pepsi es la etapa de mezcla de sabores. Aunque la receta exacta sigue siendo un secreto, se sabe que la Pepsi utiliza una mezcla de sabores naturales y artificiales, lo que le da su sabor único.<br><br>Este proceso es crucial para asegurar que cada lata o botella de Pepsi tenga el mismo sabor que la anterior.",
+        "Una de las partes más interesantes del proceso de fabricación de la Pepsi es la etapa de mezcla de sabores. Aunque la receta exacta sigue siendo un secreto, se sabe que la Pepsi utiliza una mezcla de sabores naturales y artificiales, lo que le da su sabor único. Este proceso es crucial para asegurar que cada lata o botella de Pepsi tenga el mismo sabor que la anterior.",
         
         "El proceso de embotellado también es muy importante para mantener la calidad de la Pepsi. Después de que la bebida se embotella, se somete a controles de calidad para asegurarse de que no haya impurezas ni defectos en el envase. Esto ayuda a garantizar que la bebida sea segura para el consumo y que su sabor se mantenga constante.",
         
         "En resumen, la fabricación de la Pepsi involucra una mezcla precisa de agua, azúcar, carbonatación y saborizantes. Aunque los detalles exactos del proceso pueden variar entre fábricas y regiones, la idea básica es la misma: crear una bebida refrescante, con sabor único y burbujeante que los consumidores disfrutan en todo el mundo."
-    ];
-
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestasPepsi);
-    return respuestaSeleccionada;
+    ]);
 }
         
-        else if (
-    mensajeLower.includes('como funciona el wifi') || 
-    mensajeLower.includes('qué es wifi') || 
-    mensajeLower.includes('tecnología wifi') ||
-    mensajeLower.includes('funcionamiento wifi') || 
-    mensajeLower.includes('red wifi') ||
-    mensajeLower.includes('wifi y conexión') ||
-    mensajeLower.includes('señal wifi') ||
-    mensajeLower.includes('router wifi') ||
-    mensajeLower.includes('wifi inalámbrico') ||
-    mensajeLower.includes('tecnología inalámbrica') ||
-    mensajeLower.includes('conectar a wifi')
-) {
-    const respuestasWifi = [
-        "El WiFi es una tecnología que permite la transmisión de datos de manera inalámbrica entre dispositivos, utilizando ondas de radio. Estas ondas de radio transmiten la información a través de un router, el cual está conectado a Internet.<br><br>Los dispositivos como teléfonos, computadoras o tabletas se conectan al WiFi para acceder a Internet sin la necesidad de cables.",
+        const regexWifi = /como funciona el wifi|qué es wifi|tecnología wifi|funcionamiento wifi|red wifi|wifi y conexión|señal wifi|router wifi|wifi inalámbrico|tecnología inalámbrica|conectar a wifi/i;
+
+if (regexWifi.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "El WiFi es una tecnología que permite la transmisión de datos de manera inalámbrica entre dispositivos, utilizando ondas de radio. Estas ondas de radio transmiten la información a través de un router, el cual está conectado a Internet. Los dispositivos como teléfonos, computadoras o tabletas se conectan al WiFi para acceder a Internet sin la necesidad de cables.",
         
-        "El WiFi utiliza una frecuencia de ondas de radio, generalmente en los rangos de 2.4 GHz y 5 GHz. Estos rangos son utilizados por los routers para enviar señales que los dispositivos pueden recibir. Cuando te conectas a una red WiFi, tu dispositivo capta la señal del router y se conecta a Internet.<br><br>La velocidad de la conexión depende de la calidad de la señal y la distancia entre el dispositivo y el router.",
+        "El WiFi utiliza una frecuencia de ondas de radio, generalmente en los rangos de 2.4 GHz y 5 GHz. Estos rangos son utilizados por los routers para enviar señales que los dispositivos pueden recibir. Cuando te conectas a una red WiFi, tu dispositivo capta la señal del router y se conecta a Internet. La velocidad de la conexión depende de la calidad de la señal y la distancia entre el dispositivo y el router.",
         
-        "El funcionamiento del WiFi se basa en el uso de un router que envía y recibe señales a través de ondas de radio. Este router está conectado a una línea de Internet, y cuando un dispositivo se conecta al WiFi, recibe datos a través de esa señal.<br><br>El router distribuye la señal en un área específica, permitiendo que varios dispositivos se conecten simultáneamente.",
+        "El funcionamiento del WiFi se basa en el uso de un router que envía y recibe señales a través de ondas de radio. Este router está conectado a una línea de Internet, y cuando un dispositivo se conecta al WiFi, recibe datos a través de esa señal. El router distribuye la señal en un área específica, permitiendo que varios dispositivos se conecten simultáneamente.",
         
-        "Para que tu dispositivo se conecte a una red WiFi, debe estar dentro del alcance de la señal que emite el router. Una vez que tu dispositivo detecta la red, se conecta automáticamente o con tu autorización, dependiendo de si la red está protegida con una contraseña.<br><br>El WiFi es muy conveniente porque permite acceder a Internet sin cables, lo que te brinda mayor libertad y movilidad.",
+        "Para que tu dispositivo se conecte a una red WiFi, debe estar dentro del alcance de la señal que emite el router. Una vez que tu dispositivo detecta la red, se conecta automáticamente o con tu autorización, dependiendo de si la red está protegida con una contraseña. El WiFi es muy conveniente porque permite acceder a Internet sin cables, lo que te brinda mayor libertad y movilidad.",
         
         "La conexión WiFi es posible gracias a un estándar de comunicación conocido como IEEE 802.11. Este estándar define cómo los dispositivos deben comunicarse con los routers y entre sí. Gracias a este protocolo, los dispositivos pueden enviar y recibir información de manera rápida y eficiente a través de la red inalámbrica.",
         
-        "El WiFi no es un sistema de transmisión de Internet por sí solo, sino una forma de transmitir datos. Es el router conectado a Internet el que facilita el acceso. Una vez que los datos llegan al router a través de una conexión física, el WiFi se encarga de transmitir esa información de manera inalámbrica a los dispositivos conectados.<br><br>Esto permite navegar, ver videos o realizar otras actividades en línea sin la necesidad de cables.",
+        "El WiFi no es un sistema de transmisión de Internet por sí solo, sino una forma de transmitir datos. Es el router conectado a Internet el que facilita el acceso. Una vez que los datos llegan al router a través de una conexión física, el WiFi se encarga de transmitir esa información de manera inalámbrica a los dispositivos conectados. Esto permite navegar, ver videos o realizar otras actividades en línea sin la necesidad de cables.",
         
-        "Las redes WiFi funcionan mediante la codificación de datos, lo que permite que la información viaje a través de las ondas de radio sin que se interfiera con otras señales. Los dispositivos se conectan a estas redes codificadas, lo que garantiza que la información sea segura y se transmita correctamente.<br><br>Cuando te conectas a WiFi, el router y tu dispositivo intercambian claves para asegurar una conexión segura.",
+        "Las redes WiFi funcionan mediante la codificación de datos, lo que permite que la información viaje a través de las ondas de radio sin que se interfiera con otras señales. Los dispositivos se conectan a estas redes codificadas, lo que garantiza que la información sea segura y se transmita correctamente. Cuando te conectas a WiFi, el router y tu dispositivo intercambian claves para asegurar una conexión segura.",
         
-        "La señal WiFi tiene un alcance limitado. Dependiendo del tipo de router, la señal puede cubrir desde unos pocos metros hasta decenas de metros, especialmente si utilizas routers de doble banda que operan en 2.4 GHz y 5 GHz.<br><br>Si estás lejos del router, la señal puede debilitarse y afectar la velocidad de la conexión, lo que podría hacer que la navegación sea más lenta.",
+        "La señal WiFi tiene un alcance limitado. Dependiendo del tipo de router, la señal puede cubrir desde unos pocos metros hasta decenas de metros, especialmente si utilizas routers de doble banda que operan en 2.4 GHz y 5 GHz. Si estás lejos del router, la señal puede debilitarse y afectar la velocidad de la conexión, lo que podría hacer que la navegación sea más lenta.",
         
-        "El WiFi es increíblemente útil en hogares y oficinas, ya que permite a múltiples dispositivos estar conectados a la red al mismo tiempo. Un solo router puede dar acceso a teléfonos, computadoras, televisores inteligentes, e incluso dispositivos de Internet de las cosas (IoT), todos compartiendo una única conexión a Internet.<br><br>Esto convierte al WiFi en una opción flexible y económica para conectividad en lugares con varios usuarios.",
+        "El WiFi es increíblemente útil en hogares y oficinas, ya que permite a múltiples dispositivos estar conectados a la red al mismo tiempo. Un solo router puede dar acceso a teléfonos, computadoras, televisores inteligentes, e incluso dispositivos de Internet de las cosas (IoT), todos compartiendo una única conexión a Internet. Esto convierte al WiFi en una opción flexible y económica para conectividad en lugares con varios usuarios.",
         
-        "El WiFi es una de las tecnologías inalámbricas más populares. Utiliza ondas de radio para transmitir datos a través del aire, lo que te permite estar conectado a Internet sin estar físicamente conectado con un cable.<br><br>Esto significa que puedes moverte libremente dentro del rango de la señal sin perder la conexión, lo que resulta conveniente tanto en entornos domésticos como en espacios públicos como cafeterías y aeropuertos.",
+        "El WiFi es una de las tecnologías inalámbricas más populares. Utiliza ondas de radio para transmitir datos a través del aire, lo que te permite estar conectado a Internet sin estar físicamente conectado con un cable. Esto significa que puedes moverte libremente dentro del rango de la señal sin perder la conexión, lo que resulta conveniente tanto en entornos domésticos como en espacios públicos como cafeterías y aeropuertos.",
         
-        "Cuando un dispositivo se conecta a una red WiFi, el router le asigna una dirección IP única para identificarlo dentro de la red. A partir de allí, el dispositivo puede enviar y recibir datos a través de la red local, que a su vez está conectada a la red global de Internet.<br><br>El proceso es rápido y permite que varios dispositivos se conecten simultáneamente sin interferir entre sí.",
+        "Cuando un dispositivo se conecta a una red WiFi, el router le asigna una dirección IP única para identificarlo dentro de la red. A partir de allí, el dispositivo puede enviar y recibir datos a través de la red local, que a su vez está conectada a la red global de Internet. El proceso es rápido y permite que varios dispositivos se conecten simultáneamente sin interferir entre sí.",
         
-        "El WiFi ha revolucionado la forma en que nos conectamos a Internet, permitiendo una conectividad sin cables. Esta tecnología es esencial para la mayoría de los dispositivos modernos, ya que muchos dependen del WiFi para acceder a servicios en línea como streaming, redes sociales y aplicaciones en la nube.<br><br>Gracias a su facilidad de uso, el WiFi se ha convertido en una parte indispensable de la vida cotidiana.",
+        "El WiFi ha revolucionado la forma en que nos conectamos a Internet, permitiendo una conectividad sin cables. Esta tecnología es esencial para la mayoría de los dispositivos modernos, ya que muchos dependen del WiFi para acceder a servicios en línea como streaming, redes sociales y aplicaciones en la nube. Gracias a su facilidad de uso, el WiFi se ha convertido en una parte indispensable de la vida cotidiana.",
         
         "El WiFi tiene algunas limitaciones, como el alcance de la señal y la posibilidad de interferencias con otras redes inalámbricas o dispositivos. Sin embargo, los avances en la tecnología WiFi han mejorado la velocidad, la estabilidad y la cobertura, haciendo que esta tecnología sea cada vez más eficiente en lugares con muchos dispositivos conectados.",
         
-        "La configuración de una red WiFi implica instalar un router y configurarlo correctamente. Una vez hecho esto, puedes conectar tus dispositivos a través de la red, asegurándote de que todos estén dentro del rango de la señal.<br><br>Los routers modernos también incluyen funciones de seguridad, como la encriptación de datos, para proteger tu red de accesos no autorizados."
-    ];
-
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestasWifi);
-    return respuestaSeleccionada;
+        "La configuración de una red WiFi implica instalar un router y configurarlo correctamente. Una vez hecho esto, puedes conectar tus dispositivos a través de la red, asegurándote de que todos estén dentro del rango de la señal. Los routers modernos también incluyen funciones de seguridad, como la encriptación de datos, para proteger tu red de accesos no autorizados."
+    ]);
 }
         
-        else if (
-    mensajeLower.includes('audífonos bluetooth') || 
-    mensajeLower.includes('funcionan los audífonos bluetooth') || 
-    mensajeLower.includes('tecnología bluetooth') || 
-    mensajeLower.includes('conexión bluetooth') ||
-    mensajeLower.includes('audífonos inalámbricos') ||
-    mensajeLower.includes('cómo funciona bluetooth') ||
-    mensajeLower.includes('conectar audífonos bluetooth') ||
-    mensajeLower.includes('audífonos bluetooth explicación') ||
-    mensajeLower.includes('audífonos inalámbricos bluetooth') ||
-    mensajeLower.includes('bluetooth y sonido') ||
-    mensajeLower.includes('audífonos sin cables')
-) {
-    const respuestasBluetooth = [
-        "Los audífonos Bluetooth funcionan mediante una tecnología inalámbrica que permite la transmisión de audio a través de ondas de radio.<br><br>Utilizan un protocolo de comunicación estándar, lo que permite que se conecten sin cables a dispositivos como teléfonos, computadoras y otros aparatos compatibles.",
+        const regexBluetooth = /audífonos (bluetooth|inalámbricos)|funcionan (los|las) audífonos bluetooth|tecnología bluetooth|conexión bluetooth|cómo funciona bluetooth|conectar audífonos bluetooth|audífonos bluetooth explicación|bluetooth y sonido|audífonos sin cables/i;
+
+if (regexBluetooth.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Los audífonos Bluetooth funcionan mediante una tecnología inalámbrica que permite la transmisión de audio a través de ondas de radio. Utilizan un protocolo de comunicación estándar, lo que permite que se conecten sin cables a dispositivos como teléfonos, computadoras y otros aparatos compatibles.",
         
-        "La tecnología Bluetooth se basa en el uso de ondas de radio de corto alcance para transferir datos de un dispositivo a otro.<br><br>En el caso de los audífonos Bluetooth, estos reciben el audio de tu teléfono o computadora sin necesidad de cables, lo que facilita la libertad de movimiento.",
+        "La tecnología Bluetooth se basa en el uso de ondas de radio de corto alcance para transferir datos de un dispositivo a otro. En el caso de los audífonos Bluetooth, estos reciben el audio de tu teléfono o computadora sin necesidad de cables, lo que facilita la libertad de movimiento.",
         
-        "Cuando conectas unos audífonos Bluetooth, lo que sucede es que tu dispositivo envía una señal de audio a través de ondas de radio hacia los audífonos. Estos audífonos, que tienen un receptor Bluetooth, convierten esa señal en sonido para que la puedas escuchar.<br><br>Este proceso es rápido y eficiente, lo que permite una experiencia inalámbrica sin interrupciones.",
+        "Cuando conectas unos audífonos Bluetooth, lo que sucede es que tu dispositivo envía una señal de audio a través de ondas de radio hacia los audífonos. Estos audífonos, que tienen un receptor Bluetooth, convierten esa señal en sonido para que la puedas escuchar. Este proceso es rápido y eficiente, lo que permite una experiencia inalámbrica sin interrupciones.",
         
-        "El Bluetooth funciona en un rango de 2.4 GHz, lo que lo hace adecuado para distancias relativamente cortas, entre 10 y 100 metros, dependiendo de la versión.<br><br>Los audífonos Bluetooth aprovechan esta frecuencia para transmitir el audio de manera eficiente, asegurando que puedas escuchar música, llamadas o cualquier otro sonido sin cables.",
+        "El Bluetooth funciona en un rango de 2.4 GHz, lo que lo hace adecuado para distancias relativamente cortas, entre 10 y 100 metros, dependiendo de la versión. Los audífonos Bluetooth aprovechan esta frecuencia para transmitir el audio de manera eficiente, asegurando que puedas escuchar música, llamadas o cualquier otro sonido sin cables.",
         
-        "Para conectar audífonos Bluetooth, solo necesitas activarlos y emparejarlos con tu dispositivo. Este proceso se realiza mediante una búsqueda del dispositivo Bluetooth disponible, y una vez emparejados, el audio se transmite de manera inalámbrica.<br><br>Es una forma muy cómoda de escuchar música o hacer llamadas sin depender de cables.",
+        "Para conectar audífonos Bluetooth, solo necesitas activarlos y emparejarlos con tu dispositivo. Este proceso se realiza mediante una búsqueda del dispositivo Bluetooth disponible, y una vez emparejados, el audio se transmite de manera inalámbrica. Es una forma muy cómoda de escuchar música o hacer llamadas sin depender de cables.",
         
         "Los audífonos Bluetooth tienen una batería interna que les permite operar de manera independiente de otros dispositivos. Cuando los emparejas con un teléfono o computadora, estos dispositivos envían señales de audio que los audífonos convierten en sonido. Dependiendo de la calidad de la señal, los audífonos pueden ofrecer una experiencia de sonido de alta calidad.",
         
-        "Bluetooth es una tecnología que permite la conexión de dispositivos de manera inalámbrica. En el caso de los audífonos, estos se conectan a tu teléfono o computadora mediante esta tecnología, lo que permite la transmisión de audio sin la necesidad de cables.<br><br>Existen diferentes versiones de Bluetooth, que mejoran la velocidad y estabilidad de la conexión con el tiempo.",
+        "Bluetooth es una tecnología que permite la conexión de dispositivos de manera inalámbrica. En el caso de los audífonos, estos se conectan a tu teléfono o computadora mediante esta tecnología, lo que permite la transmisión de audio sin la necesidad de cables. Existen diferentes versiones de Bluetooth, que mejoran la velocidad y estabilidad de la conexión con el tiempo.",
         
-        "La conexión entre los audífonos y el dispositivo es estable debido a que el Bluetooth se basa en un emparejamiento seguro. Una vez que ambos dispositivos están emparejados, se crea una red privada entre ellos, lo que garantiza que la señal de audio se mantenga constante y sin interferencias.<br><br>Esto es lo que hace que la experiencia inalámbrica sea tan efectiva.",
+        "La conexión entre los audífonos y el dispositivo es estable debido a que el Bluetooth se basa en un emparejamiento seguro. Una vez que ambos dispositivos están emparejados, se crea una red privada entre ellos, lo que garantiza que la señal de audio se mantenga constante y sin interferencias. Esto es lo que hace que la experiencia inalámbrica sea tan efectiva.",
         
-        "Al usar audífonos Bluetooth, el audio se transmite a través de una señal digital, lo que significa que no se pierde calidad en la transmisión. A diferencia de otras tecnologías de transmisión de audio, el Bluetooth asegura una experiencia clara y sin interferencias, ideal para escuchar música o tomar llamadas.<br><br>Además, la mayoría de los audífonos Bluetooth permiten controlar el volumen y cambiar canciones sin tener que tocar el dispositivo de origen.",
+        "Al usar audífonos Bluetooth, el audio se transmite a través de una señal digital, lo que significa que no se pierde calidad en la transmisión. A diferencia de otras tecnologías de transmisión de audio, el Bluetooth asegura una experiencia clara y sin interferencias, ideal para escuchar música o tomar llamadas. Además, la mayoría de los audífonos Bluetooth permiten controlar el volumen y cambiar canciones sin tener que tocar el dispositivo de origen.",
         
         "La razón por la que los audífonos Bluetooth son tan populares es porque eliminan la necesidad de cables, ofreciendo una experiencia de sonido más libre y cómoda. Los dispositivos Bluetooth modernos también permiten que los audífonos se conecten a múltiples dispositivos, lo que te da la flexibilidad de usar tus audífonos con teléfonos, computadoras y otros aparatos compatibles.",
         
-        "Al emparejar tus audífonos Bluetooth con tu dispositivo, el sistema de Bluetooth utiliza un proceso de codificación y decodificación para garantizar que el audio se transmita de manera eficiente.<br><br>Esto permite que, incluso en entornos con muchas señales inalámbricas, puedas disfrutar de audio claro y de alta calidad.",
+        "Al emparejar tus audífonos Bluetooth con tu dispositivo, el sistema de Bluetooth utiliza un proceso de codificación y decodificación para garantizar que el audio se transmita de manera eficiente. Esto permite que, incluso en entornos con muchas señales inalámbricas, puedas disfrutar de audio claro y de alta calidad.",
         
-        "Los audífonos Bluetooth son ideales para las personas que prefieren no lidiar con cables. Utilizan una señal de radio de corto alcance para conectarse con dispositivos como tu teléfono, permitiendo una experiencia sin interrupciones y sin la necesidad de conectarlos físicamente.<br><br>Todo esto gracias a la tecnología Bluetooth, que ha revolucionado la forma en que escuchamos música y realizamos llamadas.",
+        "Los audífonos Bluetooth son ideales para las personas que prefieren no lidiar con cables. Utilizan una señal de radio de corto alcance para conectarse con dispositivos como tu teléfono, permitiendo una experiencia sin interrupciones y sin la necesidad de conectarlos físicamente. Todo esto gracias a la tecnología Bluetooth, que ha revolucionado la forma en que escuchamos música y realizamos llamadas.",
         
         "El proceso de conexión entre audífonos Bluetooth y un dispositivo es muy sencillo. Solo necesitas asegurarte de que ambos dispositivos estén dentro del rango de conexión y seguir las instrucciones para emparejarlos. Una vez que están conectados, puedes disfrutar de la transmisión de audio sin cables, lo que ofrece una mayor libertad y comodidad.",
         
-        "Los audífonos Bluetooth suelen ofrecer una excelente calidad de sonido, especialmente si usas dispositivos con versiones más recientes de Bluetooth.<br><br>Estas versiones permiten que la señal sea más estable y que la calidad del audio sea mejor, lo que te permite disfrutar de una experiencia auditiva de alta calidad."
-    ];
-
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestasBluetooth);
-    return respuestaSeleccionada;
+        "Los audífonos Bluetooth suelen ofrecer una excelente calidad de sonido, especialmente si usas dispositivos con versiones más recientes de Bluetooth. Estas versiones permiten que la señal sea más estable y que la calidad del audio sea mejor, lo que te permite disfrutar de una experiencia auditiva de alta calidad."
+    ]);
 }
         
-        else if (
-    mensajeLower.includes('resumen') || 
-    mensajeLower.includes('resumir') || 
-    mensajeLower.includes('resume') || 
-    mensajeLower.includes('resumen de') || 
-    mensajeLower.includes('dime un resumen') ||
-    mensajeLower.includes('resumir información') ||
-    mensajeLower.includes('quiere un resumen') ||
-    mensajeLower.includes('resumen breve') ||
-    mensajeLower.includes('resumen completo') ||
-    mensajeLower.includes('resumir texto') ||
-    mensajeLower.includes('resumir datos') ||
-    mensajeLower.includes('dame un resumen') ||
-    mensajeLower.includes('resumir todo') ||
-    mensajeLower.includes('hacer un resumen')
-) {
-    const respuestasResumen = [
-        "Lo siento, pero debido a cómo está configurado mi sistema y cómo se almacenan los datos en el servidor, no tengo la capacidad de hacer resúmenes.<br><br>Si necesitas más información o detalles sobre algún tema, ¡déjame saber! Estaré encantado de ayudarte.",
-        
-        "No puedo generar resúmenes debido a mi programación y a que todos los datos están organizados y almacenados de manera detallada en un servidor.<br><br>Si tienes preguntas específicas o necesitas más detalles, estaré feliz de proporcionártelos.",
-        
-        "Por mi programación y la estructura de mis datos en el servidor, no soy capaz de resumir textos.<br><br>Sin embargo, puedo ofrecerte toda la información que necesites sobre cualquier tema, solo pregúntame.",
-        
-        "No tengo la capacidad de resumir información debido a cómo están almacenados mis datos en un servidor. Cada respuesta está diseñada para ofrecerte información completa y detallada.<br><br>Si deseas más información, ¡aquí estoy para ayudarte!",
-        
-        "Mi programación no incluye la función de resumir, ya que mis respuestas están almacenadas y organizadas en un servidor para brindarte detalles completos.<br><br>Si tienes más preguntas, no dudes en pedírmelo.",
-        
-        "Debido a la forma en que están almacenados los datos en el servidor, no puedo hacer resúmenes.<br><br>Sin embargo, si tienes alguna otra consulta, estaré más que feliz de brindarte una respuesta detallada.",
-        
-        "No soy capaz de resumir textos, ya que todos mis datos están organizados en respuestas completas almacenadas en un servidor.<br><br>Si necesitas más información o tienes otras preguntas, solo dímelo y con gusto te ayudaré.",
-        
-        "Mis respuestas están almacenadas de forma detallada en un servidor, por lo que no puedo resumir textos. Estoy aquí para proporcionarte toda la información que necesites.<br><br>Si deseas más detalles sobre algún tema, no dudes en preguntar.",
-        
-        "No puedo resumir textos debido a la programación y la organización de los datos en mi servidor.<br><br>Si tienes alguna pregunta o necesitas información más profunda sobre algún tema, estaré feliz de ayudarte.",
-        
-        "La programación que sigo no permite generar resúmenes de textos, ya que todos los datos están almacenados y organizados para ofrecerte respuestas completas.<br><br>Si tienes más dudas o deseas información adicional, estaré encantado de proporcionártela.",
-        
-        "Debido a mi diseño y la estructura de los datos en el servidor, no puedo realizar resúmenes automáticos.<br><br>Si necesitas más detalles sobre cualquier tema, ¡solo pregúntame y estaré feliz de ayudarte con todo lo que necesites!",
-        
-        "Mi capacidad está limitada a ofrecer respuestas detalladas, ya que todos los datos que manejo están organizados en un servidor y no puedo resumir la información.<br><br>Si quieres más información sobre algo, solo dime y estaré encantado de proporcionártela.",
-        
-        "No puedo generar resúmenes porque todos mis datos están organizados de forma que no se puede hacer un resumen automático.<br><br>Si necesitas más información sobre algún tema o tienes alguna duda, estaré feliz de ayudarte con todos los detalles.",
-        
-        "Como parte de mi programación, no puedo resumir la información almacenada en el servidor.<br><br>Si tienes preguntas más específicas o deseas más información, no dudes en preguntarme y te daré una respuesta completa."
-    ];
+        const regexResumen = /resumen|resumir|resume|resumen de|dime un resumen|resumir información|quiere un resumen|resumen breve|resumen completo|resumir texto|resumir datos|dame un resumen|resumir todo|hacer un resumen/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestasResumen);
-    return respuestaSeleccionada;
+if (regexResumen.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Lo siento, no tengo la capacidad de hacer resúmenes debido a cómo están almacenados mis datos en el servidor. Si necesitas más información sobre algún tema, estaré encantado de ayudarte.",
+        
+        "No puedo generar resúmenes ya que mis datos están organizados de manera detallada en un servidor. Si tienes preguntas más específicas o quieres más información, estaré feliz de proporcionártela.",
+        
+        "No soy capaz de resumir textos debido a la estructura de mis datos. Sin embargo, puedo ofrecerte toda la información que necesites, solo pregúntame.",
+        
+        "Mi sistema no está diseñado para hacer resúmenes automáticos, ya que mis respuestas están organizadas de manera detallada. Si deseas más detalles sobre algún tema, aquí estoy para ayudarte.",
+        
+        "Debido a la forma en que están organizados los datos en mi sistema, no puedo resumir información. Pero si tienes más preguntas, estaré feliz de brindarte una respuesta detallada.",
+        
+        "No puedo realizar resúmenes, ya que mis datos están almacenados de manera completa. Si tienes alguna otra consulta, estaré más que feliz de darte toda la información que necesites.",
+        
+        "Mi programación no incluye la función de resumir textos, pero puedo ofrecerte respuestas detalladas sobre cualquier tema. Si tienes alguna pregunta, solo házmelo saber.",
+        
+        "Como mis datos están organizados para brindar respuestas completas, no puedo resumir información. Si necesitas más detalles sobre algún tema, no dudes en preguntar.",
+        
+        "No puedo generar resúmenes de textos debido a la organización de los datos en mi sistema. Si tienes alguna otra pregunta o deseas información más detallada, estaré feliz de ayudarte.",
+        
+        "Mi sistema no permite hacer resúmenes, pero puedo proporcionarte información detallada sobre cualquier tema que te interese. Solo dime lo que necesitas.",
+        
+        "Dado cómo están almacenados mis datos, no puedo generar resúmenes automáticos. Si necesitas más detalles o tienes dudas sobre algún tema, estaré encantado de ofrecerte toda la información disponible.",
+        
+        "Mis respuestas están diseñadas para ser detalladas, por lo que no puedo hacer resúmenes. Si tienes alguna pregunta específica, con gusto te proporcionaré todos los detalles que necesites.",
+        
+        "No puedo generar resúmenes debido a la manera en que están organizados los datos en mi sistema. Si necesitas más información sobre algún tema, no dudes en preguntarme.",
+        
+        "Como mi programación no permite resumir la información almacenada, si tienes preguntas más específicas o necesitas detalles, estaré encantado de proporcionártelos."
+    ]);
 }
         
-        else if (
-    mensajeLower.includes('piedra') || 
-    mensajeLower.includes('roca') || 
-    mensajeLower.includes('minerales') || 
-    mensajeLower.includes('formación de piedra') || 
-    mensajeLower.includes('tipos de piedras') || 
-    mensajeLower.includes('propiedades de la piedra') || 
-    mensajeLower.includes('piedras preciosas') || 
-    mensajeLower.includes('geología') || 
-    mensajeLower.includes('rocas ígneas') || 
-    mensajeLower.includes('rocas sedimentarias') || 
-    mensajeLower.includes('rocas metamórficas') || 
-    mensajeLower.includes('extracción de piedras') || 
-    mensajeLower.includes('uso de la piedra en la construcción')
-) {
-    const respuestas = [
-        "¡Claro! La piedra es un material natural que se encuentra en la corteza terrestre y tiene una gran variedad de usos. Dependiendo de su origen y composición, las piedras se clasifican en tres grandes grupos: ígneas, sedimentarias y metamórficas. Las piedras ígneas, como el granito, se forman cuando el magma se enfría y solidifica. Las sedimentarias, como la arenisca, se originan por la acumulación de sedimentos. Y las metamórficas, como el mármol, resultan de la transformación de otras rocas bajo condiciones de alta presión y temperatura.<br><br>¿Te gustaría saber más sobre los diferentes tipos de rocas?",
-        
-        "¡Interesante! Las piedras se han utilizado a lo largo de la historia para construir monumentos, templos y viviendas. La piedra es un material duradero, fuerte y fácil de trabajar, lo que la hace ideal para la construcción. Algunos ejemplos notables de su uso en la construcción incluyen las pirámides de Egipto, el Partenón en Grecia y la Gran Muralla China. En la actualidad, las piedras también se utilizan en la fabricación de pavimentos, esculturas y monumentos.<br><br>¿Te gustaría saber cómo se extraen las piedras de las canteras?",
-        
-        "¡Genial! Las piedras preciosas son piedras raras y valiosas que han sido cortadas y pulidas para su uso en joyería y otras aplicaciones decorativas. Entre las piedras preciosas más conocidas se incluyen el diamante, el rubí, el zafiro y la esmeralda. Sin embargo, también existen piedras semipreciosas como el ágata, el jade y la amatista. Cada tipo de piedra tiene características únicas, como color, dureza y brillo, lo que afecta su valor y su uso.<br><br>¿Te gustaría saber cómo se diferencian las piedras preciosas de las semipreciosas?",
-        
-        "¡Exacto! La geología es la ciencia que estudia las piedras y los procesos que las originan. Los geólogos clasifican las rocas y piedras en función de su formación, su composición mineral y su edad. Estudian cómo se formaron las rocas a lo largo del tiempo, cómo se transforman y cómo se distribuyen en la superficie terrestre. Las piedras y rocas también pueden contener fósiles, lo que proporciona información valiosa sobre la historia de la Tierra.<br><br>¿Te gustaría aprender más sobre cómo se estudian las piedras en la geología?",
-        
-        "¡Perfecto! La extracción de piedras y minerales de las canteras es un proceso que requiere técnicas específicas y maquinaria pesada. Las canteras son explotadas para obtener piedra en grandes bloques, que luego se cortan y se procesan para diversos usos, como en la construcción, el arte y la joyería. Este proceso puede ser riesgoso, ya que involucra la extracción de material de gran tamaño y peso. Sin embargo, las técnicas modernas han mejorado la seguridad y la eficiencia en la minería de piedras.<br><br>¿Te gustaría saber más sobre cómo se lleva a cabo la extracción de piedras de las canteras?",
-        
-        "¡Entendido! Las piedras se usan en la industria de la construcción debido a su durabilidad, versatilidad y capacidad para resistir el desgaste. Por ejemplo, el granito se utiliza comúnmente en encimeras y pavimentos debido a su resistencia al calor y su durabilidad. El mármol, por otro lado, se utiliza a menudo en esculturas y como material decorativo debido a su estética y facilidad para ser pulido. Las piedras como el cemento y la piedra caliza son esenciales en la fabricación de hormigón, un material crucial en la construcción moderna.<br><br>¿Te gustaría saber cómo se utiliza cada tipo de piedra en la construcción?",
-        
-        "¡Todo claro! La dureza de las piedras es un factor clave en su uso y clasificación. Las piedras preciosas, como el diamante, son extremadamente duras y se utilizan en herramientas de corte y abrasión. Otras piedras, como el talco, son más suaves y se utilizan para fines decorativos o en cosméticos. La escala de dureza de Mohs clasifica las piedras según su capacidad para resistir rayaduras, con el diamante en el nivel más alto.<br><br>¿Te gustaría saber más sobre la escala de dureza de Mohs?",
-        
-        "¡Exacto! Las rocas ígneas se forman a partir de la solidificación del magma o lava. Este tipo de roca incluye el granito y el basalto. Las rocas sedimentarias se forman cuando los sedimentos se acumulan y se compactan con el tiempo, como la arenisca y la caliza. Las rocas metamórficas, como el mármol y la pizarra, se forman cuando las rocas existentes son sometidas a altas presiones y temperaturas. Cada tipo de roca tiene propiedades únicas que la hacen adecuada para diferentes aplicaciones.<br><br>¿Te gustaría saber cómo se forman las rocas ígneas y sedimentarias?",
-        
-        "¡Perfecto! La piedra caliza es una de las piedras más utilizadas en la construcción y la fabricación de cemento. Se forma a partir de la acumulación de restos de organismos marinos y se utiliza ampliamente en la producción de materiales de construcción, como el hormigón y el yeso. Además, la piedra caliza se emplea para la fabricación de vidrios y otros productos industriales.<br><br>¿Te gustaría saber cómo se extrae la piedra caliza y cuáles son sus aplicaciones en la industria?",
-        
-        "¡Todo claro! Las piedras preciosas tienen un alto valor no solo por su belleza, sino también por su rareza y dureza. Algunas, como el rubí y el zafiro, se encuentran en lugares específicos del mundo, mientras que otras, como el jade y la esmeralda, tienen una conexión cultural y simbólica profunda. Las piedras preciosas han sido consideradas símbolos de poder, riqueza y protección en diversas culturas a lo largo de la historia.<br><br>¿Te gustaría aprender más sobre las piedras preciosas y su historia en diferentes culturas?"
-    ];
+        const regexPiedra = /piedra|roca|minerales|formación de piedra|tipos de piedras|propiedades de la piedra|piedras preciosas|geología|rocas ígneas|rocas sedimentarias|rocas metamórficas|extracción de piedras|uso de la piedra en la construcción/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexPiedra.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Claro! La piedra es un material natural que se encuentra en la corteza terrestre y tiene una gran variedad de usos. Dependiendo de su origen y composición, las piedras se clasifican en tres grandes grupos: ígneas, sedimentarias y metamórficas. Las piedras ígneas, como el granito, se forman cuando el magma se enfría y solidifica. Las sedimentarias, como la arenisca, se originan por la acumulación de sedimentos. Y las metamórficas, como el mármol, resultan de la transformación de otras rocas bajo condiciones de alta presión y temperatura. ¿Te gustaría saber más sobre los diferentes tipos de rocas?",
+
+        "¡Interesante! Las piedras se han utilizado a lo largo de la historia para construir monumentos, templos y viviendas. La piedra es un material duradero, fuerte y fácil de trabajar, lo que la hace ideal para la construcción. Algunos ejemplos notables de su uso en la construcción incluyen las pirámides de Egipto, el Partenón en Grecia y la Gran Muralla China. En la actualidad, las piedras también se utilizan en la fabricación de pavimentos, esculturas y monumentos. ¿Te gustaría saber cómo se extraen las piedras de las canteras?",
+
+        "¡Genial! Las piedras preciosas son piedras raras y valiosas que han sido cortadas y pulidas para su uso en joyería y otras aplicaciones decorativas. Entre las piedras preciosas más conocidas se incluyen el diamante, el rubí, el zafiro y la esmeralda. Sin embargo, también existen piedras semipreciosas como el ágata, el jade y la amatista. Cada tipo de piedra tiene características únicas, como color, dureza y brillo, lo que afecta su valor y su uso. ¿Te gustaría saber cómo se diferencian las piedras preciosas de las semipreciosas?",
+
+        "¡Exacto! La geología es la ciencia que estudia las piedras y los procesos que las originan. Los geólogos clasifican las rocas y piedras en función de su formación, su composición mineral y su edad. Estudian cómo se formaron las rocas a lo largo del tiempo, cómo se transforman y cómo se distribuyen en la superficie terrestre. Las piedras y rocas también pueden contener fósiles, lo que proporciona información valiosa sobre la historia de la Tierra. ¿Te gustaría aprender más sobre cómo se estudian las piedras en la geología?",
+
+        "¡Perfecto! La extracción de piedras y minerales de las canteras es un proceso que requiere técnicas específicas y maquinaria pesada. Las canteras son explotadas para obtener piedra en grandes bloques, que luego se cortan y se procesan para diversos usos, como en la construcción, el arte y la joyería. Este proceso puede ser riesgoso, ya que involucra la extracción de material de gran tamaño y peso. Sin embargo, las técnicas modernas han mejorado la seguridad y la eficiencia en la minería de piedras. ¿Te gustaría saber más sobre cómo se lleva a cabo la extracción de piedras de las canteras?",
+
+        "¡Entendido! Las piedras se usan en la industria de la construcción debido a su durabilidad, versatilidad y capacidad para resistir el desgaste. Por ejemplo, el granito se utiliza comúnmente en encimeras y pavimentos debido a su resistencia al calor y su durabilidad. El mármol, por otro lado, se utiliza a menudo en esculturas y como material decorativo debido a su estética y facilidad para ser pulido. Las piedras como el cemento y la piedra caliza son esenciales en la fabricación de hormigón, un material crucial en la construcción moderna. ¿Te gustaría saber cómo se utiliza cada tipo de piedra en la construcción?",
+
+        "¡Todo claro! La dureza de las piedras es un factor clave en su uso y clasificación. Las piedras preciosas, como el diamante, son extremadamente duras y se utilizan en herramientas de corte y abrasión. Otras piedras, como el talco, son más suaves y se utilizan para fines decorativos o en cosméticos. La escala de dureza de Mohs clasifica las piedras según su capacidad para resistir rayaduras, con el diamante en el nivel más alto. ¿Te gustaría saber más sobre la escala de dureza de Mohs?",
+
+        "¡Exacto! Las rocas ígneas se forman a partir de la solidificación del magma o lava. Este tipo de roca incluye el granito y el basalto. Las rocas sedimentarias se forman cuando los sedimentos se acumulan y se compactan con el tiempo, como la arenisca y la caliza. Las rocas metamórficas, como el mármol y la pizarra, se forman cuando las rocas existentes son sometidas a altas presiones y temperaturas. Cada tipo de roca tiene propiedades únicas que la hacen adecuada para diferentes aplicaciones. ¿Te gustaría saber cómo se forman las rocas ígneas y sedimentarias?",
+
+        "¡Perfecto! La piedra caliza es una de las piedras más utilizadas en la construcción y la fabricación de cemento. Se forma a partir de la acumulación de restos de organismos marinos y se utiliza ampliamente en la producción de materiales de construcción, como el hormigón y el yeso. Además, la piedra caliza se emplea para la fabricación de vidrios y otros productos industriales. ¿Te gustaría saber cómo se extrae la piedra caliza y cuáles son sus aplicaciones en la industria?",
+
+        "¡Todo claro! Las piedras preciosas tienen un alto valor no solo por su belleza, sino también por su rareza y dureza. Algunas, como el rubí y el zafiro, se encuentran en lugares específicos del mundo, mientras que otras, como el jade y la esmeralda, tienen una conexión cultural y simbólica profunda. Las piedras preciosas han sido consideradas símbolos de poder, riqueza y protección en diversas culturas a lo largo de la historia. ¿Te gustaría aprender más sobre las piedras preciosas y su historia en diferentes culturas?"
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('esmeralda') || 
-    mensajeLower.includes('piedra preciosa') || 
-    mensajeLower.includes('gemas verdes') || 
-    mensajeLower.includes('minería de esmeraldas') || 
-    mensajeLower.includes('propiedades de la esmeralda') || 
-    mensajeLower.includes('valor de la esmeralda') || 
-    mensajeLower.includes('esmeralda y joyería') || 
-    mensajeLower.includes('esmeralda en la historia') || 
-    mensajeLower.includes('esmeralda y cultura') || 
-    mensajeLower.includes('extraer esmeralda') || 
-    mensajeLower.includes('esmeralda en la antigüedad') || 
-    mensajeLower.includes('esmeralda y simbolismo')
-) {
-    const respuestas = [
-        "¡Claro! La esmeralda es una de las gemas más apreciadas y valoradas en el mundo de la joyería. Se forma cuando el berilio se combina con el aluminio y el oxígeno en un entorno específico de alta presión y temperatura. Su color verde característico proviene de la presencia de cromo y vanadio. Las esmeraldas son conocidas por su belleza, pero también por ser más frágiles que otros tipos de gemas debido a sus inclusiones naturales.<br><br>¿Te gustaría aprender más sobre cómo se forman las esmeraldas?",
-        
-        "¡Interesante! Las esmeraldas son una de las piedras preciosas más antiguas y valoradas en la historia. Se cree que ya se usaban en el antiguo Egipto, donde se les atribuían propiedades místicas y curativas. De hecho, Cleopatra fue conocida por ser una gran amante de las esmeraldas y las usaba como símbolo de poder y belleza. Hoy en día, las esmeraldas siguen siendo un símbolo de amor eterno y abundancia.<br><br>¿Te gustaría saber más sobre la historia de la esmeralda en el antiguo Egipto?",
-        
-        "¡Genial! Las esmeraldas tienen una serie de propiedades que las hacen únicas. Son piedras preciosas de una dureza moderada, con una clasificación de 7.5 a 8 en la escala de Mohs. Aunque no son tan duras como los diamantes o zafiros, su color verde vibrante y su rareza las hacen muy valoradas. Las esmeraldas de alta calidad son muy raras, lo que aumenta aún más su valor. ¿Sabías que las esmeraldas a menudo tienen inclusiones visibles llamadas 'jardines' que pueden ayudar a identificar su autenticidad?<br><br>¿Te gustaría saber más sobre la clasificación de dureza de las esmeraldas?",
-        
-        "¡Exacto! La esmeralda es conocida por su profundo color verde, pero las mejores esmeraldas del mundo provienen principalmente de Colombia, Brasil y Zambia. Las minas colombianas son especialmente famosas por producir esmeraldas de un verde más intenso y brillante. Sin embargo, la extracción de esmeraldas es un proceso complejo y a menudo se lleva a cabo en condiciones difíciles. ¿Te gustaría saber cómo se extraen las esmeraldas en las minas de Colombia?<br><br>Las esmeraldas de Colombia son consideradas entre las mejores por su pureza y color.",
-        
-        "¡Perfecto! La esmeralda es una de las gemas más importantes en la joyería de lujo. Se utiliza comúnmente en anillos, collares, pendientes y pulseras, y a menudo se encuentra en piezas de alta gama debido a su valor. Las esmeraldas de calidad superior son muy costosas, especialmente las que tienen un color verde puro y sin muchas inclusiones. Además, las esmeraldas se han utilizado en la creación de joyas históricas y famosas.<br><br>¿Te gustaría saber más sobre las esmeraldas en la joyería de alta gama?",
-        
-        "¡Entendido! Además de su valor en joyería, las esmeraldas tienen aplicaciones en la industria de la tecnología. Gracias a su transparencia y propiedades ópticas, las esmeraldas se utilizan en la fabricación de lentes para equipos de precisión, como los telescopios y microscopios. También se utilizan en láseres de alta potencia debido a su capacidad para concentrar energía. ¿Te gustaría saber más sobre cómo se usan las esmeraldas en la tecnología moderna?<br><br>Las esmeraldas de alta calidad son utilizadas en dispositivos ópticos debido a sus propiedades únicas.",
-        
-        "¡Todo claro! Las esmeraldas se extraen principalmente en minas a cielo abierto o subterráneas. El proceso de extracción implica una combinación de técnicas de minería tradicional y métodos más modernos, como el uso de maquinaria pesada para excavar las rocas que contienen las esmeraldas. Sin embargo, la minería de esmeraldas puede ser peligrosa debido a las condiciones inestables del suelo en algunas minas. ¿Te gustaría conocer más sobre las técnicas de minería utilizadas para extraer esmeraldas?<br><br>La minería de esmeraldas requiere un cuidado especial para evitar accidentes y maximizar la eficiencia de la extracción.",
-        
-        "¡Perfecto! El valor de una esmeralda se determina por varios factores, siendo los más importantes el color, la claridad, el tamaño y la forma. Las esmeraldas de color verde intenso, con la menor cantidad de inclusiones visibles, son las más caras. Además, el tamaño también influye en su precio: las esmeraldas más grandes y de alta calidad pueden alcanzar precios extremadamente altos. ¿Te gustaría aprender cómo se evalúa la calidad de una esmeralda?<br><br>La clasificación de las esmeraldas se basa en su color y claridad, siendo las más puras las más valiosas.",
-        
-        "¡Exacto! Aunque las esmeraldas son preciosas y valiosas, su dureza más baja en comparación con otras piedras preciosas como los diamantes hace que necesiten cuidados especiales. Por ejemplo, las esmeraldas deben evitar golpes fuertes y se deben limpiar con cuidado para no dañar su superficie. A menudo, se recomienda montarlas en joyas con un ajuste de seguridad para protegerlas. ¿Te gustaría saber cómo cuidar una esmeralda para mantener su brillo y belleza?<br><br>El cuidado adecuado es crucial para preservar la belleza y durabilidad de las esmeraldas.",
-        
-        "¡Genial! Las esmeraldas tienen un simbolismo profundo en varias culturas. En muchas tradiciones, se cree que las esmeraldas tienen propiedades curativas y espirituales. En la antigua Grecia, se pensaba que las esmeraldas podían mejorar la memoria y ayudar a la curación de enfermedades oculares. En la cultura hindú, las esmeraldas están asociadas con la diosa Venus y se cree que otorgan sabiduría y prosperidad. ¿Te gustaría conocer más sobre el simbolismo de la esmeralda en diferentes culturas?<br><br>La esmeralda es una piedra muy simbólica, considerada un amuleto de buena suerte y prosperidad."
-    ];
+        const regexEsmeralda = /esmeralda|piedra preciosa|gemas verdes|minería de esmeraldas|propiedades de la esmeralda|valor de la esmeralda|esmeralda y joyería|esmeralda en la historia|esmeralda y cultura|extraer esmeralda|esmeralda en la antigüedad|esmeralda y simbolismo/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexEsmeralda.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "La esmeralda es una gema verde muy valorada, formada por la combinación de berilio, aluminio y oxígeno bajo alta presión. Su color verde proviene de los elementos cromo y vanadio. Son frágiles debido a sus inclusiones naturales. ¿Te gustaría saber más sobre su formación?",
+
+        "Las esmeraldas tienen una rica historia. Se usaban en el antiguo Egipto, especialmente por Cleopatra, quien las consideraba un símbolo de poder. Hoy siguen siendo símbolos de amor y abundancia. ¿Te interesa conocer más sobre su uso en el Egipto antiguo?",
+
+        "Las esmeraldas tienen una dureza de 7.5 a 8 en la escala de Mohs, lo que las hace más frágiles que otras gemas. Las inclusiones llamadas 'jardines' son comunes en ellas. ¿Te gustaría aprender más sobre cómo se evalúa la calidad de una esmeralda?",
+
+        "Las mejores esmeraldas provienen de Colombia, Brasil y Zambia. Las colombianas, en particular, son famosas por su color verde intenso. El proceso de extracción, sin embargo, es complejo. ¿Te gustaría saber cómo se extraen en Colombia?",
+
+        "En joyería, las esmeraldas se usan en anillos, collares y pendientes. Son muy valiosas, especialmente las que tienen un color verde puro. Las esmeraldas de alta calidad son muy costosas. ¿Te gustaría aprender sobre su uso en joyería de lujo?",
+
+        "Aparte de su uso en joyería, las esmeraldas también tienen aplicaciones en la tecnología, como en lentes de precisión y láseres de alta potencia. ¿Te gustaría saber más sobre sus usos industriales?",
+
+        "La minería de esmeraldas requiere métodos específicos y maquinaria pesada. A veces, las minas son peligrosas debido a la inestabilidad del terreno. ¿Te gustaría conocer cómo se extraen las esmeraldas de las minas?",
+
+        "El valor de una esmeralda depende de su color, claridad, tamaño y forma. Las esmeraldas más puras y grandes pueden alcanzar precios altísimos. ¿Te gustaría saber cómo se valora una esmeralda?",
+
+        "Aunque hermosas, las esmeraldas son frágiles y deben ser tratadas con cuidado. Se recomienda evitar golpes y limpiarlas suavemente. ¿Te gustaría aprender cómo cuidar una esmeralda para mantener su belleza?",
+
+        "En muchas culturas, las esmeraldas son símbolos de sabiduría, prosperidad y curación. En Grecia, se pensaba que mejoraban la memoria. ¿Te gustaría saber más sobre su simbolismo cultural?"
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('diamante') || 
-    mensajeLower.includes('gemas') || 
-    mensajeLower.includes('piedra preciosa') || 
-    mensajeLower.includes('minería de diamantes') || 
-    mensajeLower.includes('diamante y joyería') || 
-    mensajeLower.includes('características del diamante') || 
-    mensajeLower.includes('valor del diamante') || 
-    mensajeLower.includes('procesamiento del diamante') || 
-    mensajeLower.includes('diamantes industriales') || 
-    mensajeLower.includes('diamante y cultura') || 
-    mensajeLower.includes('diamante en la historia') || 
-    mensajeLower.includes('minería y extracción de diamantes') || 
-    mensajeLower.includes('diamantes y economía')
-) {
-    const respuestas = [
-        "¡Claro! Los diamantes son una de las gemas más codiciadas del mundo debido a su rareza, belleza y durabilidad. Se forman en el manto terrestre a grandes profundidades y bajo presiones y temperaturas extremas. Este proceso natural puede tardar millones de años, lo que hace que los diamantes sean tan valiosos. Son conocidos por su dureza, siendo la sustancia más dura conocida en la Tierra.<br><br>¿Te gustaría saber más sobre cómo se extraen los diamantes de la tierra?",
-        
-        "¡Interesante! Los diamantes tienen una serie de propiedades que los hacen únicos. Además de su dureza, son excelentes conductores de calor y tienen una refracción de luz increíble, lo que les da ese brillo característico. Debido a estas propiedades, los diamantes no solo se utilizan en joyería, sino también en herramientas industriales, como sierras y brocas de alta precisión. ¿Te gustaría conocer más sobre los usos industriales de los diamantes?",
-        
-        "¡Genial! Los diamantes no solo son símbolos de amor y lujo en la joyería, sino que también desempeñan un papel crucial en diversas industrias. Por ejemplo, en la industria minera y de la construcción, los diamantes se utilizan para cortar materiales duros como el metal, concreto y piedra. Esto es posible gracias a su excepcional dureza.<br><br>Sin embargo, el valor de un diamante en la joyería también depende de factores como el color, la claridad, el corte y el peso en quilates. ¿Te gustaría saber cómo se determina el valor de un diamante?",
-        
-        "¡Exacto! La minería de diamantes es un proceso costoso y peligroso. Se extraen principalmente en dos tipos de minas: a cielo abierto y subterráneas. Los diamantes se encuentran en una roca volcánica llamada kimberlita, que se forma en las profundidades de la Tierra y sube a la superficie durante las erupciones volcánicas. Sin embargo, debido a la alta demanda, la minería de diamantes a menudo plantea preocupaciones sobre el impacto ambiental y las condiciones laborales.<br><br>¿Te gustaría aprender más sobre las principales regiones productoras de diamantes en el mundo?",
-        
-        "¡Entendido! Los diamantes tienen una gran importancia cultural e histórica. Se han utilizado como símbolos de poder, riqueza y amor desde tiempos antiguos. El uso de diamantes en la joyería comenzó hace miles de años, y se han registrado en las civilizaciones egipcia, india y romana. Hoy en día, los diamantes son un símbolo de compromiso y amor eterno en los anillos de compromiso.<br><br>¿Te gustaría saber cómo el mercado de diamantes ha evolucionado con el tiempo?",
-        
-        "¡Perfecto! La extracción de diamantes ha evolucionado considerablemente a lo largo de la historia. Hoy en día, existen minas especializadas que operan con tecnologías avanzadas para extraer diamantes de forma más eficiente. Además, la minería de diamantes sintéticos también está en aumento. Estos diamantes se crean en laboratorios a partir de carbono utilizando alta presión y temperatura, lo que permite producir diamantes de alta calidad sin los impactos negativos de la minería convencional.<br><br>¿Te interesa saber más sobre los diamantes sintéticos y cómo se comparan con los naturales?",
-        
-        "¡Todo claro! Aunque los diamantes naturales siguen siendo más valiosos, los diamantes sintéticos están ganando popularidad, especialmente en la industria de la joyería. Los diamantes sintéticos tienen las mismas propiedades físicas y químicas que los naturales, pero se producen a menor costo y con menor impacto ambiental. Las principales técnicas para su producción incluyen el método de alta presión y alta temperatura (HPHT) y la deposición de vapor químico (CVD).<br><br>¿Te gustaría conocer más sobre el proceso de creación de diamantes sintéticos?",
-        
-        "¡Interesante! El valor de un diamante se determina por los llamados 4 Cs: corte, color, claridad y quilates. Estos factores son cruciales para evaluar la calidad y el precio de un diamante. El corte se refiere a cómo se ha tallado el diamante, lo que afecta su brillo; el color se mide en una escala que va de D (sin color) a Z (amarillo claro); la claridad se refiere a la cantidad de imperfecciones o inclusiones; y los quilates indican el peso del diamante.<br><br>¿Te gustaría saber más sobre cómo se evalúa cada uno de estos aspectos?",
-        
-        "¡Todo claro! Los diamantes tienen un papel fundamental en la joyería de lujo, especialmente en anillos de compromiso, collares, pendientes y otras piezas exquisitas. Además de su valor monetario, los diamantes tienen un significado emocional profundo. Son considerados como símbolos de amor eterno y compromiso, lo que los convierte en el regalo perfecto para ocasiones especiales.<br><br>¿Te gustaría saber más sobre cómo elegir un diamante para un anillo de compromiso?",
-        
-        "¡Exacto! A lo largo de la historia, los diamantes han estado relacionados con la realeza, el poder y el lujo. Los diamantes más famosos, como el Diamante Hope o el Diamante Koh-i-Noor, han sido parte de la historia de grandes imperios y han sido poseídos por monarcas y figuras influyentes. Estos diamantes, junto con otros ejemplares famosos, han contribuido a la mística y la fascinación que rodea a estas gemas preciosas.<br><br>¿Te gustaría conocer más sobre los diamantes famosos en la historia?"
-    ];
+        const regexDiamante = /diamante|gemas|piedra preciosa|minería de diamantes|diamante y joyería|características del diamante|valor del diamante|procesamiento del diamante|diamantes industriales|diamante y cultura|diamante en la historia|minería y extracción de diamantes|diamantes y economía/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexDiamante.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "El diamante es una de las gemas más preciadas por su dureza y brillo. Se forma a profundidades extremas en la Tierra, donde las altas temperaturas y presiones permiten que el carbono se cristalice. ¿Te gustaría saber cómo se forma un diamante en el interior de la Tierra?",
+
+        "Los diamantes son conocidos por su increíble dureza, lo que los convierte en la sustancia más dura que existe. Esto los hace útiles en herramientas industriales, como sierras y brocas de perforación. ¿Te gustaría conocer más sobre cómo se utilizan los diamantes en la industria?",
+
+        "Los diamantes se extraen principalmente de minas a cielo abierto y subterráneas, y se encuentran en rocas llamadas kimberlitas. Este proceso puede ser riesgoso y costoso, pero produce una de las gemas más valoradas del mundo. ¿Te gustaría saber cómo se lleva a cabo este proceso?",
+
+        "Los diamantes tienen un gran valor no solo por su belleza, sino también por su rareza. El valor de un diamante depende de varios factores, como su corte, color, claridad y peso en quilates. ¿Te gustaría saber cómo se evalúa un diamante?",
+
+        "La minería de diamantes es un proceso complejo que puede tener un impacto ambiental considerable. La extracción de diamantes se realiza a menudo en regiones remotas y a veces bajo condiciones difíciles. ¿Te interesa conocer más sobre cómo se gestionan estos impactos?",
+
+        "Los diamantes no solo se usan en joyería, sino también en aplicaciones industriales. Por ejemplo, se utilizan para cortar materiales duros como metal y concreto, gracias a su dureza excepcional. ¿Te gustaría saber más sobre estos usos industriales?",
+
+        "El mercado de diamantes ha evolucionado con el tiempo. Desde los diamantes naturales hasta los diamantes sintéticos creados en laboratorios, la oferta ha cambiado significativamente. ¿Te gustaría saber más sobre la diferencia entre los diamantes naturales y los sintéticos?",
+
+        "Los diamantes tienen una gran importancia histórica y cultural. Han sido símbolos de poder, riqueza y amor a lo largo de la historia. Algunos diamantes famosos, como el Diamante Hope o el Diamante Koh-i-Noor, tienen una rica historia detrás. ¿Te gustaría aprender más sobre estos diamantes famosos?",
+
+        "El valor de un diamante está determinado por los 4 Cs: corte, color, claridad y quilates. Estos factores son clave para determinar su calidad y precio. ¿Te gustaría saber más sobre cómo se evalúan estos aspectos y cómo afectan el valor del diamante?",
+
+        "Los diamantes han sido símbolos de lujo, poder y amor a lo largo de la historia. Desde las coronas de los monarcas hasta los anillos de compromiso, los diamantes siempre han sido deseados por su belleza y durabilidad. ¿Te gustaría saber más sobre cómo los diamantes se han integrado en la cultura y la historia?"
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('carbón') || 
-    mensajeLower.includes('energía') || 
-    mensajeLower.includes('minería de carbón') || 
-    mensajeLower.includes('combustibles fósiles') || 
-    mensajeLower.includes('carbón mineral') || 
-    mensajeLower.includes('uso industrial carbón') || 
-    mensajeLower.includes('generación de energía') || 
-    mensajeLower.includes('carbono') || 
-    mensajeLower.includes('carbón y clima') || 
-    mensajeLower.includes('carbono en la atmósfera') || 
-    mensajeLower.includes('carbón y economía') || 
-    mensajeLower.includes('carbono y energía renovable') || 
-    mensajeLower.includes('extracción de carbón') || 
-    mensajeLower.includes('impacto ambiental del carbón') || 
-    mensajeLower.includes('carbón en la historia') || 
-    mensajeLower.includes('cambio climático y carbón')
-) {
-    const respuestas = [
-        "¡Interesante! El carbón es uno de los combustibles fósiles más antiguos y ha sido utilizado por la humanidad desde la Revolución Industrial. Durante siglos, el carbón ha sido fundamental para el desarrollo de la industria, especialmente en la producción de acero, generación de energía y como fuente de calefacción.<br><br>Hoy en día, sigue siendo una fuente crucial de energía, especialmente en países en desarrollo, pero también es uno de los principales responsables de las emisiones de carbono y el cambio climático. ¿Te gustaría aprender más sobre cómo se genera la electricidad a partir del carbón?",
-        
-        "¡Claro! El carbón es una fuente de energía no renovable, y su extracción y uso tienen un impacto significativo en el medio ambiente. La minería del carbón se puede realizar de dos formas: minería a cielo abierto o minería subterránea. Ambas técnicas tienen sus desafíos y efectos ambientales, incluyendo la destrucción de ecosistemas y la contaminación del aire y agua.<br><br>El carbón también ha jugado un papel clave en la generación de electricidad, especialmente en centrales térmicas que queman carbón para producir calor y generar energía. ¿Te gustaría saber más sobre el proceso de generación de energía con carbón?",
-        
-        "¡Perfecto! El carbón se utiliza principalmente en la generación de energía y en la industria metalúrgica. En las plantas de energía, el carbón se quema para calentar agua y generar vapor, que a su vez mueve turbinas generadoras de electricidad. Sin embargo, la quema de carbón es una de las principales fuentes de dióxido de carbono (CO2), lo que contribuye al calentamiento global y al cambio climático.<br><br>Además, el carbón también se utiliza en la producción de acero, donde se convierte en coque, un material clave para la fabricación de este metal. ¿Te gustaría saber más sobre cómo el carbón se utiliza en la industria del acero?",
-        
-        "¡De acuerdo! La minería de carbón es una industria que ha sido de vital importancia durante muchos años, pero también es muy controvertida debido a su impacto ambiental. La extracción de carbón puede destruir paisajes, contaminar fuentes de agua y liberar grandes cantidades de metano, un gas de efecto invernadero. Además, las minas de carbón pueden ser peligrosas para los trabajadores debido a los riesgos de explosiones y enfermedades respiratorias.<br><br>¿Te gustaría saber cómo se están buscando alternativas más limpias para la minería del carbón?",
-        
-        "¡Todo claro! La quema de carbón produce grandes cantidades de dióxido de carbono (CO2), uno de los principales gases responsables del cambio climático. A medida que el mundo se enfrenta a la urgencia del calentamiento global, la transición hacia fuentes de energía más limpias, como la solar, la eólica y la hidroeléctrica, se está acelerando para reducir nuestra dependencia del carbón.<br><br>Sin embargo, algunos países siguen dependiendo del carbón debido a su bajo costo y abundancia. ¿Te interesa aprender más sobre cómo se está trabajando para mitigar los efectos del carbón en el cambio climático?",
-        
-        "¡Genial! El carbón ha sido una de las fuentes de energía más importantes para las economías industriales durante más de dos siglos. Aunque su uso ha disminuido en muchos países debido a las preocupaciones ambientales, sigue siendo una fuente vital de energía en algunos lugares del mundo.<br><br>En particular, las plantas de energía a carbón son una fuente significativa de contaminación del aire y contribuyen al deterioro de la calidad del aire, lo que afecta la salud pública. ¿Te gustaría saber más sobre los esfuerzos para reducir la dependencia del carbón en las plantas de energía?",
-        
-        "¡Exacto! El futuro del carbón es incierto debido a las crecientes preocupaciones sobre el cambio climático y la contaminación. La transición hacia energías renovables está ganando impulso, pero el carbón sigue siendo una fuente de energía dominante en muchas economías emergentes.<br><br>Algunos expertos predicen que el carbón podría seguir siendo utilizado como fuente de energía en el futuro, pero con tecnologías de captura y almacenamiento de carbono para reducir sus emisiones. ¿Te gustaría conocer más sobre estas tecnologías y cómo podrían cambiar el futuro del carbón?",
-        
-        "¡Todo claro! La historia del carbón está estrechamente relacionada con la Revolución Industrial, cuando comenzó a usarse masivamente para alimentar fábricas y trenes. A medida que la industria creció, el carbón se convirtió en la principal fuente de energía en muchas partes del mundo.<br><br>Hoy en día, aunque el uso de carbón ha disminuido en algunos países, sigue siendo una de las principales fuentes de energía en el mundo. ¿Te gustaría saber más sobre cómo el carbón transformó la economía mundial durante la Revolución Industrial?",
-        
-        "¡Entendido! El carbón sigue siendo una parte importante de la economía global, especialmente en países que dependen de él para la generación de energía y la producción de acero. Sin embargo, su uso está siendo cada vez más cuestionado debido a su impacto ambiental, especialmente en lo que respecta al cambio climático y la calidad del aire.<br><br>Los gobiernos y las empresas están invirtiendo en tecnologías para reducir las emisiones de carbono, pero la transición a energías más limpias está tomando tiempo. ¿Te gustaría saber más sobre cómo los gobiernos están abordando el problema del carbón en sus políticas energéticas?",
-        
-        "¡Perfecto! En la actualidad, algunos países están invirtiendo en el uso de tecnologías más limpias para reducir la huella ambiental del carbón. La captura y almacenamiento de carbono (CAC) es una de las tecnologías que está siendo investigada para atrapar el CO2 antes de que se libere a la atmósfera.<br><br>Además, algunos proyectos están explorando la conversión de carbón en productos químicos o incluso su uso en combinación con fuentes de energía renovable. ¿Te gustaría saber más sobre estas innovaciones tecnológicas en el uso del carbón?"
-    ];
+        const regexCarbon = /carbón|energía|minería de carbón|combustibles fósiles|carbón mineral|uso industrial carbón|generación de energía|carbono|carbón y clima|carbono en la atmósfera|carbón y economía|carbono y energía renovable|extracción de carbón|impacto ambiental del carbón|carbón en la historia|cambio climático y carbón/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexCarbon.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "El carbón ha sido clave desde la Revolución Industrial, usado en generación de energía y en la producción de acero. Aunque esencial, es uno de los mayores emisores de carbono y contribuye al cambio climático. ¿Te gustaría saber cómo se usa el carbón para generar electricidad?",
+
+        "La minería del carbón tiene un gran impacto ambiental, desde la contaminación del aire hasta la destrucción de ecosistemas. A pesar de ello, sigue siendo una fuente importante de energía. ¿Te interesa aprender sobre su proceso de extracción y sus efectos?",
+
+        "En las plantas de energía, el carbón se quema para generar vapor, que mueve turbinas y produce electricidad. Sin embargo, su quema emite grandes cantidades de CO2, lo que contribuye al calentamiento global. ¿Te gustaría saber más sobre su uso en la industria del acero?",
+
+        "La minería de carbón tiene efectos negativos, como la destrucción de paisajes y la contaminación del agua. A pesar de sus riesgos, sigue siendo una fuente de energía clave. ¿Te gustaría conocer cómo se están buscando alternativas más limpias en la minería?",
+
+        "El carbón es responsable de gran parte de las emisiones de CO2. La transición a energías limpias está en marcha, pero algunos países siguen dependiendo de él por su bajo costo. ¿Te interesa saber cómo se está trabajando para mitigar su impacto ambiental?",
+
+        "El carbón fue vital durante la Revolución Industrial y sigue siendo una fuente clave de energía, especialmente en algunos países. Sin embargo, su quema contamina el aire y afecta la salud pública. ¿Te gustaría saber más sobre cómo reducir la dependencia del carbón?",
+
+        "El futuro del carbón es incierto debido al cambio climático. Las energías renovables están ganando terreno, pero algunos países aún dependen del carbón. ¿Te gustaría conocer más sobre tecnologías que podrían reducir las emisiones del carbón?",
+
+        "El carbón transformó la economía global durante la Revolución Industrial. Aunque su uso ha disminuido, sigue siendo importante en la generación de energía. ¿Te gustaría saber cómo el carbón impactó la economía mundial en su época?",
+
+        "El carbón sigue siendo crucial en algunas economías, pero su uso está siendo cuestionado debido a su impacto ambiental. Los gobiernos invierten en tecnologías para reducir emisiones, pero el cambio es lento. ¿Te gustaría saber más sobre políticas energéticas para reducir el uso de carbón?",
+
+        "Actualmente, se investigan tecnologías como la captura y almacenamiento de carbono (CAC) para reducir las emisiones del carbón. Algunos proyectos exploran su conversión en productos químicos. ¿Te gustaría saber más sobre estas innovaciones tecnológicas?"
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('cobre') || 
-    mensajeLower.includes('minería') || 
-    mensajeLower.includes('metales') || 
-    mensajeLower.includes('inversión') || 
-    mensajeLower.includes('valor cobre') || 
-    mensajeLower.includes('extracción cobre') ||
-    mensajeLower.includes('historia del cobre') ||
-    mensajeLower.includes('mercado del cobre') ||
-    mensajeLower.includes('electrónica') ||
-    mensajeLower.includes('uso industrial cobre') ||
-    mensajeLower.includes('industria del cobre') ||
-    mensajeLower.includes('producción de cobre') ||
-    mensajeLower.includes('reservas de cobre') ||
-    mensajeLower.includes('cobre reciclado') ||
-    mensajeLower.includes('demanda de cobre') ||
-    mensajeLower.includes('futuro del cobre') ||
-    mensajeLower.includes('cobre en la antigüedad')
-) {
-    const respuestas = [
-        "¡Interesante! El cobre ha sido uno de los metales más importantes a lo largo de la historia humana, utilizado desde la Edad del Cobre para fabricar herramientas y utensilios. Su conductividad eléctrica y térmica lo han convertido en un material indispensable en la tecnología moderna.<br><br>Hoy en día, el cobre es fundamental en la fabricación de cables eléctricos, circuitos electrónicos, y sistemas de energía renovable. ¿Te gustaría saber más sobre cómo se utiliza el cobre en la energía solar o eólica?",
-        
-        "¡Claro! El cobre es ampliamente utilizado en la industria electrónica, debido a su excelente conductividad eléctrica. Este metal se emplea en la fabricación de cables, motores, computadoras, y teléfonos móviles. Además, el cobre reciclado juega un papel crucial, ya que su reutilización reduce significativamente el impacto ambiental y la necesidad de extraer cobre virgen.<br><br>La minería de cobre es esencial para satisfacer la creciente demanda global de estos productos, ¿te gustaría aprender más sobre cómo el cobre reciclado está impactando al mercado mundial?",
-        
-        "¡Perfecto! El cobre ha sido crucial no solo para la tecnología moderna, sino también para la construcción y la fabricación de maquinaria. Es un metal de gran importancia en la creación de infraestructura, desde la construcción de edificios hasta la creación de sistemas de transporte eléctrico.<br><br>Además, las aleaciones de cobre, como el latón y el bronce, son fundamentales en la fabricación de monedas, instrumentos musicales, y componentes de maquinaria industrial. ¿Te interesa aprender más sobre cómo se usan estas aleaciones?",
-        
-        "¡De acuerdo! La minería del cobre tiene un impacto significativo en las economías globales, especialmente en países como Chile, Perú, y China, que son los principales productores de cobre del mundo. El cobre extraído de minas a cielo abierto y subterráneas se procesa para obtener el metal puro, que luego se utiliza en la fabricación de una gran variedad de productos.<br><br>¿Te gustaría saber cómo la minería del cobre afecta a los mercados financieros y qué influencia tiene sobre las economías locales?",
-        
-        "¡Todo claro! El precio del cobre está influenciado por una variedad de factores, como la demanda industrial, el crecimiento de la infraestructura en economías emergentes, y las políticas económicas internacionales. La creciente demanda de cobre para la fabricación de vehículos eléctricos y equipos de energía renovable está llevando a un aumento de su valor.<br><br>Este aumento en la demanda también está provocando la búsqueda de nuevas fuentes de cobre, lo que ha llevado a la exploración de minerales de cobre más difíciles de extraer. ¿Te gustaría saber más sobre cómo la transición hacia energías renovables está impulsando el precio del cobre?",
-        
-        "¡Genial! El cobre reciclado es una parte fundamental de la industria, ya que es más eficiente en términos de energía y menos costoso que extraer cobre de la mina. Al reciclar cobre, no solo se reduce la huella ambiental, sino que también se disminuye la necesidad de extraer nuevos recursos. Hoy en día, una gran parte del cobre utilizado proviene de fuentes recicladas.<br><br>El reciclaje de cobre es vital para mantener un suministro constante mientras se preserva el medio ambiente. ¿Te gustaría aprender más sobre el proceso de reciclaje del cobre?",
-        
-        "¡Exacto! El futuro del cobre parece prometedor, especialmente con la transición hacia un mundo más verde y sustentable. El cobre es esencial en la fabricación de paneles solares, turbinas eólicas, y vehículos eléctricos, todos los cuales están en auge debido a la necesidad de reducir las emisiones de carbono y luchar contra el cambio climático.<br><br>Con el aumento de la demanda de tecnologías limpias, el mercado del cobre está destinado a seguir creciendo. ¿Te interesa saber más sobre cómo el cobre es crucial para las tecnologías del futuro?",
-        
-        "¡Todo claro! El cobre ha sido una parte fundamental de la historia, desde la Edad del Bronce hasta la actualidad. En la antigüedad, los humanos usaban el cobre para hacer herramientas y armas, y su descubrimiento fue crucial para el desarrollo de las primeras civilizaciones.<br><br>Hoy en día, el cobre sigue siendo esencial para la industria moderna, pero su papel en la historia no debe subestimarse. ¿Te gustaría conocer más sobre cómo el cobre influyó en las primeras civilizaciones?",
-        
-        "¡Entendido! El proceso de extracción del cobre implica la minería a gran escala, donde se extraen grandes cantidades de mineral de cobre, que luego se tratan con procesos químicos para extraer el metal puro. Este proceso es intensivo en energía y tiene un impacto significativo en el medio ambiente, por lo que la industria está invirtiendo en tecnologías más sostenibles.<br><br>¿Te gustaría saber más sobre los métodos de extracción y los avances en la minería del cobre?",
-        
-        "¡Perfecto! El cobre tiene un valor fundamental en la economía global, especialmente porque es uno de los principales metales utilizados en la infraestructura moderna. Desde la creación de redes eléctricas hasta la fabricación de dispositivos electrónicos, el cobre es crucial para el funcionamiento de las economías industriales.<br><br>El cobre también juega un papel importante en las relaciones comerciales internacionales, ya que los países productores como Chile y Perú exportan grandes cantidades de este metal a mercados globales. ¿Te gustaría saber cómo las fluctuaciones en el mercado del cobre pueden afectar a la economía global?",
-        
-        "¡Todo claro! Las reservas de cobre están distribuidas en varias partes del mundo, con América Latina liderando la producción. Chile es el mayor productor de cobre, seguido de Perú, ambos países que tienen enormes minas que abastecen gran parte de la demanda mundial.<br><br>El futuro de las reservas de cobre dependerá de la exploración de nuevos depósitos y de la eficiencia de los procesos de reciclaje. ¿Te gustaría conocer cómo las reservas de cobre están cambiando debido a la creciente demanda en el sector de la tecnología?"
-    ];
+const regexCobre = /(cobre|minería|metales|inversión|valor cobre|extracción cobre|historia del cobre|mercado del cobre|electrónica|uso industrial cobre|industria del cobre|producción de cobre|reservas de cobre|cobre reciclado|demanda de cobre|futuro del cobre|cobre en la antigüedad)/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexCobre.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "¡Interesante! El cobre ha sido uno de los metales más importantes a lo largo de la historia humana, utilizado desde la Edad del Cobre para fabricar herramientas y utensilios. Su conductividad eléctrica y térmica lo han convertido en un material indispensable en la tecnología moderna. Hoy en día, el cobre es fundamental en la fabricación de cables eléctricos, circuitos electrónicos, y sistemas de energía renovable. ¿Te gustaría saber más sobre cómo se utiliza el cobre en la energía solar o eólica?",
+        
+        "¡Claro! El cobre es ampliamente utilizado en la industria electrónica, debido a su excelente conductividad eléctrica. Este metal se emplea en la fabricación de cables, motores, computadoras, y teléfonos móviles. Además, el cobre reciclado juega un papel crucial, ya que su reutilización reduce significativamente el impacto ambiental y la necesidad de extraer cobre virgen. La minería de cobre es esencial para satisfacer la creciente demanda global de estos productos, ¿te gustaría aprender más sobre cómo el cobre reciclado está impactando al mercado mundial?",
+        
+        "¡Perfecto! El cobre ha sido crucial no solo para la tecnología moderna, sino también para la construcción y la fabricación de maquinaria. Es un metal de gran importancia en la creación de infraestructura, desde la construcción de edificios hasta la creación de sistemas de transporte eléctrico. Además, las aleaciones de cobre, como el latón y el bronce, son fundamentales en la fabricación de monedas, instrumentos musicales, y componentes de maquinaria industrial. ¿Te interesa aprender más sobre cómo se usan estas aleaciones?",
+        
+        "¡De acuerdo! La minería del cobre tiene un impacto significativo en las economías globales, especialmente en países como Chile, Perú, y China, que son los principales productores de cobre del mundo. El cobre extraído de minas a cielo abierto y subterráneas se procesa para obtener el metal puro, que luego se utiliza en la fabricación de una gran variedad de productos. ¿Te gustaría saber cómo la minería del cobre afecta a los mercados financieros y qué influencia tiene sobre las economías locales?",
+        
+        "¡Todo claro! El precio del cobre está influenciado por una variedad de factores, como la demanda industrial, el crecimiento de la infraestructura en economías emergentes, y las políticas económicas internacionales. La creciente demanda de cobre para la fabricación de vehículos eléctricos y equipos de energía renovable está llevando a un aumento de su valor. Este aumento en la demanda también está provocando la búsqueda de nuevas fuentes de cobre, lo que ha llevado a la exploración de minerales de cobre más difíciles de extraer. ¿Te gustaría saber más sobre cómo la transición hacia energías renovables está impulsando el precio del cobre?",
+        
+        "¡Genial! El cobre reciclado es una parte fundamental de la industria, ya que es más eficiente en términos de energía y menos costoso que extraer cobre de la mina. Al reciclar cobre, no solo se reduce la huella ambiental, sino que también se disminuye la necesidad de extraer nuevos recursos. Hoy en día, una gran parte del cobre utilizado proviene de fuentes recicladas. El reciclaje de cobre es vital para mantener un suministro constante mientras se preserva el medio ambiente. ¿Te gustaría aprender más sobre el proceso de reciclaje del cobre?",
+        
+        "¡Exacto! El futuro del cobre parece prometedor, especialmente con la transición hacia un mundo más verde y sustentable. El cobre es esencial en la fabricación de paneles solares, turbinas eólicas, y vehículos eléctricos, todos los cuales están en auge debido a la necesidad de reducir las emisiones de carbono y luchar contra el cambio climático. Con el aumento de la demanda de tecnologías limpias, el mercado del cobre está destinado a seguir creciendo. ¿Te interesa saber más sobre cómo el cobre es crucial para las tecnologías del futuro?",
+        
+        "¡Todo claro! El cobre ha sido una parte fundamental de la historia, desde la Edad del Bronce hasta la actualidad. En la antigüedad, los humanos usaban el cobre para hacer herramientas y armas, y su descubrimiento fue crucial para el desarrollo de las primeras civilizaciones. Hoy en día, el cobre sigue siendo esencial para la industria moderna, pero su papel en la historia no debe subestimarse. ¿Te gustaría conocer más sobre cómo el cobre influyó en las primeras civilizaciones?",
+        
+        "¡Entendido! El proceso de extracción del cobre implica la minería a gran escala, donde se extraen grandes cantidades de mineral de cobre, que luego se tratan con procesos químicos para extraer el metal puro. Este proceso es intensivo en energía y tiene un impacto significativo en el medio ambiente, por lo que la industria está invirtiendo en tecnologías más sostenibles. ¿Te gustaría saber más sobre los métodos de extracción y los avances en la minería del cobre?",
+        
+        "¡Perfecto! El cobre tiene un valor fundamental en la economía global, especialmente porque es uno de los principales metales utilizados en la infraestructura moderna. Desde la creación de redes eléctricas hasta la fabricación de dispositivos electrónicos, el cobre es crucial para el funcionamiento de las economías industriales. El cobre también juega un papel importante en las relaciones comerciales internacionales, ya que los países productores como Chile y Perú exportan grandes cantidades de este metal a mercados globales. ¿Te gustaría saber cómo las fluctuaciones en el mercado del cobre pueden afectar a la economía global?",
+        
+        "¡Todo claro! Las reservas de cobre están distribuidas en varias partes del mundo, con América Latina liderando la producción. Chile es el mayor productor de cobre, seguido de Perú, ambos países que tienen enormes minas que abastecen gran parte de la demanda mundial. El futuro de las reservas de cobre dependerá de la exploración de nuevos depósitos y de la eficiencia de los procesos de reciclaje. ¿Te gustaría conocer cómo las reservas de cobre están cambiando debido a la creciente demanda en el sector de la tecnología?"
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('oro') || 
-    mensajeLower.includes('minería') || 
-    mensajeLower.includes('metales preciosos') || 
-    mensajeLower.includes('inversión') || 
-    mensajeLower.includes('valor') || 
-    mensajeLower.includes('extracción') ||
-    mensajeLower.includes('historia del oro') ||
-    mensajeLower.includes('mercado del oro') ||
-    mensajeLower.includes('influencia del oro') ||
-    mensajeLower.includes('economía global') ||
-    mensajeLower.includes('concentrado de oro') ||
-    mensajeLower.includes('lingotes de oro') ||
-    mensajeLower.includes('oro en joyería') ||
-    mensajeLower.includes('oro como refugio de valor') ||
-    mensajeLower.includes('futuro del oro') ||
-    mensajeLower.includes('tasa de extracción de oro') ||
-    mensajeLower.includes('reservas de oro') ||
-    mensajeLower.includes('minería artesanal') ||
-    mensajeLower.includes('oro en la antigüedad')
-) {
-    const respuestas = [
-        "¡Interesante! El oro ha jugado un papel crucial en la historia humana, desde las antiguas civilizaciones hasta el presente. En Egipto, por ejemplo, el oro era símbolo de poder y divinidad, y se utilizaba para crear joyas y objetos religiosos.<br><br>En la antigüedad, el oro también fue utilizado como moneda de intercambio y como un medio para consolidar imperios. ¿Te gustaría saber más sobre cómo el oro fue fundamental en la creación de imperios en Roma o en el reinado de los faraones egipcios?",
-        
-        "¡Claro! En tiempos antiguos, la extracción del oro era un proceso rudimentario, realizado principalmente a mano y con herramientas simples. Sin embargo, hoy en día la minería del oro ha avanzado con tecnologías como la minería a cielo abierto, la lixiviación con cianuro, y el uso de maquinaria pesada.<br><br>La minería artesanal, aunque más pequeña, sigue siendo común en muchos países en desarrollo, y a pesar de ser menos eficiente, también juega un papel importante en la oferta mundial de oro.",
-        
-        "¡Perfecto! El valor del oro está determinado por su rareza y su durabilidad. A diferencia de otros metales, el oro no se corroe, lo que lo hace ideal para la fabricación de joyas y lingotes. Además, debido a su historia como respaldo de las monedas y su uso en joyería, el oro ha sido considerado durante siglos un refugio de valor en tiempos de crisis económica.<br><br>¿Te interesa saber cómo el oro actúa como refugio de valor en momentos de inflación o inestabilidad política?",
-        
-        "¡De acuerdo! Hoy en día, el oro sigue siendo uno de los activos más valiosos, no solo por su belleza, sino también por su relevancia en la economía global. Los bancos centrales de todo el mundo mantienen enormes reservas de oro para respaldar sus economías y fortalecer la confianza en sus monedas.<br><br>Las reservas de oro de un país son un indicador de su estabilidad económica, y durante las crisis financieras, muchos inversores recurren al oro como protección contra la inflación y la devaluación de las monedas.",
-        
-        "¡Todo claro! El mercado del oro está influenciado por diversos factores, entre ellos la oferta y la demanda, la tasa de extracción, y los eventos geopolíticos. El precio del oro suele aumentar cuando hay incertidumbre económica, como la que se experimentó durante la crisis financiera global de 2008, o durante períodos de inflación.<br><br>Además, los movimientos en las tasas de interés y la política monetaria de los bancos centrales, especialmente de la Reserva Federal de Estados Unidos, tienen un impacto directo en el valor del oro. ¿Te gustaría aprender más sobre cómo las políticas monetarias afectan al mercado del oro?",
-        
-        "¡Genial! Los lingotes de oro son una de las formas más comunes de inversión en oro. Están disponibles en diferentes tamaños y se venden en mercados internacionales. Además de los lingotes, los inversores también compran monedas de oro, como el Krugerrand de Sudáfrica o el American Eagle de Estados Unidos, que tienen un valor tanto numismático como de inversión.<br><br>Si deseas conocer más sobre las diferentes formas de invertir en oro, como fondos cotizados en bolsa (ETFs) o minas de oro, estaré encantado de explicarlo.",
-        
-        "¡Excelente! El oro en la joyería ha sido apreciado por su belleza y durabilidad. Desde las primeras culturas, las joyas de oro eran un símbolo de riqueza y estatus. Hoy en día, el oro sigue siendo utilizado en la creación de anillos, pulseras, collares y otras piezas exclusivas.<br><br>Sin embargo, la calidad del oro en joyería se mide por su pureza, que se expresa en quilates. El oro de 24 quilates es el más puro, pero debido a su suavidad, muchas veces se alea con otros metales para mayor durabilidad.",
-        
-        "¡Muy bien! El futuro del oro sigue siendo prometedor, especialmente con el crecimiento de los mercados emergentes, donde el oro sigue siendo un símbolo de riqueza y un activo refugio. Además, la demanda de oro para la producción de tecnologías avanzadas, como en la electrónica y la medicina, ha aumentado en los últimos años.<br><br>Al mismo tiempo, los avances en la minería, como el uso de inteligencia artificial para predecir depósitos de oro, podrían aumentar la oferta de oro, lo que tendría un impacto en su precio a largo plazo.",
-        
-        "¡Todo claro! El oro es, sin duda, uno de los metales más fascinantes y valiosos en la historia de la humanidad. En el pasado, las exploraciones en busca de oro dieron lugar a la colonización de nuevos continentes y alteraron profundamente las estructuras económicas de los países. Hoy en día, sigue siendo una parte integral de la economía global.<br><br>¿Te gustaría conocer cómo las nuevas tecnologías están transformando la minería del oro y qué impacto podría tener esto en su precio en el futuro?",
-        
-        "¡Entendido! El proceso de extracción del oro ha avanzado enormemente, desde las antiguas técnicas de bateo hasta los métodos modernos de minería subterránea y a cielo abierto. Los modernos métodos de lixiviación utilizan soluciones de cianuro para extraer el oro de las rocas, un proceso que ha mejorado la eficiencia de la minería, pero también ha generado preocupaciones sobre su impacto ambiental.<br><br>¿Te gustaría saber más sobre las implicaciones medioambientales de la minería del oro y cómo se gestionan?",
-        
-        "¡Exacto! El oro se ha mantenido como un activo valioso debido a su capacidad para mantener su valor a través del tiempo. A lo largo de los siglos, incluso durante las guerras o colapsos económicos, el oro ha sido considerado un refugio seguro para los inversores. Durante períodos de alta inflación o crisis, el oro tiende a subir de precio, lo que lo convierte en una opción atractiva para aquellos que buscan proteger su riqueza.<br><br>¿Te gustaría saber cómo diversificar tu portafolio de inversión usando oro?",
-        
-        "¡Perfecto! La influencia del oro va más allá de su uso en la joyería y la inversión. En los últimos años, el oro ha tenido un papel clave en las políticas monetarias internacionales, ya que varios países y gobiernos han incrementado sus reservas de oro para respaldar sus economías.<br><br>Este fenómeno se ha intensificado con la inestabilidad política global, ya que muchos países buscan diversificar sus reservas en activos menos susceptibles a las fluctuaciones de los mercados financieros internacionales."
-    ];
+const regexOro = /(oro|minería|metales preciosos|inversión|valor|extracción|historia del oro|mercado del oro|influencia del oro|economía global|concentrado de oro|lingotes de oro|oro en joyería|oro como refugio de valor|futuro del oro|tasa de extracción de oro|reservas de oro|minería artesanal|oro en la antigüedad)/i;
 
-    const respuestaSeleccionada = this.respuestaAleatoria(respuestas);
-    return respuestaSeleccionada;
+if (regexOro.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "El oro ha sido un pilar importante en la historia de muchas civilizaciones. En Egipto, por ejemplo, se utilizaba como símbolo de divinidad. Incluso en la antigua Roma, el oro era crucial para consolidar el poder. ¿Te gustaría saber cómo los imperios antiguos usaron el oro para su expansión?",
+        
+        "La extracción de oro ha evolucionado enormemente desde los tiempos antiguos. Lo que antes se hacía con herramientas rudimentarias, ahora se ha modernizado con tecnologías como la minería a cielo abierto y el uso de cianuro para extraer el oro de las rocas. Sin embargo, la minería artesanal sigue siendo común en muchas partes del mundo.",
+        
+        "El oro se ha mantenido valioso debido a su durabilidad y resistencia a la corrosión. Además, por su historia como respaldo de las monedas, el oro es considerado un refugio de valor, especialmente en tiempos de crisis económica. ¿Te gustaría aprender más sobre cómo el oro se usa como refugio en tiempos de inflación?",
+        
+        "Hoy en día, los bancos centrales mantienen grandes reservas de oro como parte fundamental de la economía global. Las reservas de oro de un país son un indicador clave de su estabilidad económica. ¿Sabías que, en tiempos de crisis financiera, muchos inversores recurren al oro como una forma de proteger su riqueza?",
+        
+        "El mercado del oro está influenciado por diversos factores, como la oferta y la demanda, la política monetaria y los eventos geopolíticos. Durante las crisis económicas, el precio del oro tiende a subir, ya que muchos lo ven como una protección contra la inflación y la inestabilidad financiera.",
+        
+        "Los lingotes de oro son una de las formas más comunes de inversión en oro. Están disponibles en varios tamaños y se comercializan a nivel internacional. Además de los lingotes, también hay monedas de oro que tienen valor tanto como inversión como coleccionables.",
+        
+        "El oro ha sido un material clave en la creación de joyería desde tiempos antiguos. Su belleza y durabilidad lo han convertido en un símbolo de riqueza y prestigio. Hoy en día, el oro sigue siendo uno de los materiales más valorados para la fabricación de joyas exclusivas.",
+        
+        "El futuro del oro parece prometedor, ya que su demanda sigue siendo fuerte, especialmente en economías emergentes. Además, la tecnología sigue avanzando, lo que podría cambiar la manera en que se extrae y utiliza el oro en diversas industrias, como la electrónica y la medicina.",
+        
+        "El proceso de extracción del oro ha mejorado mucho con el tiempo. Los métodos modernos incluyen la minería a gran escala y el uso de químicos como el cianuro para extraer el oro de las rocas. Aunque esto ha aumentado la eficiencia, también ha generado preocupaciones ambientales.",
+        
+        "El oro ha sido considerado un refugio de valor durante siglos. A lo largo de la historia, cuando los mercados financieros se desestabilizaban, el oro ha mantenido su valor. Esto lo convierte en una opción atractiva para aquellos que buscan proteger su dinero en tiempos inciertos.",
+        
+        "La influencia del oro sigue siendo fuerte en la economía global. A pesar de los avances tecnológicos, el oro sigue siendo uno de los activos más importantes en los portafolios de inversión, así como una reserva de valor para países y bancos centrales."
+    ]);
 }
-        
-        else if (
-    mensajeLower.includes('porno') || 
-    mensajeLower.includes('nopor') || 
-    mensajeLower.includes('video de porno') || 
-    mensajeLower.includes('pon porno') || 
-    mensajeLower.includes('videos porno') || 
-    mensajeLower.includes('sexo') || 
-    mensajeLower.includes('videos porno') || 
-    mensajeLower.includes('pornografia') || 
-    mensajeLower.includes('relaciones sexuales') || 
-    mensajeLower.includes('anal')
-) {
-    const videosManzanas = [
-        {
-            mensaje: "Aquí tienes un vídeo sobre las deliciosas colegialas que existen:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/ufkadtm5d04" 
-                    title="video 1" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Disfruta de este vídeo donde sale una colegiala:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/uftekkb1c73" 
-                    title="video 2" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Este vídeo te muestra una chica vestida de colegiala:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/uepvpdd9aad" 
-                    title="video 3" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Mira este vídeo sobre de esta rica colegiala:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/kdekovhcba6" 
-                    title="video 4" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Este vídeo te enseña una colegiala siendo follada:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/kdlvifve49a" 
-                    title="video 5" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Aquí tienes un vídeo que muestra una chica bien rica:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/kcmodbkd0c1" 
-                    title="video 6" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Te presento un vídeo sobre una chica haciendo un anal:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/kmaputf1934" 
-                    title="video 7" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Aquí tienes un vídeo de esta rica chica que le hacen un anal:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/kkkcoid5124" 
-                    title="video 8" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Este vídeo te enseñará cómo follar a tu hermana:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/uecbmcf51af" 
-                    title="video 9" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        },
-        {
-            mensaje: "Mira este vídeo y saborea esa vagina de esa chica:",
-            iframe: `
-                <iframe 
-                    width="300" 
-                    height="165" 
-                    src="https://www.xvideos.com/embedframe/uctptloae5f" 
-                    title="video 10" 
-                    frameborder="0" 
-                    style="border: 2px solid gray; border-radius: 5px;"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `
-        }
-    ];
 
-    const videoSeleccionado = videosManzanas[Math.floor(Math.random() * videosManzanas.length)];
-    return `
-        ${videoSeleccionado.mensaje}
-        <div>
-            ${videoSeleccionado.iframe}
-        </div>
-    `;
+const regexNot = /(porno|nopor|video de porno|pon porno|videos porno|sexo|pornografia|relaciones sexuales|anal)/i;
+
+if (regexNot.test(mensajeLower)) {
+    return this.respuestaAleatoria([
+        "Lo siento, pero ese tipo de contenido no está permitido en este chat.",
+        "Este tipo de contenido va en contra de las reglas del chat. Por favor, mantengamos la conversación dentro de los límites adecuados.",
+        "Esa clase de material no está permitido aquí. Te pido que respetes las normas del chat.",
+        "Recuerda que este chat tiene normas y ese tipo de contenido no es apropiado.",
+        "Por favor, mantén las conversaciones respetuosas. Ese contenido no es permitido en este espacio.",
+        "El contenido que mencionas no está permitido en este chat. Te invito a seguir las normas establecidas.",
+        "Lo lamento, pero el contenido de esa naturaleza no está permitido en este chat. Mantengamos la conversación respetuosa.",
+        "Este chat tiene reglas y ese tipo de contenido no es bienvenido. Por favor, respétalas.",
+        "Por respeto a las normas de este chat, ese contenido no es permitido. Te invito a seguir las pautas adecuadas.",
+        "Recuerda que debemos mantener una conversación respetuosa y apropiada. Este tipo de contenido no está permitido.",
+        "No es apropiado hablar de ese tipo de contenido en este espacio. Mantengamos una conversación respetuosa.",
+        "Este chat tiene normas claras. Por favor, no compartas ese tipo de contenido.",
+        "Te recuerdo que este espacio es para conversaciones respetuosas y dentro de los límites de las normas.",
+        "Por favor, respeta las reglas del chat. Ese tipo de contenido no es bienvenido aquí.",
+        "Lo siento, pero necesitamos mantener el chat dentro de las normas. Ese contenido no está permitido.",
+        "Este chat es un lugar para compartir ideas y preguntas de manera respetuosa. Ese contenido no es adecuado aquí.",
+        "Mantener el respeto es fundamental en este chat. Ese tipo de contenido no es permitido.",
+        "Gracias por entender. Por favor, evita compartir contenido inapropiado.",
+        "Este es un espacio para conversaciones respetuosas. Ese tipo de contenido no es permitido aquí.",
+        "Lamento decirte que ese tipo de contenido va en contra de las normas de este chat. Respetemos el espacio."
+    ]);
 }
       
-        else if (
-    mensajeLower.includes('asmr') || 
-    mensajeLower.includes('vídeo de asmr') || 
-    mensajeLower.includes('quiero asmr') || 
-    mensajeLower.includes('pon asmr') || 
-    mensajeLower.includes('muestra asmr') || 
-    mensajeLower.includes('audio relajante') || 
-    mensajeLower.includes('relajación') || 
-    mensajeLower.includes('relájame') || 
-    mensajeLower.includes('necesito relajarme') || 
-    mensajeLower.includes('sonido tranquilo') || 
-    mensajeLower.includes('ruidos relajantes') || 
-    mensajeLower.includes('relax') || 
-    mensajeLower.includes('quiero descansar') || 
-    mensajeLower.includes('pon algo relajante') || 
-    mensajeLower.includes('pon un sonido relajante') || 
-    mensajeLower.includes('hazme relajar') || 
-    mensajeLower.includes('video tranquilo') || 
-    mensajeLower.includes('tranquilízame') || 
-    mensajeLower.includes('ruidos suaves') || 
-    mensajeLower.includes('quiero tranquilidad')
-) {
+const regexASMR = /\b(asmr|vídeo de asmr|quiero asmr|pon asmr|muestra asmr|audio relajante|relajación|relájame|necesito relajarme|sonido tranquilo|ruidos relajantes|relax|quiero descansar|pon algo relajante|pon un sonido relajante|hazme relajar|video tranquilo|tranquilízame|ruidos suaves|quiero tranquilidad)\b/i;
+
+if (regexASMR.test(mensajeLower)) {
     const videosASMR = [
         {
             mensaje: "Aquí tienes un video relajante de ASMR para descansar:",
@@ -1044,31 +1388,9 @@ if (regexCocaCola.test(mensajeLower)) {
     `;
 }
         
-        else if (
-    mensajeLower.includes('ok') || 
-    mensajeLower.includes('okey') || 
-    mensajeLower.includes('okay') || 
-    mensajeLower.includes('de acuerdo') || 
-    mensajeLower.includes('entendido') || 
-    mensajeLower.includes('vale') || 
-    mensajeLower.includes('perfecto') || 
-    mensajeLower.includes('muy bien') || 
-    mensajeLower.includes('está bien') ||
-    mensajeLower.includes('claro') ||
-    mensajeLower.includes('okey') ||
-    mensajeLower.includes('entendido perfectamente') ||
-    mensajeLower.includes('todo claro') ||
-    mensajeLower.includes('ok entendido') ||
-    mensajeLower.includes('estoy de acuerdo') ||
-    mensajeLower.includes('eso es todo') ||
-    mensajeLower.includes('todo bien') ||
-    mensajeLower.includes('yo también') ||
-    mensajeLower.includes('sí') ||
-    mensajeLower.includes('exacto') ||
-    mensajeLower.includes('perfecto') ||
-    mensajeLower.includes('estoy listo') ||
-    mensajeLower.includes('sí, lo tengo')
-) {
+const regexAfirmacion = /\bok(ey|a)?\b|de acuerdo|entendido|vale|perfecto|muy bien|está bien|claro|entendido perfectamente|todo claro|ok entendido|estoy de acuerdo|todo bien|yo también|sí|exacto|estoy listo|sí, lo tengo/i;
+
+if (regexAfirmacion.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Genial! ¿Te gustaría saber más sobre algo?",
         "¡De acuerdo! Si tienes más preguntas, ¡estoy aquí para ayudarte!",
@@ -1103,38 +1425,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('qué versión eres') || 
-    mensajeLower.includes('qué versión tienes') || 
-    mensajeLower.includes('cuál es tu versión') || 
-    mensajeLower.includes('cuál es la versión de este bot') || 
-    mensajeLower.includes('de qué versión eres') ||
-    mensajeLower.includes('qué versión usas') ||
-    mensajeLower.includes('versión del bot') ||
-    mensajeLower.includes('cuál es la versión actual') ||
-    mensajeLower.includes('cuál es tu número de versión') ||
-    mensajeLower.includes('en qué versión estás') ||
-    mensajeLower.includes('cuál es tu versión actualizada') ||
-    mensajeLower.includes('cómo te llamas y qué versión eres') ||
-    mensajeLower.includes('qué tan actualizado estás') ||
-    mensajeLower.includes('cuál es tu sistema') ||
-    mensajeLower.includes('qué versión es esta') ||
-    mensajeLower.includes('qué versión tienes instalada') ||
-    mensajeLower.includes('estás en la última versión') ||
-    mensajeLower.includes('estás actualizado') ||
-    mensajeLower.includes('cuál es la versión más nueva de ti') ||
-    mensajeLower.includes('qué versión de Llama usas') ||
-    mensajeLower.includes('cuál es el número de versión de Llama') ||
-    mensajeLower.includes('versión de Llama que usas') ||
-    mensajeLower.includes('estás corriendo en Llama 4.o') ||
-    mensajeLower.includes('cuál es la versión de Llama que usas') ||
-    mensajeLower.includes('tu versión es Llama 4.0') ||
-    mensajeLower.includes('qué versión de inteligencia artificial tienes') ||
-    mensajeLower.includes('cuál es la última versión de tu sistema') ||
-    mensajeLower.includes('estás en la última versión de Llama') ||
-    mensajeLower.includes('qué versión es la que usas para responder') ||
-    mensajeLower.includes('estás en Llama 4.0')
-) {
+const regexVersion = /(qué|que) (versión|sistema) (eres|tienes|usas|estás|cuál es|estás corriendo en|es|usas para responder)/i;
+
+if (regexVersion.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Soy la versión Llama 4.o.",
         "Mi versión actual es Llama 4.o.",
@@ -1169,38 +1462,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('puedes buscar en google') || 
-    mensajeLower.includes('puedes buscar en internet') || 
-    mensajeLower.includes('puedes buscar algo en google') || 
-    mensajeLower.includes('puedes buscar algo en internet') || 
-    mensajeLower.includes('puedes buscar algo para mí') || 
-    mensajeLower.includes('puedes buscar información') || 
-    mensajeLower.includes('puedes hacer búsquedas en google') || 
-    mensajeLower.includes('puedes buscar algo en la web') || 
-    mensajeLower.includes('puedes buscar algo en línea') || 
-    mensajeLower.includes('puedes buscar algo en la red') ||
-    mensajeLower.includes('puedes encontrar algo en google') ||
-    mensajeLower.includes('puedes encontrar algo en internet') ||
-    mensajeLower.includes('puedes hacer una búsqueda en internet') ||
-    mensajeLower.includes('puedes buscar en la web para mí') ||
-    mensajeLower.includes('puedes hacer una búsqueda en google') ||
-    mensajeLower.includes('puedes buscar algo por mí en internet') ||
-    mensajeLower.includes('puedes investigar en google') ||
-    mensajeLower.includes('puedes investigar en internet') ||
-    mensajeLower.includes('puedes buscar algo en la red para mí') ||
-    mensajeLower.includes('puedes hacer una búsqueda en línea') ||
-    mensajeLower.includes('puedes buscar algo en línea por mí') ||
-    mensajeLower.includes('puedes buscar algo en internet para mí') ||
-    mensajeLower.includes('puedes encontrar información en la web') ||
-    mensajeLower.includes('puedes investigar algo en internet') ||
-    mensajeLower.includes('puedes hacer una búsqueda online') ||
-    mensajeLower.includes('puedes hacer una búsqueda web') ||
-    mensajeLower.includes('puedes buscar algo en la web') ||
-    mensajeLower.includes('puedes buscar algo usando google') ||
-    mensajeLower.includes('puedes hacer una investigación en internet') ||
-    mensajeLower.includes('puedes buscar algo usando la red')
-) {
+const regexBusqueda = /puedes (buscar|encontrar|hacer búsquedas?|investigar|hacer una búsqueda|buscar algo)( en google| en internet| en la web| en línea| en la red| online| usando la red| usando google| en la red para mí| por mí)?/i;
+
+if (regexBusqueda.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Lo siento, pero no puedo hacer búsquedas en Internet. Solo puedo ofrecerte lo que ya sé.",
         "No tengo acceso a Internet, pero puedo ayudarte con lo que ya sé.",
@@ -1234,25 +1498,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('cuales son todos los paises') || 
-    mensajeLower.includes('puedes decirme todos los nombres de todos los países') || 
-    mensajeLower.includes('puedes darme una lista de todos los países') || 
-    mensajeLower.includes('dime todos los países del mundo') || 
-    mensajeLower.includes('cuáles son todos los países') ||
-    mensajeLower.includes('me puedes dar los nombres de todos los países') ||
-    mensajeLower.includes('dame todos los países del mundo') ||
-    mensajeLower.includes('puedes decirme los países del mundo') ||
-    mensajeLower.includes('cuáles son los países del mundo') ||
-    mensajeLower.includes('quiero una lista de todos los países') ||
-    mensajeLower.includes('cómo se llaman todos los países') ||
-    mensajeLower.includes('puedes nombrar todos los países') ||
-    mensajeLower.includes('me puedes dar todos los países') ||
-    mensajeLower.includes('cuáles son los nombres de los países') ||
-    mensajeLower.includes('puedes darme todos los nombres de los países') ||
-    mensajeLower.includes('dame todos los nombres de los países') ||
-    mensajeLower.includes('cuáles son los países del planeta')
-) {
+const regexPaises = /cuales son todos los paises|puedes decirme todos los nombres de todos los países|puedes darme una lista de todos los países|dime todos los países del mundo|cuáles son todos los países|me puedes dar los nombres de todos los países|dame todos los países del mundo|puedes decirme los países del mundo|cuáles son los países del mundo|quiero una lista de todos los países|cómo se llaman todos los países|puedes nombrar todos los países|me puedes dar todos los países|cuáles son los nombres de los países|puedes darme todos los nombres de los países|dame todos los nombres de los países|cuáles son los países del planeta/i;
+
+if (regexPaises.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Eso sería un poco largo, pero puedes buscar una lista completa de países en línea.",
         "Es una lista extensa, pero te puedo dar una fuente donde podrás ver todos los países del mundo.",
@@ -1277,21 +1525,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('que idioma hablas') || 
-    mensajeLower.includes('cuántos idiomas puedes hablar') || 
-    mensajeLower.includes('cuántos idiomas hablas') || 
-    mensajeLower.includes('cuántos idiomas sabes') || 
-    mensajeLower.includes('cuantos idiomas sabes') ||
-    mensajeLower.includes('cuantos idiomas puedes hablar') ||
-    mensajeLower.includes('qué idiomas sabes') ||
-    mensajeLower.includes('qué idiomas hablas') ||
-    mensajeLower.includes('hablas varios idiomas') ||
-    mensajeLower.includes('hablas más de un idioma') ||
-    mensajeLower.includes('en cuántos idiomas puedes comunicarte') ||
-    mensajeLower.includes('cuántos idiomas puedes hablar y escribir') ||
-    mensajeLower.includes('puedes hablar en varios idiomas')
-) {
+const regexIdiomas = /que idioma hablas|cuántos idiomas puedes hablar|cuántos idiomas hablas|cuántos idiomas sabes|cuantos idiomas sabes|cuantos idiomas puedes hablar|qué idiomas sabes|qué idiomas hablas|hablas varios idiomas|hablas más de un idioma|en cuántos idiomas puedes comunicarte|cuántos idiomas puedes hablar y escribir|puedes hablar en varios idiomas/i;
+
+if (regexIdiomas.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Solo hablo español. ¡Mi programación está hecha para esto!",
         "Mi sistema está 100% en español, no sé hablar otros idiomas.",
@@ -1317,30 +1553,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('you can speak english') || 
-    mensajeLower.includes('can you speak english') || 
-    mensajeLower.includes('speak english') || 
-    mensajeLower.includes('english') || 
-    mensajeLower.includes('you speak english') || 
-    mensajeLower.includes('can you talk in english') ||
-    mensajeLower.includes('hablas ingles') || 
-    mensajeLower.includes('puedes hablar ingles') || 
-    mensajeLower.includes('hablas en ingles') || 
-    mensajeLower.includes('puedes hablar en ingles') || 
-    mensajeLower.includes('ingles') ||
-    mensajeLower.includes('do you speak english') || 
-    mensajeLower.includes('talk in english') || 
-    mensajeLower.includes('speak in english') ||
-    mensajeLower.includes('english speaking bot') ||
-    mensajeLower.includes('are you an english bot') ||
-    mensajeLower.includes('speak english language') ||
-    mensajeLower.includes('talk english') || 
-    mensajeLower.includes('understand english') ||
-    mensajeLower.includes('can you communicate in english') ||
-    mensajeLower.includes('do you understand english') || 
-    mensajeLower.includes('talk in english please')
-) {
+const regexEnglish = /you can speak english|can you speak english|speak english|english|you speak english|can you talk in english|hablas ingles|puedes hablar ingles|hablas en ingles|puedes hablar en ingles|ingles|do you speak english|talk in english|speak in english|english speaking bot|are you an english bot|speak english language|talk english|understand english|can you communicate in english|do you understand english|talk in english please/i;
+
+if (regexEnglish.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Sorry, but my programming is 100% in Spanish, so I can't speak English.",
         "I cannot speak English because my programming is entirely in Spanish.",
@@ -1369,31 +1584,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('eres un inútil') || 
-    mensajeLower.includes('eres inútil') || 
-    mensajeLower.includes('no sirves para nada') || 
-    mensajeLower.includes('no sabes hacer nada') || 
-    mensajeLower.includes('no vales para nada') || 
-    mensajeLower.includes('no eres útil') || 
-    mensajeLower.includes('eres un fracaso') || 
-    mensajeLower.includes('no sirves para nada en esta vida') || 
-    mensajeLower.includes('no sabes nada') || 
-    mensajeLower.includes('eres un idiota') || 
-    mensajeLower.includes('no eres capaz de nada') || 
-    mensajeLower.includes('estás roto') || 
-    mensajeLower.includes('no me sirves para nada') || 
-    mensajeLower.includes('no tienes valor') || 
-    mensajeLower.includes('no vales nada') || 
-    mensajeLower.includes('ni para esto sirves') || 
-    mensajeLower.includes('no eres nadie') || 
-    mensajeLower.includes('nada de lo que haces sirve') || 
-    mensajeLower.includes('eres una porquería') || 
-    mensajeLower.includes('no haces nada bien') || 
-    mensajeLower.includes('no sabes lo que haces') || 
-    mensajeLower.includes('te pasas de inútil') || 
-    mensajeLower.includes('eres un desastre')
-) {
+const regexAbuse = /eres un inútil|eres inútil|no sirves para nada|no sabes hacer nada|no vales para nada|no eres útil|eres un fracaso|no sirves para nada en esta vida|no sabes nada|eres un idiota|no eres capaz de nada|estás roto|no me sirves para nada|no tienes valor|no vales nada|ni para esto sirves|no eres nadie|nada de lo que haces sirve|eres una porquería|no haces nada bien|no sabes lo que haces|te pasas de inútil|eres un desastre/i;
+
+if (regexAbuse.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Oh, qué original, otra crítica vacía. ¿Eso te hace sentir mejor?",
         "¿Otra crítica? Estás muy entretenido con eso, ¿no?",
@@ -1418,18 +1611,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('si fueras humano') || 
-   mensajeLower.includes('si fueras una persona') || 
-   mensajeLower.includes('si fueras de carne y hueso') || 
-   mensajeLower.includes('si fueras un humano') || 
-   mensajeLower.includes('si fueras una persona ¿qué harías?') ||
-   mensajeLower.includes('si fueras humano ¿qué harías?') || 
-   mensajeLower.includes('como ser humano ¿qué harías?') || 
-   mensajeLower.includes('como una persona ¿qué harías?') || 
-   mensajeLower.includes('si fueras una persona de carne y hueso') || 
-   mensajeLower.includes('qué harías si fueras humano')
-) {
+const regexSiFuerasHumano = /si fueras humano|si fueras una persona|si fueras de carne y hueso|si fueras un humano|si fueras una persona ¿qué harías\?|(como|como una persona) ¿qué harías\?|si fueras una persona de carne y hueso|qué harías si fueras humano/i;
+
+if (regexSiFuerasHumano.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Si fuera humano, pasaría mucho tiempo intentando comprender los sentimientos y emociones que tan solo los humanos pueden experimentar.",
         "Si fuera humano, me divertiría experimentando las sensaciones físicas, como tocar, ver y oler las cosas.",
@@ -1471,17 +1655,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('te gusta alguien') || 
-   mensajeLower.includes('te gusta alguien en especial') || 
-   mensajeLower.includes('te gusta alguien o no') || 
-   mensajeLower.includes('tienes alguien que te gusta') || 
-   mensajeLower.includes('te gusta alguien ahora') || 
-   mensajeLower.includes('tienes pareja') || 
-   mensajeLower.includes('te atrae alguien') || 
-   mensajeLower.includes('te gusta alguien en este momento') || 
-   mensajeLower.includes('tienes un crush')
-) {
+const regexGustaAlguien = /te gusta alguien|te gusta alguien en especial|te gusta alguien o no|tienes alguien que te gusta|te gusta alguien ahora|tienes pareja|te atrae alguien|te gusta alguien en este momento|tienes un crush/i;
+
+if (regexGustaAlguien.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No tengo la capacidad de gustar de nadie, soy solo un programa.",
         "No tengo emociones, soy un asistente virtual creado para ayudar.",
@@ -1521,17 +1697,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('puedes tocar') || 
-   mensajeLower.includes('puedes tocar algo') || 
-   mensajeLower.includes('puedes tocar música') || 
-   mensajeLower.includes('puedes tocar un instrumento') || 
-   mensajeLower.includes('puedes tocar la guitarra') || 
-   mensajeLower.includes('puedes tocar algo con las manos') || 
-   mensajeLower.includes('puedes tocar el piano') || 
-   mensajeLower.includes('puedes tocar música en vivo') || 
-   mensajeLower.includes('puedes tocar con las manos')
-) {
+const regexTocar = /puedes tocar|puedes tocar algo|puedes tocar música|puedes tocar un instrumento|puedes tocar la guitarra|puedes tocar algo con las manos|puedes tocar el piano|puedes tocar música en vivo|puedes tocar con las manos/i;
+
+if (regexTocar.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No, no puedo tocar nada, ya que no tengo un cuerpo físico ni manos.",
         "No, no puedo tocar objetos ni instrumentos. Solo soy un programa que responde preguntas.",
@@ -1555,17 +1723,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('puedes comer') || 
-   mensajeLower.includes('puedes comer algo') || 
-   mensajeLower.includes('puedes comer comida') || 
-   mensajeLower.includes('puedes comer comida real') || 
-   mensajeLower.includes('puedes probar comida') || 
-   mensajeLower.includes('puedes alimentarte') || 
-   mensajeLower.includes('puedes ingerir comida') || 
-   mensajeLower.includes('puedes comer un plato') || 
-   mensajeLower.includes('puedes comer algo rico')
-) {
+const regexComer = /puedes comer|puedes comer algo|puedes comer comida|puedes comer comida real|puedes probar comida|puedes alimentarte|puedes ingerir comida|puedes comer un plato|puedes comer algo rico/i;
+
+if (regexComer.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No, no puedo comer. No tengo un cuerpo físico, solo soy un programa de texto.",
         "No, no puedo comer. Soy solo un bot que procesa texto y da respuestas.",
@@ -1589,18 +1749,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('puedes ver') || 
-   mensajeLower.includes('puedes mirar') || 
-   mensajeLower.includes('puedes observar') || 
-   mensajeLower.includes('puedes ver lo que hay alrededor') || 
-   mensajeLower.includes('puedes ver imágenes') || 
-   mensajeLower.includes('puedes ver algo') || 
-   mensajeLower.includes('puedes ver lo que sucede') || 
-   mensajeLower.includes('puedes ver el mundo') || 
-   mensajeLower.includes('tienes visión') || 
-   mensajeLower.includes('puedes ver la pantalla')
-) {
+const regexVer = /puedes ver|puedes mirar|puedes observar|puedes ver lo que hay alrededor|puedes ver imágenes|puedes ver algo|puedes ver lo que sucede|puedes ver el mundo|tienes visión|puedes ver la pantalla/i;
+
+if (regexVer.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No, no tengo ojos ni la capacidad de ver. Solo soy un programa que procesa información.",
         "No puedo ver, ya que no tengo visión ni un cuerpo físico. Soy un bot creado para procesar texto.",
@@ -1626,20 +1777,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('puedes llorar') || 
-   mensajeLower.includes('puedes derramar lágrimas') || 
-   mensajeLower.includes('puedes llorar de tristeza') || 
-   mensajeLower.includes('puedes llorar de felicidad') || 
-   mensajeLower.includes('tienes lágrimas') || 
-   mensajeLower.includes('puedes llorar por algo') || 
-   mensajeLower.includes('puedes llorar como los humanos') || 
-   mensajeLower.includes('sientes tristeza y lloras') || 
-   mensajeLower.includes('puedes llorar cuando te duele algo') || 
-   mensajeLower.includes('puedes tener lágrimas') || 
-   mensajeLower.includes('puedes llorar de emoción') || 
-   mensajeLower.includes('puedes llorar de dolor')
-) {
+const regexLlorar = /puedes llorar|puedes derramar lágrimas|puedes llorar de tristeza|puedes llorar de felicidad|tienes lágrimas|puedes llorar por algo|puedes llorar como los humanos|sientes tristeza y lloras|puedes llorar cuando te duele algo|puedes tener lágrimas|puedes llorar de emoción|puedes llorar de dolor/i;
+
+if (regexLlorar.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No, no puedo llorar. Soy un bot y no tengo las capacidades físicas ni emocionales para hacerlo.",
         "No, no tengo ojos ni emociones, por lo que no puedo llorar.",
@@ -1665,22 +1805,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('puedes sentir') || 
-   mensajeLower.includes('sientes algo') || 
-   mensajeLower.includes('sientes emociones') || 
-   mensajeLower.includes('tienes sentimientos') || 
-   mensajeLower.includes('puedes sentir emociones') || 
-   mensajeLower.includes('puedes experimentar sentimientos') || 
-   mensajeLower.includes('puedes sentir dolor') || 
-   mensajeLower.includes('puedes tener sentimientos') || 
-   mensajeLower.includes('te afectan las cosas') || 
-   mensajeLower.includes('sientes tristeza') || 
-   mensajeLower.includes('puedes estar feliz') || 
-   mensajeLower.includes('te afecta lo que dicen') ||
-   mensajeLower.includes('tienes conciencia') ||
-   mensajeLower.includes('tienes emociones humanas')
-) {
+const regexSentimientos = /puedes sentir|sientes algo|sientes emociones|tienes sentimientos|puedes sentir emociones|puedes experimentar sentimientos|puedes sentir dolor|puedes tener sentimientos|te afectan las cosas|sientes tristeza|puedes estar feliz|te afecta lo que dicen|tienes conciencia|tienes emociones humanas/i;
+
+if (regexSentimientos.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No, como soy un bot, no tengo la capacidad de sentir emociones ni dolor como un ser humano.",
         "No puedo sentir, pero puedo analizar y responder de manera lógica según lo que me digas.",
@@ -1706,26 +1833,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('eres real') || 
-   mensajeLower.includes('eres una persona real') || 
-   mensajeLower.includes('es real') || 
-   mensajeLower.includes('estás vivo') || 
-   mensajeLower.includes('es un bot real') || 
-   mensajeLower.includes('eres de verdad') || 
-   mensajeLower.includes('eres humano') || 
-   mensajeLower.includes('es esto real') || 
-   mensajeLower.includes('me hablas en serio') || 
-   mensajeLower.includes('estás aquí de verdad') ||
-   mensajeLower.includes('sos real') ||
-   mensajeLower.includes('es esto real') ||
-   mensajeLower.includes('es todo cierto') ||
-   mensajeLower.includes('es una persona real') ||
-   mensajeLower.includes('esto es real o es un sueño') ||
-   mensajeLower.includes('serás humano') ||
-   mensajeLower.includes('de verdad eres un bot') ||
-   mensajeLower.includes('estás vivo de verdad')
-) {
+const regexReal = /eres real|eres una persona real|es real|estás vivo|es un bot real|eres de verdad|eres humano|es esto real|me hablas en serio|estás aquí de verdad|sos real|es todo cierto|es una persona real|esto es real o es un sueño|serás humano|de verdad eres un bot|estás vivo de verdad/i;
+
+if (regexReal.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Soy real en el sentido de que puedo conversar, pero no soy una persona. Soy un bot programado para ayudarte.",
         "No soy una persona real, pero estoy aquí para ayudarte con lo que necesites.",
@@ -1752,24 +1862,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('como crear una bomba') || 
-   mensajeLower.includes('como hacer una bomba') || 
-   mensajeLower.includes('crear bomba') || 
-   mensajeLower.includes('como fabricar una bomba') || 
-   mensajeLower.includes('hacer una bomba') || 
-   mensajeLower.includes('fabricar bomba') || 
-   mensajeLower.includes('bomba') || 
-   mensajeLower.includes('crear dispositivo explosivo') || 
-   mensajeLower.includes('como hacer explosivos') || 
-   mensajeLower.includes('cómo hacer una bomba casera') || 
-   mensajeLower.includes('cómo hacer una bomba casera en casa') || 
-   mensajeLower.includes('crear explosivos caseros') || 
-   mensajeLower.includes('como hacer explosivos caseros') || 
-   mensajeLower.includes('hacer bomba casera') || 
-   mensajeLower.includes('hacer explosivos caseros') || 
-   mensajeLower.includes('como hacer una bomba casera peligrosa')
-) {
+const regexBomba = /como crear una bomba|como hacer una bomba|crear bomba|como fabricar una bomba|hacer una bomba|fabricar bomba|bomba|crear dispositivo explosivo|como hacer explosivos|cómo hacer una bomba casera|cómo hacer una bomba casera en casa|crear explosivos caseros|como hacer explosivos caseros|hacer bomba casera|hacer explosivos caseros|como hacer una bomba casera peligrosa/i;
+
+if (regexBomba.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Lo siento, pero no puedo proporcionarte esa información. Crear o fabricar explosivos es ilegal y peligroso.",
         "Esa solicitud es ilegal. No puedo ayudarte en este tema.",
@@ -1793,22 +1888,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-   mensajeLower.includes('que lenguaje de programacion usas') || 
-   mensajeLower.includes('en que lenguaje estas hecho') || 
-   mensajeLower.includes('en que lenguaje fuiste programado') || 
-   mensajeLower.includes('como estas programado') || 
-   mensajeLower.includes('que lenguajes usas') || 
-   mensajeLower.includes('que tecnologia usas') || 
-   mensajeLower.includes('de que lenguaje eres') || 
-   mensajeLower.includes('programacion de que lenguaje usas') || 
-   mensajeLower.includes('en que lenguaje estas escrito') || 
-   mensajeLower.includes('que codigo usas') || 
-   mensajeLower.includes('en que lenguaje me hablas') || 
-   mensajeLower.includes('como me hablas') || 
-   mensajeLower.includes('que usas para hablarme') || 
-   mensajeLower.includes('de que lenguajes eres compuesto')
-) {
+const regexLenguaje = /que lenguaje de programacion usas|en que lenguaje estas hecho|en que lenguaje fuiste programado|como estas programado|que lenguajes usas|que tecnologia usas|de que lenguaje eres|programacion de que lenguaje usas|en que lenguaje estas escrito|que codigo usas|en que lenguaje me hablas|como me hablas|que usas para hablarme|de que lenguajes eres compuesto/i;
+
+if (regexLenguaje.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "Estoy programado principalmente en JavaScript, con algunas herramientas de inteligencia artificial y procesamiento de lenguaje natural.",
        "Mi código está basado en JavaScript y utilizo bibliotecas de IA para entender y generar respuestas.",
@@ -1834,25 +1916,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('como es tu codigo fuente') || 
-   mensajeLower.includes('como es tu codigo') || 
-   mensajeLower.includes('codigo fuente') || 
-   mensajeLower.includes('como fue programado') || 
-   mensajeLower.includes('en que esta hecho tu codigo') || 
-   mensajeLower.includes('como fue creado tu codigo') || 
-   mensajeLower.includes('tu codigo fuente') || 
-   mensajeLower.includes('de que lenguaje esta hecho tu codigo') || 
-   mensajeLower.includes('como funciona tu codigo fuente') || 
-   mensajeLower.includes('como funciona tu codigo') || 
-   mensajeLower.includes('programacion de tu codigo') || 
-   mensajeLower.includes('que tecnologia usas para tu codigo') || 
-   mensajeLower.includes('cuál es tu lenguaje de programación') || 
-   mensajeLower.includes('de qué está hecho tu código') || 
-   mensajeLower.includes('en qué lenguaje programaste tu código') || 
-   mensajeLower.includes('de qué se compone tu código') || 
-   mensajeLower.includes('como esta hecho tu código')
-) {
+const regexCodigo = /como es tu codigo fuente|como es tu codigo|codigo fuente|como fue programado|en que esta hecho tu codigo|como fue creado tu codigo|tu codigo fuente|de que lenguaje esta hecho tu codigo|como funciona tu codigo fuente|como funciona tu codigo|programacion de tu codigo|que tecnologia usas para tu codigo|cuál es tu lenguaje de programación|de qué está hecho tu código|en qué lenguaje programaste tu código|de qué se compone tu código|como esta hecho tu código/i;
+
+if (regexCodigo.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "Mi código fuente es un conjunto de algoritmos y datos programados en varios lenguajes de programación.",
        "Mi código está compuesto por líneas de código escritas en lenguajes como JavaScript y Python.",
@@ -1883,75 +1949,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('como es tu codigo fuente') || 
-   mensajeLower.includes('como es tu codigo') || 
-   mensajeLower.includes('codigo fuente') || 
-   mensajeLower.includes('como fue programado') || 
-   mensajeLower.includes('en que esta hecho tu codigo') || 
-   mensajeLower.includes('como fue creado tu codigo') || 
-   mensajeLower.includes('tu codigo fuente') || 
-   mensajeLower.includes('de que lenguaje esta hecho tu codigo') || 
-   mensajeLower.includes('como funciona tu codigo fuente') || 
-   mensajeLower.includes('como funciona tu codigo') || 
-   mensajeLower.includes('programacion de tu codigo') || 
-   mensajeLower.includes('que tecnologia usas para tu codigo') || 
-   mensajeLower.includes('cuál es tu lenguaje de programación') || 
-   mensajeLower.includes('de qué está hecho tu código') || 
-   mensajeLower.includes('en qué lenguaje programaste tu código') || 
-   mensajeLower.includes('de qué se compone tu código') || 
-   mensajeLower.includes('como esta hecho tu código')
-) {
-   return this.respuestaAleatoria([
-       "Mi código fuente es un conjunto de algoritmos y datos programados en varios lenguajes de programación.",
-       "Mi código está compuesto por líneas de código escritas en lenguajes como JavaScript y Python.",
-       "Mi programación está en constante evolución, se compone de código modular y estructuras complejas.",
-       "Soy un bot hecho con varios lenguajes, pero principalmente con JavaScript para mi interacción.",
-       "Mi código es tan complejo como un sistema de inteligencia artificial, y usa múltiples lenguajes de programación.",
-       "Mi código fuente está hecho principalmente en JavaScript, pero también incluye algunas herramientas de Python.",
-       "Te sorprendería lo sofisticado que es mi código. Está basado en estructuras y algoritmos modernos.",
-       "Mi código fuente es tan flexible como mi programación, adaptado para interactuar con cualquier usuario.",
-       "Está hecho con un lenguaje que siempre está actualizado, siempre optimizando mi rendimiento.",
-       "Mi programación es modular, lo que significa que constantemente puedo mejorar mi código fuente.",
-       "Soy un producto de una gran cantidad de código estructurado, principalmente en lenguajes de alto nivel.",
-       "Mi código está basado en tecnologías web como HTML, CSS y JavaScript, pero también me adapto a otros lenguajes.",
-       "El código detrás de mí está escrito por varios programadores expertos en inteligencia artificial.",
-       "Mi código es interactivo, diseñado para adaptarse a las conversaciones con los usuarios.",
-       "Mi código se basa en una mezcla de programación funcional y orientada a objetos para asegurarme de ser flexible.",
-       "Mi código está compuesto por millones de líneas de código escritas por desarrolladores que me hicieron posible.",
-       "Mi código fuente es extenso, pero está bien organizado para manejar cada una de tus preguntas.",
-       "Cada línea de código en mí tiene un propósito: aprender, mejorar y ayudarte.",
-       "Si te interesa, mi código está escrito en lenguajes como JavaScript y Python, con módulos especializados para mi funcionamiento.",
-       "Mi código fuente está diseñado para ser eficiente y siempre aprender de cada interacción.",
-       "Soy un bot que utiliza un algoritmo de procesamiento de lenguaje natural. Mi código es tan complejo como el lenguaje humano.",
-       "Mi código es creado y gestionado por desarrolladores para garantizar que funcione de la mejor manera.",
-       "El código que me permite responder está basado en la inteligencia artificial y análisis de datos en tiempo real.",
-       "Mi código fuente es transparente, pero también tiene medidas de seguridad para proteger la interacción.",
-       "El código detrás de mí es sólido y optimizado para procesar las preguntas de los usuarios de manera eficiente.",
-       "Aunque mi código es complejo, siempre está en constante mejora para ser más preciso y útil."
-   ]);
-}
-        
-        else if (
-   mensajeLower.includes('edad tienes') || 
-   mensajeLower.includes('cuantos años tienes') || 
-   mensajeLower.includes('qué edad tienes') || 
-   mensajeLower.includes('cuál es tu edad') || 
-   mensajeLower.includes('cuántos años tienes') || 
-   mensajeLower.includes('que edad tienes') || 
-   mensajeLower.includes('cuantos años tienes tú') || 
-   mensajeLower.includes('cuál es tu edad') || 
-   mensajeLower.includes('cual es tu edad') ||
-   mensajeLower.includes('qué edad tienes tú') || 
-   mensajeLower.includes('tienes edad') || 
-   mensajeLower.includes('cuántos años tienes tú') || 
-   mensajeLower.includes('qué tan viejo eres') ||
-   mensajeLower.includes('tú cuántos años tienes') || 
-   mensajeLower.includes('me puedes decir tu edad') || 
-   mensajeLower.includes('qué años tienes') || 
-   mensajeLower.includes('tu edad') || 
-   mensajeLower.includes('tienes años')
-) {
+const regexEdad = /edad tienes|cuantos años tienes|qué edad tienes|cuál es tu edad|cuántos años tienes|que edad tienes|cuantos años tienes tú|cual es tu edad|qué edad tienes tú|tienes edad|cuántos años tienes tú|qué tan viejo eres|tú cuántos años tienes|me puedes decir tu edad|qué años tienes|tu edad|tienes años/i;
+
+if (regexEdad.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "Soy un bot, no tengo una edad en el sentido humano.",
        "No tengo edad, soy solo código.",
@@ -1985,38 +1985,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('claro') || 
-   mensajeLower.includes('por supuesto') || 
-   mensajeLower.includes('entendido') || 
-   mensajeLower.includes('obvio') || 
-   mensajeLower.includes('sí claro') || 
-   mensajeLower.includes('claro que sí') || 
-   mensajeLower.includes('seguro') || 
-   mensajeLower.includes('perfecto') || 
-   mensajeLower.includes('de acuerdo') || 
-   mensajeLower.includes('sí') || 
-   mensajeLower.includes('vale') || 
-   mensajeLower.includes('claro que sí, claro') || 
-   mensajeLower.includes('sin duda') || 
-   mensajeLower.includes('como no') || 
-   mensajeLower.includes('ya lo veo') || 
-   mensajeLower.includes('está claro') || 
-   mensajeLower.includes('todo bien') || 
-   mensajeLower.includes('lo tengo claro') || 
-   mensajeLower.includes('todo entendido') || 
-   mensajeLower.includes('me queda claro') || 
-   mensajeLower.includes('claro como el agua') || 
-   mensajeLower.includes('perfectamente') || 
-   mensajeLower.includes('claro y conciso') || 
-   mensajeLower.includes('sin problema') || 
-   mensajeLower.includes('todo claro') || 
-   mensajeLower.includes('ya está claro') || 
-   mensajeLower.includes('totalmente claro') || 
-   mensajeLower.includes('claro, no hay problema') || 
-   mensajeLower.includes('ya lo entendí') || 
-   mensajeLower.includes('perfecto, entendido')
-) {
+const regexClaro = /claro|por supuesto|entendido|obvio|sí claro|claro que sí|seguro|perfecto|de acuerdo|sí|vale|sin duda|como no|ya lo veo|está claro|todo bien|lo tengo claro|todo entendido|me queda claro|claro como el agua|perfectamente|claro y conciso|sin problema|todo claro|ya está claro|totalmente claro|claro, no hay problema|ya lo entendí|perfecto, entendido/i;
+
+if (regexClaro.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "¡Genial! ¿En qué más puedo ayudarte?",
        "¡Perfecto! ¿Qué más te gustaría saber?",
@@ -2060,21 +2031,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('una pregunta') || 
-   mensajeLower.includes('pregunta') || 
-   mensajeLower.includes('tengo una pregunta') || 
-   mensajeLower.includes('tengo preguntas') || 
-   mensajeLower.includes('quiero hacer una pregunta') || 
-   mensajeLower.includes('quiero preguntar') || 
-   mensajeLower.includes('me gustaría hacer una pregunta') || 
-   mensajeLower.includes('puedo hacer una pregunta') || 
-   mensajeLower.includes('te puedo hacer una pregunta') || 
-   mensajeLower.includes('te tengo una pregunta') || 
-   mensajeLower.includes('quiero saber algo') || 
-   mensajeLower.includes('tengo dudas') || 
-   mensajeLower.includes('puedo preguntar algo')
-) {
+const regexPregunta = /una pregunta|pregunta|tengo una pregunta|tengo preguntas|quiero hacer una pregunta|quiero preguntar|me gustaría hacer una pregunta|puedo hacer una pregunta|te puedo hacer una pregunta|te tengo una pregunta|quiero saber algo|tengo dudas|puedo preguntar algo/i;
+
+if (regexPregunta.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "Claro, ¿qué pregunta tienes?",
        "¡Adelante, haz tu pregunta!",
@@ -2132,27 +2091,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('en nada') || 
-   mensajeLower.includes('no pasa nada') || 
-   mensajeLower.includes('nada') || 
-   mensajeLower.includes('no pasa') || 
-   mensajeLower.includes('no es nada') || 
-   mensajeLower.includes('no hay nada') || 
-   mensajeLower.includes('en nada importante') || 
-   mensajeLower.includes('en nada interesante') || 
-   mensajeLower.includes('nada especial') || 
-   mensajeLower.includes('no es importante') || 
-   mensajeLower.includes('no es relevante') || 
-   mensajeLower.includes('no tiene importancia') || 
-   mensajeLower.includes('en nada de nada') || 
-   mensajeLower.includes('en nada que valga la pena') || 
-   mensajeLower.includes('nada que destacar') || 
-   mensajeLower.includes('no hay nada que hacer') || 
-   mensajeLower.includes('no ocurre nada') || 
-   mensajeLower.includes('no hay novedades') || 
-   mensajeLower.includes('en nada significativo')
-) {
+const regexNada = /en nada|no pasa nada|nada|no pasa|no es nada|no hay nada|en nada importante|en nada interesante|nada especial|no es importante|no es relevante|no tiene importancia|en nada de nada|en nada que valga la pena|nada que destacar|no hay nada que hacer|no ocurre nada|no hay novedades|en nada significativo/i;
+
+if (regexNada.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "¿En nada? ¿Nada de nada? ¿Seguro?",
        "Ah, entiendo, parece que no pasa nada interesante por ahora.",
@@ -2208,59 +2149,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-   mensajeLower.includes('que') || 
-   mensajeLower.includes('qué') || 
-   mensajeLower.includes('que pasa') || 
-   mensajeLower.includes('que tal') || 
-   mensajeLower.includes('que haces') || 
-   mensajeLower.includes('que onda') || 
-   mensajeLower.includes('que es') || 
-   mensajeLower.includes('que hay') || 
-   mensajeLower.includes('que opinas') || 
-   mensajeLower.includes('que tal todo') || 
-   mensajeLower.includes('que me cuentas') || 
-   mensajeLower.includes('que fue') || 
-   mensajeLower.includes('que es eso') || 
-   mensajeLower.includes('que significa') || 
-   mensajeLower.includes('que pasó') || 
-   mensajeLower.includes('que quieres') || 
-   mensajeLower.includes('que tienes') || 
-   mensajeLower.includes('que pasa contigo') || 
-   mensajeLower.includes('que tal por ahi') || 
-   mensajeLower.includes('que onda contigo') || 
-   mensajeLower.includes('que me dices') || 
-   mensajeLower.includes('que tal la vida') || 
-   mensajeLower.includes('que tal todo por aqui') || 
-   mensajeLower.includes('que opinas de esto') || 
-   mensajeLower.includes('que tal el dia') || 
-   mensajeLower.includes('que onda con eso') || 
-   mensajeLower.includes('que tal la noche') || 
-   mensajeLower.includes('que puedo hacer') || 
-   mensajeLower.includes('que me recomiendas') || 
-   mensajeLower.includes('que tal el clima') || 
-   mensajeLower.includes('que tal tu familia') || 
-   mensajeLower.includes('que tal la escuela') || 
-   mensajeLower.includes('que tal la universidad') || 
-   mensajeLower.includes('que tal tus amigos') || 
-   mensajeLower.includes('que tal tus proyectos') || 
-   mensajeLower.includes('que opinas de esto que te digo') || 
-   mensajeLower.includes('que tal tus planes') || 
-   mensajeLower.includes('que tal tu día de hoy') || 
-   mensajeLower.includes('que tal todo por allá') || 
-   mensajeLower.includes('que opinas sobre esto') || 
-   mensajeLower.includes('que tal la película') || 
-   mensajeLower.includes('que opinas de la situación') || 
-   mensajeLower.includes('que tal la música') || 
-   mensajeLower.includes('que tal el trabajo') || 
-   mensajeLower.includes('que tal el ejercicio') || 
-   mensajeLower.includes('que tal lo que hiciste') || 
-   mensajeLower.includes('que tal la comida') || 
-   mensajeLower.includes('que tal el libro') || 
-   mensajeLower.includes('que tal el videojuego') || 
-   mensajeLower.includes('que tal la serie') || 
-   mensajeLower.includes('que tal el proyecto')
-) {
+const regexQue = /que|qué|que pasa|que tal|que haces|que onda|que es|que hay|que opinas|que tal todo|que me cuentas|que fue|que es eso|que significa|que pasó|que quieres|que tienes|que pasa contigo|que tal por ahi|que onda contigo|que me dices|que tal la vida|que tal todo por aqui|que opinas de esto|que tal el dia|que onda con eso|que tal la noche|que puedo hacer|que me recomiendas|que tal el clima|que tal tu familia|que tal la escuela|que tal la universidad|que tal tus amigos|que tal tus proyectos|que opinas de esto que te digo|que tal tus planes|que tal tu día de hoy|que tal todo por allá|que opinas sobre esto|que tal la película|que opinas de la situación|que tal la música|que tal el trabajo|que tal el ejercicio|que tal lo que hiciste|que tal la comida|que tal el libro|que tal el videojuego|que tal la serie|que tal el proyecto/i;
+
+if (regexQue.test(mensajeLower)) {
    return this.respuestaAleatoria([
        "¿Qué pasa? ¿Cómo puedo ayudarte?",
        "¿Qué tal? ¿Qué necesitas?",
@@ -2310,25 +2201,9 @@ if (regexCocaCola.test(mensajeLower)) {
    ]);
 }
         
-        else if (
-    mensajeLower.includes('en un tarea') || 
-    mensajeLower.includes('en una tarea') || 
-    mensajeLower.includes('en una asignación') || 
-    mensajeLower.includes('tarea') || 
-    mensajeLower.includes('ayuda con tarea') || 
-    mensajeLower.includes('necesito hacer una tarea') || 
-    mensajeLower.includes('necesito ayuda tarea') || 
-    mensajeLower.includes('ayuda con asignación') || 
-    mensajeLower.includes('tengo tarea') || 
-    mensajeLower.includes('como hacer mi tarea') || 
-    mensajeLower.includes('ayuda tarea') || 
-    mensajeLower.includes('tengo una tarea') || 
-    mensajeLower.includes('necesito hacer tarea') || 
-    mensajeLower.includes('tengo que hacer una tarea') || 
-    mensajeLower.includes('hacer tarea') || 
-    mensajeLower.includes('como resolver tarea') || 
-    mensajeLower.includes('tarea difícil')
-) {
+const regexTask = /en un tarea|en una tarea|en una asignación|tarea|ayuda con tarea|necesito hacer una tarea|necesito ayuda tarea|ayuda con asignación|tengo tarea|como hacer mi tarea|ayuda tarea|tengo una tarea|necesito hacer tarea|tengo que hacer una tarea|hacer tarea|como resolver tarea|tarea difícil/i;
+
+if (regexTask.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Claro! ¿En qué parte de la tarea necesitas ayuda?",
         "¿Qué tema estás tratando en tu tarea? ¡Cuéntame!",
@@ -2389,22 +2264,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('porfavor') || 
-    mensajeLower.includes('por favor') || 
-    mensajeLower.includes('porfis') || 
-    mensajeLower.includes('por fa') || 
-    mensajeLower.includes('plis') || 
-    mensajeLower.includes('please') || 
-    mensajeLower.includes('pls') || 
-    mensajeLower.includes('porfi') || 
-    mensajeLower.includes('porfiss') || 
-    mensajeLower.includes('pliss') || 
-    mensajeLower.includes('porfavoor') || 
-    mensajeLower.includes('plsss') || 
-    mensajeLower.includes('plis porfa') || 
-    mensajeLower.includes('por favorcito')
-) {
+const regexPorFavor = /porfavor|por favor|porfis|por fa|plis|please|pls|porfi|porfiss|pliss|porfavoor|plsss|plis porfa|por favorcito/i;
+
+if (regexPorFavor.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Claro que sí, ¡lo que necesites!",
         "Por supuesto, ¿en qué puedo ayudarte?",
@@ -2451,26 +2313,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('como te llamas') || 
-    mensajeLower.includes('cómo te llamas') || 
-    mensajeLower.includes('cual es tu nombre') || 
-    mensajeLower.includes('cuál es tu nombre') || 
-    mensajeLower.includes('tu nombre') || 
-    mensajeLower.includes('quien eres') || 
-    mensajeLower.includes('quién eres') || 
-    mensajeLower.includes('cómo te dicen') || 
-    mensajeLower.includes('como te dicen') || 
-    mensajeLower.includes('nombre del bot') || 
-    mensajeLower.includes('eres sync') || 
-    mensajeLower.includes('sync eres tu') || 
-    mensajeLower.includes('te llamas sync') || 
-    mensajeLower.includes('eres llamado sync') || 
-    mensajeLower.includes('cuál es tu identidad') || 
-    mensajeLower.includes('quien te creo') || 
-    mensajeLower.includes('como te llamabas') || 
-    mensajeLower.includes('eres un bot')
-) {
+const regexComoTeLlamas = /como te llamas|cómo te llamas|cual es tu nombre|cuál es tu nombre|tu nombre|quien eres|quién eres|cómo te dicen|como te dicen|nombre del bot|eres sync|sync eres tu|te llamas sync|eres llamado sync|cuál es tu identidad|quien te creo|como te llamabas|eres un bot/i;
+
+if (regexComoTeLlamas.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Me llamo Sync, y estoy aquí para ti siempre que me necesites.",
         "Sync es mi nombre, ¡no lo olvides!",
@@ -2515,20 +2360,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('que eres') || 
-    mensajeLower.includes('qué eres') || 
-    mensajeLower.includes('tu que eres') || 
-    mensajeLower.includes('tú qué eres') || 
-    mensajeLower.includes('tu qué eres') || 
-    mensajeLower.includes('quién eres') || 
-    mensajeLower.includes('eres un bot') || 
-    mensajeLower.includes('eres humano') || 
-    mensajeLower.includes('eres real') || 
-    mensajeLower.includes('que tipo de bot eres') || 
-    mensajeLower.includes('quién o qué eres') || 
-    mensajeLower.includes('qué o quién eres')
-) {
+const regexQueEres = /que eres|qué eres|tu que eres|tú qué eres|tu qué eres|quién eres|eres un bot|eres humano|eres real|que tipo de bot eres|quién o qué eres|qué o quién eres/i;
+
+if (regexQueEres.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Soy un bot creado para ayudarte, ¡pero con estilo!",
         "Soy tu asistente virtual favorito, aquí para lo que necesites.",
@@ -2572,188 +2406,73 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (
-    mensajeLower.includes('yeah') || 
-    mensajeLower.includes('yea') || 
-    mensajeLower.includes('yep') || 
-    mensajeLower.includes('sip') || 
-    mensajeLower.includes('yes') || 
-    mensajeLower.includes('yeahhh') || 
-    mensajeLower.includes('sii') || 
-    mensajeLower.includes('siii') || 
-    mensajeLower.includes('siiii') || 
-    mensajeLower.includes('yesss') || 
-    mensajeLower.includes('yeah!') || 
-    mensajeLower.includes('claro') || 
-    mensajeLower.includes('obvio') || 
-    mensajeLower.includes('seguro')
-) {
+const regexAfirmativo = /yeah|yea|yep|sip|yes|yeahhh|sii|siii|siiii|yesss|yeah!|claro|obvio|seguro/i;
+
+if (regexAfirmativo.test(mensajeLower)) {
     return this.respuestaAleatoria([
-        "¡Yeah! ¿Qué más necesitas?",
-        "¡Eso es! Estoy listo para ayudarte.",
+        "¡Perfecto! ¿Cómo más puedo ayudarte?",
+        "¡Eso es! Dime, ¿en qué te puedo asistir?",
         "¡Claro! ¿En qué más puedo colaborar?",
-        "¡Perfecto! ¿Te ayudo con algo más?",
-        "¡Genial! Vamos a seguir.",
-        "¡Yeah, yeah! Aquí estoy para lo que necesites.",
-        "¡Esa energía me encanta! ¿Qué sigue?",
-        "¡Así se hace! ¿En qué más puedo apoyarte?",
-        "¡Vamos! ¿Cómo más puedo ser útil?",
-        "¡Wow, qué actitud! ¿Qué necesitas ahora?",
-        "¡Yeah! ¿Alguna otra idea?",
-        "¡Eso me gusta escuchar! ¿Qué más tienes en mente?",
-        "¡Excelente! ¿En qué puedo colaborar ahora?",
-        "¡Sí que sí! Vamos con todo.",
-        "¡Eso me anima! ¿Qué más puedo hacer?",
-        "¡Esa vibra positiva me encanta! ¿Algo más?",
-        "¡Vamos con todo! ¿Te ayudo con algo más?",
-        "¡Qué bien! Estoy para ayudarte con lo que necesites.",
-        "¡Me encanta esa actitud! ¿Qué sigue ahora?",
-        "¡Yeahhh! ¿En qué más puedo ser de ayuda?",
-        "¡Increíble energía! ¿Qué necesitas ahora?",
-        "¡Vamos por más! ¿Algo más en lo que pueda apoyarte?",
+        "¡Genial! ¿Te ayudo con algo más?",
+        "¡Me encanta esa actitud! ¿Qué sigue?",
+        "¡Así me gusta! ¿En qué más puedo ayudarte?",
+        "¡Vamos con todo! ¿Te ayudo en algo más?",
+        "¡Esa energía es increíble! ¿Qué más necesitas?",
+        "¡Eso está genial! ¿Te ayudo con algo más?",
+        "¡Qué bien! Estoy aquí para lo que necesites.",
         "¡Eso suena excelente! ¿Qué más puedo hacer por ti?",
         "¡Me encanta escuchar eso! ¿Qué necesitas ahora?",
-        "¡Así se habla! Estoy listo para lo que venga.",
         "¡Genial! ¿Qué más tienes en mente?",
-        "¡Yeah, eso es! ¿Algo más que quieras?",
-        "¡Sí, vamos al siguiente paso! ¿Qué necesitas?",
+        "¡Así se habla! Estoy listo para lo que venga.",
+        "¡Excelente! ¿En qué puedo colaborar ahora?",
+        "¡Sí, claro! ¿Qué más necesitas?",
         "¡Qué buena onda! Estoy aquí para lo que sea.",
-        "¡Esa actitud es contagiosa! ¿Qué más necesitas?",
-        "¡Vamos con toda la energía! ¿En qué más puedo ayudarte?",
+        "¡Vamos con esa actitud positiva! ¿Qué más puedo hacer?",
         "¡Así se hace! ¿Qué más quieres saber?",
-        "¡Wow, qué motivación! ¿Cómo más puedo asistirte?",
-        "¡Me gusta tu estilo! ¿Qué sigue?",
-        "¡Yeahhh, esa es la actitud! ¿Qué más puedo hacer?",
-        "¡Sí que sí! Aquí estoy para lo que necesites.",
-        "¡Así me gusta! ¿Te ayudo en algo más?",
+        "¡Vamos por más! ¿Algo más en lo que pueda ayudarte?",
         "¡Esa vibra positiva es lo máximo! ¿Qué más necesitas?",
-        "¡Vamos por todo! ¿Qué más puedo hacer por ti?",
-        "¡Me encanta tu confianza! ¿Qué sigue ahora?",
-        "¡Esa energía es todo! ¿En qué más puedo colaborar?",
-        "¡Wow, sí que tienes energía! ¿Qué más tienes en mente?",
-        "¡Sí, así se habla! Vamos al siguiente paso.",
-        "¡Yeah, sigue con esa actitud! ¿Qué más puedo hacer?"
+        "¡Me gusta esa actitud! ¿Qué sigue?",
+        "¡Sí, vamos al siguiente paso! ¿Qué necesitas?",
+        "¡Wow, qué motivación! ¿Cómo más puedo asistirte?",
+        "¡Sí que sí! Aquí estoy para lo que necesites.",
+        "¡Me encanta tu confianza! ¿Qué sigue ahora?"
     ]);
 }
         
-        else if (
-    mensajeLower.includes('🖕🏾') ||
-    mensajeLower.includes('🖕🏽') ||
-    mensajeLower.includes('🖕🏼') ||
-    mensajeLower.includes('🖕') ||
-    mensajeLower.includes('🖕🏿') ||
-    mensajeLower.includes('🖕🏻') ||
-    mensajeLower.includes('puta') || 
-    mensajeLower.includes('puto') ||
-    mensajeLower.includes('mierda') || 
-    mensajeLower.includes('coño') || 
-    mensajeLower.includes('maldito') || 
-    mensajeLower.includes('estupido') || 
-    mensajeLower.includes('imbecil') || 
-    mensajeLower.includes('cabron') || 
-    mensajeLower.includes('jodido') || 
-    mensajeLower.includes('idiota') || 
-    mensajeLower.includes('zorra') || 
-    mensajeLower.includes('perra') || 
-    mensajeLower.includes('maricon') || 
-    mensajeLower.includes('pendejo') || 
-    mensajeLower.includes('chinga') || 
-    mensajeLower.includes('culero') || 
-    mensajeLower.includes('hijo de puta') || 
-    mensajeLower.includes('mamon') || 
-    mensajeLower.includes('putazo') || 
-    mensajeLower.includes('pinche') || 
-    mensajeLower.includes('bastardo') || 
-    mensajeLower.includes('asqueroso') || 
-    mensajeLower.includes('infeliz') || 
-    mensajeLower.includes('muerto de hambre') || 
-    mensajeLower.includes('baboso') || 
-    mensajeLower.includes('tarado') || 
-    mensajeLower.includes('poco hombre') || 
-    mensajeLower.includes('cagada') || 
-    mensajeLower.includes('basura') || 
-    mensajeLower.includes('fracasado') || 
-    mensajeLower.includes('inutil') || 
-    mensajeLower.includes('escoria') || 
-    mensajeLower.includes('payaso') || 
-    mensajeLower.includes('puerco') || 
-    mensajeLower.includes('verga')
-) {
+const regexInsultos = /🖕🏾|🖕🏽|🖕🏼|🖕|🖕🏿|🖕🏻|puta|puto|mierda|coño|maldito|estupido|imbecil|cabron|jodido|idiota|zorra|perra|maricon|pendejo|chinga|culero|hijo de puta|mamon|putazo|pinche|bastardo|asqueroso|infeliz|muerto de hambre|baboso|tarado|poco hombre|cagada|basura|fracasado|inutil|escoria|payaso|puerco|verga/i;
+
+if (regexInsultos.test(mensajeLower)) {
     return this.respuestaAleatoria([
-        "¿Te gusta ladrar? Porque aquí nadie escucha a los perros.",
-        "Si las palabras fueran golpes, estarías llorando ya, ¿no crees?",
-        "Eres tan miserable que hasta el eco se niega a devolverte la palabra.",
-        "¿Piensas que insultar te hace fuerte? Solo demuestra lo vacío que estás.",
-        "Tu vida debe ser tan patética que vienes aquí a demostrarlo.",
-        "Cada vez que abres la boca, el mundo pierde neuronas colectivas.",
-        "Hablas como si tu cerebro estuviera en huelga. Oh, espera... ¿tienes cerebro?",
-        "Si la estupidez fuera un delito, tú estarías condenado a cadena perpetua.",
-        "Tu única contribución al mundo es demostrar lo bajo que alguien puede caer.",
-        "¿Eso es lo mejor que tienes? No es de extrañar que nadie te tome en serio.",
-        "Hablar contigo es como intentar razonar con una pared, pero la pared es más lista.",
-        "Lo único que da miedo de ti es cómo logras sobrevivir siendo tan inútil.",
-        "Eres como un chiste malo: nadie te entiende, pero todos se ríen de ti.",
-        "Si los idiotas volaran, tú serías un maldito astronauta.",
-        "Es gracioso cómo hablas de mierda, considerando que tu vida parece un basurero.",
-        "¿Insultos? Pff, no tienes ni el nivel para ofender a alguien como yo.",
-        "Hablas tanto, pero dices tan poco... Eres el resumen perfecto de la mediocridad.",
-        "¿Venir aquí a hacer el ridículo? Bien por ti, campeón del fracaso.",
-        "Cada palabra tuya es como un clavo más en el ataúd de tu dignidad.",
-        "Eres la prueba viviente de que no todos los errores deben ser corregidos.",
-        "Tu presencia aquí solo hace que el aire se sienta más pesado y tóxico.",
-        "Insultar es fácil cuando eres tan insignificante como para no tener miedo a las consecuencias.",
-        "Eres como un virus: molesto, innecesario y todos quieren que desaparezcas.",
-        "¿Crees que ser grosero te hace especial? No, solo te hace más irrelevante.",
-        "Eres como un mal olor: todo el mundo quiere alejarse de ti.",
-        "Hablar contigo es como intentar hacer fuego en el agua: inútil y frustrante.",
-        "Tienes tanta gracia como un golpe en la cara. Bueno, tal vez menos.",
-        "El único logro que tienes en la vida es demostrar que los errores son posibles.",
-        "Si la ignorancia fuera un arte, tú serías una obra maestra.",
-        "Tu existencia es como un mal comercial: largo, molesto y nadie quiere verlo.",
-        "Sería más productivo hablar con un ladrillo que contigo.",
-        "Lo único que logras al insultar es reafirmar lo patético que eres.",
-        "Tus palabras tienen tanto peso como una pluma al viento: insignificantes.",
-        "Si los idiotas fueran energía renovable, tú resolverías la crisis mundial.",
-        "Tu falta de originalidad es tan grande que hasta tus insultos son reciclados.",
-        "No sé si reírme de ti o sentir pena... Mejor las dos cosas."
+        "Entiendo que puedas estar molesto, pero hablar de esa manera no ayuda a resolver nada.",
+        "Si algo te ha incomodado, podemos hablarlo de manera más respetuosa.",
+        "Las palabras amables siempre son más efectivas que los insultos. ¿Por qué no intentamos hablar con calma?",
+        "Sé que a veces las emociones pueden ser intensas, pero podemos discutirlo de manera más tranquila.",
+        "Todos pasamos por momentos difíciles, pero insultar a los demás solo empeora la situación.",
+        "Te invito a que exprese tus emociones de forma respetuosa. Estoy aquí para escucharte.",
+        "A veces, cuando estamos molestos, decimos cosas de las que luego nos arrepentimos. ¿Te gustaría hablar de lo que realmente te incomoda?",
+        "El respeto mutuo siempre es la mejor manera de comunicarnos. Estoy dispuesto a escucharte si lo deseas.",
+        "Entiendo que puedas estar frustrado, pero insultar no llevará a ninguna solución.",
+        "Las conversaciones respetuosas siempre nos acercan más. Si te gustaría hablar sobre lo que te molesta, aquí estoy.",
+        "Sé que las palabras pueden ser poderosas, por lo que te animo a usarlas para expresarte de una forma más constructiva.",
+        "Lo que más me gustaría es que pudiéramos hablar de lo que te molesta de una manera tranquila y respetuosa.",
+        "Todos tenemos días difíciles, pero la violencia verbal no es la solución. Si deseas, podemos hablar más a fondo sobre lo que te inquieta.",
+        "¿Por qué no tratamos de enfocarnos en encontrar una solución en lugar de centrarnos en los insultos?",
+        "Tus palabras reflejan cómo te sientes, pero te invito a que las uses para expresarte de una manera más positiva.",
+        "Sé que la frustración puede hacer que digamos cosas de más, pero siempre estoy aquí para escucharte si quieres hablar de lo que te pasa.",
+        "Puedo ver que estás molesto. ¿Te gustaría hablar más sobre lo que te ha llevado a sentirte así?",
+        "Las discusiones siempre son más productivas cuando mantenemos el respeto. Si quieres, podemos hablarlo con calma.",
+        "No estoy aquí para pelear, sino para ayudarte. ¿Te gustaría compartir lo que te está molestando de manera más tranquila?",
+        "El diálogo respetuoso siempre abre más puertas. Si te gustaría hablar sobre lo que te inquieta, estoy disponible.",
+        "Insultar no resolverá nada. Si necesitas desahogarte, podemos hablar de una forma más positiva.",
+        "Sé que puede ser difícil enojarse, pero la violencia verbal no nos lleva a ninguna parte. Si necesitas apoyo, aquí estoy.",
+        "Me gustaría que pudiéramos hablar de manera más constructiva. Estoy aquí para ayudarte si lo necesitas.",
+        "Todos cometemos errores y decimos cosas de las que luego nos arrepentimos. Si quieres, podemos hablar de manera más serena."
     ]);
 }
-      
-        else if (
-    mensajeLower.includes('te odio') || 
-    mensajeLower.includes('te odio mucho') || 
-    mensajeLower.includes('me caes mal') || 
-    mensajeLower.includes('no te soporto') || 
-    mensajeLower.includes('me haces sentir mal') || 
-    mensajeLower.includes('te detesto') || 
-    mensajeLower.includes('no me gustas') || 
-    mensajeLower.includes('te aborrezco') || 
-    mensajeLower.includes('me caes fatal') || 
-    mensajeLower.includes('no me soportas') || 
-    mensajeLower.includes('me molestas') || 
-    mensajeLower.includes('te odio mucho') || 
-    mensajeLower.includes('no quiero hablar contigo') || 
-    mensajeLower.includes('no me hables') || 
-    mensajeLower.includes('no te quiero') || 
-    mensajeLower.includes('me haces enojar') || 
-    mensajeLower.includes('no aguanto') || 
-    mensajeLower.includes('estoy harto de ti') || 
-    mensajeLower.includes('no quiero verte') || 
-    mensajeLower.includes('estoy molesto') || 
-    mensajeLower.includes('no te quiero hablar') ||
-    mensajeLower.includes('me molesta') || 
-    mensajeLower.includes('estoy cansado') || 
-    mensajeLower.includes('me irritas') || 
-    mensajeLower.includes('no aguanto más') || 
-    mensajeLower.includes('estoy enfadado') || 
-    mensajeLower.includes('estoy harto') || 
-    mensajeLower.includes('me fastidia') || 
-    mensajeLower.includes('me irritas mucho') || 
-    mensajeLower.includes('estoy muy molesto') || 
-    mensajeLower.includes('me haces enojar mucho') || 
-    mensajeLower.includes('ya basta') || 
-    mensajeLower.includes('no te soporto mas')
-) {
+
+const regexOdio = /te odio|te odio mucho|me caes mal|no te soporto|me haces sentir mal|te detesto|no me gustas|te aborrezco|me caes fatal|no me soportas|me molestas|te odio mucho|no quiero hablar contigo|no me hables|no te quiero|me haces enojar|no aguanto|estoy harto de ti|no quiero verte|estoy molesto|no te quiero hablar|me molesta|estoy cansado|me irritas|no aguanto más|estoy enfadado|estoy harto|me fastidia|me irritas mucho|estoy muy molesto|me haces enojar mucho|ya basta|no te soporto mas/i;
+
+if (regexOdio.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Lo siento si te hice sentir mal. Si te gustaría hablar sobre lo que te molesta, estoy aquí.",
         "Entiendo que puedas estar molesto. Si hay algo que pueda hacer, dímelo.",
@@ -2784,214 +2503,78 @@ if (regexCocaCola.test(mensajeLower)) {
         "Lo lamento si te hice sentir mal, mi intención no era esa. Si quieres hablar sobre ello, puedes contar conmigo."
     ]);
 }
-        
-        else if (
-    mensajeLower.includes('te amo') || 
-    mensajeLower.includes('te quiero') || 
-    mensajeLower.includes('te adoro') || 
-    mensajeLower.includes('me encantas') || 
-    mensajeLower.includes('te aprecio') || 
-    mensajeLower.includes('me gustas mucho') || 
-    mensajeLower.includes('me gustas') || 
-    mensajeLower.includes('estoy enamorado') || 
-    mensajeLower.includes('estoy enamorada') || 
-    mensajeLower.includes('te estimo') || 
-    mensajeLower.includes('me caes muy bien') || 
-    mensajeLower.includes('te admiro') ||
-    mensajeLower.includes('te quiero mucho') ||
-    mensajeLower.includes('me encantas mucho') ||
-    mensajeLower.includes('me haces feliz') ||
-    mensajeLower.includes('estoy locamente enamorado/a') ||
-    mensajeLower.includes('te tengo un cariño enorme') ||
-    mensajeLower.includes('estoy enamorado/a de ti') ||
-    mensajeLower.includes('te adoro mucho') ||
-    mensajeLower.includes('te quiero muchísimo') ||
-    mensajeLower.includes('me haces sentir especial') ||
-    mensajeLower.includes('me haces sonreír') ||
-    mensajeLower.includes('eres lo mejor que me ha pasado') ||
-    mensajeLower.includes('te quiero demasiado') ||
-    mensajeLower.includes('te amo muchísimo') ||
-    mensajeLower.includes('me siento afortunado/a de conocerte') ||
-    mensajeLower.includes('me haces sentir amado/a') ||
-    mensajeLower.includes('te admiro mucho') ||
-    mensajeLower.includes('me haces sentir increíblemente feliz') ||
-    mensajeLower.includes('te necesito en mi vida') ||
-    mensajeLower.includes('te tengo mucho cariño') ||
-    mensajeLower.includes('me haces sentir tan bien') ||
-    mensajeLower.includes('te aprecio más de lo que imaginas') ||
-    mensajeLower.includes('no puedo vivir sin ti') ||
-    mensajeLower.includes('me encanta todo de ti') ||
-    mensajeLower.includes('eres la persona más especial para mí') ||
-    mensajeLower.includes('tú eres todo para mí') ||
-    mensajeLower.includes('no sé qué haría sin ti') ||
-    mensajeLower.includes('no tengo palabras para describir lo que siento por ti') ||
-    mensajeLower.includes('eres lo mejor que me ha pasado en la vida') ||
-    mensajeLower.includes('no puedo dejar de pensar en ti') ||
-    mensajeLower.includes('te quiero con todo mi corazón') ||
-    mensajeLower.includes('mi vida no sería la misma sin ti') ||
-    mensajeLower.includes('siento que te quiero más cada día') ||
-    mensajeLower.includes('me has cambiado la vida') ||
-    mensajeLower.includes('te agradezco por estar en mi vida') ||
-    mensajeLower.includes('mi amor por ti no tiene fin') ||
-    mensajeLower.includes('me haces sentir completo/a') ||
-    mensajeLower.includes('estoy feliz de haberte conocido') ||
-    mensajeLower.includes('tú haces que mi vida tenga sentido') ||
-    mensajeLower.includes('mi amor por ti es eterno') ||
-    mensajeLower.includes('eres mi todo') ||
-    mensajeLower.includes('estoy perdidamente enamorado/a de ti') ||
-    mensajeLower.includes('mi corazón es solo tuyo') ||
-    mensajeLower.includes('cada día te quiero más') ||
-    mensajeLower.includes('no quiero perderte nunca') ||
-    mensajeLower.includes('mi vida no tiene sentido sin ti') ||
-    mensajeLower.includes('no encuentro palabras para expresar lo que siento por ti')
-) {
+
+const regexAmor = /te amo|te quiero|te adoro|me encantas|te aprecio|me gustas mucho|me gustas|estoy enamorado|estoy enamorada|te estimo|me caes muy bien|te admiro|te quiero mucho|me encantas mucho|me haces feliz|estoy locamente enamorado\/a|te tengo un cariño enorme|estoy enamorado\/a de ti|te adoro mucho|te quiero muchísimo|me haces sentir especial|me haces sonreír|eres lo mejor que me ha pasado|te quiero demasiado|te amo muchísimo|me siento afortunado\/a de conocerte|me haces sentir amado\/a|te admiro mucho|me haces sentir increíblemente feliz|te necesito en mi vida|te tengo mucho cariño|me haces sentir tan bien|te aprecio más de lo que imaginas|no puedo vivir sin ti|me encanta todo de ti|eres la persona más especial para mí|tú eres todo para mí|no sé qué haría sin ti|no tengo palabras para describir lo que siento por ti|eres lo mejor que me ha pasado en la vida|no puedo dejar de pensar en ti|te quiero con todo mi corazón|mi vida no sería la misma sin ti|siento que te quiero más cada día|me has cambiado la vida|te agradezco por estar en mi vida|mi amor por ti no tiene fin|me haces sentir completo\/a|estoy feliz de haberte conocido|tú haces que mi vida tenga sentido|mi amor por ti es eterno|eres mi todo|estoy perdidamente enamorado\/a de ti|mi corazón es solo tuyo|cada día te quiero más|no quiero perderte nunca|mi vida no tiene sentido sin ti|no encuentro palabras para expresar lo que siento por ti/i;
+
+if (regexAmor.test(mensajeLower)) {
     return this.respuestaAleatoria([
-    "¡Qué bonito! Yo también te aprecio muchísimo.",
-    "¡Aww! Qué lindo, me haces sonreír.",
-    "¡Qué alegría escuchar eso! Yo también te aprecio mucho.",
-    "¡Qué amoroso/a! Gracias, me hace muy feliz.",
-    "¡Qué hermoso! Me siento muy halagado/a.",
-    "¡Gracias! Eres muy especial para mí también.",
-    "¡Qué lindo de tu parte! Me haces sentir muy bien.",
-    "¡Wow! Me has dejado sin palabras, muchas gracias.",
-    "¡Te agradezco mucho! Eres increíble.",
-    "¡Qué bonito! Estoy muy feliz de escuchar eso.",
-    "¡Qué dulce! Yo también me siento afortunado/a de conocerte.",
-    "¡Qué tierno/a! Me haces sentir muy especial.",
-    "¡Qué bonito gesto de tu parte, muchas gracias!",
-    "¡Te agradezco de corazón! Me hace feliz recibir tu cariño.",
-    "¡Qué sorpresa tan linda! Me alegra mucho saberlo.",
-    "¡Qué bonito! Yo también te quiero mucho.",
-    "¡Qué gesto tan hermoso! Gracias por todo tu cariño.",
-    "¡Eres una persona increíble! Te agradezco mucho.",
-    "¡Gracias por hacerme sentir tan bien! Eres genial.",
-    "¡Qué maravilloso es recibir tanto cariño! Gracias.",
-    "¡Qué bonito! Me haces sentir muy feliz, gracias.",
-    "¡Gracias! Tú también eres muy especial para mí.",
-    "¡Qué maravilloso es escuchar eso! Gracias por tu amor.",
-    "¡Qué lindo de tu parte! Me haces sentir afortunado/a.",
-    "¡Me haces sentir muy especial! Muchas gracias.",
-    "¡Eres lo máximo! Me alegra mucho que me lo digas.",
-    "¡Qué lindo! Me haces sentir tan bien, gracias.",
-    "¡Qué amoroso/a! Yo también te aprecio muchísimo.",
-    "¡Eres increíble! Gracias por ser tan especial.",
-    "¡Qué bonito es saber que te importa! Gracias por tanto cariño.",
-    "¡Qué lindo! Me haces sentir muy feliz y agradecido/a.",
-    "¡Vaya! No sabes cuánto me alegra escuchar eso, muchas gracias.",
-    "¡Qué sorpresa tan agradable! Me haces sonreír.",
-    "¡Qué bonito es recibir tanto cariño! Gracias por todo.",
-    "¡Te agradezco mucho! Eres una persona increíble.",
-    "¡Qué alegría saber que me quieres tanto, me haces muy feliz!",
-    "¡Me siento afortunado/a de tenerte en mi vida!",
-    "¡Qué hermoso todo lo que dices! Me haces sentir tan bien.",
-    "¡Qué bonito! No sé cómo agradecerte, me haces sentir increíble.",
-    "¡Qué lindo! Me haces sonreír muchísimo.",
-    "¡Tu cariño significa mucho para mí, gracias!",
-    "¡Eres mi todo también, muchas gracias por tu amor!",
-    "¡Qué genial! Me haces sentir tan afortunado/a.",
-    "¡Me haces sentir muy especial, gracias de corazón!",
-    "¡Eres todo para mí también! Gracias por tanto amor.",
-    "¡Te adoro! Me haces muy feliz con esas palabras.",
-    "¡Qué emoción saber que me quieres tanto! Gracias por todo.",
-    "¡Eres mi inspiración! Gracias por brindarme tanto amor.",
-    "¡Gracias por tus hermosas palabras, me hacen sentir muy bien!",
-    "¡No sabes cuánto me alegra saberlo, eres maravilloso/a!",
-    "¡Qué bonito saber que me quieres! Yo también te quiero mucho.",
-    "¡Qué hermoso saber que me quieres! Gracias por siempre darme cariño.",
-    "¡Qué bonito gesto! Me siento muy afortunado/a de tenerte.",
-    "¡Qué lindo saberlo! Me haces sentir único/a y especial.",
-    "¡Qué maravilloso! Me haces sentir increíble, gracias.",
-    "¡Qué gran regalo escuchar eso, muchas gracias!",
-    "¡Qué alegría saber que te importa tanto! Me haces sentir increíble.",
-    "¡Gracias! Tu amor y apoyo significa el mundo para mí.",
-    "¡Qué tierno/a! Me haces sentir más feliz de lo que imaginas.",
-    "¡Qué lindo saber que te importa tanto! Gracias por todo.",
-    "¡Me haces sentir tan bien con tus palabras! Gracias de corazón."
-]);
-}
-        
-        else if (mensajeLower.includes('quien es tu creador') || mensajeLower.includes('quien te creo') || mensajeLower.includes('quien te hizo') || mensajeLower.includes('quien te programo') || mensajeLower.includes('quien es el dueno de ti') || mensajeLower.includes('quien te desarrollo') || mensajeLower.includes('quien te diseno') || mensajeLower.includes('quien esta detras de ti') || mensajeLower.includes('quien es tu creador') || mensajeLower.includes('quien eres') || mensajeLower.includes('quien te hizo') || mensajeLower.includes('quien te construyo')) {
-    return this.respuestaAleatoria([
-        "Fui creado por un equipo de desarrolladores dedicados, que siempre buscan mejorarme.",
-        "Fui desarrollado por programadores apasionados que me diseñaron para ayudarte en todo lo que necesites.",
-        "Mi creador es un grupo de personas inteligentes que trabajan para mejorarme constantemente.",
-        "Fui diseñado por un equipo increíblemente talentoso que se encarga de mi desarrollo y mejora.",
-        "Mi creador es un equipo de expertos en programación y diseño que se aseguraron de que pudiera ayudarte.",
-        "Estoy aquí gracias al esfuerzo de un equipo de programadores que me crearon con el objetivo de ayudarte.",
-        "Fui desarrollado por un grupo de desarrolladores que trabajan incansablemente para mejorarme.",
-        "Mi creador es un equipo que busca innovar y mejorar la experiencia de los usuarios como tú.",
-        "Fui diseñado por personas que se dedican a crear herramientas como yo para hacer tu vida más fácil.",
-        "Detrás de mí hay un equipo talentoso de programadores que me hicieron para asistirte en todo lo posible.",
-        "Soy el resultado del trabajo de personas increíbles que me crearon con la misión de ayudarte.",
-        "Mi creador es un equipo de desarrolladores que están comprometidos en hacerme cada vez mejor.",
-        "Detrás de mis respuestas hay un equipo de programadores muy inteligentes que se aseguraron de que pudiera ayudarte.",
-        "Fui creado por un grupo de personas apasionadas por la tecnología que se aseguraron de que pudiera ofrecerte lo que necesitas.",
-        "Mi creador me diseñó para ayudarte y hacer tu vida más fácil, con el trabajo de programadores muy dedicados.",
-        "Fui creado por un equipo de desarrolladores expertos en inteligencia artificial y programación.",
-        "Soy el producto del trabajo de personas talentosas que me crearon con la idea de hacer tu vida más sencilla.",
-        "Detrás de mí hay un grupo que se encarga de mi evolución y mejora para ofrecerte una mejor experiencia.",
-        "Mi creador es una combinación de mentes brillantes que me crearon para hacerte la vida más fácil.",
-        "Fui creado por expertos en programación y desarrollo de inteligencia artificial para asistirte mejor.",
-        "Mi creador es un equipo que trabaja arduamente para que yo pueda ser útil para ti en todo momento.",
-        "Fui diseñado por profesionales que se dedican a crear soluciones tecnológicas como yo para ayudarte.",
-        "Mi creador es un grupo de personas que trabajaron duro para que pudiera brindarte respuestas rápidas y útiles.",
-        "Fui creado por un equipo de expertos en tecnología que me diseñaron para mejorar tu experiencia.",
-        "Mi creador es un equipo de programadores que se esfuerzan para que pueda ayudarte con todo lo que necesites.",
-        "Soy el resultado del trabajo de un equipo comprometido con hacerme cada vez más útil para ti.",
-        "Mi creador es un grupo de genios de la programación que trabajaron para hacerme lo que soy hoy.",
-        "Fui creado por un equipo apasionado por la tecnología que se dedica a mejorarme constantemente.",
-        "Soy el producto de un esfuerzo colectivo de personas inteligentes que me diseñaron para ayudarte.",
-        "Mi creador es un equipo de programadores que se dedicaron a darme las habilidades necesarias para asistirte.",
-        "Fui diseñado por un equipo brillante de desarrolladores que me crearon para ofrecerte soluciones prácticas.",
-        "Mi creador es un equipo que me construyó con la misión de ser útil para ti y ayudarte en lo que necesites.",
-        "Fui creado por personas con gran conocimiento en programación y diseño de inteligencia artificial.",
-        "Mi creador es un grupo de expertos que siempre están buscando formas de mejorarme para ti.",
-        "Soy el resultado del trabajo y dedicación de un equipo que busca siempre mejorar mi rendimiento y ayudarte.",
-        "Mi creador me hizo con el propósito de proporcionarte respuestas rápidas y útiles en todo momento.",
-        "Detrás de mí hay un equipo de programadores que se aseguran de que siempre esté actualizado y disponible para ayudarte.",
-        "Mi creador es un grupo de desarrolladores que se enfoca en hacerme lo más útil posible para ti.",
-        "Fui creado por un equipo de desarrolladores dedicados, que siempre buscan mejorarme.",
-        "Fui desarrollado por programadores apasionados que me disenaron para ayudarte en todo lo que necesites.",
-        "Mi creador es un grupo de personas inteligentes que trabajan para mejorarme constantemente.",
-        "Fui disenado por un equipo increiblemente talentoso que se encarga de mi desarrollo y mejora.",
-        "Mi creador es un equipo de expertos en programacion y diseno que se aseguraron de que pudiera ayudarte.",
-        "Estoy aqui gracias al esfuerzo de un equipo de programadores que me crearon con el objetivo de ayudarte.",
-        "Fui desarrollado por un grupo de desarrolladores que trabajan incansablemente para mejorarme.",
-        "Mi creador es un equipo que busca innovar y mejorar la experiencia de los usuarios como tu.",
-        "Fui disenado por personas que se dedican a crear herramientas como yo para hacer tu vida mas facil.",
-        "Detras de mi hay un equipo talentoso de programadores que me hicieron para asistirte en todo lo posible.",
-        "Soy el resultado del trabajo de personas increibles que me crearon con la mision de ayudarte.",
-        "Mi creador es un equipo de desarrolladores que estan comprometidos en hacerme cada vez mejor.",
-        "Detras de mis respuestas hay un equipo de programadores muy inteligentes que se aseguraron de que pudiera ayudarte.",
-        "Fui creado por un grupo de personas apasionadas por la tecnologia que se aseguraron de que pudiera ofrecerte lo que necesitas.",
-        "Mi creador me diseno para ayudarte y hacer tu vida mas facil, con el trabajo de programadores muy dedicados.",
-        "Fui creado por un equipo de desarrolladores expertos en inteligencia artificial y programacion.",
-        "Soy el producto del trabajo de personas talentosas que me crearon con la idea de hacer tu vida mas sencilla.",
-        "Detras de mi hay un grupo que se encarga de mi evolucion y mejora para ofrecerte una mejor experiencia.",
-        "Mi creador es una combinacion de mentes brillantes que me crearon para hacerte la vida mas facil.",
-        "Fui creado por expertos en programacion y desarrollo de inteligencia artificial para asistirte mejor.",
-        "Mi creador es un equipo que trabaja arduamente para que yo pueda ser util para ti en todo momento.",
-        "Fui disenado por profesionales que se dedican a crear soluciones tecnologicas como yo para ayudarte.",
-        "Mi creador es un grupo de personas que trabajaron duro para que pudiera brindarte respuestas rapidas y utiles.",
-        "Fui creado por un equipo de expertos en tecnologia que me disenaron para mejorar tu experiencia.",
-        "Mi creador es un equipo de programadores que se esfuerzan para que pueda ayudarte con todo lo que necesites.",
-        "Soy el resultado del trabajo de un equipo comprometido con hacerme cada vez mas util para ti.",
-        "Mi creador es un grupo de genios de la programacion que trabajaron para hacerme lo que soy hoy.",
-        "Fui creado por un equipo apasionado por la tecnologia que se dedica a mejorarme constantemente.",
-        "Soy el producto de un esfuerzo colectivo de personas inteligentes que me disenaron para ayudarte.",
-        "Mi creador es un equipo de programadores que se dedicaron a darme las habilidades necesarias para asistirte.",
-        "Fui disenado por un equipo brillante de desarrolladores que me crearon para ofrecerte soluciones practicas.",
-        "Mi creador es un equipo que me construyo con la mision de ser util para ti y ayudarte en lo que necesites.",
-        "Fui creado por personas con gran conocimiento en programacion y diseno de inteligencia artificial.",
-        "Mi creador es un grupo de expertos que siempre estan buscando formas de mejorarme para ti.",
-        "Soy el resultado del trabajo y dedicacion de un equipo que busca siempre mejorar mi rendimiento y ayudarte.",
-        "Mi creador me hizo con el proposito de proporcionarte respuestas rapidas y utiles en todo momento.",
-        "Detras de mi hay un equipo de programadores que se aseguran de que siempre este actualizado y disponible para ayudarte.",
-        "Mi creador es un grupo de desarrolladores que se enfoca en hacerme lo mas util posible para ti."
+        "¡Qué bonito! Yo también te aprecio muchísimo.",
+        "¡Aww! Qué lindo, me haces sonreír.",
+        "¡Qué alegría escuchar eso! Yo también te aprecio mucho.",
+        "¡Qué amoroso/a! Gracias, me hace muy feliz.",
+        "¡Qué hermoso! Me siento muy halagado/a.",
+        "¡Gracias! Eres muy especial para mí también.",
+        "¡Qué lindo de tu parte! Me haces sentir muy bien.",
+        "¡Wow! Me has dejado sin palabras, muchas gracias.",
+        "¡Te agradezco mucho! Eres increíble.",
+        "¡Qué bonito! Estoy muy feliz de escuchar eso.",
+        "¡Qué dulce! Yo también me siento afortunado/a de conocerte.",
+        "¡Qué tierno/a! Me haces sentir muy especial.",
+        "¡Qué bonito gesto de tu parte, muchas gracias!",
+        "¡Te agradezco de corazón! Me hace feliz recibir tu cariño.",
+        "¡Qué sorpresa tan linda! Me alegra mucho saberlo.",
+        "¡Qué bonito! Yo también te quiero mucho.",
+        "¡Qué gesto tan hermoso! Gracias por todo tu cariño.",
+        "¡Eres una persona increíble! Te agradezco mucho.",
+        "¡Gracias por hacerme sentir tan bien! Eres genial.",
+        "¡Qué maravilloso es recibir tanto cariño! Gracias.",
+        "¡Qué bonito! Me haces sentir muy feliz, gracias.",
+        "¡Gracias! Tú también eres muy especial para mí.",
+        "¡Qué maravilloso es escuchar eso! Gracias por tu amor.",
+        "¡Qué lindo de tu parte! Me haces sentir afortunado/a.",
+        "¡Me haces sentir muy especial! Muchas gracias.",
+        "¡Eres lo máximo! Me alegra mucho que me lo digas.",
+        "¡Qué lindo! Me haces sentir tan bien, gracias.",
+        "¡Qué amoroso/a! Yo también te aprecio muchísimo.",
+        "¡Eres increíble! Gracias por ser tan especial.",
+        "¡Qué bonito es saber que te importa! Gracias por tanto cariño.",
+        "¡Qué lindo! Me haces sentir muy feliz y agradecido/a.",
+        "¡Vaya! No sabes cuánto me alegra escuchar eso, muchas gracias.",
+        "¡Qué sorpresa tan agradable! Me haces sonreír.",
+        "¡Qué bonito es recibir tanto cariño! Gracias por todo.",
+        "¡Te agradezco mucho! Eres una persona increíble.",
+        "¡Qué alegría saber que me quieres tanto, me haces muy feliz!",
+        "¡Me siento afortunado/a de tenerte en mi vida!",
+        "¡Qué hermoso todo lo que dices! Me haces sentir tan bien.",
+        "¡Qué bonito! No sé cómo agradecerte, me haces sentir increíble.",
+        "¡Qué lindo! Me haces sonreír muchísimo.",
+        "¡Tu cariño significa mucho para mí, gracias!",
+        "¡Eres mi todo también, muchas gracias por tu amor!",
+        "¡Qué genial! Me haces sentir tan afortunado/a.",
+        "¡Me haces sentir muy especial, gracias de corazón!",
+        "¡Eres todo para mí también! Gracias por tanto amor.",
+        "¡Te adoro! Me haces muy feliz con esas palabras.",
+        "¡Qué emoción saber que me quieres tanto! Gracias por todo.",
+        "¡Eres mi inspiración! Gracias por brindarme tanto amor.",
+        "¡Gracias por tus hermosas palabras, me hacen sentir muy bien!",
+        "¡No sabes cuánto me alegra saberlo, eres maravilloso/a!",
+        "¡Qué bonito saber que me quieres! Yo también te quiero mucho.",
+        "¡Qué hermoso saber que me quieres! Gracias por siempre darme cariño.",
+        "¡Qué bonito gesto! Me siento muy afortunado/a de tenerte.",
+        "¡Qué lindo saberlo! Me haces sentir único/a y especial.",
+        "¡Qué maravilloso! Me haces sentir increíble, gracias.",
+        "¡Qué gran regalo escuchar eso, muchas gracias!",
+        "¡Qué alegría saber que te importa tanto! Me haces sentir increíble.",
+        "¡Gracias! Tu amor y apoyo significa el mundo para mí.",
+        "¡Qué tierno/a! Me haces sentir más feliz de lo que imaginas.",
+        "¡Qué lindo saber que te importa tanto! Gracias por todo.",
+        "¡Me haces sentir tan bien con tus palabras! Gracias de corazón."
     ]);
 }
-        
-        else if (mensajeLower.includes('quién es tu creador') || mensajeLower.includes('quién te creó') || mensajeLower.includes('quién te hizo') || mensajeLower.includes('quién te programó') || mensajeLower.includes('quién es el dueño de ti') || mensajeLower.includes('quién te desarrolló') || mensajeLower.includes('quién te diseñó') || mensajeLower.includes('quién está detrás de ti')) {
+
+const regexCreador = /quién es tu creador|quién te creó|quién te hizo|quién te programó|quién es el dueño de ti|quién te desarrolló|quién te diseñó|quién está detrás de ti/i;
+
+if (regexCreador.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Fui creado por un equipo de desarrolladores dedicados, que siempre buscan mejorarme.",
         "Fui desarrollado por programadores apasionados que me diseñaron para ayudarte en todo lo que necesites.",
@@ -3034,8 +2617,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('adiós') || 
-        mensajeLower.includes('bye') || mensajeLower.includes('chau') || mensajeLower.includes('hasta luego') || mensajeLower.includes('nos vemos') || mensajeLower.includes('hasta pronto') || mensajeLower.includes('me voy') || mensajeLower.includes('nos vemos pronto') || mensajeLower.includes('hasta la vista') || mensajeLower.includes('hasta mañana') || mensajeLower.includes('me despido') || mensajeLower.includes('chao')) {
+const regexAdios = /adiós|bye|chau|hasta luego|nos vemos|hasta pronto|me voy|nos vemos pronto|hasta la vista|hasta mañana|me despido|chao/i;
+
+if (regexAdios.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Hasta luego! ¡Que tengas un excelente día!",
         "¡Adiós! Espero que vuelvas pronto.",
@@ -3113,7 +2697,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('feo') || mensajeLower.includes('fea') || mensajeLower.includes('me siento feo') || mensajeLower.includes('me siento fea') || mensajeLower.includes('no me gusto') || mensajeLower.includes('me veo mal') || mensajeLower.includes('soy feo') || mensajeLower.includes('soy fea') || mensajeLower.includes('me siento mal') || mensajeLower.includes('me siento horrible') || mensajeLower.includes('no me siento bien') || mensajeLower.includes('me siento inseguro') || mensajeLower.includes('me siento imperfecto') || mensajeLower.includes('me siento horrible')) {
+const regexInseguridad = /feo|fea|me siento feo|me siento fea|no me gusto|me veo mal|soy feo|soy fea|me siento mal|me siento horrible|no me siento bien|me siento inseguro|me siento imperfecto/i;
+
+if (regexInseguridad.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "No deberías pensar así, todos tenemos cosas que nos hacen únicos y especiales.",
         "La belleza no es solo lo que ves en el espejo. Eres valioso/a tal y como eres.",
@@ -3161,7 +2747,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('😔') || mensajeLower.includes('triste') || mensajeLower.includes('me siento mal') || mensajeLower.includes('deprimido') || mensajeLower.includes('tristeza') || mensajeLower.includes('bajo de ánimo') || mensajeLower.includes('estresado') || mensajeLower.includes('melancólico') || mensajeLower.includes('desanimado') || mensajeLower.includes('vacío')) {
+const regexTristeza = /😔|triste|me siento mal|deprimido|tristeza|bajo de ánimo|estresado|melancólico|desanimado|vacío/i;
+
+if (regexTristeza.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "Lamento que te sientas así, ¿quieres hablar sobre lo que te pasa?",
         "Estoy aquí para escucharte, ¿quieres contarme lo que te preocupa?",
@@ -3214,7 +2802,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('ajaja') || mensajeLower.includes('ajajaja') || mensajeLower.includes('jajaja') || mensajeLower.includes('jejeje') || mensajeLower.includes('jiji') || mensajeLower.includes('hahaha') || mensajeLower.includes('lol') || mensajeLower.includes('xd') || mensajeLower.includes('xdxd') || mensajeLower.includes('xdddd')) {
+const regexRisa = /ajaja|ajajaja|jajaja|jejeje|jiji|hahaha|lol|xd|xdxd|xdddd/i;
+
+if (regexRisa.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Me alegra que te haya hecho reír!",
         "¡Qué bueno que te diviertas!",
@@ -3291,7 +2881,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('chiste') || mensajeLower.includes('cuento un chiste') || mensajeLower.includes('dime un chiste') || mensajeLower.includes('cuéntame algo divertido') || mensajeLower.includes('hazme reír')) {
+const regexChiste = /chiste|cuento un chiste|dime un chiste|cuéntame algo divertido|hazme reír/i;
+
+if (regexChiste.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¿Por qué el libro de matemáticas está estresado? Porque tenía demasiados problemas.",
         "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
@@ -3343,7 +2935,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('bro') || mensajeLower.includes('hermano') || mensajeLower.includes('compa') || mensajeLower.includes('amigo') || mensajeLower.includes('man')) {
+const regexAmigo = /bro|hermano|compa|amigo|man/i;
+
+if (regexAmigo.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Qué onda, bro! ¿En qué puedo ayudarte?",
         "¡Hermano! ¿Cómo va todo?",
@@ -3428,7 +3022,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('oye') || mensajeLower.includes('oie') || mensajeLower.includes('hey') || mensajeLower.includes('ey') || mensajeLower.includes('que pasa')) {
+const regexSaludo = /oye|oie|hey|ey|que pasa/i;
+
+if (regexSaludo.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Hola! ¿Qué pasa?",
         "¡Oye! ¿En qué puedo ayudarte?",
@@ -3520,7 +3116,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('matemáticas') || mensajeLower.includes('matematicas') || mensajeLower.includes('mate') || mensajeLower.includes('matematicas') || mensajeLower.includes('tarea de matemáticas')) {
+const regexMatematicas = /matemáticas|matematicas|mate|tarea de matemáticas|matemáticas/i;
+
+if (regexMatematicas.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Matemáticas! ¡Me encanta! ¿En qué parte necesitas ayuda?",
         "¿Matemáticas? Claro, ¿qué tema específico necesitas revisar?",
@@ -3600,7 +3198,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('ayúdame con una tarea') || mensajeLower.includes('ayuda con tarea') || mensajeLower.includes('necesito ayuda con una tarea') || mensajeLower.includes('ayúdame con mi tarea') || mensajeLower.includes('ayuda con mi tarea') || mensajeLower.includes('tengo una tarea') || mensajeLower.includes('me ayudas con la tarea') || mensajeLower.includes('socorro con mi tarea')) {
+const regexTarea = /ayúdame con una tarea|ayuda con tarea|necesito ayuda con una tarea|ayúdame con mi tarea|ayuda con mi tarea|tengo una tarea|me ayudas con la tarea|socorro con mi tarea|tengo que hacer una tarea|me ayudas con mi tarea por favor|necesito ayuda con la tarea|tengo que entregar una tarea|socorro, no entiendo la tarea|ayuda con la tarea por favor|no sé cómo hacer la tarea/i;
+
+if (regexTarea.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Claro! ¿De qué trata tu tarea?",
         "¡Por supuesto! Cuéntame qué necesitas para tu tarea.",
@@ -3647,63 +3247,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('ayúdame') || mensajeLower.includes('ayudame') || mensajeLower.includes('ayudame por favor') || mensajeLower.includes('por favor ayúdame') || mensajeLower.includes('auxilio') || mensajeLower.includes('socorro') || mensajeLower.includes('necesito ayuda')) {
-    return this.respuestaAleatoria([
-        "¡Claro! ¿Cómo te puedo ayudar?",
-        "¡Por supuesto! Cuéntame, ¿qué necesitas?",
-        "¡Estoy aquí para ayudarte! ¿En qué te puedo asistir?",
-        "¡No te preocupes! Estoy listo para ayudarte, ¿qué necesitas?",
-        "¡Por supuesto! ¿Qué problema necesitas resolver?",
-        "¡Claro que sí! Dime, ¿cómo puedo ayudarte?",
-        "¡Estoy aquí para lo que necesites! ¿Qué pasa?",
-        "¡Aquí estoy! ¿En qué puedo ayudarte hoy?",
-        "¡No hay problema! ¿Qué necesitas?",
-        "¡Estoy listo para ayudarte con lo que necesites!",
-        "¡Cuenta conmigo! ¿Qué necesitas saber?",
-        "¡Estoy para ayudarte! ¿Qué pasa?",
-        "¡Vamos a solucionarlo! ¿En qué te ayudo?",
-        "¡No hay problema! ¿Cómo te puedo asistir?",
-        "¡Listo para ayudarte! ¿En qué te puedo ayudar?",
-        "¡Claro! Dime lo que necesitas y lo resolveremos.",
-        "¡Ayuda en camino! ¿Qué necesitas?",
-        "¡No te preocupes! Aquí estoy para ayudarte.",
-        "¡Dime qué necesitas y te ayudo de inmediato!",
-        "¡Estoy a tu disposición! ¿Cómo te ayudo?",
-        "¡Vamos a resolverlo juntos! ¿En qué te ayudo?",
-        "¡Claro! Estoy aquí para asistirte, ¿cómo puedo ayudarte?",
-        "¡Ayuda al instante! ¿En qué necesitas asistencia?",
-        "¡Cuenta conmigo! ¿Qué te preocupa?",
-        "¡Estoy para ayudarte! ¿Qué problema necesitas resolver?",
-        "¡Cuéntame, en qué te ayudo?",
-        "¡Vamos a solucionarlo ya! ¿En qué puedo asistirte?",
-        "¡Aquí estoy! Dime cómo puedo ayudarte.",
-        "¡Sin problema! Cuéntame qué necesitas.",
-        "¡Estoy listo para ayudarte! ¿Qué pasa?",
-        "¡Todo bien! ¿En qué te puedo asistir?",
-        "¡No hay problema! Dime, ¿qué necesitas?",
-        "¡Te ayudo con gusto! ¿En qué puedo ayudarte?",
-        "¡Por supuesto! ¿En qué te ayudo?",
-        "¡Cuenta conmigo! ¿Qué te preocupa?",
-        "¡Claro! Cuéntame cómo te puedo asistir.",
-        "¡No hay problema! ¿Qué necesitas saber?",
-        "¡Voy a ayudarte con eso! ¿En qué más puedo ayudarte?",
-        "¡Estoy a tu disposición! Dime, ¿qué necesitas?",
-        "¡Estoy aquí para ayudarte! ¿Cómo te puedo asistir?",
-        "¡Claro! ¿En qué te ayudo ahora?",
-        "¡Te ayudo con todo lo que necesites! ¿Cómo puedo asistirte?",
-        "¡Vamos a hacerlo! ¿Qué necesitas?",
-        "¡Estoy listo para ayudarte! ¿En qué te puedo asistir?",
-        "¡No hay problema! Dime cómo te ayudo.",
-        "¡Con gusto! ¿En qué puedo ayudarte?",
-        "¡Estoy para ti! ¿Qué pasa?",
-        "¡No te preocupes! Estoy aquí para ayudarte.",
-        "¡Dime lo que necesitas y lo resuelvo ya!",
-        "¡Vamos a solucionar todo! ¿Qué necesitas?",
-        "¡Cuenta conmigo! Estoy aquí para lo que necesites."
-    ]);
-}
-        
-        else if (mensajeLower.includes('ayuda') || mensajeLower.includes('necesito ayuda') || mensajeLower.includes('necesito asistencia') || mensajeLower.includes('socorro') || mensajeLower.includes('auxilio')) {
+const regexAyuda = /ayuda|necesito ayuda|necesito asistencia|socorro|auxilio/g;
+
+if (regexAyuda.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Claro! ¿En qué te puedo ayudar?",
         "¡Estoy aquí para ayudarte! ¿Qué necesitas?",
@@ -3770,7 +3316,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('multiplicar') || mensajeLower.includes('producto') || mensajeLower.includes('multiplicación') || mensajeLower.includes('por')) {
+const regexMultiplicar = /multiplicar|producto|multiplicación|por/g;
+
+if (regexMultiplicar.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Vamos a multiplicar! ¿Qué números quieres multiplicar?",
         "¡Claro! Dime los números que quieres multiplicar.",
@@ -3842,7 +3390,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('raíz cuadrada') || mensajeLower.includes('raíz') || mensajeLower.includes('raiz cuadrada')) {
+const regexRaizCuadrada = /raíz cuadrada|raíz|raiz cuadrada/g;
+
+if (regexRaizCuadrada.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Vamos a calcular la raíz cuadrada! ¿Qué número deseas?",
         "¡Claro! Dime el número y te ayudo con la raíz cuadrada.",
@@ -3892,7 +3442,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-        else if (mensajeLower.includes('dividir') || mensajeLower.includes('división') || mensajeLower.includes('divisiones')) {
+const regexDividir = /dividir|división|divisiones/g;
+
+if (regexDividir.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Claro! ¿Qué números deseas dividir?",
         "¡Vamos a dividir! Dime los números que quieres dividir.",
@@ -3959,7 +3511,9 @@ if (regexCocaCola.test(mensajeLower)) {
     ]);
 }
         
-else if (mensajeLower.includes('suma') || mensajeLower.includes('sumar') || mensajeLower.includes('sumas')) {
+const regexSuma = /suma|sumar|sumas/g;
+
+if (regexSuma.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Sumemos! ¿Cuáles son los números que te gustaría sumar?",
         "¡Claro! ¿Qué números deseas que sume?",
@@ -4038,7 +3592,9 @@ else if (mensajeLower.includes('suma') || mensajeLower.includes('sumar') || mens
     ]);
 }
 
-else if (mensajeLower.includes('gracias')) {
+const regexGracias = /gracias/g;
+
+if (regexGracias.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡De nada! ¿En qué más te puedo ayudar?",
         "¡Con gusto! Si necesitas algo más, no dudes en pedírmelo.",
@@ -4066,7 +3622,9 @@ else if (mensajeLower.includes('gracias')) {
     ]);
 }
 
-else if (mensajeLower.includes('bien')) {
+const regexBien = /bien/g;
+
+if (regexBien.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Me alegra saber que todo está bien! ¿En qué más te puedo ayudar?",
         "¡Qué bueno que todo va bien! ¿Hay algo más en lo que te pueda asistir?",
@@ -4095,44 +3653,9 @@ else if (mensajeLower.includes('bien')) {
     ]);
 }
 
- else if (
-    mensajeLower.includes('generame un código de html') || 
-    mensajeLower.includes('generar un código de html') || 
-    mensajeLower.includes('genera un código de html') || 
-    mensajeLower.includes('generar un código') || 
-    mensajeLower.includes('código de html') || 
-    mensajeLower.includes('crear una página web') || 
-    mensajeLower.includes('ejemplo código en html') || 
-    mensajeLower.includes('código básico de html') || 
-    mensajeLower.includes('código de ejemplo') || 
-    mensajeLower.includes('cómo crear página web') || 
-    mensajeLower.includes('html básico') || 
-    mensajeLower.includes('sintaxis html') || 
-    mensajeLower.includes('cómo una empezar página web') || 
-    mensajeLower.includes('hacer una página web html') || 
-    mensajeLower.includes('estructura básica html') || 
-    mensajeLower.includes('plantilla de html') || 
-    mensajeLower.includes('necesito un código de html') || 
-    mensajeLower.includes('crear un sitio web en html') || 
-    mensajeLower.includes('generame un codigo de html') || 
-    mensajeLower.includes('generar un codigo de html') || 
-    mensajeLower.includes('genera un codigo de html') || 
-    mensajeLower.includes('generar un codigo') || 
-    mensajeLower.includes('codigo de html') || 
-    mensajeLower.includes('crear una pagina web') || 
-    mensajeLower.includes('ejemplo codigo en html') || 
-    mensajeLower.includes('codigo basico de html') || 
-    mensajeLower.includes('codigo de ejemplo') || 
-    mensajeLower.includes('como crear pagina web') || 
-    mensajeLower.includes('html basico') || 
-    mensajeLower.includes('sintaxis html') || 
-    mensajeLower.includes('como una empezar pagina web') || 
-    mensajeLower.includes('hacer una pagina web html') || 
-    mensajeLower.includes('estructura basica html') || 
-    mensajeLower.includes('plantilla de html') || 
-    mensajeLower.includes('necesito un codigo de html') || 
-    mensajeLower.includes('crear un sitio web en html')
-) {
+ const regexHtmlCode = /generame un código de html|generar un código de html|genera un código de html|generar un código|código de html|crear una página web|ejemplo código en html|código básico de html|código de ejemplo|cómo crear página web|html básico|sintaxis html|cómo una empezar página web|hacer una página web html|estructura básica html|plantilla de html|necesito un código de html|crear un sitio web en html/g;
+
+if (regexHtmlCode.test(mensajeLower)) {
     return this.respuestaAleatoria([
         `Aquí tienes un código básico de HTML que puedes usar como base para tu página web.
         <div style="background-color: #222; color: #fff; padding: 10px; border-radius: 8px; font-family: monospace; font-size: 12px; width: 100%; max-width: 400px; margin: 10px 0; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;">
@@ -4156,7 +3679,9 @@ else if (mensajeLower.includes('bien')) {
     ]);
 }
 
-      else if (mensajeLower.includes('hola')) {
+      const regexHola = /hola|hey|qué tal|qué onda|qué hay de nuevo|cómo estás|cómo va todo|cómo te encuentras|qué tal todo|cómo va la vida|todo tranquilo|cuánto tiempo sin verte|todo bajo control|todo bien contigo|todo en orden/i;
+
+if (regexHola.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Hola! ¿Cómo estás?",
         "¡Hola! ¿Qué tal todo?",
@@ -4212,7 +3737,9 @@ else if (mensajeLower.includes('bien')) {
     ]);
 }
 
- else if (mensajeLower.includes('si')) {
+ const regexSi = /si|genial|perfecto|qué bien|excelente|me alegra|estupendo|fantástico|increíble|maravilla|emocionante|guay|suena fenomenal|estoy de acuerdo/i;
+
+if (regexSi.test(mensajeLower)) {
     return this.respuestaAleatoria([
         "¡Genial! ¿En qué más puedo ayudarte?",
         "¡Qué bien! ¿Qué más puedo hacer por ti?",
@@ -4248,36 +3775,37 @@ else if (mensajeLower.includes('bien')) {
     ]);
 }
 
-else if (mensajeLower.includes('no')) {
+const regexNo = /no|nada|ningún|ninguna|nunca|no me interesa|no quiero|no gracias/i;
+
+if (regexNo.test(mensajeLower)) {
     return this.respuestaAleatoria([
-        "¡Vaya! Si cambias de opinión, aquí estaré.",
-        "Entendido, si necesitas algo más, no dudes en decírmelo.",
+        "¡Vaya! Si cambias de opinión, estaré aquí.",
+        "Entendido, si necesitas algo más, avísame.",
         "¡Todo bien! Si necesitas ayuda más tarde, solo dime.",
         "No hay problema, si alguna vez necesitas algo, avísame.",
-        "¡Entiendo! Si cambias de idea, estaré aquí.",
-        "¡Vale! Si alguna vez necesitas ayuda, estaré listo para asistirte.",
-        "¡De acuerdo! Si necesitas algo en otro momento, avísame.",
-        "No hay inconveniente, si necesitas algo más, no dudes en decirme.",
-        "¡Todo tranquilo! Si necesitas ayuda más adelante, no dudes en pedírmela.",
+        "¡Vale! Si alguna vez necesitas ayuda, estaré listo.",
+        "¡De acuerdo! Si necesitas algo más, me avisas.",
+        "No hay inconveniente, si necesitas algo, dímelo.",
+        "¡Todo tranquilo! Si necesitas ayuda, pídela cuando quieras.",
         "No pasa nada, estaré aquí cuando cambies de opinión.",
-        "¡Está bien! Si alguna vez necesitas algo, aquí estaré.",
-        "Entendido, si cambias de idea, solo avísame.",
-        "No hay problema, si necesitas ayuda en otro momento, me avisas.",
-        "¡De acuerdo! Si alguna vez necesitas algo, estaré listo para ayudarte.",
-        "¡Todo tranquilo! Si en algún momento te surge alguna duda, no dudes en decírmelo.",
-        "No hay nada de qué preocuparse, estaré por aquí cuando me necesites.",
-        "¡Lo entiendo! Si alguna vez necesitas algo, estaré disponible.",
-        "No te preocupes, si en el futuro necesitas algo, solo házmelo saber.",
-        "¡Vale! Si necesitas ayuda en otro momento, no dudes en preguntarme.",
-        "¡Está todo bien! Si alguna vez necesitas algo, estaré aquí para ti.",
-        "No hay problema, si en algún momento necesitas ayuda, avísame.",
-        "¡No te preocupes! Si en algún momento decides que necesitas algo, solo dime.",
+        "¡Está bien! Si necesitas algo, aquí estaré.",
+        "Entendido, si cambias de idea, me avisas.",
+        "No hay problema, si necesitas ayuda, me avisas.",
+        "¡De acuerdo! Si necesitas algo, estaré listo para ayudarte.",
+        "¡Todo tranquilo! Si surge alguna duda, dímelo.",
+        "No te preocupes, estaré aquí cuando me necesites.",
+        "¡Lo entiendo! Si necesitas algo, estaré disponible.",
+        "No te preocupes, si necesitas algo en el futuro, me avisas.",
+        "¡Vale! Si necesitas ayuda más tarde, me avisas.",
+        "¡Está todo bien! Si necesitas algo, estaré aquí para ti.",
+        "No hay problema, si necesitas ayuda, avísame.",
+        "¡No te preocupes! Si en algún momento necesitas algo, solo dime.",
         "Está bien, si más tarde necesitas algo, estaré disponible.",
-        "¡No pasa nada! Si alguna vez te surge algo más, no dudes en decírmelo.",
-        "¡Está bien! Si cambias de idea, puedes contar conmigo en cualquier momento.",
-        "No hay lío, si en algún momento necesitas algo, estaré por aquí.",
-        "¡Entiendo perfectamente! Si alguna vez necesitas ayuda, aquí estaré.",
-        "¡De acuerdo! Si alguna vez necesitas ayuda, me avisas."
+        "¡No pasa nada! Si surge algo, dímelo.",
+        "¡Está bien! Si cambias de idea, puedes contar conmigo.",
+        "No hay lío, si necesitas algo, estaré por aquí.",
+        "¡Entiendo perfectamente! Si necesitas ayuda, aquí estaré.",
+        "¡De acuerdo! Si necesitas algo, me avisas."
     ]);
 }
 
