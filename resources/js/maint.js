@@ -4,27 +4,34 @@ overlay.style.top = "0";
 overlay.style.left = "0";
 overlay.style.width = "100%";
 overlay.style.height = "100%";
-overlay.style.background = "rgba(0, 0, 0, 0.9)";
 overlay.style.display = "flex";
 overlay.style.justifyContent = "center";
 overlay.style.alignItems = "center";
-overlay.style.zIndex = "9999";
-overlay.style.animation = "fadeIn 0.5s ease-out";
+overlay.style.background = "linear-gradient(-45deg, #1a1a1a, #222831, #30475e, #f05454)";
+overlay.style.backgroundSize = "400% 400%";
+overlay.style.animation = "gradientBG 6s ease infinite";
+overlay.style.color = "white";
+overlay.style.textAlign = "center";
+overlay.style.overflow = "hidden";
+overlay.style.zIndex = "999999"; 
 document.body.appendChild(overlay);
 
+document.body.style.overflow = "hidden";
+
 const container = document.createElement("div");
-container.style.background = "#1a1a1a";
-container.style.color = "white";
-container.style.padding = "20px";
-container.style.borderRadius = "10px";
-container.style.boxShadow = "0px 0px 15px rgba(255, 255, 255, 0.2)";
+container.style.background = "rgba(26, 26, 26, 0.85)";
+container.style.padding = "30px";
+container.style.borderRadius = "12px";
+container.style.boxShadow = "0px 0px 20px rgba(255, 255, 255, 0.3)";
 container.style.textAlign = "center";
+container.style.maxWidth = "400px";
+container.style.width = "90%";
 container.style.animation = "slideIn 0.5s ease-out";
 overlay.appendChild(container);
 
 const title = document.createElement("h1");
 title.innerText = "Servicio en Mantenimiento";
-title.style.marginBottom = "10px";
+title.style.marginBottom = "15px";
 title.style.fontSize = "1.8rem";
 container.appendChild(title);
 
@@ -52,9 +59,10 @@ container.appendChild(countdownText);
 
 const style = document.createElement("style");
 style.innerHTML = `
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     @keyframes slideIn {
         from { transform: translateY(-20px); opacity: 0; }
