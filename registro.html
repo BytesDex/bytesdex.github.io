@@ -4,106 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/style-44.css">
-    <meta http-equiv="refresh" content="30">
-    <meta http-equiv="Status" content="503">
     <title>Registrarse</title>
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body, html {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(-45deg, #1a1a1a, #222831, #30475e, #f05454);
-            background-size: 400% 400%;
-            animation: gradientBG 6s ease infinite;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 15px;
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
-            width: 90%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            animation: slideIn 1s ease-in-out;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            border-left-color: white;
-            border-radius: 50%;
-            animation: spin 1.2s linear infinite;
-            margin: auto;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            margin-top: 10px;
-            font-size: 1rem;
-            opacity: 0.8;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
-        </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Servicio en Mantenimiento</h1>
-        <p>Estamos trabajando para mejorar tu experiencia. Volveremos pronto.</p>
-        <div class="loader"></div>
-        <p class="loading-text">Cargando...</p>
+    <div id="container">
+        <h1>Registro</h1>
+        <div class="info">
+            <svg id="icono" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" style="cursor:pointer;">
+                <path fill="currentColor" d="M11 17h2v-6h-2zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8" />
+            </svg>
+            Información
+        </div>
+        <div class="mensaje" id="mensajeEmergente">Espera a que los moderadores de la página verifiquen tu cuenta para poder iniciar sesión y acceder a las funciones especiales.</div>   
+        <p>
+        Envía una solicitud a los moderadores para registrar una cuenta y acceder a las funciones de esta página.
+        </p>
+        <p>
+         ¿Quieres ver si tu cuenta ha sido verificada? Entra a este <a href="./usuarios">enlace</a>.
+        </p>
+        <form id="question-form">
+            <label for="name">Nombre de usuario</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password"><br>
+            <button type="submit">Enviar</button>
+        </form>
+        <br>
     </div>
+    <footer>
+         &copy; 2024 BytesDex, Tec.
+    </footer>
 <script src="/resources/js/script-65.js"></script>
+<script src="/resources/js/maint.js"></script>
 <script src="/resources/js/themed-effects.js"></script>
 </body>
 </html>
