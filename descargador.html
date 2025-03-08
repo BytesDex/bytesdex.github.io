@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytesDex - Descargador de TikTok</title>
+    <link rel="stylesheet" href="/resources/css/style-59.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="app-container">
+        <div class="header">
+            <h1>BytesDex</h1>
+            <p>Descarga videos y fotos de TikTok sin marca de agua</p>
+        </div>
+        
+        <div class="card">
+            <div class="input-group">
+                <i class="input-icon fab fa-tiktok"></i>
+                <input type="text" id="tiktokUrl" placeholder="Pega el enlace de TikTok aquí">
+            </div>
+            
+            <div class="button-group">
+                <button onclick="procesarEnlace()">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Procesar enlace</span>
+                </button>
+            </div>
+            
+            <div class="loader-container" id="loaderContainer">
+                <div class="loader"></div>
+            </div>
+            
+            <div class="preview-section" id="previewSection">
+                <div class="preview-header">
+                    <h2>Vista previa</h2>
+                </div>
+                
+                <div class="media-container" id="mediaContainer">
+                    <img id="previewImage" style="display: none;">
+                    <video id="previewVideo" style="display: none;" autoplay loop muted></video>
+                    <div class="preview-placeholder">
+                        <i class="fas fa-eye"></i>
+                        <p>Presiona el botón abajo para descargar</p>
+                    </div>
+                </div>
+                
+                <button id="downloadButton" class="download-button" onclick="iniciarDescarga()">
+                    <i class="fas fa-download"></i>
+                    <span>Descargar contenido</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 BytesDex Tec. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-circle-info"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <iframe id="downloadFrame" style="display:none;"></iframe>
+<script src="/resources/js/script-87.js"></script>
+</body>
+</html>
