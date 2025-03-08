@@ -25,7 +25,9 @@ container.style.borderRadius = "12px";
 container.style.boxShadow = "0px 0px 20px rgba(255, 255, 255, 0.3)";
 container.style.textAlign = "center";
 container.style.maxWidth = "400px";
-container.style.width = "90%";
+container.style.width = "auto";
+container.style.margin = "0 20px";
+container.style.boxSizing = "border-box";
 container.style.animation = "slideIn 0.5s ease-out";
 overlay.appendChild(container);
 
