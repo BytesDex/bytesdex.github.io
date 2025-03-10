@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida</title>
+    <style>
+        :root {
+            --primary-color: #ff6b9c;
+            --secondary-color: #f2d5e3;
+            --accent-color: #eb4b98;
+            --text-color: #333;
+            --light-color: #fff;
+            --transition-time: 0.5s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .heart-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideUp 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        
+        .section {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all var(--transition-time) ease;
+        }
+        
+        .visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .memory-card {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .memory-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .heart-container {
+            text-align: center;
+            margin: 40px 0;
+            height: 100px;
+        }
+        
+        .heart {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            transform: rotate(45deg);
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        
+        .heart::after {
+            top: 0;
+            left: -25px;
+        }
+        
+        .poem {
+            text-align: center;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            background-color: var(--primary-color);
+            opacity: 0.3;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            animation: float 15s linear infinite;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px auto;
+            display: block;
+            outline: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(235, 75, 152, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .countdown {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2rem;
+        }
+        
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .countdown-item {
+            margin: 0 10px;
+            min-width: 70px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: modalOpen 0.5s forwards;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: scale(0.8) rotate(45deg);
+            }
+            5% {
+                transform: scale(0.9) rotate(45deg);
+            }
+            10% {
+                transform: scale(0.8) rotate(45deg);
+            }
+            15% {
+                transform: scale(1) rotate(45deg);
+            }
+            50% {
+                transform: scale(0.8) rotate(45deg);
+            }
+            100% {
+                transform: scale(0.8) rotate(45deg);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(100px) scale(0.3);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .memories {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-display {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floating-hearts"></div>
+    
+    <div class="container">
+        <header>
+            <div class="heart-bg"></div>
+            <h1>Mi Amor, Mi Todo</h1>
+            <p class="subtitle">Cada día te amo más que el anterior</p>
+        </header>
+        
+        <section class="section" id="mensaje">
+            <h2>Mi mensaje para ti</h2>
+            <p>Amor mío, quería crear algo especial para ti, un pequeño rincón digital donde pueda expresar todo lo que siento por ti. Desde el primer día que te conocí, has iluminado mi vida de maneras que nunca imaginé posibles.</p>
+            <p>Tu sonrisa es el sol que ilumina mis días, tu voz es la melodía que calma mi corazón, y tu amor es el refugio donde siempre quiero estar. Contigo, he aprendido lo que significa amar verdaderamente y ser amado.</p>
+            <p>Gracias por compartir tu vida conmigo, por tu paciencia, tu comprensión y tu cariño incondicional. Cada momento a tu lado es un tesoro que guardo en lo más profundo de mi corazón.</p>
+        </section>
+        
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        
+        <section class="section" id="razones">
+            <h2>Razones por las que te amo</h2>
+            <p>Son infinitas las razones por las que te amo, pero aquí hay algunas de las más especiales:</p>
+            <div class="memories">
+                <div class="memory-card">
+                    <h3>Tu sonrisa</h3>
+                    <p>Ilumina hasta el día más oscuro y me hace sentir que todo es posible.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Tu fortaleza</h3>
+                    <p>La manera en que enfrentas cada desafío me inspira a ser mejor cada día.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Tu corazón</h3>
+                    <p>La bondad y el amor que das a todos los que te rodean es incomparable.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Tu inteligencia</h3>
+                    <p>La forma en que piensas y ves el mundo me fascina constantemente.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Tu risa</h3>
+                    <p>Es el sonido más hermoso que he escuchado jamás.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Tu apoyo</h3>
+                    <p>Siempre estás ahí para mí, en los buenos y malos momentos.</p>
+                </div>
+            </div>
+        </section>
+        
+<section class="section" id="momentos">
+    <h2>Nuestros momentos a pesar de la distancia</h2>
+    <div class="memories">
+        <div class="memory-card">
+            <h3>Nuestro primer encuentro virtual</h3>
+            <p>Aunque nunca nos hemos visto en persona, supe desde el primer momento que había algo especial entre nosotros.</p>
+        </div>
+        <div class="memory-card">
+            <h3>Nuestra primera cita virtual</h3>
+            <p>A través de la pantalla, compartimos risas y momentos que hicieron que la distancia pareciera no existir.</p>
+        </div>
+        <div class="memory-card">
+            <h3>Nuestro primer viaje de palabras</h3>
+            <p>Viajamos juntos a través de nuestras conversaciones, explorando el mundo y creando recuerdos, aunque estemos separados.</p>
+        </div>
+        <div class="memory-card">
+            <h3>Nuestras noches de conversación</h3>
+            <p>Aunque no estemos juntos físicamente, cada noche compartida a través de mensajes nos acerca un poco más.</p>
+        </div>
+    </div>
+</section>
+        
+        <section class="section" id="poema">
+            <h2>Un poema para ti</h2>
+            <div class="poem">
+                <p>
+                    En la danza del tiempo, encontré tu mirada,<br>
+                    Como estrellas brillantes en noche callada.<br>
+                    Tus manos, tus sueños, tu alma sincera,<br>
+                    Son el mapa del cielo que mi corazón espera.
+                </p>
+                <p>
+                    No hay distancia ni tiempo que apague este fuego,<br>
+                    Que encendiste en mi alma con tu dulce juego.<br>
+                    Eres mi presente, mi futuro, mi todo,<br>
+                    En cada latido, a amarte me acomodo.
+                </p>
+                <p>
+                    Te amo hoy y siempre, sin medida ni razón,<br>
+                    Eres tú el destino final de mi pasión.<br>
+                    En cada suspiro, en cada momento,<br>
+                    Mi amor por ti crece, sin pausa ni lamento.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section" id="aniversario">
+            <h2>Tiempo juntos</h2>
+            <p class="countdown">Hemos estado juntos:</p>
+            <div class="countdown-display">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="years">0</div>
+                    <div>Años</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="months">1</div>
+                    <div>Meses</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">2</div>
+                    <div>Días</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">12</div>
+                    <div>Horas</div>
+                </div>
+            </div>
+            <p class="countdown">Hasta nuestro próximo aniversario:</p>
+            <div class="countdown-display">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="a-days">27</div>
+                    <div>Días</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="a-hours">20</div>
+                    <div>Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="a-minutes">18</div>
+                    <div>Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="a-seconds">45</div>
+                    <div>Segundos</div>
+                </div>
+            </div>
+        </section>
+        
+        <button class="btn" id="secretBtn">Tengo una sorpresa para ti</button>
+        
+        <div class="modal" id="secretModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <h2>Mi promesa para ti</h2>
+                <p>Te prometo amor eterno, respeto, comprensión y lealtad. Prometo estar a tu lado en los momentos buenos y malos, celebrar tus éxitos como si fueran míos y apoyarte en los desafíos que enfrentemos.</p>
+                <p>Prometo escucharte, valorarte y apreciarte cada día. Prometo construir juntos una vida llena de amor, risas y aventuras.</p>
+                <p>Te amo más de lo que las palabras pueden expresar.</p>
+                <div class="heart-container">
+                    <div class="heart"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Hecho con ❤️ para el amor de mi vida</p>
+            <p>&copy; 2025 - Por siempre tuyo</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Animación de secciones al hacer scroll
+        const sections = document.querySelectorAll('.section');
+        
+        function checkSections() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.8) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Inicializar las secciones visibles en la carga inicial
+        window.addEventListener('load', () => {
+            checkSections();
+        });
+        
+        // Verificar las secciones al hacer scroll
+        window.addEventListener('scroll', () => {
+            checkSections();
+        });
+        
+        // Crear corazones flotantes
+        const floatingHeartsContainer = document.getElementById('floating-hearts');
+        
+        function createFloatingHearts() {
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                
+                // Posición aleatoria
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight + window.innerHeight;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 20 + 10;
+                
+                // Velocidad aleatoria
+                const duration = Math.random() * 10 + 10; // 10-20 segundos
+                
+                heart.style.left = `${startX}px`;
+                heart.style.bottom = `-${startY}px`;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                
+                floatingHeartsContainer.appendChild(heart);
+                
+                // Eliminar y recrear el corazón después de su animación
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                    createOneHeart();
+                });
+            }
+        }
+        
+        function createOneHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            
+            // Posición aleatoria
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * 100 + 100;
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 20 + 10;
+            
+            // Velocidad aleatoria
+            const duration = Math.random() * 10 + 10; // 10-20 segundos
+            
+            heart.style.left = `${startX}px`;
+            heart.style.bottom = `-${startY}px`;
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.animationDuration = `${duration}s`;
+            
+            floatingHeartsContainer.appendChild(heart);
+            
+            // Eliminar y recrear el corazón después de su animación
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+                createOneHeart();
+            });
+        }
+        
+        // Iniciar los corazones flotantes
+        createFloatingHearts();
+        
+        // Modal de sorpresa
+        const secretBtn = document.getElementById('secretBtn');
+        const secretModal = document.getElementById('secretModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        secretBtn.addEventListener('click', () => {
+            secretModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            secretModal.style.display = 'none';
+        });
+        
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.addEventListener('click', (e) => {
+            if (e.target === secretModal) {
+                secretModal.style.display = 'none';
+            }
+        });
+        
+        // Configuración de la fecha de inicio de la relación (ajustar según corresponda)
+        const startDate = new Date('2025-02-07T00:00:00'); // Fecha de inicio de la relación
+        const anniversaryDate = new Date('2025-04-07T00:00:00'); // Próximo aniversario
+        
+        function updateCountdowns() {
+            const now = new Date();
+            
+            // Tiempo juntos
+            const timeTogether = now - startDate;
+            const daysTogether = Math.floor(timeTogether / (1000 * 60 * 60 * 24));
+            const monthsTogether = Math.floor(daysTogether / 30);
+            const yearsTogether = Math.floor(daysTogether / 365);
+            const hoursTogether = Math.floor((timeTogether % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            // Tiempo hasta aniversario
+            const timeToAnniversary = anniversaryDate - now;
+            const daysToAnniversary = Math.floor(timeToAnniversary / (1000 * 60 * 60 * 24));
+            const hoursToAnniversary = Math.floor((timeToAnniversary % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesToAnniversary = Math.floor((timeToAnniversary % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsToAnniversary = Math.floor((timeToAnniversary % (1000 * 60)) / 1000);
+            
+            // Actualizar los contadores
+            document.getElementById('years').textContent = yearsTogether;
+            document.getElementById('months').textContent = monthsTogether % 12;
+            document.getElementById('days').textContent = daysTogether % 30;
+            document.getElementById('hours').textContent = hoursTogether;
+            
+            document.getElementById('a-days').textContent = daysToAnniversary;
+            document.getElementById('a-hours').textContent = hoursToAnniversary;
+            document.getElementById('a-minutes').textContent = minutesToAnniversary;
+            document.getElementById('a-seconds').textContent = secondsToAnniversary;
+        }
+        
+        // Actualizar los contadores cada segundo
+        setInterval(updateCountdowns, 1000);
+        updateCountdowns();
+    </script>
+</body>
+</html>
