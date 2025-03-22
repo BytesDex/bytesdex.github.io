@@ -1,7 +1,7 @@
 class UXOptimizer {
   constructor() {
     this.defaultSettings = {
-      'index.html': true,
+      'index.html': false,
       'about.html': false,
       'contact.html': false,
     };
