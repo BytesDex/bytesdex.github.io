@@ -43,18 +43,18 @@
 
             if (artistId === 'peso-pluma') {
                 document.getElementById('peso-pluma-songs').style.display = 'block';
-                artistCover.src = 'Portada - Peso Pluma.jpg';
-                artistProfile.src = 'Peso Pluma.jpeg';
+                artistCover.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Portada - Peso Pluma.jpg';
+                artistProfile.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Peso Pluma.jpeg';
                 artistName.textContent = 'Peso Pluma';
             } else if (artistId === 'oscar-maydon') {
                 document.getElementById('oscar-maydon-songs').style.display = 'block';
-                artistCover.src = 'Portada - Oscar Maydon.jpg';
-                artistProfile.src = 'Oscar Maydon.jpeg';
+                artistCover.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Portada - Oscar Maydon.jpg';
+                artistProfile.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Oscar Maydon.jpeg';
                 artistName.textContent = 'Oscar Maydon';
             } else if (artistId === 'ivan-cornejo') {
                 document.getElementById('ivan-cornejo-songs').style.display = 'block';
-                artistCover.src = 'Portada - Ivan Cornejo.jpg';
-                artistProfile.src = 'Ivan Cornejo.jpg';
+                artistCover.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Portada - Ivan Cornejo.jpg';
+                artistProfile.src = 'https://cdn-bytesdex.github.io/resources/multimedia/imagen/Ivan Cornejo.jpg';
                 artistName.textContent = 'Ivan Cornejo';
             }
 
