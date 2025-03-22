@@ -115,7 +115,35 @@
             audioPlayer.play();
             isPlaying = true;
             playButton.innerHTML = '<i class="fas fa-pause"></i>';
+
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: songTitle,
+                    artist: songArtist,
+                    album: 'Album Name', 
+                    artwork: [
+                        { src: songCover, sizes: '96x96', type: 'image/jpeg' },
+                        { src: songCover, sizes: '128x128', type: 'image/jpeg' },
+                        { src: songCover, sizes: '192x192', type: 'image/jpeg' }
+                    ]
+                });
+
+                navigator.mediaSession.setActionHandler('play', () => audioPlayer.play());
+                navigator.mediaSession.setActionHandler('pause', () => audioPlayer.pause());
+                navigator.mediaSession.setActionHandler('nexttrack', nextSong); 
+                navigator.mediaSession.setActionHandler('previoustrack', previousSong); 
+            }
         }, { once: true });
+    }
+
+    function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % activePlaylist.length;
+        playSong(activePlaylist[currentSongIndex]);
+    }
+
+    function previousSong() {
+        currentSongIndex = (currentSongIndex - 1 + activePlaylist.length) % activePlaylist.length;
+        playSong(activePlaylist[currentSongIndex]);
     }
 
     document.querySelectorAll('.song-list').forEach(list => {
@@ -149,15 +177,8 @@
         audioPlayer.currentTime = (clickX / width) * duration;
     });
 
-    prevButton.addEventListener('click', function() {
-        currentSongIndex = (currentSongIndex - 1 + activePlaylist.length) % activePlaylist.length;
-        playSong(activePlaylist[currentSongIndex]);
-    });
-
-    nextButton.addEventListener('click', function() {
-        currentSongIndex = (currentSongIndex + 1) % activePlaylist.length;
-        playSong(activePlaylist[currentSongIndex]);
-    });
+    prevButton.addEventListener('click', previousSong);  
+    nextButton.addEventListener('click', nextSong);  
 
     const style = document.createElement('style');
     style.textContent = `
