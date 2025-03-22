@@ -1,7 +1,7 @@
 class PageBlocker {
   constructor() {
     this.defaultConfig = {
-      'index.html': false,
+      'index.html': true,
       'about.html': false,
       'contact.html': false,
     };
