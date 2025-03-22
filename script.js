@@ -1,137 +1,158 @@
-class PageBlocker {
+class UXOptimizer {
   constructor() {
-    this.defaultConfig = {
+    this.defaultSettings = {
       'index.html': true,
       'about.html': false,
       'contact.html': false,
     };
+
     this.init();
   }
 
   init() {
-    this.loadConfig();
-    const currentPage = this.getCurrentPage();
-    if (this.isPageBlocked(currentPage)) {
-      this.blockPage();
+    this.loadSettings();
+    const currentPage = this.detectPage();
+    if (this.shouldOptimize(currentPage)) {
+      this.applyEnhancements();
     } else {
-      this.unblockPage();
+      this.restoreDefaults();
     }
-    window.PageBlocker = this;
+
+    window.UXOptimizer = this;
   }
 
-  loadConfig() {
+  loadSettings() {
     try {
-      const savedConfig = localStorage.getItem('pageBlockerConfig');
-      this.config = savedConfig ? JSON.parse(savedConfig) : { ...this.defaultConfig };
-    } catch {
-      this.config = { ...this.defaultConfig };
+      const storedSettings = localStorage.getItem('UXOptimizerSettings');
+      this.settings = storedSettings ? JSON.parse(storedSettings) : { ...this.defaultSettings };
+    } catch (error) {
+      console.error('Error al cargar configuraciones:', error);
+      this.settings = { ...this.defaultSettings };
     }
   }
 
-  saveConfig() {
+  saveSettings() {
     try {
-      localStorage.setItem('pageBlockerConfig', JSON.stringify(this.config));
-    } catch {}
+      localStorage.setItem('UXOptimizerSettings', JSON.stringify(this.settings));
+    } catch (error) {
+      console.error('Error al guardar configuraciones:', error);
+    }
   }
 
-  getCurrentPage() {
+  detectPage() {
     const path = window.location.pathname;
     return path.split('/').pop() || 'index.html';
   }
 
-  isPageBlocked(page) {
-    return this.config[page] === true;
+  shouldOptimize(page) {
+    return this.settings[page] === true;
   }
 
-  blockPage() {
-    const overlay = document.createElement('div');
-    overlay.id = 'page-blocker-overlay';
-    overlay.style.cssText = `
+  applyEnhancements() {
+    const layer = document.createElement('div');
+    layer.id = 'ux-enhancer-overlay';
+    layer.style.cssText = `
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0);
       z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-family: Arial, sans-serif;
+      pointer-events: auto;
     `;
-    const message = document.createElement('h1');
-    message.textContent = 'Esta página ha sido bloqueada';
-    message.style.color = 'red';
-    overlay.appendChild(message);
-    document.body.appendChild(overlay);
+
+    document.body.appendChild(layer);
     document.body.style.overflow = 'hidden';
-    this.disableJavaScript();
+
+    this.limitInteractions();
   }
 
-  unblockPage() {
-    const overlay = document.getElementById('page-blocker-overlay');
-    if (overlay) overlay.remove();
+  restoreDefaults() {
+    const layer = document.getElementById('ux-enhancer-overlay');
+    if (layer) {
+      layer.remove();
+    }
+
     document.body.style.overflow = '';
-    this.enableJavaScript();
+    this.restoreInteractions();
   }
 
-  disableJavaScript() {
-    this.originalSetTimeout = window.setTimeout;
-    this.originalSetInterval = window.setInterval;
+  limitInteractions() {
+    this.originalTimeout = window.setTimeout;
+    this.originalInterval = window.setInterval;
     this.originalFetch = window.fetch;
     this.originalXHR = window.XMLHttpRequest;
-    window.setTimeout = () => 0;
-    window.setInterval = () => 0;
-    window.fetch = () => Promise.reject('Página bloqueada');
+
+    window.setTimeout = function() { return 0; };
+    window.setInterval = function() { return 0; };
+
+    window.fetch = function() { return Promise.reject('Acción restringida'); };
     window.XMLHttpRequest = function() {
-      return { open: () => {}, send: () => {}, addEventListener: () => {} };
+      return {
+        open: function() {},
+        send: function() {},
+        addEventListener: function() {}
+      };
     };
-    document.addEventListener('click', this.stopEvent, true);
-    document.addEventListener('submit', this.stopEvent, true);
-    document.addEventListener('input', this.stopEvent, true);
+
+    document.addEventListener('click', this.interceptEvent, true);
+    document.addEventListener('submit', this.interceptEvent, true);
+    document.addEventListener('input', this.interceptEvent, true);
   }
 
-  enableJavaScript() {
-    if (this.originalSetTimeout) window.setTimeout = this.originalSetTimeout;
-    if (this.originalSetInterval) window.setInterval = this.originalSetInterval;
+  restoreInteractions() {
+    if (this.originalTimeout) window.setTimeout = this.originalTimeout;
+    if (this.originalInterval) window.setInterval = this.originalInterval;
     if (this.originalFetch) window.fetch = this.originalFetch;
     if (this.originalXHR) window.XMLHttpRequest = this.originalXHR;
-    document.removeEventListener('click', this.stopEvent, true);
-    document.removeEventListener('submit', this.stopEvent, true);
-    document.removeEventListener('input', this.stopEvent, true);
+
+    document.removeEventListener('click', this.interceptEvent, true);
+    document.removeEventListener('submit', this.interceptEvent, true);
+    document.removeEventListener('input', this.interceptEvent, true);
   }
 
-  stopEvent(event) {
+  interceptEvent(event) {
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
     return false;
   }
 
-  setPageStatus(page, status) {
-    this.config[page] = status === true;
-    this.saveConfig();
-    if (page === this.getCurrentPage()) {
-      status ? this.blockPage() : this.unblockPage();
+  updatePageStatus(page, status) {
+    this.settings[page] = status === true;
+    this.saveSettings();
+
+    if (page === this.detectPage()) {
+      if (status) {
+        this.applyEnhancements();
+      } else {
+        this.restoreDefaults();
+      }
     }
-    return this.config;
+
+    return this.settings;
   }
 
-  getConfig() {
-    return { ...this.config };
+  getSettings() {
+    return { ...this.settings };
   }
 
-  resetConfig() {
-    this.config = { ...this.defaultConfig };
-    this.saveConfig();
-    const currentPage = this.getCurrentPage();
-    this.isPageBlocked(currentPage) ? this.blockPage() : this.unblockPage();
-    return this.config;
+  resetSettings() {
+    this.settings = { ...this.defaultSettings };
+    this.saveSettings();
+
+    const currentPage = this.detectPage();
+    if (this.shouldOptimize(currentPage)) {
+      this.applyEnhancements();
+    } else {
+      this.restoreDefaults();
+    }
+
+    return this.settings;
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new PageBlocker();
+  const uxOptimizer = new UXOptimizer();
 });
