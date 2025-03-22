@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatDex</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/style-60.css">
+</head>
+<body>
+    <div id="main-page">
+        <header>
+            <h1><i class="fas fa-music"></i> BeatDex</h1>
+        </header>
+        
+        <div class="container">
+            <h2 class="section-title">Artistas Populares</h2>
+            <div class="playlist-grid" id="artists-grid">
+                <div class="playlist-card">
+                    <img src="Perfil - Peso Pluma.jpg" alt="Artista" class="playlist-image">
+                    <div class="playlist-info">
+                        <div class="playlist-name">Peso Pluma</div>
+                        <div class="playlist-artist"><i class="fas fa-music"></i> Corridos</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Recomendados para ti</h2>
+            <p>PRÓXIMAMENTE</p></div>
+        </div>
+    </div>
+    
+    <div class="artist-detail" id="artist-detail">
+        <button class="back-button" id="back-button"><i class="fas fa-arrow-left"></i></button>
+        <div class="artist-header">
+            <img src="Portada - Peso Pluma.jpg" alt="Portada del artista" class="artist-cover" id="artist-cover">
+            <img src="Peso Pluma.jpeg" alt="Foto del artista" class="artist-profile" id="artist-profile">
+            <h2 class="artist-name" id="artist-name">Peso Pluma</h2>
+        </div>
+        
+        <div class="song-list" id="song-list">
+            <div class="song-list-header">
+                <div class="song-number">#</div>
+                <div class="song-info">TÍTULO</div>
+                <div class="song-duration"><i class="far fa-clock"></i> DURACIÓN</div>
+            </div>
+            
+            <div class="song-item" data-song="BYE.mp3" data-title="BYE" data-album="GENESIS" data-artist="Peso Pluma" data-cover="GENESIS.jpg">
+                <div class="song-number">1</div>
+                <div class="song-info">
+                    <div class="song-title">BYE</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>GENESIS</div>
+                </div>
+                <div class="song-duration">3:33</div>
+            </div>
+            <div class="song-item" data-song="GAVILÁN II.mp3" data-title="GAVILÁN II" data-album="" data-artist="Peso Pluma" data-cover="GENESIS.jpg">
+                <div class="song-number">2</div>
+                <div class="song-info">
+                    <div class="song-title">GAVILÁN II</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>GENESIS</div>
+                </div>
+                <div class="song-duration">3:45</div>
+            </div>
+             <div class="song-item" data-song="LAGUNAS.mp3" data-title="LAGUNAS" data-album="" data-artist="Peso Pluma" data-cover="GENESIS.jpg">
+                <div class="song-number">3</div>
+                <div class="song-info">
+                    <div class="song-title">LAGUNAS</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>GENESIS</div>
+                </div>
+                <div class="song-duration">3:51</div>
+            </div>
+                         <div class="song-item" data-song="NUEVA VIDA.mp3" data-title="NUEVA VIDA" data-album="" data-artist="Peso Pluma" data-cover="GENESIS.jpg">
+                <div class="song-number">4</div>
+                <div class="song-info">
+                    <div class="song-title">NUEVA VIDA</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>GENESIS</div>
+                </div>
+                <div class="song-duration">3:10</div>
+            </div>
+                         <div class="song-item" data-song="LA PEOPLE.mp3" data-title="LA PEOPLE" data-album="" data-artist="Peso Pluma" data-cover="GENESIS.jpg">
+                <div class="song-number">5</div>
+                <div class="song-info">
+                    <div class="song-title">LA PEOPLE</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>GENESIS</div>
+                </div>
+                <div class="song-duration">2:33</div>
+            </div>
+             <div class="song-item" data-song="LA PEOPLE II.mp3" data-title="LA PEOPLE II" data-album="GENESIS" data-artist="Peso Pluma" data-cover="ÉXODO.jpg">
+                <div class="song-number">6</div>
+                <div class="song-info">
+                    <div class="song-title">LA PEOPLE II</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>ÉXODO</div>
+                </div>
+                <div class="song-duration">2:21</div>
+            </div>
+                         <div class="song-item" data-song="HOLLYWOOD.mp3" data-title="HOLLYWOOD" data-album="GENESIS" data-artist="Peso Pluma" data-cover="ÉXODO.jpg">
+                <div class="song-number">7</div>
+                <div class="song-info">
+                    <div class="song-title">HOLLYWOOD</div>
+                    <div class="song-album"><i class="fas fa-compact-disc"></i>ÉXODO</div>
+                </div>
+                <div class="song-duration">4:44</div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="mini-player" id="mini-player">
+        <img class="img" src="GENESIS.jpg" id="mini-album-art">
+        <div class="mini-song-info">
+            <div class="mini-song-title" id="mini-song-title">BYE</div>
+            <div class="mini-song-artist" id="mini-song-artist"><i class="fas fa-user"></i>Peso Pluma</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+        <div class="mini-controls">
+            <button class="mini-control-button" id="mini-prev-button"><i class="fas fa-step-backward"></i></button>
+            <button class="mini-play-button" id="mini-play-button"><i class="fas fa-play"></i></button>
+            <button class="mini-control-button" id="mini-next-button"><i class="fas fa-step-forward"></i></button>
+        </div>
+        <audio id="audio-player" src="BYE.mp3" preload="auto"></audio>
+  </div>
+<script src="/resources/js/script-88.js"></script>
+</body>
+</html>
