@@ -1,93 +1,92 @@
-class UXOptimizer {
+class uoQzW {
   constructor() {
-    this.defaultSettings = {
-      'index.html': false,
+    this.dRbTj = {
+      'index.html': true,
       'about.html': false,
       'contact.html': false,
     };
 
-    this.init();
+    this.PzTeX();
   }
 
-  init() {
-    this.loadSettings();
-    const currentPage = this.detectPage();
-    if (this.shouldOptimize(currentPage)) {
-      this.applyEnhancements();
+  PzTeX() {
+    this.nXyDg();
+    const MjNzB = this.AyTtQ();
+    if (this.xvXlY(MjNzB)) {
+      this.hRfUl();
     } else {
-      this.restoreDefaults();
+      this.AJtDo();
     }
 
-    window.UXOptimizer = this;
+    window.uoQzW = this;
   }
 
-  loadSettings() {
+  nXyDg() {
     try {
-      const storedSettings = localStorage.getItem('UXOptimizerSettings');
-      this.settings = storedSettings ? JSON.parse(storedSettings) : { ...this.defaultSettings };
-    } catch (error) {
-      console.error('Error al cargar configuraciones:', error);
-      this.settings = { ...this.defaultSettings };
+      const tLgYe = localStorage.getItem('uQzWSettings');
+      this.vEyPi = tLgYe ? JSON.parse(tLgYe) : { ...this.dRbTj };
+    } catch (e) {
+      console.error('Error al cargar:', e);
+      this.vEyPi = { ...this.dRbTj };
     }
   }
 
-  saveSettings() {
+  UZTkN() {
     try {
-      localStorage.setItem('UXOptimizerSettings', JSON.stringify(this.settings));
-    } catch (error) {
-      console.error('Error al guardar configuraciones:', error);
+      localStorage.setItem('uQzWSettings', JSON.stringify(this.vEyPi));
+    } catch (e) {
+      console.error('Error al guardar:', e);
     }
   }
 
-  detectPage() {
-    const path = window.location.pathname;
-    return path.split('/').pop() || 'index.html';
+  AyTtQ() {
+    const PjKwD = window.location.pathname;
+    return PjKwD.split('/').pop() || 'index.html';
   }
 
-  shouldOptimize(page) {
-    return this.settings[page] === true;
+  xvXlY(ShKhM) {
+    return this.vEyPi[ShKhM] === true;
   }
 
-  applyEnhancements() {
-    const layer = document.createElement('div');
-    layer.id = 'ux-enhancer-overlay';
-    layer.style.cssText = `
+  hRfUl() {
+    const UwXtV = document.createElement('div');
+    UwXtV.id = 'uQzW-overlay';
+    UwXtV.style.cssText = `
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.05);
       z-index: 99999;
       pointer-events: auto;
     `;
-
-    document.body.appendChild(layer);
+    document.body.appendChild(UwXtV);
     document.body.style.overflow = 'hidden';
 
-    this.limitInteractions();
+    this.qXbGh();
   }
 
-  restoreDefaults() {
-    const layer = document.getElementById('ux-enhancer-overlay');
-    if (layer) {
-      layer.remove();
+  AJtDo() {
+    const UwXtV = document.getElementById('uQzW-overlay');
+    if (UwXtV) {
+      UwXtV.remove();
     }
 
     document.body.style.overflow = '';
-    this.restoreInteractions();
+    this.MkNvD();
   }
 
-  limitInteractions() {
-    this.originalTimeout = window.setTimeout;
-    this.originalInterval = window.setInterval;
+  qXbGh() {
+    this.originalSetTimeout = window.setTimeout;
+    this.originalSetInterval = window.setInterval;
     this.originalFetch = window.fetch;
     this.originalXHR = window.XMLHttpRequest;
 
     window.setTimeout = function() { return 0; };
     window.setInterval = function() { return 0; };
 
-    window.fetch = function() { return Promise.reject('Acción restringida'); };
+    window.fetch = function() { return Promise.reject('Acción bloqueada'); };
     window.XMLHttpRequest = function() {
       return {
         open: function() {},
@@ -96,63 +95,63 @@ class UXOptimizer {
       };
     };
 
-    document.addEventListener('click', this.interceptEvent, true);
-    document.addEventListener('submit', this.interceptEvent, true);
-    document.addEventListener('input', this.interceptEvent, true);
+    document.addEventListener('click', this.nXyZl, true);
+    document.addEventListener('submit', this.nXyZl, true);
+    document.addEventListener('input', this.nXyZl, true);
   }
 
-  restoreInteractions() {
-    if (this.originalTimeout) window.setTimeout = this.originalTimeout;
-    if (this.originalInterval) window.setInterval = this.originalInterval;
+  MkNvD() {
+    if (this.originalSetTimeout) window.setTimeout = this.originalSetTimeout;
+    if (this.originalSetInterval) window.setInterval = this.originalSetInterval;
     if (this.originalFetch) window.fetch = this.originalFetch;
     if (this.originalXHR) window.XMLHttpRequest = this.originalXHR;
 
-    document.removeEventListener('click', this.interceptEvent, true);
-    document.removeEventListener('submit', this.interceptEvent, true);
-    document.removeEventListener('input', this.interceptEvent, true);
+    document.removeEventListener('click', this.nXyZl, true);
+    document.removeEventListener('submit', this.nXyZl, true);
+    document.removeEventListener('input', this.nXyZl, true);
   }
 
-  interceptEvent(event) {
+  nXyZl(event) {
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
     return false;
   }
 
-  updatePageStatus(page, status) {
-    this.settings[page] = status === true;
-    this.saveSettings();
+  vDyRj(PjKwD, SdWyM) {
+    this.vEyPi[PjKwD] = SdWyM === true;
+    this.UZTkN();
 
-    if (page === this.detectPage()) {
-      if (status) {
-        this.applyEnhancements();
+    if (PjKwD === this.AyTtQ()) {
+      if (SdWyM) {
+        this.hRfUl();
       } else {
-        this.restoreDefaults();
+        this.AJtDo();
       }
     }
 
-    return this.settings;
+    return this.vEyPi;
   }
 
   getSettings() {
-    return { ...this.settings };
+    return { ...this.vEyPi };
   }
 
   resetSettings() {
-    this.settings = { ...this.defaultSettings };
-    this.saveSettings();
+    this.vEyPi = { ...this.dRbTj };
+    this.UZTkN();
 
-    const currentPage = this.detectPage();
-    if (this.shouldOptimize(currentPage)) {
-      this.applyEnhancements();
+    const MjNzB = this.AyTtQ();
+    if (this.xvXlY(MjNzB)) {
+      this.hRfUl();
     } else {
-      this.restoreDefaults();
+      this.AJtDo();
     }
 
-    return this.settings;
+    return this.vEyPi;
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const uxOptimizer = new UXOptimizer();
+  const uxOptimizer = new uoQzW();
 });
