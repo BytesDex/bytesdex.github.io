@@ -13,6 +13,23 @@ const miniAlbumArt = document.getElementById('mini-album-art');
 let isPlaying = false;
 let currentSongIndex = 0;
 
+let isRepeatEnabled = false;
+
+const repeatButton = document.createElement('button');
+repeatButton.id = 'mini-repeat-button';
+repeatButton.className = 'mini-control-button';
+repeatButton.innerHTML = '<i class="fas fa-sync"></i>';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const playerControls = document.querySelector('.mini-player-controls');
+    if (playerControls) {
+        playerControls.appendChild(repeatButton);
+    } else {
+
+        nextButton.parentNode.insertBefore(repeatButton, nextButton.nextSibling);
+    }
+});
+
 function showArtistDetail() {
     mainPage.style.display = 'none';
     artistDetail.classList.add('active');
@@ -32,6 +49,18 @@ function togglePlay() {
         playButton.innerHTML = '<i class="fas fa-pause"></i>';
     }
     isPlaying = !isPlaying;
+}
+
+function toggleRepeat() {
+    isRepeatEnabled = !isRepeatEnabled;
+    
+    if (isRepeatEnabled) {
+
+        repeatButton.classList.add('active');
+    } else {
+
+        repeatButton.classList.remove('active');
+    }
 }
 
 function updateProgress() {
@@ -75,32 +104,41 @@ songItems.forEach(item => {
 
 playButton.addEventListener('click', togglePlay);
 
+repeatButton.addEventListener('click', toggleRepeat);
+
 audioPlayer.addEventListener('timeupdate', updateProgress);
 
 audioPlayer.addEventListener('ended', function() {
-    currentSongIndex++;
+    if (isRepeatEnabled) {
 
-    if (currentSongIndex >= songItems.length) {
-        currentSongIndex = 0; // Vuelve a la primera canción si se llegó al final
+        audioPlayer.currentTime = 0;
+        audioPlayer.play();
+    } else {
+
+        currentSongIndex++;
+
+        if (currentSongIndex >= songItems.length) {
+            currentSongIndex = 0;
+        }
+
+        const nextSongItem = songItems[currentSongIndex];
+
+        const nextSongFile = nextSongItem.getAttribute('data-song');
+        const nextSongTitle = nextSongItem.getAttribute('data-title');
+        const nextSongArtist = nextSongItem.getAttribute('data-artist');
+        const nextSongCover = nextSongItem.getAttribute('data-cover');
+
+        miniSongTitle.textContent = nextSongTitle;
+        miniSongArtist.innerHTML = `<i class="fas fa-user"></i>${nextSongArtist}`;
+        miniAlbumArt.src = nextSongCover;
+
+        audioPlayer.src = nextSongFile;
+
+        audioPlayer.play();
+        isPlaying = true;
+        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+        miniPlayer.classList.add('active');
     }
-
-    const nextSongItem = songItems[currentSongIndex];
-
-    const nextSongFile = nextSongItem.getAttribute('data-song');
-    const nextSongTitle = nextSongItem.getAttribute('data-title');
-    const nextSongArtist = nextSongItem.getAttribute('data-artist');
-    const nextSongCover = nextSongItem.getAttribute('data-cover');
-
-    miniSongTitle.textContent = nextSongTitle;
-    miniSongArtist.innerHTML = `<i class="fas fa-user"></i>${nextSongArtist}`;
-    miniAlbumArt.src = nextSongCover;
-
-    audioPlayer.src = nextSongFile;
-
-    audioPlayer.play();
-    isPlaying = true;
-    playButton.innerHTML = '<i class="fas fa-pause"></i>';
-    miniPlayer.classList.add('active');
 });
 
 document.querySelector('.progress-container').addEventListener('click', function(e) {
@@ -115,7 +153,7 @@ prevButton.addEventListener('click', function() {
     currentSongIndex--;
 
     if (currentSongIndex < 0) {
-        currentSongIndex = songItems.length - 1; // Si estamos en la primera canción, volvemos a la última
+        currentSongIndex = songItems.length - 1; 
     }
 
     const prevSongItem = songItems[currentSongIndex];
@@ -141,7 +179,7 @@ nextButton.addEventListener('click', function() {
     currentSongIndex++;
 
     if (currentSongIndex >= songItems.length) {
-        currentSongIndex = 0; // Volver al inicio si estamos al final
+        currentSongIndex = 0; 
     }
 
     const nextSongItem = songItems[currentSongIndex];
@@ -162,3 +200,15 @@ nextButton.addEventListener('click', function() {
     playButton.innerHTML = '<i class="fas fa-pause"></i>';
     miniPlayer.classList.add('active');
 });
+
+const style = document.createElement('style');
+style.textContent = `
+    #mini-repeat-button.active {
+        color: #1DB954;
+    }
+    
+    #mini-repeat-button.active:hover {
+        background-color: rgba(29, 185, 84, 0.2);
+    }
+`;
+document.head.appendChild(style);
