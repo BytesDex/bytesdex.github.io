@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essence | Tienda de Perfumes</title>
+    <style>
+        :root {
+            --background: #ffffff;
+            --text: #121212;
+            --accent: #8a5cf5;
+            --secondary: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --border: rgba(0, 0, 0, 0.08);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #121212;
+                --text: #f8f9fa;
+                --accent: #a78bfa;
+                --secondary: #1e1e1e;
+                --card-bg: #1e1e1e;
+                --shadow: rgba(0, 0, 0, 0.3);
+                --border: rgba(255, 255, 255, 0.08);
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 2px 15px var(--shadow);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent), #d946ef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .icon {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .icon:hover {
+            transform: translateY(-3px);
+            color: var(--accent);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, var(--background), rgba(138, 92, 245, 0.1));
+            padding: 0 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 10px rgba(138, 92, 245, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(138, 92, 245, 0.4);
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px var(--shadow));
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--accent), #d946ef);
+            border-radius: 4px;
+        }
+        
+        .featured {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .product-image {
+            height: 280px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 70%, var(--card-bg));
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-btn {
+            width: 100%;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .banner {
+            padding: 4rem 1.5rem;
+            background-color: var(--secondary);
+            text-align: center;
+        }
+        
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .banner p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            padding: 4rem 1.5rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent), #d946ef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: #d946ef;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .product-card {
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                order: -1;
+                text-align: center;
+            }
+            
+            .hero-image img {
+                max-width: 70%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav, .icons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Essence</div>
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#">Productos</a>
+                <a href="#">Colecciones</a>
+                <a href="#">Sobre Nosotros</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <div class="icons">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">3</span>
+                </div>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+            <div class="mobile-menu" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Descubre tu esencia<br>perfecta</h1>
+                <p class="hero-subtitle">Nuestra colección de fragancias exclusivas está diseñada para realzar tu personalidad y crear recuerdos duraderos.</p>
+                <a href="#" class="btn">Explorar colección</a>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/500/500" alt="Perfume de lujo">
+            </div>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2 class="section-title">Perfumes Destacados</h2>
+        <div class="featured-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/350/350')"></div>
+                <div class="product-details">
+                    <div class="product-category">Floral</div>
+                    <h3 class="product-name">Aurora Bloom</h3>
+                    <div class="product-price">Q00.00</div>
+                    <p class="product-description">Una fragancia floral delicada con notas de rosa, jazmín y un toque de vainilla.</p>
+                    <button class="cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/350/350')"></div>
+                <div class="product-details">
+                    <div class="product-category">Amaderado</div>
+                    <h3 class="product-name">Noble Cedar</h3>
+                    <div class="product-price">Q00.00</div>
+                    <p class="product-description">Intenso aroma amaderado con notas de cedro, sándalo y un toque de bergamota.</p>
+                    <button class="cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/350/350')"></div>
+                <div class="product-details">
+                    <div class="product-category">Cítrico</div>
+                    <h3 class="product-name">Mediterranean Zest</h3>
+                    <div class="product-price">Q00.00</div>
+                    <p class="product-description">Refrescante fragancia cítrica con notas de bergamota, limón y naranja.</p>
+                    <button class="cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/350/350')"></div>
+                <div class="product-details">
+                    <div class="product-category">Oriental</div>
+                    <h3 class="product-name">Midnight Amber</h3>
+                    <div class="product-price">Q00.00</div>
+                    <p class="product-description">Misteriosa fragancia oriental con notas de ámbar, especias y vainilla.</p>
+                    <button class="cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="banner">
+        <h2>Encuentra tu fragancia única</h2>
+        <p>Nuestros expertos perfumistas pueden ayudarte a encontrar la fragancia perfecta que refleje tu personalidad única.</p>
+        <a href="#" class="btn">Reservar consulta</a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">Essence</div>
+                <p>Creamos fragancias exclusivas que cuentan historias y despiertan emociones. Cada perfume está elaborado artesanalmente con los ingredientes más selectos de todo el mundo.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links-column">
+                <h3 class="footer-heading">Enlaces rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Colecciones</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links-column">
+                <h3 class="footer-heading">Productos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Fragancias femeninas</a></li>
+                    <li><a href="#">Fragancias masculinas</a></li>
+                    <li><a href="#">Colecciones exclusivas</a></li>
+                    <li><a href="#">Ediciones limitadas</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links-column">
+                <h3 class="footer-heading">Contacto</h3>
+                <ul class="footer-links">
+                    <li><a href="#">#</a></li>
+                    <li><a href="#">+502</a></li>
+                    <li><a href="#">Calle #</a></li>
+                    <li><a href="#">#</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Essence. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            const cartButtons = document.querySelectorAll('.cart-btn');
+            const cartCount = document.querySelector('.cart-count');
+            let count = parseInt(cartCount.textContent);
+            
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    count++;
+                    cartCount.textContent = count;
+                    
+                    this.textContent = '¡Añadido!';
+                    this.style.backgroundColor = '#8a5cf5';
+                    this.style.color = 'white';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Añadir al carrito';
+                        this.style.backgroundColor = '';
+                        this.style.color = '';
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
