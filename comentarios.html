@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Comentarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background-color: #f5f7fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --border-color: #e1e5eb;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --success-color: #4daf7c;
+            --error-color: #e63946;
+            --light-text: #718096;
+        }
+
+        [data-theme="dark"] {
+            --background-color: #1a202c;
+            --text-color: #e2e8f0;
+            --card-bg: #2d3748;
+            --primary-color: #4361ee;
+            --secondary-color: #4895ef;
+            --accent-color: #4cc9f0;
+            --border-color: #4a5568;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --success-color: #38a169;
+            --error-color: #f56565;
+            --light-text: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+        .comment-form {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        button i {
+            margin-right: 8px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .comments-section {
+            margin-top: 30px;
+        }
+
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .comments-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .comment {
+            background-color: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .comment-time {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .comment-content {
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+
+        .notification {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .notification.error {
+            background-color: var(--error-color);
+            color: white;
+        }
+
+        .no-comments {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--light-text);
+        }
+
+        .no-comments i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-text);
+        }
+
+        .loading i {
+            animation: spin 1s linear infinite;
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .comment-form, .comment {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .theme-toggle {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Comentarios</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div id="notification" class="notification"></div>
+
+        <!-- Formulario para agregar comentario -->
+        <div class="comment-form">
+            <h2>Deja tu comentario</h2>
+            <div class="form-group">
+                <label for="username">Nombre</label>
+                <input type="text" id="username" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="commentText">Comentario</label>
+                <textarea id="commentText" placeholder="Escribe tu comentario" required></textarea>
+            </div>
+            <button id="submitComment" onclick="addComment()">
+                <i class="fas fa-paper-plane"></i> Enviar Comentario
+            </button>
+        </div>
+
+        <!-- Sección de comentarios -->
+        <div class="comments-section">
+            <div class="comments-header">
+                <h2>Comentarios</h2>
+                <span id="commentCount"></span>
+            </div>
+            
+            <div id="loadingComments" class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Cargando comentarios...</p>
+            </div>
+            
+            <div id="commentsContainer"></div>
+            
+            <div id="noComments" class="no-comments" style="display: none;">
+                <i class="fas fa-comments"></i>
+                <p>No hay comentarios aún. ¡Sé el primero en comentar!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Importar las funciones necesarias de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt0GqEnGHdrWNlOVMe4ZiquzUsuhNQcBM",
+            authDomain: "bytesdex-10eef.firebaseapp.com",
+            projectId: "bytesdex-10eef",
+            storageBucket: "bytesdex-10eef.firebasestorage.app",
+            messagingSenderId: "654293802097",
+            appId: "1:654293802097:web:22db08c55f6582a8f10fd0",
+            measurementId: "G-H4PHEVX35M"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Función para mostrar notificaciones
+        function showNotification(message, type) {
+            const notification = document.getElementById("notification");
+            notification.innerHTML = message;
+            notification.className = "notification " + type;
+            notification.style.display = "block";
+            
+            // Ocultar la notificación después de 3 segundos
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 3000);
+        }
+
+        // Función para generar iniciales de avatar
+        function getInitials(name) {
+            return name
+                .split(' ')
+                .map(word => word.charAt(0))
+                .join('')
+                .toUpperCase()
+                .substring(0, 2);
+        }
+
+        // Función para formatear fecha
+        function formatDate(timestamp) {
+            if (!timestamp) return "Fecha no disponible";
+            
+            const date = timestamp.toDate();
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMins / 60);
+            const diffDays = Math.floor(diffHours / 24);
+            
+            if (diffMins < 1) return "Ahora mismo";
+            if (diffMins < 60) return `Hace ${diffMins} minutos`;
+            if (diffHours < 24) return `Hace ${diffHours} horas`;
+            if (diffDays < 7) return `Hace ${diffDays} días`;
+            
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Función para agregar un comentario
+        window.addComment = async function() {
+            const username = document.getElementById("username").value;
+            const commentText = document.getElementById("commentText").value;
+            const submitButton = document.getElementById("submitComment");
+
+            if (username && commentText) {
+                // Deshabilitar botón mientras se envía
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                
+                try {
+                    const commentsRef = collection(db, "comments");
+                    await addDoc(commentsRef, {
+                        user: username,
+                        text: commentText,
+                        timestamp: serverTimestamp()
+                    });
+
+                    // Limpiar los campos después de enviar el comentario
+                    document.getElementById("username").value = '';
+                    document.getElementById("commentText").value = '';
+                    
+                    // Mostrar notificación de éxito
+                    showNotification('<i class="fas fa-check-circle"></i> ¡Comentario enviado con éxito!', 'success');
+
+                    // Actualizar la lista de comentarios
+                    loadComments();
+                } catch (error) {
+                    console.error("Error al agregar el comentario:", error);
+                    showNotification('<i class="fas fa-exclamation-circle"></i> Error al enviar el comentario. Inténtalo de nuevo.', 'error');
+                } finally {
+                    // Rehabilitar botón
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Comentario';
+                }
+            } else {
+                showNotification('<i class="fas fa-exclamation-circle"></i> Por favor ingresa tu nombre y comentario.', 'error');
+            }
+        }
+
+        // Función para cargar y mostrar los comentarios
+        async function loadComments() {
+            const commentsContainer = document.getElementById("commentsContainer");
+            const loadingElement = document.getElementById("loadingComments");
+            const noCommentsElement = document.getElementById("noComments");
+            const commentCountElement = document.getElementById("commentCount");
+            
+            // Mostrar cargando
+            loadingElement.style.display = "block";
+            commentsContainer.innerHTML = '';
+            noCommentsElement.style.display = "none";
+            
+            try {
+                const commentsRef = collection(db, "comments");
+                const q = query(commentsRef, orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                // Ocultar cargando
+                loadingElement.style.display = "none";
+                
+                if (querySnapshot.empty) {
+                    noCommentsElement.style.display = "block";
+                    commentCountElement.textContent = "0 comentarios";
+                    return;
+                }
+                
+                // Actualizar contador de comentarios
+                const count = querySnapshot.size;
+                commentCountElement.textContent = `${count} comentario${count !== 1 ? 's' : ''}`;
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const commentElement = document.createElement("div");
+                    commentElement.classList.add("comment");
+                    
+                    const initials = getInitials(data.user);
+                    const formattedTime = formatDate(data.timestamp);
+                    
+                    commentElement.innerHTML = `
+                        <div class="comment-header">
+                            <div class="user-info">
+                                <div class="avatar">${initials}</div>
+                                <span class="username">${data.user}</span>
+                            </div>
+                            <span class="comment-time">${formattedTime}</span>
+                        </div>
+                        <div class="comment-content">${data.text}</div>
+                    `;
+                    
+                    commentsContainer.appendChild(commentElement);
+                });
+            } catch (error) {
+                console.error("Error al cargar comentarios:", error);
+                loadingElement.style.display = "none";
+                showNotification('<i class="fas fa-exclamation-circle"></i> Error al cargar los comentarios. Intenta refrescar la página.', 'error');
+            }
+        }
+
+        // Función para cambiar el tema
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Inicializar tema basado en preferencia del sistema
+            if (localStorage.getItem('theme')) {
+                document.body.setAttribute('data-theme', localStorage.getItem('theme'));
+                updateThemeIcon(localStorage.getItem('theme'));
+            } else if (prefersDarkScheme.matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                updateThemeIcon('dark');
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.body.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            function updateThemeIcon(theme) {
+                themeToggle.innerHTML = theme === 'dark' 
+                    ? '<i class="fas fa-sun"></i>' 
+                    : '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Cargar los comentarios cuando se carga la página e inicializar el tema
+        window.onload = () => {
+            loadComments();
+            setupThemeToggle();
+        };
+    </script>
+</body>
+  </html>
