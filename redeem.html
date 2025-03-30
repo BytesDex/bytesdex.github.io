@@ -386,285 +386,256 @@
     </div>
 
     <script>
-                // Almacenamiento mejorado con prefijo para evitar conflictos
-        const STORAGE_KEY = 'premio_system_links';
-        const TOKEN_KEY = 'premio_system_token';
-        const VALID_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227';
-        
-        // Cargar links existentes
-        let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-        
-        // Elementos del DOM
-        const adminPanel = document.getElementById('admin-panel');
-        const userPanel = document.getElementById('user-panel');
-        const unauthorizedPanel = document.getElementById('unauthorized-panel');
-        const premioInput = document.getElementById('premio');
-        const generarBtn = document.getElementById('generar-btn');
-        const resultContainer = document.getElementById('result');
-        const premioResult = document.getElementById('premio-result');
-        const prizeAnimation = document.getElementById('prize-animation');
-        
-        // Función para verificar token de acceso
-        function checkAccessToken() {
-            // Verificar si hay un token en localStorage
-            let storedToken = localStorage.getItem(TOKEN_KEY);
-            
-            // Verificar si hay un token en la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const tokenParam = urlParams.get('access_token');
-            
-            // Si hay un token en la URL, almacenarlo
-            if (tokenParam === VALID_TOKEN) {
-                localStorage.setItem(TOKEN_KEY, tokenParam);
-                storedToken = tokenParam;
-                
-                // Limpiar URL para mayor seguridad
-                const baseUrl = window.location.href.split('?')[0];
-                window.history.replaceState({}, document.title, baseUrl);
-            }
-            
-            // Si el token es válido, mostrar panel correspondiente
-            if (storedToken === VALID_TOKEN) {
-                return true;
-            } else {
-                return false;
-            }
+            const STORAGE_KEY = 'premio_system_links';
+const TOKEN_KEY = 'premio_system_token';
+const VALID_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227';
+
+// Cargar links existentes
+let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+// Elementos del DOM
+const adminPanel = document.getElementById('admin-panel');
+const userPanel = document.getElementById('user-panel');
+const unauthorizedPanel = document.getElementById('unauthorized-panel');
+const premioInput = document.getElementById('premio');
+const generarBtn = document.getElementById('generar-btn');
+const resultContainer = document.getElementById('result');
+const premioResult = document.getElementById('premio-result');
+const prizeAnimation = document.getElementById('prize-animation');
+
+// Función para verificar token de acceso
+function checkAccessToken() {
+    let storedToken = localStorage.getItem(TOKEN_KEY);
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenParam = urlParams.get('access_token');
+
+    if (tokenParam === VALID_TOKEN) {
+        localStorage.setItem(TOKEN_KEY, tokenParam);
+        storedToken = tokenParam;
+        const baseUrl = window.location.href.split('?')[0];
+        window.history.replaceState({}, document.title, baseUrl);
+    }
+
+    if (storedToken === VALID_TOKEN) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Función para generar IDs únicos más cortos y seguros
+function generateUniqueId(length = 8) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+
+    if (window.crypto && window.crypto.getRandomValues) {
+        const values = new Uint32Array(length);
+        window.crypto.getRandomValues(values);
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(values[i] % charactersLength);
         }
-        
-        // Función para generar IDs únicos más cortos y seguros
-        function generateUniqueId(length = 8) {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let result = '';
-            const charactersLength = characters.length;
-            
-            // Usar Crypto API para mayor aleatoriedad si está disponible
-            if (window.crypto && window.crypto.getRandomValues) {
-                const values = new Uint32Array(length);
-                window.crypto.getRandomValues(values);
-                for (let i = 0; i < length; i++) {
-                    result += characters.charAt(values[i] % charactersLength);
-                }
-                return result;
-            }
-            
-            // Fallback a Math.random
-            for (let i = 0; i < length; i++) {
-                result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            }
-            return result;
-        }
-        
-        // Función para crear confeti
-        function createConfetti() {
-            const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
-            prizeAnimation.innerHTML = '';
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.top = `-5px`;
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = `${5 + Math.random() * 10}px`;
-                confetti.style.height = `${5 + Math.random() * 10}px`;
-                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-                
-                prizeAnimation.appendChild(confetti);
-            }
-        }
-        
-        // Función para generar un nuevo link de premio
-        function generarLink() {
-            const premio = premioInput.value.trim();
-            
-            if (premio === "") {
-                showNotification('error', 'Debes escribir un premio para continuar');
-                return;
-            }
-            
-            // Generar ID único
-            const id = generateUniqueId();
-            
-            // Guardar en el almacenamiento local
-            links[id] = { 
-                premio: premio, 
-                canjeado: false,
-                creado: new Date().toISOString()
-            };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-            
-            // Construir URL amigable
-            const baseUrl = window.location.href.split('?')[0].split('#')[0];
-            const url = `${baseUrl}?premio=${id}`;
-            
-            // Reconstruir completamente el contenedor de resultados
-            resultContainer.innerHTML = `
-                <div class="notification success">
-                    <i class="fas fa-check-circle"></i>
-                    <span>¡Link generado con éxito!</span>
-                </div>
-                <div class="link-container">
-                    <span class="link-url" id="link-text">${url}</span>
-                    <button id="copy-btn" class="btn btn-copy">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-                <a href="${url}" id="link-redirect" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Abrir Link
-                </a>
-            `;
-            
-            // Mostrar el contenedor de resultados
-            resultContainer.classList.add('active');
-            
-            // Asignar evento de copia al nuevo botón
-            document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
-            
-            // Animar contenedor
-            adminPanel.style.animation = 'fadeIn 0.5s ease-out';
-            
-            // Limpiar input
-            premioInput.value = '';
-        }
-        
-        // Función para copiar al portapapeles
-        function copyToClipboard() {
-            const linkText = document.getElementById('link-text');
-            navigator.clipboard.writeText(linkText.textContent)
-                .then(() => {
-                    const copyBtn = document.getElementById('copy-btn');
-                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado';
-                    setTimeout(() => {
-                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar';
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error('Error al copiar:', err);
-                });
-        }
-        
-        // Función para canjear un premio
-        function canjearPremio(id) {
-            adminPanel.style.display = 'none';
-            userPanel.style.display = 'block';
-            
-            if (!links.hasOwnProperty(id)) {
-                showPrizeResult('error', 'Este link no es válido o ha expirado');
-            } else if (links[id].canjeado) {
-                showPrizeResult('warning', 'Este premio ya ha sido canjeado anteriormente');
-            } else {
-                // Marcar como canjeado
-                links[id].canjeado = true;
-                links[id].canjeadoFecha = new Date().toISOString();
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-                
-                // Mostrar premio con animación
-                createConfetti();
-                
-                const prizeText = document.createElement('div');
-                prizeText.className = 'prize-text';
-                prizeText.innerHTML = `
-                    <i class="fas fa-trophy"></i><br>
-                    ¡Felicidades!<br>
-                    Has ganado:<br>
-                    <span style="color: #9b59b6; font-size: 1.5rem;">${links[id].premio}</span>
-                `;
-                
-                prizeAnimation.appendChild(prizeText);
-                
-                showPrizeResult('success', `¡Enhorabuena! Has canjeado tu premio:`);
-            }
-        }
-        
-        // Función para mostrar notificaciones
-        function showNotification(type, message) {
-            const notification = document.createElement('div');
-            let icon = '';
-            
-            switch(type) {
-                case 'success':
-                    icon = 'check-circle';
-                    break;
-                case 'error':
-                    icon = 'times-circle';
-                    break;
-                case 'warning':
-                    icon = 'exclamation-triangle';
-                    break;
-                default:
-                    icon = 'info-circle';
-            }
-            
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${icon}"></i>
-                <span>${message}</span>
-            `;
-            
-            resultContainer.innerHTML = '';
-            resultContainer.appendChild(notification);
-            resultContainer.classList.add('active');
-            
+        return result;
+    }
+
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+// Función para crear confeti
+function createConfetti() {
+    const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
+    prizeAnimation.innerHTML = '';
+
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.top = `-5px`;
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = `${5 + Math.random() * 10}px`;
+        confetti.style.height = `${5 + Math.random() * 10}px`;
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        confetti.style.animationDelay = `${Math.random() * 2}s`;
+        confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
+
+        prizeAnimation.appendChild(confetti);
+    }
+}
+
+// Función para generar un nuevo link de premio
+function generarLink() {
+    const premio = premioInput.value.trim();
+
+    if (premio === "") {
+        showNotification('error', 'Debes escribir un premio para continuar');
+        return;
+    }
+
+    const id = generateUniqueId();
+
+    links[id] = {
+        premio: premio,
+        canjeado: false,
+        creado: new Date().toISOString()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+
+    const baseUrl = window.location.href.split('?')[0].split('#')[0];
+    const url = `${baseUrl}?code=${id}&access_token=${localStorage.getItem(TOKEN_KEY)}`;
+
+    resultContainer.innerHTML = `
+        <div class="notification success">
+            <i class="fas fa-check-circle"></i>
+            <span>¡Link generado con éxito!</span>
+        </div>
+        <div class="link-container">
+            <span class="link-url" id="link-text">${url}</span>
+            <button id="copy-btn" class="btn btn-copy">
+                <i class="fas fa-copy"></i> Copiar
+            </button>
+        </div>
+        <a href="${url}" id="link-redirect" class="btn btn-secondary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Abrir Link
+        </a>
+    `;
+
+    resultContainer.classList.add('active');
+    document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
+    adminPanel.style.animation = 'fadeIn 0.5s ease-out';
+    premioInput.value = '';
+}
+
+// Función para copiar al portapapeles
+function copyToClipboard() {
+    const linkText = document.getElementById('link-text');
+    navigator.clipboard.writeText(linkText.textContent)
+        .then(() => {
+            const copyBtn = document.getElementById('copy-btn');
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado';
             setTimeout(() => {
-                resultContainer.classList.remove('active');
-            }, 3000);
-        }
-        
-        // Función para mostrar resultado de premio
-        function showPrizeResult(type, message) {
-            let icon = '';
-            
-            switch(type) {
-                case 'success':
-                    icon = 'check-circle';
-                    break;
-                case 'error':
-                    icon = 'times-circle';
-                    break;
-                case 'warning':
-                    icon = 'exclamation-triangle';
-                    break;
-                default:
-                    icon = 'info-circle';
-            }
-            
-            premioResult.innerHTML = `
-                <div class="notification ${type}">
-                    <i class="fas fa-${icon}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-        }
-        
-        // Event Listeners
-        generarBtn.addEventListener('click', generarLink);
-        
-        premioInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') generarLink();
+                copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Error al copiar:', err);
         });
-        
-        // Inicialización y verificación de token
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const premioId = urlParams.get('premio');
-            
-            // Verificar acceso
-            const hasAccess = checkAccessToken();
-            
-            if (premioId) {
-                // Si hay un código de premio, mostrar panel de usuario
-                userPanel.style.display = 'block';
-                canjearPremio(premioId);
-            } else if (hasAccess) {
-                // Si tiene token válido, mostrar panel de administrador
-                adminPanel.style.display = 'block';
-            } else {
-                // Si no tiene token, mostrar panel de no autorizado
-                unauthorizedPanel.style.display = 'block';
-            }
-        });
-    </script>
-</body>
-</html>
+}
+
+// Función para canjear un premio
+function canjearPremio(id) {
+    adminPanel.style.display = 'none';
+    userPanel.style.display = 'block';
+
+    if (!links.hasOwnProperty(id)) {
+        showPrizeResult('error', 'Este link no es válido o ha expirado');
+    } else if (links[id].canjeado) {
+        showPrizeResult('warning', 'Este premio ya ha sido canjeado anteriormente');
+    } else {
+        links[id].canjeado = true;
+        links[id].canjeadoFecha = new Date().toISOString();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+
+        createConfetti();
+
+        const prizeText = document.createElement('div');
+        prizeText.className = 'prize-text';
+        prizeText.innerHTML = `
+            <i class="fas fa-trophy"></i><br>
+            ¡Felicidades!<br>
+            Has ganado:<br>
+            <span style="color: #9b59b6; font-size: 1.5rem;">${links[id].premio}</span>
+        `;
+
+        prizeAnimation.appendChild(prizeText);
+
+        showPrizeResult('success', `¡Enhorabuena! Has canjeado tu premio:`);
+    }
+}
+
+// Función para mostrar notificaciones
+function showNotification(type, message) {
+    const notification = document.createElement('div');
+    let icon = '';
+
+    switch(type) {
+        case 'success':
+            icon = 'check-circle';
+            break;
+        case 'error':
+            icon = 'times-circle';
+            break;
+        case 'warning':
+            icon = 'exclamation-triangle';
+            break;
+        default:
+            icon = 'info-circle';
+    }
+
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+    `;
+
+    resultContainer.innerHTML = '';
+    resultContainer.appendChild(notification);
+    resultContainer.classList.add('active');
+
+    setTimeout(() => {
+        resultContainer.classList.remove('active');
+    }, 3000);
+}
+
+// Función para mostrar resultado de premio
+function showPrizeResult(type, message) {
+    let icon = '';
+
+    switch(type) {
+        case 'success':
+            icon = 'check-circle';
+            break;
+        case 'error':
+            icon = 'times-circle';
+            break;
+        case 'warning':
+            icon = 'exclamation-triangle';
+            break;
+        default:
+            icon = 'info-circle';
+    }
+
+    premioResult.innerHTML = `
+        <div class="notification ${type}">
+            <i class="fas fa-${icon}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+}
+
+// Event Listeners
+generarBtn.addEventListener('click', generarLink);
+
+premioInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') generarLink();
+});
+
+// Inicialización y verificación de token
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const premioId = urlParams.get('premio');
+
+    const hasAccess = checkAccessToken();
+
+    if (premioId) {
+        userPanel.style.display = 'block';
+        canjearPremio(premioId);
+    } else if (hasAccess) {
+        adminPanel.style.display = 'block';
+    } else {
+        unauthorizedPanel.style.display = 'block';
+    }
+});
+        </script>
