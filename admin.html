@@ -406,17 +406,13 @@ input::placeholder {
     </div>
 
     <script>
-// Almacenamiento mejorado con prefijo para evitar conflictos
 const STORAGE_KEY = 'premio_system_links';
 const ADMIN_KEY = 'premio_admin_auth';
 
-// Determinar si es admin o usuario normal
 let isAdmin = false;
 
-// Cargar links existentes
 let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
-// Elementos del DOM
 const adminPanel = document.getElementById('admin-panel');
 const userPanel = document.getElementById('user-panel');
 const premioInput = document.getElementById('premio');
@@ -427,22 +423,15 @@ const volverBtn = document.getElementById('volver-btn');
 const prizeAnimation = document.getElementById('prize-animation');
 const appContainer = document.getElementById('app-container');
 
-// Obtener parámetros de URL
 const urlParams = new URLSearchParams(window.location.search);
 const premioId = urlParams.get('premio');
 const adminParam = urlParams.get('admin');
-const accessToken = urlParams.get('access_token');  // Agregar parámetro de token
 
-// Token fijo predefinido
-const FIXED_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227'; // Token fijo
-
-// Función para generar IDs únicos más cortos y seguros
 function generateUniqueId(length = 8) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
     const charactersLength = characters.length;
     
-    // Usar Crypto API para mayor aleatoriedad si está disponible
     if (window.crypto && window.crypto.getRandomValues) {
         const values = new Uint32Array(length);
         window.crypto.getRandomValues(values);
@@ -452,14 +441,12 @@ function generateUniqueId(length = 8) {
         return result;
     }
     
-    // Fallback a Math.random
     for (let i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 }
 
-// Función para generar un nuevo link de premio
 function generarLink() {
     const premio = premioInput.value.trim();
     
@@ -468,10 +455,8 @@ function generarLink() {
         return;
     }
     
-    // Generar ID único
     const id = generateUniqueId();
     
-    // Guardar en el almacenamiento local
     links[id] = { 
         premio: premio, 
         canjeado: false,
@@ -479,11 +464,9 @@ function generarLink() {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
     
-    // Construir URL amigable para redirección (página específica de canje)
     const baseUrl = window.location.href.split('?')[0].split('#')[0];
     const redeemUrl = `${baseUrl}redeem/${id}`;
     
-    // Reconstruir completamente el contenedor de resultados
     resultContainer.innerHTML = `
         <div class="notification success">
             <i class="fas fa-check-circle"></i>
@@ -500,17 +483,13 @@ function generarLink() {
         </a>
     `;
     
-    // Mostrar el contenedor de resultados
     resultContainer.classList.add('active');
     
-    // Asignar evento de copia al nuevo botón
     document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
     
-    // Limpiar input
     premioInput.value = '';
 }
 
-// Función para copiar al portapapeles
 function copyToClipboard() {
     const linkText = document.getElementById('link-text');
     navigator.clipboard.writeText(linkText.textContent)
@@ -526,20 +505,16 @@ function copyToClipboard() {
         });
 }
 
-// Función para verificar si es administrador
 function checkAdmin() {
-    // Verificar el token de acceso
-    if (accessToken && accessToken === FIXED_TOKEN) {
+    if (adminParam === 'true' || localStorage.getItem(ADMIN_KEY) === 'true') {
         isAdmin = true;
         return true;
     }
     
-    // Redirigir si no es admin o el token no es válido
-    window.location.href = '/redeem'; // Redirige a la página de canje si no es admin
+    window.location.href = '/redeem';
     return false;
 }
 
-// Event Listeners
 if (generarBtn) {
     generarBtn.addEventListener('click', generarLink);
 }
@@ -556,12 +531,9 @@ if (volverBtn) {
     });
 }
 
-// Inicialización
 window.addEventListener('DOMContentLoaded', () => {
-    // Verificar si es administrador o usuario normal
     checkAdmin();
     
-    // Si hay un ID de premio en la URL, canjear
     if (premioId) {
         canjearPremio(premioId);
     }
