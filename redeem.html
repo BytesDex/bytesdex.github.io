@@ -386,14 +386,12 @@
     </div>
 
     <script>
-            const STORAGE_KEY = 'premio_system_links';
+    const STORAGE_KEY = 'premio_system_links';
 const TOKEN_KEY = 'premio_system_token';
 const VALID_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227';
 
-// Cargar links existentes
 let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
-// Elementos del DOM
 const adminPanel = document.getElementById('admin-panel');
 const userPanel = document.getElementById('user-panel');
 const unauthorizedPanel = document.getElementById('unauthorized-panel');
@@ -403,15 +401,16 @@ const resultContainer = document.getElementById('result');
 const premioResult = document.getElementById('premio-result');
 const prizeAnimation = document.getElementById('prize-animation');
 
-// Función para verificar token de acceso
 function checkAccessToken() {
     let storedToken = localStorage.getItem(TOKEN_KEY);
+
     const urlParams = new URLSearchParams(window.location.search);
     const tokenParam = urlParams.get('access_token');
 
     if (tokenParam === VALID_TOKEN) {
         localStorage.setItem(TOKEN_KEY, tokenParam);
         storedToken = tokenParam;
+
         const baseUrl = window.location.href.split('?')[0];
         window.history.replaceState({}, document.title, baseUrl);
     }
@@ -423,7 +422,6 @@ function checkAccessToken() {
     }
 }
 
-// Función para generar IDs únicos más cortos y seguros
 function generateUniqueId(length = 8) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -444,7 +442,6 @@ function generateUniqueId(length = 8) {
     return result;
 }
 
-// Función para crear confeti
 function createConfetti() {
     const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
     prizeAnimation.innerHTML = '';
@@ -465,7 +462,6 @@ function createConfetti() {
     }
 }
 
-// Función para generar un nuevo link de premio
 function generarLink() {
     const premio = premioInput.value.trim();
 
@@ -476,15 +472,15 @@ function generarLink() {
 
     const id = generateUniqueId();
 
-    links[id] = {
-        premio: premio,
+    links[id] = { 
+        premio: premio, 
         canjeado: false,
         creado: new Date().toISOString()
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
 
     const baseUrl = window.location.href.split('?')[0].split('#')[0];
-    const url = `${baseUrl}?code=${id}&access_token=${localStorage.getItem(TOKEN_KEY)}`;
+    const url = `${baseUrl}?code=${id}`;
 
     resultContainer.innerHTML = `
         <div class="notification success">
@@ -503,12 +499,14 @@ function generarLink() {
     `;
 
     resultContainer.classList.add('active');
+
     document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
+
     adminPanel.style.animation = 'fadeIn 0.5s ease-out';
+
     premioInput.value = '';
 }
 
-// Función para copiar al portapapeles
 function copyToClipboard() {
     const linkText = document.getElementById('link-text');
     navigator.clipboard.writeText(linkText.textContent)
@@ -524,7 +522,6 @@ function copyToClipboard() {
         });
 }
 
-// Función para canjear un premio
 function canjearPremio(id) {
     adminPanel.style.display = 'none';
     userPanel.style.display = 'block';
@@ -555,7 +552,6 @@ function canjearPremio(id) {
     }
 }
 
-// Función para mostrar notificaciones
 function showNotification(type, message) {
     const notification = document.createElement('div');
     let icon = '';
@@ -589,7 +585,6 @@ function showNotification(type, message) {
     }, 3000);
 }
 
-// Función para mostrar resultado de premio
 function showPrizeResult(type, message) {
     let icon = '';
 
@@ -615,14 +610,12 @@ function showPrizeResult(type, message) {
     `;
 }
 
-// Event Listeners
 generarBtn.addEventListener('click', generarLink);
 
 premioInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') generarLink();
 });
 
-// Inicialización y verificación de token
 window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const premioId = urlParams.get('premio');
@@ -639,3 +632,5 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
         </script>
+</body>
+</html>
