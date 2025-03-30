@@ -406,7 +406,7 @@ input::placeholder {
     </div>
 
     <script>
-      // Almacenamiento mejorado con prefijo para evitar conflictos
+// Almacenamiento mejorado con prefijo para evitar conflictos
 const STORAGE_KEY = 'premio_system_links';
 const ADMIN_KEY = 'premio_admin_auth';
 
@@ -431,6 +431,10 @@ const appContainer = document.getElementById('app-container');
 const urlParams = new URLSearchParams(window.location.search);
 const premioId = urlParams.get('premio');
 const adminParam = urlParams.get('admin');
+const accessToken = urlParams.get('access_token');  // Agregar parámetro de token
+
+// Token fijo predefinido
+const FIXED_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227'; // Token fijo
 
 // Función para generar IDs únicos más cortos y seguros
 function generateUniqueId(length = 8) {
@@ -455,44 +459,6 @@ function generateUniqueId(length = 8) {
     return result;
 }
 
-// Función para crear confeti
-function createConfetti() {
-    const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
-    prizeAnimation.innerHTML = '';
-    
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = `${Math.random() * 100}%`;
-        confetti.style.top = `-5px`;
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = `${5 + Math.random() * 10}px`;
-        confetti.style.height = `${5 + Math.random() * 10}px`;
-        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-        confetti.style.animationDelay = `${Math.random() * 2}s`;
-        confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-        
-        prizeAnimation.appendChild(confetti);
-    }
-}
-
-// Función para crear efectos de brillo
-function createSparkles() {
-    const container = document.querySelector('.redeem-container') || appContainer;
-    
-    for (let i = 0; i < 20; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.style.left = `${Math.random() * 100}%`;
-        sparkle.style.top = `${Math.random() * 100}%`;
-        sparkle.style.width = `${2 + Math.random() * 5}px`;
-        sparkle.style.height = sparkle.style.width;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
-        
-        container.appendChild(sparkle);
-    }
-}
-
 // Función para generar un nuevo link de premio
 function generarLink() {
     const premio = premioInput.value.trim();
@@ -515,7 +481,7 @@ function generarLink() {
     
     // Construir URL amigable para redirección (página específica de canje)
     const baseUrl = window.location.href.split('?')[0].split('#')[0];
-    const redeemUrl = `${baseUrl}redeem.html?c=${id}`;
+    const redeemUrl = `${baseUrl}redeem/${id}`;
     
     // Reconstruir completamente el contenedor de resultados
     resultContainer.innerHTML = `
@@ -540,9 +506,6 @@ function generarLink() {
     // Asignar evento de copia al nuevo botón
     document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
     
-    // Animar contenedor
-    adminPanel.style.animation = 'fadeIn 0.5s ease-out';
-    
     // Limpiar input
     premioInput.value = '';
 }
@@ -563,138 +526,22 @@ function copyToClipboard() {
         });
 }
 
-// Función para canjear un premio
-function canjearPremio(id) {
-    adminPanel.style.display = 'none';
-    userPanel.style.display = 'block';
-    volverBtn.style.display = 'inline-block';
-    
-    if (!links.hasOwnProperty(id)) {
-        showPrizeResult('error', 'Este link no es válido o ha expirado');
-    } else if (links[id].canjeado) {
-        showPrizeResult('warning', 'Este premio ya ha sido canjeado anteriormente');
-    } else {
-        // Marcar como canjeado
-        links[id].canjeado = true;
-        links[id].canjeadoFecha = new Date().toISOString();
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-        
-        // Mostrar premio con animación
-        createConfetti();
-        
-        const prizeText = document.createElement('div');
-        prizeText.className = 'prize-text';
-        prizeText.innerHTML = `
-            <i class="fas fa-trophy"></i><br>
-            ¡Felicidades!<br>
-            Has ganado:<br>
-            <span style="color: #9b59b6; font-size: 1.5rem;">${links[id].premio}</span>
-        `;
-        
-        prizeAnimation.appendChild(prizeText);
-        
-        showPrizeResult('success', `¡Enhorabuena! Has canjeado tu premio:`);
-    }
-}
-
-// Función para mostrar notificaciones
-function showNotification(type, message) {
-    const notification = document.createElement('div');
-    let icon = '';
-    
-    switch(type) {
-        case 'success':
-            icon = 'check-circle';
-            break;
-        case 'error':
-            icon = 'times-circle';
-            break;
-        case 'warning':
-            icon = 'exclamation-triangle';
-            break;
-        default:
-            icon = 'info-circle';
-    }
-    
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <i class="fas fa-${icon}"></i>
-        <span>${message}</span>
-    `;
-    
-    resultContainer.innerHTML = '';
-    resultContainer.appendChild(notification);
-    resultContainer.classList.add('active');
-    
-    setTimeout(() => {
-        resultContainer.classList.remove('active');
-    }, 3000);
-}
-
-// Función para mostrar resultado de premio
-function showPrizeResult(type, message) {
-    let icon = '';
-    
-    switch(type) {
-        case 'success':
-            icon = 'check-circle';
-            break;
-        case 'error':
-            icon = 'times-circle';
-            break;
-        case 'warning':
-            icon = 'exclamation-triangle';
-            break;
-        default:
-            icon = 'info-circle';
-    }
-    
-    premioResult.innerHTML = `
-        <div class="notification ${type}">
-            <i class="fas fa-${icon}"></i>
-            <span>${message}</span>
-        </div>
-    `;
-}
-
 // Función para verificar si es administrador
 function checkAdmin() {
-    if (adminParam === 'true') {
-        localStorage.setItem(ADMIN_KEY, 'true');
+    // Verificar el token de acceso
+    if (accessToken && accessToken === FIXED_TOKEN) {
         isAdmin = true;
         return true;
     }
     
-    // Si ya está autenticado como admin
-    if (localStorage.getItem(ADMIN_KEY) === 'true') {
-        isAdmin = true;
-        return true;
-    }
-    
-    // Si tiene un premio para canjear, no es admin
-    if (premioId) {
-        isAdmin = false;
-        return false;
-    }
-    
-    // Por defecto, redirigir a una página segura si no es admin ni tiene premio
-    if (!isAdmin && !premioId) {
-        window.location.href = 'redeem.html';
-        return false;
-    }
-    
+    // Redirigir si no es admin o el token no es válido
+    window.location.href = '/redeem'; // Redirige a la página de canje si no es admin
     return false;
 }
 
 // Event Listeners
 if (generarBtn) {
     generarBtn.addEventListener('click', generarLink);
-}
-
-if (premioInput) {
-    premioInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') generarLink();
-    });
 }
 
 if (volverBtn) {
@@ -721,4 +568,4 @@ window.addEventListener('DOMContentLoaded', () => {
 });
     </script>
 </body>
-</html>
+    </html>
