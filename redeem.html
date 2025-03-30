@@ -387,12 +387,10 @@ input::placeholder {
     <script>
 const STORAGE_KEY = 'premio_system_links';
 
-// Elementos DOM
 const prizeContent = document.getElementById('prize-content');
 const prizeAnimation = document.getElementById('prize-animation');
 const redeemContainer = document.getElementById('redeem-container');
 
-// Función para crear confeti
 function createConfetti() {
     const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
     prizeAnimation.innerHTML = '';
@@ -413,7 +411,6 @@ function createConfetti() {
     }
 }
 
-// Función para crear efectos de brillo
 function createSparkles() {
     for (let i = 0; i < 20; i++) {
         const sparkle = document.createElement('div');
@@ -428,7 +425,6 @@ function createSparkles() {
     }
 }
 
-// Función para mostrar mensajes
 function showMessage(type, title, message) {
     let icon = '';
     
@@ -453,6 +449,30 @@ function showMessage(type, title, message) {
         </div>
     `;
 }
+
+function redeemPrize(premioId) {
+    let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    
+    if (links[premioId] && !links[premioId].canjeado) {
+        links[premioId].canjeado = true;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+        
+        createConfetti();
+        createSparkles();
+        showMessage('success', '¡Felicidades!', '¡Has canjeado tu premio con éxito!');
+    } else {
+        showMessage('error', 'Error', 'Este premio ya ha sido canjeado o no existe.');
+    }
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+const premioId = urlParams.get('premio');
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (premioId) {
+        redeemPrize(premioId);
+    }
+});
     </script>
 </body>
 </html>
