@@ -386,11 +386,399 @@
     </div>
 
     <script>
-    const STORAGE_KEY = 'premio_system_links';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de generación y canje de premios">
+    <title>Sistema de Premios | Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5eade8;
+            --primary-dark: #3c89c4;
+            --secondary: #4ecc71;
+            --secondary-dark: #3aa357;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --dark: #1a1a1a;
+            --darker: #121212;
+            --light: #333333;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--dark);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .admin-section, .user-section, .unauthorized-section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .input-group {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            background-color: var(--light);
+            color: var(--text);
+            border: 2px solid #444;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(94, 173, 232, 0.2);
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0.5rem;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-copy {
+            background-color: var(--light);
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .btn-copy:hover {
+            background-color: #444;
+        }
+
+        .result-container {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--radius);
+            background-color: var(--light);
+            transition: var(--transition);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .result-container.active {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            padding: 1rem;
+        }
+
+        .link-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--darker);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            margin: 1rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .link-url {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .notification {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: var(--radius);
+            font-weight: 600;
+            animation: slideIn 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .notification i {
+            font-size: 1.2rem;
+        }
+
+        .notification.success {
+            background-color: rgba(78, 204, 113, 0.2);
+            color: var(--secondary);
+        }
+
+        .notification.error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: var(--danger);
+        }
+
+        .notification.warning {
+            background-color: rgba(243, 156, 18, 0.2);
+            color: var(--warning);
+        }
+
+        .prize-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti 5s ease-in-out forwards;
+        }
+
+        .prize-text {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: var(--primary);
+            background: var(--dark);
+            padding: 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transform: scale(0);
+            opacity: 0;
+            animation: scaleIn 0.5s ease-out 0.3s forwards;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .unauthorized-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .unauthorized-icon {
+            font-size: 4rem;
+            color: var(--warning);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .unauthorized-message {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--warning);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes confetti {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotate(720deg); 
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                width: 95%;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app-container">
+        <div id="admin-panel" class="admin-section" style="display: none;">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h1>Sistema de Premios</h1>
+            <div class="input-group">
+                <input type="text" id="premio" placeholder="Escribe el premio (ej. x5 semillas, 1000 monedas)" autofocus>
+            </div>
+            <button id="generar-btn" class="btn btn-primary">
+                <i class="fas fa-magic"></i> Generar Link
+            </button>
+            <div id="result" class="result-container">
+                <!-- Contenido se genera dinámicamente -->
+            </div>
+        </div>
+
+        <div id="user-panel" class="user-section" style="display: none;">
+            <div class="logo">
+                <i class="fas fa-award"></i>
+            </div>
+            <h1>¡Has Recibido un Premio!</h1>
+            <div id="premio-result"></div>
+            <div class="prize-animation" id="prize-animation"></div>
+        </div>
+
+        <div id="unauthorized-panel" class="unauthorized-section" style="display: none;">
+            <div class="unauthorized-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="unauthorized-message">¡Tus premios aquí!</div>
+        </div>
+
+        <div class="footer">
+            Sistema de Premios v2.0 | Desarrollado con <i class="fas fa-heart" style="color: #e74c3c;"></i>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'premio_system_links';
 const TOKEN_KEY = 'premio_system_token';
 const VALID_TOKEN = '4d3f90a2d5678c3c8b8fa9eaf6a7b206c08a42f6988d089f8e9c4f8cd41ab0227';
 
-let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};  
 
 const adminPanel = document.getElementById('admin-panel');
 const userPanel = document.getElementById('user-panel');
@@ -403,30 +791,24 @@ const prizeAnimation = document.getElementById('prize-animation');
 
 function checkAccessToken() {
     let storedToken = localStorage.getItem(TOKEN_KEY);
-
     const urlParams = new URLSearchParams(window.location.search);
     const tokenParam = urlParams.get('access_token');
-
+  
     if (tokenParam === VALID_TOKEN) {
         localStorage.setItem(TOKEN_KEY, tokenParam);
         storedToken = tokenParam;
-
         const baseUrl = window.location.href.split('?')[0];
         window.history.replaceState({}, document.title, baseUrl);
     }
-
-    if (storedToken === VALID_TOKEN) {
-        return true;
-    } else {
-        return false;
-    }
+  
+    return storedToken === VALID_TOKEN;
 }
 
 function generateUniqueId(length = 8) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
     const charactersLength = characters.length;
-
+  
     if (window.crypto && window.crypto.getRandomValues) {
         const values = new Uint32Array(length);
         window.crypto.getRandomValues(values);
@@ -435,7 +817,7 @@ function generateUniqueId(length = 8) {
         }
         return result;
     }
-
+  
     for (let i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
@@ -445,7 +827,7 @@ function generateUniqueId(length = 8) {
 function createConfetti() {
     const colors = ['#5eade8', '#4ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
     prizeAnimation.innerHTML = '';
-
+  
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
@@ -457,31 +839,30 @@ function createConfetti() {
         confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
         confetti.style.animationDelay = `${Math.random() * 2}s`;
         confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-
+      
         prizeAnimation.appendChild(confetti);
     }
 }
 
 function generarLink() {
     const premio = premioInput.value.trim();
-
+  
     if (premio === "") {
         showNotification('error', 'Debes escribir un premio para continuar');
         return;
     }
-
+  
     const id = generateUniqueId();
-
-    links[id] = { 
-        premio: premio, 
+    links[id] = {
+        premio: premio,
         canjeado: false,
         creado: new Date().toISOString()
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-
+  
     const baseUrl = window.location.href.split('?')[0].split('#')[0];
     const url = `${baseUrl}?code=${id}`;
-
+  
     resultContainer.innerHTML = `
         <div class="notification success">
             <i class="fas fa-check-circle"></i>
@@ -497,13 +878,12 @@ function generarLink() {
             <i class="fas fa-external-link-alt"></i> Abrir Link
         </a>
     `;
-
+  
     resultContainer.classList.add('active');
-
+  
     document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
-
+  
     adminPanel.style.animation = 'fadeIn 0.5s ease-out';
-
     premioInput.value = '';
 }
 
@@ -525,7 +905,7 @@ function copyToClipboard() {
 function canjearPremio(id) {
     adminPanel.style.display = 'none';
     userPanel.style.display = 'block';
-
+  
     if (!links.hasOwnProperty(id)) {
         showPrizeResult('error', 'Este link no es válido o ha expirado');
     } else if (links[id].canjeado) {
@@ -534,9 +914,9 @@ function canjearPremio(id) {
         links[id].canjeado = true;
         links[id].canjeadoFecha = new Date().toISOString();
         localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-
+      
         createConfetti();
-
+      
         const prizeText = document.createElement('div');
         prizeText.className = 'prize-text';
         prizeText.innerHTML = `
@@ -545,9 +925,9 @@ function canjearPremio(id) {
             Has ganado:<br>
             <span style="color: #9b59b6; font-size: 1.5rem;">${links[id].premio}</span>
         `;
-
+      
         prizeAnimation.appendChild(prizeText);
-
+      
         showPrizeResult('success', `¡Enhorabuena! Has canjeado tu premio:`);
     }
 }
@@ -555,7 +935,7 @@ function canjearPremio(id) {
 function showNotification(type, message) {
     const notification = document.createElement('div');
     let icon = '';
-
+  
     switch(type) {
         case 'success':
             icon = 'check-circle';
@@ -569,17 +949,17 @@ function showNotification(type, message) {
         default:
             icon = 'info-circle';
     }
-
+  
     notification.className = `notification ${type}`;
     notification.innerHTML = `
         <i class="fas fa-${icon}"></i>
         <span>${message}</span>
     `;
-
+  
     resultContainer.innerHTML = '';
     resultContainer.appendChild(notification);
     resultContainer.classList.add('active');
-
+  
     setTimeout(() => {
         resultContainer.classList.remove('active');
     }, 3000);
@@ -587,7 +967,7 @@ function showNotification(type, message) {
 
 function showPrizeResult(type, message) {
     let icon = '';
-
+  
     switch(type) {
         case 'success':
             icon = 'check-circle';
@@ -601,7 +981,7 @@ function showPrizeResult(type, message) {
         default:
             icon = 'info-circle';
     }
-
+  
     premioResult.innerHTML = `
         <div class="notification ${type}">
             <i class="fas fa-${icon}"></i>
@@ -619,9 +999,9 @@ premioInput.addEventListener('keypress', (e) => {
 window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const premioId = urlParams.get('premio');
-
+  
     const hasAccess = checkAccessToken();
-
+  
     if (premioId) {
         userPanel.style.display = 'block';
         canjearPremio(premioId);
@@ -631,6 +1011,6 @@ window.addEventListener('DOMContentLoaded', () => {
         unauthorizedPanel.style.display = 'block';
     }
 });
-        </script>
+    </script>
 </body>
 </html>
